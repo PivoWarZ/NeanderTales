@@ -1,3 +1,4 @@
+using NeanderTaleS.Code.JumpSystem;
 using NeanderTaleS.Code.Scripts.InputSysytem;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
@@ -14,9 +15,29 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
         {
             IMovable movable = _player.GetComponent<IMovable>();
             IRotatable rotatable = _player.GetComponent<IRotatable>();
+            IJumping jumping = _player.GetComponent<IJumping>();
             
+            BindJumpSystem(jumping);
+
             BindRotateSystem(rotatable);
             BindInputSystem(movable);
+        }
+
+        private void BindJumpSystem(IJumping jumping)
+        {
+            if (jumping == null)
+            {
+                Debug.LogWarning("IJumping instance is null. Input system bindings may not be fully configured.");
+            }
+            
+            Container.BindInterfacesAndSelfTo<JumpInputListener>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<JumpInputController>()
+                .AsSingle()
+                .WithArguments(jumping)
+                .NonLazy();
         }
 
         private void BindRotateSystem(IRotatable rotatable)

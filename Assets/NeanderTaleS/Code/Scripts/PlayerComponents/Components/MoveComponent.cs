@@ -22,10 +22,21 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         {
             if (!_condition.IsTrue())
             {
+                StopRotation(direction);
                 return;
             }
 
             _rigidbody.linearVelocity = direction * _speed;
+            StopRotation(direction);
+        }
+
+        private void StopRotation(Vector3 direction)
+        {
+            if (direction == Vector3.zero || !_condition.IsTrue())
+            {
+                _rigidbody.linearVelocity = Vector3.zero;
+                _rigidbody.angularVelocity = Vector3.zero;
+            }
         }
 
         public void SetCondition(Func<bool> condition)
