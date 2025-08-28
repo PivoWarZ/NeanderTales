@@ -22,11 +22,13 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         {
             if (!_condition.IsTrue())
             {
-                StopRotation(direction);
                 return;
             }
 
-            _rigidbody.linearVelocity = direction * _speed;
+            Vector3 velocity = _rigidbody.linearVelocity;
+            velocity.x = direction.x * _speed;
+            velocity.z = direction.z * _speed;
+            _rigidbody.linearVelocity = velocity;
         }
 
         private void StopRotation(Vector3 direction)

@@ -26,11 +26,11 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             {
                 return;
             }
-
+            
             _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
 
-        private bool IsGrounded()
+        public bool IsGrounded()
         {
             return Physics.CheckSphere(transform.position, 0.1f, _groundLayer, QueryTriggerInteraction.Ignore);
         }
