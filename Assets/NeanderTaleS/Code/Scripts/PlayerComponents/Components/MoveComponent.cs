@@ -27,7 +27,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             }
 
             _rigidbody.linearVelocity = direction * _speed;
-            StopRotation(direction);
         }
 
         private void StopRotation(Vector3 direction)
