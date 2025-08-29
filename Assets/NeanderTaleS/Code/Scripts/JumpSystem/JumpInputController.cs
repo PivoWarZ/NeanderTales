@@ -2,7 +2,7 @@ using System;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using Zenject;
 
-namespace NeanderTaleS.Code.JumpSystem
+namespace NeanderTaleS.Code.Scripts.JumpSystem
 {
     public class JumpInputController: IInitializable, IDisposable
     {

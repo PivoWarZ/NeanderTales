@@ -1,5 +1,8 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
+using UnityEditor.Animations;
 using UnityEngine;
 using Zenject;
 
@@ -9,11 +12,13 @@ namespace NeanderTaleS.Code.Scripts.InputSysytem
     {
         private PlayerInputListener _input;
         private IMovable _movable;
+        private IAnimationController _animationController;
 
-        public PlayerInputController(PlayerInputListener input, IMovable movable)
+        public PlayerInputController(PlayerInputListener input, IMovable movable, IAnimationController animationController)
         {
             _input = input;
             _movable = movable;
+            _animationController = animationController;
         }
 
         public void Initialize()
@@ -23,6 +28,8 @@ namespace NeanderTaleS.Code.Scripts.InputSysytem
 
         private void Move(Vector3 direction)
         {
+            _animationController.SetDirectionAxis(direction);
+            
             if (direction == Vector3.zero)
             {
                 return;

@@ -1,5 +1,7 @@
-using NeanderTaleS.Code.JumpSystem;
+using NeanderTaleS.Code.Scripts.Animation;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.InputSysytem;
+using NeanderTaleS.Code.Scripts.JumpSystem;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.RotateSystem;
@@ -8,7 +10,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 {
-    public class ContextInstaller: MonoInstaller
+    public class ZenjectContextInstaller: MonoInstaller
     {
         [SerializeField] Player _player;
         public override void InstallBindings()
@@ -16,11 +18,11 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
             IMovable movable = _player.GetComponent<IMovable>();
             IRotatable rotatable = _player.GetComponent<IRotatable>();
             IJumping jumping = _player.GetComponent<IJumping>();
+            IAnimationController animationController = _player.GetComponent<IAnimationController>();
             
             BindJumpSystem(jumping);
-
             BindRotateSystem(rotatable);
-            BindInputSystem(movable);
+            BindInputSystem(movable, animationController);
         }
 
         private void BindJumpSystem(IJumping jumping)
@@ -57,7 +59,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
                 .NonLazy();
         }
 
-        private void BindInputSystem(IMovable movable)
+        private void BindInputSystem(IMovable movable, IAnimationController animationController)
         {
             if (movable == null)
             {
@@ -70,7 +72,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 
             Container.BindInterfacesAndSelfTo<PlayerInputController>()
                 .AsSingle()
-                .WithArguments(movable)
+                .WithArguments(movable, animationController)
                 .NonLazy();
         }
     }

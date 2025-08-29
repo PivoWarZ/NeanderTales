@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 118177247}
   - component: {fileID: 118177249}
   - component: {fileID: 118177251}
+  - component: {fileID: 118177254}
+  - component: {fileID: 118177255}
   - component: {fileID: 118177252}
   - component: {fileID: 118177253}
   m_Layer: 0
@@ -267,6 +269,35 @@ CapsuleCollider:
   m_Height: 1.6833655
   m_Direction: 1
   m_Center: {x: 0.044218093, y: 0.74361163, z: 0.17104584}
+--- !u!114 &118177254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118177245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d030b2bdc24e1caff80451ef6304be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5866666021391731528}
+  _eventDispatcher: {fileID: 5866666021391731529}
+--- !u!114 &118177255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118177245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317f19d3752b482694a41937bd74dc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerProvider: {fileID: 118177254}
+  _event: {fileID: 5866666021391731529}
+  _inverseTransform: {fileID: 543450653076574514}
 --- !u!1 &330458934
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653076574514}
   - component: {fileID: 5866666021391731528}
+  - component: {fileID: 5866666021391731529}
   m_Layer: 0
   m_Name: Caveman
   m_TagString: Untagged
@@ -1702,7 +1734,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 686c903db88c9774ab5dd191437a8cf6, type: 3}
   m_Controller: {fileID: 9100000, guid: 40e377f2e945c8e439689c1061f6cfbd, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1713,6 +1745,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5866666021391731529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148603358088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e985cf69bc43ff851ae470ea7711f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5901452234672063409
 Transform:
   m_ObjectHideFlags: 0

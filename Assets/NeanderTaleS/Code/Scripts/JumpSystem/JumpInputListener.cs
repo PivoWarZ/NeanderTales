@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.JumpSystem
+namespace NeanderTaleS.Code.Scripts.JumpSystem
 {
     public class JumpInputListener: IInitializable, ITickable
     {
