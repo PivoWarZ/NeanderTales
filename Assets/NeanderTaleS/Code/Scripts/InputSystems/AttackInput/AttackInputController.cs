@@ -24,7 +24,6 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.AttackInput
 
         private void Attack()
         {
-            Debug.Log("Attack Input Controller");
             _attackable.AttackRequest();
         }
 
