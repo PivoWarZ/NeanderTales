@@ -1,15 +1,16 @@
 using NeanderTaleS.Code.Scripts.Animation;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents
 {
     public class PlayerProvider: MonoBehaviour
     {
+        [SerializeField] private AttackComponent _attackComponent;
         [SerializeField] private Animator _animator;
-        [SerializeField] private AnimationEventDispatcher _eventDispatcher;
 
         public Animator Animator => _animator;
 
-        public AnimationEventDispatcher AnimationEventDispatcher => _eventDispatcher;
+        public AttackComponent AttackComponent => _attackComponent;
     }
 }

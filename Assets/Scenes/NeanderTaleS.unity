@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 118177251}
   - component: {fileID: 118177254}
   - component: {fileID: 118177255}
+  - component: {fileID: 118177256}
   - component: {fileID: 118177252}
   - component: {fileID: 118177253}
   m_Layer: 0
@@ -281,8 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d030b2bdc24e1caff80451ef6304be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackComponent: {fileID: 118177256}
   _animator: {fileID: 5866666021391731528}
-  _eventDispatcher: {fileID: 5866666021391731529}
 --- !u!114 &118177255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +299,20 @@ MonoBehaviour:
   _playerProvider: {fileID: 118177254}
   _event: {fileID: 5866666021391731529}
   _inverseTransform: {fileID: 543450653076574514}
+--- !u!114 &118177256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118177245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f817eaf9fe294e7bb8650aad728e5ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+  _canAttack: 1
 --- !u!1 &330458934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1749,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 686c903db88c9774ab5dd191437a8cf6, type: 3}
   m_Controller: {fileID: 9100000, guid: 40e377f2e945c8e439689c1061f6cfbd, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

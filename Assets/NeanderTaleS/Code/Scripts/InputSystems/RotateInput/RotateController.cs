@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.RotateSystem
+namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
 {
     public class RotateController: IInitializable, IDisposable
     {

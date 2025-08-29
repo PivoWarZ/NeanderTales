@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.InputSysytem
+namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
 {
     public class PlayerInputListener: ITickable
     {

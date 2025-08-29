@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.RotateSystem
+namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
 {
     public class CursorPositionListener: ITickable
     {

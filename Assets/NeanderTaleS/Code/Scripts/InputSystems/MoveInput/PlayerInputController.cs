@@ -1,12 +1,10 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
-using UnityEditor.Animations;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.InputSysytem
+namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
 {
     public class PlayerInputController: IInitializable, IDisposable
     {
