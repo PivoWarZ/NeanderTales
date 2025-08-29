@@ -2,16 +2,17 @@ using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
-using UnityEditor.MPE;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation
 {
-    public class AnimationController: MonoBehaviour, IAnimationController
+    public class AnimationController: MonoBehaviour, IAnimationController, IHitAnimationListener
     {
+        public event Action OnHitAnimation;
         [SerializeField] private PlayerProvider _playerProvider;
         [SerializeField] private AnimationEventDispatcher _event;
         [SerializeField] private Transform _inverseTransform;
+        private int _comboAttack;
         private Animator _animator;
         private AttackComponent _attackComponent;
 
@@ -30,12 +31,25 @@ namespace NeanderTaleS.Code.Scripts.Animation
             if (eventName == "AttackStarted")
             {
                 _attackComponent.AttackAction();
+                Debug.Log($"Attack Started {_comboAttack}");
             }
 
             if (eventName == "AttackComplete")
             {
+                _comboAttack = 0;
+                _animator.SetBool("FirstAttack", false);
+                _animator.SetBool("SecondAttack", false);
+                _animator.SetBool("ThirdAttack", false);
                 _attackComponent.AttackEvent();
                 _attackComponent.SetCanAttack(true);
+                Debug.Log($"Attack Complete {_comboAttack}");
+            }
+
+            if (eventName == "Hit")
+            {
+                _comboAttack++;
+                OnHitAnimation?.Invoke();
+                Debug.Log($"Hit {_comboAttack}");
             }
         }
 
@@ -49,8 +63,23 @@ namespace NeanderTaleS.Code.Scripts.Animation
 
         public void Attack()
         {
-            _animator.SetTrigger("Attack");
             _attackComponent.SetCanAttack(false);
+            
+            if (_comboAttack == 0)
+            {
+                _animator.SetBool("FirstAttack", true);
+            }
+            else if (_comboAttack == 1)
+            {
+                _animator.SetBool("FirstAttack", false);
+                _animator.SetBool("SecondAttack", true);
+            }
+            else if (_comboAttack == 2)
+            {
+                _animator.SetBool("FirstAttack", false);
+                _animator.SetBool("SecondAttack", false);
+                _animator.SetBool("ThirdAttack", true);
+            }
         }
     }
 }
