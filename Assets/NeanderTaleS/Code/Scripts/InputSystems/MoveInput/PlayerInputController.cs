@@ -10,13 +10,12 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
     {
         private PlayerInputListener _input;
         private IMovable _movable;
-        private IAnimationController _animationController;
+        private IMoveAnimationController _moveAnimationController;
 
-        public PlayerInputController(PlayerInputListener input, IMovable movable, IAnimationController animationController)
+        public PlayerInputController(PlayerInputListener input, IMovable movable)
         {
             _input = input;
             _movable = movable;
-            _animationController = animationController;
         }
 
         public void Initialize()
@@ -26,8 +25,6 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
 
         private void Move(Vector3 direction)
         {
-            _animationController.SetDirectionAxis(direction);
-            
             if (direction == Vector3.zero)
             {
                 return;

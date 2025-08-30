@@ -1,16 +1,19 @@
 using System;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
+using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
     public class MoveComponent: MonoBehaviour, IMovable
     {
+        private ReactiveProperty<Vector3> _moveDirection = new (Vector3.zero);
         [SerializeField] private float _speed;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private bool _canMove = true;
         CompositeCondition _condition;
+        public ReadOnlyReactiveProperty<Vector3> MoveDirection => _moveDirection;
 
         private void Awake()
         {
@@ -20,6 +23,8 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
         public void Move(Vector3 direction)
         {
+            _moveDirection.Value = direction;
+            
             if (!_condition.IsTrue())
             {
                 return;

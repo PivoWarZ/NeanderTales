@@ -6,75 +6,68 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation
 {
-    public class AnimationController: MonoBehaviour, IAnimationController, IHitAnimationListener
+    public class AttackAnimationController: MonoBehaviour, IHitAnimationListener, IAnimationController
     {
         public event Action OnHitAnimation;
-        [SerializeField] private PlayerProvider _playerProvider;
-        [SerializeField] private AnimationEventDispatcher _event;
-        [SerializeField] private Transform _inverseTransform;
-        private int _comboAttack;
-        private Animator _animator;
+        
+        private PlayerProvider _playerProvider;
+        private AnimationEventDispatcher _event;
         private AttackComponent _attackComponent;
-
-        private void Awake()
+        private Animator _animator;
+        private int _comboAttackCount;
+        private const int FIRST_ATTACK = 0;
+        private const int SECOND_ATTACK = 1;
+        private const int THIRD_ATTACK = 2;
+        
+        public void Init(PlayerProvider playerProvider, AnimationEventDispatcher eventDispatcher)
         {
+            _playerProvider = playerProvider;
+            _event = eventDispatcher;
             _animator = _playerProvider.Animator;
             _attackComponent = _playerProvider.AttackComponent;
             
             _event.OnReceiveEvent += ProcessEvent;
-
             _attackComponent.OnAttackRequest += Attack;
         }
-
+        
         private void ProcessEvent(string eventName)
         {
             if (eventName == "AttackStarted")
             {
                 _attackComponent.AttackAction();
-                Debug.Log($"Attack Started {_comboAttack}");
             }
 
             if (eventName == "AttackComplete")
             {
-                _comboAttack = 0;
+                _comboAttackCount = FIRST_ATTACK;
                 _animator.SetBool("FirstAttack", false);
                 _animator.SetBool("SecondAttack", false);
                 _animator.SetBool("ThirdAttack", false);
                 _attackComponent.AttackEvent();
                 _attackComponent.SetCanAttack(true);
-                Debug.Log($"Attack Complete {_comboAttack}");
             }
 
             if (eventName == "Hit")
             {
-                _comboAttack++;
+                _comboAttackCount++;
                 OnHitAnimation?.Invoke();
-                Debug.Log($"Hit {_comboAttack}");
             }
         }
-
-        public void SetDirectionAxis(Vector3 moveDirection)
-        {
-            var inverseDirection = _inverseTransform.InverseTransformDirection(moveDirection);
-            
-            _animator.SetFloat("XAxis", inverseDirection.x);
-            _animator.SetFloat("YAxis", inverseDirection.z);
-        }
-
+        
         public void Attack()
         {
             _attackComponent.SetCanAttack(false);
             
-            if (_comboAttack == 0)
+            if (_comboAttackCount == FIRST_ATTACK)
             {
                 _animator.SetBool("FirstAttack", true);
             }
-            else if (_comboAttack == 1)
+            else if (_comboAttackCount == SECOND_ATTACK)
             {
                 _animator.SetBool("FirstAttack", false);
                 _animator.SetBool("SecondAttack", true);
             }
-            else if (_comboAttack == 2)
+            else if (_comboAttackCount == THIRD_ATTACK)
             {
                 _animator.SetBool("FirstAttack", false);
                 _animator.SetBool("SecondAttack", false);

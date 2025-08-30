@@ -1,23 +1,28 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
-using NeanderTaleS.Code.Scripts.Services;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
+using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Skills.Installers
 {
     public class SkillsInstaller: IInitializable
     {
-        private PlayerService _playerService;
+        private PlayerProvider _playerProvider;
 
-        public SkillsInstaller(PlayerService playerService)
+        public SkillsInstaller(PlayerProvider playerProvider)
         {
-            _playerService = playerService;
+            _playerProvider = playerProvider;
         }
 
         public void Initialize()
         {
-            ComboAttack combo = new ComboAttack(_playerService);
-            combo.Init();
+            AttackComponent attackComponent = _playerProvider.AttackComponent;
+            Transform visual = _playerProvider.Visual;
+            IHitAnimationListener hitAnimationListener = visual.GetComponent<IHitAnimationListener>();
+           
+            ComboAttack combo = new ComboAttack();
+            combo.Init(attackComponent, hitAnimationListener);
         }
     }
 }

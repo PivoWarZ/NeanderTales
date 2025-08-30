@@ -18,13 +18,13 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
             IMovable movable = _player.GetComponent<IMovable>();
             IRotatable rotatable = _player.GetComponent<IRotatable>();
             IJumping jumping = _player.GetComponent<IJumping>();
-            IAnimationController animationController = _player.GetComponent<IAnimationController>();
+            IMoveAnimationController moveAnimationController = _player.GetComponent<IMoveAnimationController>();
             IAttackable attackable = _player.GetComponent<IAttackable>();
             
             BindAttackInput(attackable);
             BindJumpInput(jumping);
             BindRotateInput(rotatable);
-            BindMoveInput(movable, animationController);
+            BindMoveInput(movable);
         }
 
         private void BindAttackInput(IAttackable attackable)
@@ -78,16 +78,11 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
                 .NonLazy();
         }
 
-        private void BindMoveInput(IMovable movable, IAnimationController animationController)
+        private void BindMoveInput(IMovable movable)
         {
             if (movable == null)
             {
                 Debug.LogWarning("<color=yellow> IMovable instance is null. Input system bindings may not be fully configured. </color>");
-            }
-            
-            if (animationController == null)
-            {
-                Debug.LogWarning("<color=yellow> IAnimationController instance is null. Input system bindings may not be fully configured. </color>");
             }
 
             Container.BindInterfacesAndSelfTo<PlayerInputListener>()
@@ -96,7 +91,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 
             Container.BindInterfacesAndSelfTo<PlayerInputController>()
                 .AsSingle()
-                .WithArguments(movable, animationController)
+                .WithArguments(movable)
                 .NonLazy();
         }
     }

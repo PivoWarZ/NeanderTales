@@ -1,10 +1,9 @@
-using UnityEngine;
+using NeanderTaleS.Code.Scripts.PlayerComponents;
 
 namespace NeanderTaleS.Code.Scripts.Animation.Interfaces
 {
     public interface IAnimationController
     {
-        void SetDirectionAxis(Vector3 direction);
-        void Attack();
+        void Init(PlayerProvider playerProvider, AnimationEventDispatcher eventDispatcher);
     }
 }
