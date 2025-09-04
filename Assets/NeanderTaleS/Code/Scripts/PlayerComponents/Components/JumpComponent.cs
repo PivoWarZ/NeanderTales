@@ -18,9 +18,9 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         [SerializeField] private float _jumpForce;
         [SerializeField] private bool _canJump;
         [SerializeField] private LayerMask _groundLayer;
-        private bool _isJump;
         private CancellationTokenSource _cancell;
         private CompositeCondition _condition;
+        [ShowInInspector] private bool _isJump;
 
         private void Awake()
         {

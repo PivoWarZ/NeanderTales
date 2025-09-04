@@ -17,7 +17,6 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
             BindPlayerProvider(playerProvider);
             BindPlayerService(_playerPrefab);
             Container.BindInterfacesAndSelfTo<SkillsInstaller>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<IAnimationController>().AsSingle();
         }
 
         private void BindPlayerProvider(PlayerProvider playerProvider)
