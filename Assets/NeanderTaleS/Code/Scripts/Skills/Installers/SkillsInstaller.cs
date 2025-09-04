@@ -21,6 +21,11 @@ namespace NeanderTaleS.Code.Scripts.Skills.Installers
             Transform visual = _playerProvider.Visual;
             IHitAnimationListener hitAnimationListener = visual.GetComponent<IHitAnimationListener>();
            
+            AddComboAttack(attackComponent, hitAnimationListener);
+        }
+
+        private static void AddComboAttack(AttackComponent attackComponent, IHitAnimationListener hitAnimationListener)
+        {
             ComboAttack combo = new ComboAttack();
             combo.Init(attackComponent, hitAnimationListener);
         }

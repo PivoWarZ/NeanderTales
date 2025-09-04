@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents
         [SerializeField] private AttackComponent _attackComponent;
         [SerializeField] private RotateComponent_LookAtCursor _rotateComponent;
         [SerializeField] private MoveComponent _moveComponent;
+        [SerializeField] private JumpComponent _jumpComponent;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _visual;
 
@@ -21,5 +22,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents
         public MoveComponent MoveComponent => _moveComponent;
 
         public RotateComponent_LookAtCursor RotateComponent => _rotateComponent;
+
+        public JumpComponent JumpComponent => _jumpComponent;
     }
 }
