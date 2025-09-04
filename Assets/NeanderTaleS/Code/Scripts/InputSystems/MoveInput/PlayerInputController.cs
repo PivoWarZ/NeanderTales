@@ -1,5 +1,4 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 using Zenject;
@@ -10,7 +9,6 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
     {
         private PlayerInputListener _input;
         private IMovable _movable;
-        private IMoveAnimationController _moveAnimationController;
 
         public PlayerInputController(PlayerInputListener input, IMovable movable)
         {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation
 {
-    public class MoveAnimationController: MonoBehaviour, IMoveAnimationController, IAnimationController
+    public class MoveAnimationController: MonoBehaviour, IAnimationController
     {
         [SerializeField] private Transform _inverseTransform;
         private Animator _animator;

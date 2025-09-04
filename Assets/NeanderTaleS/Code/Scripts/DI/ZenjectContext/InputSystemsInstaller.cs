@@ -18,7 +18,6 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
             IMovable movable = _player.GetComponent<IMovable>();
             IRotatable rotatable = _player.GetComponent<IRotatable>();
             IJumping jumping = _player.GetComponent<IJumping>();
-            IMoveAnimationController moveAnimationController = _player.GetComponent<IMoveAnimationController>();
             IAttackable attackable = _player.GetComponent<IAttackable>();
             
             BindAttackInput(attackable);
