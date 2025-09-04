@@ -26,7 +26,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _condition.AddCondition(() => _canRotate);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (!_isRotate)
             {

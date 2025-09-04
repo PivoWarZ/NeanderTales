@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Animation
+namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
 {
     public class AnimationControllersInstaller: MonoBehaviour
     {

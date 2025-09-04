@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Animation
+namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
 {
     public class JumpAnimationController: MonoBehaviour, IAnimationController
     {

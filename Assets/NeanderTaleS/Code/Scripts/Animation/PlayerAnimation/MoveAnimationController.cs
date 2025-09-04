@@ -5,7 +5,7 @@ using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Animation
+namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
 {
     public class MoveAnimationController: MonoBehaviour, IAnimationController
     {

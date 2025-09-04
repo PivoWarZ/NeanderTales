@@ -80,12 +80,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _condition.RemoveCondition(condition);
         }
 
-        [Button]
-        private void Cancellation()
-        {
-            _cancell.Cancel();
-        }
-
         private void OnDestroy()
         {
             _cancell.Cancel();
