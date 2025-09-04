@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation
 {
-    public class AnimationControllerInstaller: MonoBehaviour
+    public class AnimationControllersInstaller: MonoBehaviour
     {
         [SerializeField] private PlayerProvider _playerProvider;
         [SerializeField] private AnimationEventDispatcher _event;

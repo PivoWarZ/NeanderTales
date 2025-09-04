@@ -7,6 +7,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents
     public class PlayerProvider: MonoBehaviour
     {
         [SerializeField] private AttackComponent _attackComponent;
+        [SerializeField] private RotateComponent_LookAtCursor _rotateComponent;
         [SerializeField] private MoveComponent _moveComponent;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _visual;
@@ -17,6 +18,8 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents
 
         public Transform Visual => _visual;
 
-        public MoveComponent MoveComponent1 => _moveComponent;
+        public MoveComponent MoveComponent => _moveComponent;
+
+        public RotateComponent_LookAtCursor RotateComponent => _rotateComponent;
     }
 }

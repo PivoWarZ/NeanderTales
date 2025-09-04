@@ -26,6 +26,8 @@ namespace NeanderTaleS.Code.Scripts.Animation
             
             _animator.SetFloat("XAxis", inverseDirection.x);
             _animator.SetFloat("YAxis", inverseDirection.z);
+            _animator.SetBool("IsRotate_Left", false);
+            _animator.SetBool("IsRotate_Right", false);
         }
 
         private void OnDestroy()

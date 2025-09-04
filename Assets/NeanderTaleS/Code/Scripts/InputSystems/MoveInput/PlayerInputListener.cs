@@ -8,6 +8,7 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.MoveInput
     {
         public event Action<Vector3> OnDirectionChanged;
         private Vector3 _direction = Vector3.zero;
+        private const float INPUT_OFFSET = 0.02f;
         
         public void Tick()
         {

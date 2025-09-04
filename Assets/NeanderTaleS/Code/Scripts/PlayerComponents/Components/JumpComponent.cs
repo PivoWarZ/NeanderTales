@@ -1,4 +1,3 @@
-using System;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;

@@ -202,6 +202,7 @@ MonoBehaviour:
   _rotateTransform: {fileID: 543450653076574514}
   rotateSpeed: 20
   _canRotate: 1
+  _isRotate: 0
 --- !u!114 &118177251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackComponent: {fileID: 118177256}
-  _moveComponent: {fileID: 0}
+  _rotateComponent: {fileID: 118177249}
+  _moveComponent: {fileID: 118177247}
   _animator: {fileID: 5866666021391731528}
   _visual: {fileID: 2013487037}
 --- !u!114 &118177256
@@ -964,6 +966,7 @@ GameObject:
   - component: {fileID: 2013487038}
   - component: {fileID: 2013487039}
   - component: {fileID: 2013487040}
+  - component: {fileID: 2013487041}
   m_Layer: 0
   m_Name: '[Visual]'
   m_TagString: Untagged
@@ -1023,6 +1026,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 143bfe07eeae44b18802918b8657cb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013487041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013487036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63cf3e9a3e84c76be3020428a91b2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9171099937011744

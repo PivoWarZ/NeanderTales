@@ -11,6 +11,7 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
         private Vector3 _mousePosition;
         private Ray _mouseRay;
         private RaycastHit _hit;
+        private Vector3 _currentHitPoint = Vector3.zero;
         public void Tick()
         {
             _mousePosition = Input.mousePosition;
@@ -21,8 +22,14 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
             {
                 _hit = hit;
             }
-            
+
+            if (hit.point == _currentHitPoint)
+            {
+                return;
+            }
+
             OnRotatePoinrChanged?.Invoke(_hit.point);
+            _currentHitPoint = hit.point;
         }
     }
 }
