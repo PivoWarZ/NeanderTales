@@ -27,14 +27,14 @@ namespace NeanderTaleS.Code.Scripts.Animation
             _attackComponent = _playerProvider.AttackComponent;
             
             _event.OnReceiveEvent += ProcessEvent;
-            _attackComponent.OnAttackRequest += Attack;
+            _attackComponent.OnAttackAction += Attack;
         }
         
         private void ProcessEvent(string eventName)
         {
             if (eventName == "AttackStarted")
             {
-                _attackComponent.AttackAction();
+                
             }
 
             if (eventName == "AttackComplete")

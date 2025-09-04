@@ -23,14 +23,16 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
         public int Damage => _damage;
 
-        public void AttackRequest()
+        public void Attack()
         {
+            OnAttackRequest?.Invoke();
+            
             if (!_condition.IsTrue())
             {
                 return;
             }
-
-            OnAttackRequest?.Invoke();
+            
+            AttackAction();
         }
 
         public void AttackAction()

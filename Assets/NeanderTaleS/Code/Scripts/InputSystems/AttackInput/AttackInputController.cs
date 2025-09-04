@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.AttackInput
 
         private void Attack()
         {
-            _attackable.AttackRequest();
+            _attackable.Attack();
         }
 
         public void Dispose()
