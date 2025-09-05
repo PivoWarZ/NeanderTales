@@ -1,14 +1,15 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyRotateComponent: MonoBehaviour
+    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent
     {
         [SerializeField] Transform _rotateTransform;
         [SerializeField] float _rotateSpeed;
-        [SerializeField] Transform _target;
+        Transform _target;
         private bool _canRotate = true;
         private CompositeCondition _condition;
 
@@ -39,9 +40,9 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _rotateTransform.rotation = Quaternion.Lerp(_rotateTransform.rotation, targetRotation, _rotateSpeed * Time.deltaTime);
         }
 
-        public void SetTarget(Transform target)
+        public void SetTarget(GameObject target)
         {
-            _target = target;
+            _target = target.transform;
         }
 
         private void SetCondition(Func<bool> condition)

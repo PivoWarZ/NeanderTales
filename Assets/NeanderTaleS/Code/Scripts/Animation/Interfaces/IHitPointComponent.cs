@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace NeanderTaleS.Code.Scripts.EnemiesComponents
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces
 {
     public interface IHitPointComponent
     {

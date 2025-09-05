@@ -5,10 +5,13 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
     public class EnemyProvider: MonoBehaviour
     {
         [SerializeField] private EnemyTargetComponent _targetComponent;
+        [SerializeField] private EnemyMoveComponent _moveComponent;
         [SerializeField] private Animator _animator;
 
         public EnemyTargetComponent TargetComponent => _targetComponent;
 
         public Animator Animator => _animator;
+
+        public EnemyMoveComponent MoveComponent => _moveComponent;
     }
 }

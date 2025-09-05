@@ -1,11 +1,12 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Rigidbody _rb;
@@ -36,7 +37,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             
             _isMoving.Value = true;
             var direction = _target.position - transform.position;
-            _rb.linearVelocity = direction * _moveSpeed;
+            _rb.linearVelocity = direction.normalized * _moveSpeed;
         }
         
         public void SetCondition(Func<bool> condition)
@@ -49,9 +50,9 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _condition.RemoveCondition(condition);
         }
 
-        public void SetTarget(Transform target)
+        public void SetTarget(GameObject target)
         {
-            _target = target;
+            _target = target.transform;
         }
     }
 }
