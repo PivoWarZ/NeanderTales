@@ -7,6 +7,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
     {
         [SerializeField] EnemyTargetComponent _targetComponent;
         [SerializeField] private EnemyRotateComponent _rotateComponent;
+        [SerializeField] private EnemyMoveComponent _moveComponent;
 
         private void Awake()
         {
@@ -16,6 +17,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         private void SetTarget(GameObject target)
         {
             _rotateComponent.SetTarget(target.transform);
+            _moveComponent.SetTarget(target.transform);
         }
 
         private void OnDestroy()

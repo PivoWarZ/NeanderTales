@@ -8,18 +8,16 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
     public class JumpAnimationController: MonoBehaviour, IAnimationController
     {
         private JumpComponent _jumpComponent;
-        private MoveComponent _moveComponent;
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private bool _isLanding;
         public void Init(PlayerProvider playerProvider, AnimationEventDispatcher eventDispatcher)
         {
             _jumpComponent = playerProvider.JumpComponent;
-            _moveComponent = playerProvider.MoveComponent;
             _animator = playerProvider.Animator;
             _event = eventDispatcher;
             
-            _moveComponent.SetCondition(() => !_isLanding);
+            playerProvider.MoveComponent.SetCondition(() => !_isLanding);
 
             _jumpComponent.OnJumpAction += JumpAnimation;
             _event.OnReceiveEvent += ReceiveEvent;

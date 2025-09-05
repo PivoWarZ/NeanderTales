@@ -19,14 +19,17 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _target.OnTargetChanged += TargetChanged;
         }
 
-        private void TargetChanged(GameObject obj)
+        private void TargetChanged(GameObject _)
         {
-            throw new System.NotImplementedException();
+            _animator.SetTrigger("Cry");
         }
 
-        private void ReceiveEvent(string obj)
+        private void ReceiveEvent(string eventName)
         {
-            throw new System.NotImplementedException();
+            if (eventName == "CryComplete")
+            {
+                _animator.SetTrigger("Roar");
+            }
         }
     }
 }

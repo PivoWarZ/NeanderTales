@@ -12,12 +12,11 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         [SerializeField] private float _speed;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private bool _canMove = true;
-        CompositeCondition _condition;
+        CompositeCondition _condition = new ();
         public ReadOnlyReactiveProperty<Vector3> MoveDirection => _moveDirection;
 
         private void Awake()
         {
-            _condition = new CompositeCondition();
             _condition.AddCondition(() => _canMove);
         }
 
