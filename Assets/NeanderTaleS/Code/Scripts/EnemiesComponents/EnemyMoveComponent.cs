@@ -39,12 +39,12 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _rb.linearVelocity = direction * _moveSpeed;
         }
         
-        private void SetCondition(Func<bool> condition)
+        public void SetCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }
 
-        private void RemoveCondition(Func<bool> condition)
+        public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
         }
