@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private EnemyTargetComponent _target;
         private Animator _animator;
         private AnimationEventDispatcher _event;
+        
         public void Init(EnemyProvider enemyProvider, AnimationEventDispatcher eventDispatcher)
         {
             _target = enemyProvider.TargetComponent;
@@ -29,6 +30,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             if (eventName == "CryComplete")
             {
                 _animator.SetTrigger("Roar");
+            }
+
+            if (eventName == "RoarComplete")
+            {
+                _target.CanLoockTarget = true;
             }
         }
     }

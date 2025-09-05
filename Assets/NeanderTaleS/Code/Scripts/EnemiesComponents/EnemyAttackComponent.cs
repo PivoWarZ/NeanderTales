@@ -1,5 +1,4 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 
@@ -7,7 +6,11 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
     public class EnemyAttackComponent: MonoBehaviour
     {
-        [SerializeField] private float _damage;
+        public event Action AttackRequest;
+        public event Action AttackAction;
+        public event Action AttackEvent;
+        
+        [SerializeField] private float _attackColdown = 1f;
         [SerializeField] private bool _canAttack = true;
         private CompositeCondition _condition = new ();
 
@@ -16,26 +19,14 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _condition.AddCondition(() => _canAttack);
         }
 
-        public void DealDamage(GameObject target)
+        public void Attack()
         {
-            if (!_condition.IsTrue())
+            AttackRequest?.Invoke();
+
+            if (_condition.IsTrue())
             {
-                return;
+                AttackAction?.Invoke();
             }
-
-            IHitPointComponent hitPoint = target.TryGetComponent<IHitPointComponent>(out var hitPointComponent) ? hitPointComponent : null;
-
-            if (hitPoint == null)
-            {
-                return;
-            }
-            
-            hitPoint.TakeDamage(_damage);
-        }
-
-        public void SetDamage(float damage)
-        {
-            _damage = damage;
         }
 
         public void SetCondition(Func<bool> condition)

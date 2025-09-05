@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a76a2dd404cd1a05afe0effa019ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 15
+  _speed: 7
   _rigidbody: {fileID: 5319145587862667140}
   _canMove: 1
 --- !u!114 &6506537731207281398
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateTransform: {fileID: 3781687719344109545}
-  rotateSpeed: 20
+  rotateSpeed: 10
   _canRotate: 1
 --- !u!114 &4960156149893440604
 MonoBehaviour:
@@ -416,10 +416,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4884883
+  m_Radius: 0.3
   m_Height: 1.6833655
   m_Direction: 1
-  m_Center: {x: 0.044218093, y: 0.74361163, z: 0.17104584}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!1 &2682165294302972793
 GameObject:
   m_ObjectHideFlags: 0

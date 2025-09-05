@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public event Action<GameObject> OnTargetChanged;
         
         [SerializeField] private GameObject _target;
+        public bool CanLoockTarget;
 
         public GameObject Target => _target;
         
