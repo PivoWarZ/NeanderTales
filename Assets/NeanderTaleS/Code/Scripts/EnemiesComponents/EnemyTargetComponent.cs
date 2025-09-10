@@ -7,9 +7,9 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
     public class EnemyTargetComponent: MonoBehaviour
     {
         public event Action<GameObject> OnTargetChanged;
+        public bool CanLoockTarget;
         
         [SerializeField] private GameObject _target;
-        public bool CanLoockTarget;
 
         public GameObject Target => _target;
         
