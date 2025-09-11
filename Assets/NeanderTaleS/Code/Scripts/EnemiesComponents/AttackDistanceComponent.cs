@@ -1,3 +1,4 @@
+using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using R3;
 using UnityEngine;
@@ -6,11 +7,12 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
     public class AttackDistanceComponent: MonoBehaviour, ITargetInitComponent
     {
-        [SerializeField] private float _attackDistance;
-        private Transform _target;
-        [SerializeField] private SerializableReactiveProperty<bool> _isAttackDistance = new (false);
+        public bool IsAttackDistance { get; private set; }
         
-        public ReadOnlyReactiveProperty<bool> IsAttackDistance => _isAttackDistance;
+        [SerializeField] private float _attackDistance;
+        [SerializeField] private DistanceToTargetComponent _distanceComponent;
+        private float _targetDistance;
+        private Transform _target;
 
         private void Update()
         {
@@ -19,16 +21,15 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
                 return;
             }
             
-            var distanceToTarget = _target.position - transform.position;
-            var distance = distanceToTarget.magnitude;
+            _targetDistance = _distanceComponent.TargetDistance.CurrentValue;
 
-            if (distance <= _attackDistance)
+            if (_targetDistance <= _attackDistance)
             {
-                _isAttackDistance.Value = true;
+                IsAttackDistance = true;
             }
             else
             {
-                _isAttackDistance.Value = false;
+                IsAttackDistance = false;
             }
         }
         

@@ -27,7 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
         {
             if (eventName == "Jump")
             {
-                _jumpComponent.OnJumpImpulse();
+                _jumpComponent.Jump();
             }
 
             if (eventName == "Landing")

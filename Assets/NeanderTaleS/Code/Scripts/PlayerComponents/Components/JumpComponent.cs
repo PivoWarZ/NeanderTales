@@ -13,14 +13,15 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         public event Action OnJumpRequest;
         public event Action OnJumpAction;
         public event Action OnJumpEvent;
-        
+
+        [SerializeField] private Vector3 _jumpVector;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _jumpForce;
         [SerializeField] private bool _canJump;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private bool _isJump;
         private CancellationTokenSource _cancell;
         private CompositeCondition _condition;
-        [ShowInInspector] private bool _isJump;
 
         private void Awake()
         {
@@ -30,7 +31,8 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _condition.AddCondition(() => !_isJump);
             _cancell = new CancellationTokenSource();
         }
-
+        
+        [Button]
         public void Jump()
         {
             OnJumpRequest?.Invoke();
@@ -41,27 +43,26 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             }
             
             OnJumpAction?.Invoke();
+            OnJumpImpulse();
         }
 
         private async UniTaskVoid IsJumping(CancellationTokenSource cancell)
         {
-            while (_isJump && !cancell.IsCancellationRequested)
+            while (!IsGrounded() && !cancell.IsCancellationRequested)
             {
-                await UniTask.WaitForFixedUpdate();
-                
-                bool isGrounded = IsGrounded();
-                
-                if (isGrounded)
-                {
-                    _isJump = false;
-                }
+                await UniTask.Delay(TimeSpan.FromMilliseconds(10));
+                Debug.Log("Cycle");
             }
+            
+            Debug.Log("IsJumping");
+            OnJumpEvent?.Invoke();
+            _isJump = false;
         }
-
-        public void OnJumpImpulse()
+        
+        private void OnJumpImpulse()
         {
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             _isJump = true;
+            _rigidbody.AddForce(_jumpVector * _jumpForce, ForceMode.Impulse);
             IsJumping(_cancell).Forget();
         }
 

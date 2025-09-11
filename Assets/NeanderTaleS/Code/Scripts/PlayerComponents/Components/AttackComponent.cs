@@ -50,12 +50,12 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _canAttack = value;
         }
 
-        private void SetCondition(Func<bool> condition)
+        public void SetCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }
 
-        private void RemoveCondition(Func<bool> condition)
+        public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
         }

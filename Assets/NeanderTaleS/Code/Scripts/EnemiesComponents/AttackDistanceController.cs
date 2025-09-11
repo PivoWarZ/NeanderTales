@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private bool IsAttackDistance()
         {
-            return _attackDistanceComponent.IsAttackDistance.CurrentValue;
+            return _attackDistanceComponent.IsAttackDistance;
         }
     }
 }

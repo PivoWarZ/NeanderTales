@@ -8,9 +8,10 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
     public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent
     {
+        public bool CanMove;
+        
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Rigidbody _rb;
-        [SerializeField] private bool _canMove;
         ReactiveProperty<bool> _isMoving = new ();
         private Transform _target;
         private CompositeCondition _condition = new();
@@ -19,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void Awake()
         {
-            _condition.AddCondition(() => _canMove);
+            _condition.AddCondition(() => CanMove);
         }
 
         private void Update()

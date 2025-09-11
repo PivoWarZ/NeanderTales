@@ -11,7 +11,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void Update()
         {
-            if (!_target.CanLoockTarget)
+            if (!_target.Target)
             {
                 return;
             }

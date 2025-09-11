@@ -7,6 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
     public class TargetAnimationController: MonoBehaviour, IEnemyAnimationController
     {
         private EnemyTargetComponent _target;
+        private EnemyMoveComponent _move;
         private Animator _animator;
         private AnimationEventDispatcher _event;
         
@@ -15,6 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _target = enemyProvider.TargetComponent;
             _animator = enemyProvider.Animator;
             _event = eventDispatcher;
+            _move = enemyProvider.MoveComponent;
 
             _event.OnReceiveEvent += ReceiveEvent;
             _target.OnTargetChanged += TargetChanged;
@@ -34,7 +36,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
             if (eventName == "RoarComplete")
             {
-                _target.CanLoockTarget = true;
+                _move.CanMove = true;
             }
         }
     }
