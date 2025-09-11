@@ -47,6 +47,11 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 
         private void Jump(float _)
         {
+            if (!_isLeapReady)
+            {
+                return;
+            }
+
             Unsubscribe();
             IsLeapAttack = true;
             _isLeapReady = false;

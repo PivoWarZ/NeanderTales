@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Animation;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
@@ -8,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         [SerializeField] private EnemyTargetComponent _targetComponent;
         [SerializeField] private EnemyMoveComponent _moveComponent;
         [SerializeField] private EnemyAttackComponent _attackComponent;
+        [SerializeField] private JumpComponent _jumpComponent;
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimationEventDispatcher _eventDispatcher;
 
@@ -20,5 +22,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public EnemyAttackComponent AttackComponent => _attackComponent;
 
         public AnimationEventDispatcher AnimationEvent => _eventDispatcher;
+
+        public JumpComponent JumpComponent => _jumpComponent;
     }
 }
