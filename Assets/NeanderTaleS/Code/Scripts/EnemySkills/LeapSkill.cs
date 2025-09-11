@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
     public class LeapSkill: MonoBehaviour
     {
+        public event Action OnLeapAttack;
         public bool IsLeapAttack { get; private set; }
         
         [SerializeField] private DistanceToTargetComponent _distanceComponent;
@@ -22,7 +23,6 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         private void Awake()
         {
             SubscribeActivating();
-            _jumpComponent.OnJumpAction += JumpAction;
             _jumpComponent.OnJumpEvent += JumpEvent;
         }
 
@@ -30,11 +30,6 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             IsLeapAttack = false;
             SubscribeActivating();
-            Debug.Log(IsLeapAttack);
-        }
-
-        private void JumpAction()
-        {
             Debug.Log(IsLeapAttack);
         }
 
@@ -51,11 +46,14 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
             {
                 return;
             }
-
+            
+            OnLeapAttack?.Invoke();
+            
             Unsubscribe();
+            _jumpComponent.Jump();
+            
             IsLeapAttack = true;
             _isLeapReady = false;
-            _jumpComponent.Jump();
         }
 
         private void SubscribeActivating()

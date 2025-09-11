@@ -63,7 +63,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _isJump = true;
             _rigidbody.linearVelocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
-            Debug.Log("IMPULSE");
             var forceVector = transform.TransformDirection(_jumpVector);
             _rigidbody.AddForce(forceVector * _jumpForce, ForceMode.Impulse);
             IsJumping(_cancell).Forget();

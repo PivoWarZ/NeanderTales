@@ -1399,6 +1399,8 @@ GameObject:
   - component: {fileID: 4817985915276944495}
   - component: {fileID: 6611204035972559170}
   - component: {fileID: 2367183625625251103}
+  - component: {fileID: 1983874897413343440}
+  - component: {fileID: 7134565994374830648}
   m_Layer: 6
   m_Name: VelociraptorEnemy
   m_TagString: Untagged
@@ -1461,7 +1463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcf281471184d35a73c3ef0f23205bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanLoockTarget: 0
   _target: {fileID: 0}
 --- !u!114 &6409736086815200631
 MonoBehaviour:
@@ -1488,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0723519b1946b79fa0c1eedbcad916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateTransform: {fileID: 4814103987790947346}
+  _rotateTransform: {fileID: 3377864916881948251}
   _rotateSpeed: 10
 --- !u!114 &406183014714033250
 MonoBehaviour:
@@ -1505,7 +1506,9 @@ MonoBehaviour:
   _targetComponent: {fileID: 7459229977868427391}
   _moveComponent: {fileID: 8612528592944524376}
   _attackComponent: {fileID: 1239900918464321311}
+  _jumpComponent: {fileID: 2367183625625251103}
   _animator: {fileID: 2303350921718369858}
+  _eventDispatcher: {fileID: 1257619890584973864}
 --- !u!114 &8612528592944524376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,9 +1521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d769acb2ef41619d671f30a86edd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanMove: 0
   _moveSpeed: 6
   _rb: {fileID: 8213584142907808064}
-  _canMove: 1
 --- !u!114 &1187640761943971885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,13 +1636,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36413dd39ed44a58cdfb02d07f0a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpVector: {x: 0, y: 1.4, z: 2.35}
+  _jumpVector: {x: 0, y: 3, z: 3.5}
   _rigidbody: {fileID: 8213584142907808064}
-  _jumpForce: 100
+  _jumpForce: 350
   _canJump: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _isJump: 0
+--- !u!114 &1983874897413343440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7fa259e1e54d0c98102c9328ca85b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceComponent: {fileID: 1187640761943971885}
+  _jumpComponent: {fileID: 2367183625625251103}
+  _activateDistance: 5
+  _jumpDistance: 3.5
+  _isLeapReady: 0
+--- !u!114 &7134565994374830648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9c69dd0b5e42b8a597c914307ade93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leapSkill: {fileID: 1983874897413343440}
+  _moveComponent: {fileID: 8612528592944524376}
+  _rotateComponent: {fileID: 9063904517216513020}
+  _attackComponent: {fileID: 1239900918464321311}
 --- !u!1 &2656487090741591563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1851,7 @@ GameObject:
   - component: {fileID: 2993166493398544592}
   - component: {fileID: 4953352488684565861}
   - component: {fileID: 1558882686373195676}
+  - component: {fileID: 8287768108369900055}
   m_Layer: 6
   m_Name: '[Visual]'
   m_TagString: Untagged
@@ -1921,6 +1959,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 698abaee6b08475194cfa6124ec0db4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8287768108369900055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577767429020605748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a08e5d0591c4a0f89fe24f16f951e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3604309964767061156

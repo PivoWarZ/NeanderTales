@@ -9,7 +9,6 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         private void OnTriggerEnter(Collider other)
         {
             gameObject.SetActive(false);
-            Debug.Log(other.gameObject.name);
         }
     }
 }
