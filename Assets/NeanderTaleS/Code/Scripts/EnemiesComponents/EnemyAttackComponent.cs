@@ -37,8 +37,8 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         public void AttackEVent()
         {
+            Debug.Log("Attack Event");
             OnAttackEvent?.Invoke();
-            _canAttack = false;
         }
 
         public void SetCondition(Func<bool> condition)

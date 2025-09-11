@@ -12,7 +12,12 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         [SerializeField] private GameObject _target;
 
         public GameObject Target => _target;
-        
+
+        private void Start()
+        {
+            OnTargetChanged?.Invoke(_target);
+        }
+
         [Button]
         public void SetTarget(GameObject target)
         {

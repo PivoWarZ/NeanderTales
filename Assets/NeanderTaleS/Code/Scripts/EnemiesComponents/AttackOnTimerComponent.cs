@@ -21,11 +21,6 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void Update()
         {
-            if (!_attackTimer.IsPlaying())
-            {
-                return;
-            }
-            
             _attackTimer.Tick(Time.deltaTime);
         }
 
