@@ -12,11 +12,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private EnemyAttackComponent _attackComponent;
         private Animator _animator;
         private AnimationEventDispatcher _event;
-        public void Init(EnemyProvider enemyProvider, AnimationEventDispatcher eventDispatcher)
+        public void Init(EnemyProvider enemyProvider)
         {
             _attackComponent = enemyProvider.AttackComponent;
             _animator = enemyProvider.Animator;
-            _event = eventDispatcher;
+            _event = enemyProvider.AnimationEvent;
 
             _attackComponent.OnAttackAction += Attack;
             _event.OnReceiveEvent += ReceiveEvent;
@@ -31,7 +31,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
             if (eventName == "BiteAnimationComplete")
             {
-                Debug.Log("AnimationBiteComplete");
                 _attackComponent.AttackEVent();
             }
         }

@@ -15,13 +15,27 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         [SerializeField] private JumpComponent _jumpComponent;
         [SerializeField] private float _activateDistance;
         [SerializeField] private float _jumpDistance;
-        [ShowInInspector] private bool _isLeapReady;
+        [SerializeField] private bool _isLeapReady;
         private IDisposable _dispose;
         
 
         private void Awake()
         {
             SubscribeActivating();
+            _jumpComponent.OnJumpAction += JumpAction;
+            _jumpComponent.OnJumpEvent += JumpEvent;
+        }
+
+        private void JumpEvent()
+        {
+            IsLeapAttack = false;
+            SubscribeActivating();
+            Debug.Log(IsLeapAttack);
+        }
+
+        private void JumpAction()
+        {
+            Debug.Log(IsLeapAttack);
         }
 
         private void Activate(float distance)
@@ -33,10 +47,10 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 
         private void Jump(float _)
         {
+            Unsubscribe();
+            IsLeapAttack = true;
             _isLeapReady = false;
             _jumpComponent.Jump();
-            Unsubscribe();
-            SubscribeActivating();
         }
 
         private void SubscribeActivating()

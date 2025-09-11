@@ -11,11 +11,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private Animator _animator;
         private AnimationEventDispatcher _event;
         
-        public void Init(EnemyProvider enemyProvider, AnimationEventDispatcher eventDispatcher)
+        public void Init(EnemyProvider enemyProvider)
         {
             _target = enemyProvider.TargetComponent;
             _animator = enemyProvider.Animator;
-            _event = eventDispatcher;
+            _event = enemyProvider.AnimationEvent;
             _move = enemyProvider.MoveComponent;
 
             _event.OnReceiveEvent += ReceiveEvent;

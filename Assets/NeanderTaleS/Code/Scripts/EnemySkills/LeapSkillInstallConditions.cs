@@ -10,7 +10,7 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         [SerializeField] private LeapSkill _leapSkill;
         [SerializeField] private EnemyMoveComponent _moveComponent;
         [SerializeField] private EnemyRotateComponent _rotateComponent;
-        [SerializeField] private AttackComponent _attackComponent;
+        [SerializeField] private EnemyAttackComponent _attackComponent;
 
         private void OnEnable()
         {

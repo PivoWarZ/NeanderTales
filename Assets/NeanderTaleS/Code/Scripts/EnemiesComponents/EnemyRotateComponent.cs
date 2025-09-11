@@ -11,11 +11,10 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         [SerializeField] float _rotateSpeed;
         Transform _target;
         private bool _canRotate = true;
-        private CompositeCondition _condition;
+        private CompositeCondition _condition = new ();
 
         private void Awake()
         {
-            _condition = new CompositeCondition();
             _condition.AddCondition(() => _canRotate);
         }
 

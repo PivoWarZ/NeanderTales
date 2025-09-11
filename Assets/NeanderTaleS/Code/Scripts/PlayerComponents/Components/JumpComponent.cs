@@ -54,7 +54,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
                 Debug.Log("Cycle");
             }
             
-            Debug.Log("IsJumping");
             OnJumpEvent?.Invoke();
             _isJump = false;
         }
@@ -62,7 +61,11 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         private void OnJumpImpulse()
         {
             _isJump = true;
-            _rigidbody.AddForce(_jumpVector * _jumpForce, ForceMode.Impulse);
+            _rigidbody.linearVelocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+            Debug.Log("IMPULSE");
+            var forceVector = transform.TransformDirection(_jumpVector);
+            _rigidbody.AddForce(forceVector * _jumpForce, ForceMode.Impulse);
             IsJumping(_cancell).Forget();
         }
 

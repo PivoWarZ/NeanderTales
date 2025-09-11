@@ -5,6 +5,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.Interfaces
 {
     public interface IEnemyAnimationController
     {
-        void Init(EnemyProvider enemyProvider, AnimationEventDispatcher eventDispatcher);
+        void Init(EnemyProvider enemyProvider);
     }
 }

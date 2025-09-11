@@ -19,7 +19,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
             foreach (var animationController in _animationControllers)
             {
-                animationController.Init(_enemyProvider, _event);
+                animationController.Init(_enemyProvider);
             }
         }
     }

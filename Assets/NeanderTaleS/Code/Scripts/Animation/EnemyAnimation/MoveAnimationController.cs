@@ -12,10 +12,10 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private IDisposable _dispose;
-        public void Init(EnemyProvider enemyProvider, AnimationEventDispatcher eventDispatcher)
+        public void Init(EnemyProvider enemyProvider)
         {
             _moveComponent = enemyProvider.MoveComponent;
-            _event = eventDispatcher;
+            _event = enemyProvider.AnimationEvent;
             _animator = enemyProvider.Animator;
 
             _dispose = _moveComponent.IsMoving.Subscribe(MoveAnimation);
