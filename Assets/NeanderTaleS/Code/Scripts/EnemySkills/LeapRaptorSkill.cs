@@ -8,13 +8,13 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
-    public class LeapSkill: MonoBehaviour
+    public class LeapRaptorSkill: MonoBehaviour
     {
         public event Action OnLeapAttack;
-        public bool IsLeapAttack { get; private set; }
         
         [SerializeField] private DistanceToTargetComponent _distanceComponent;
         [SerializeField] private JumpComponent _jumpComponent;
+        [SerializeField] private MechanicsBreaker _breaker;
         [SerializeField] private float _activateDistance;
         [SerializeField] private float _jumpDistance;
         [SerializeField] private float _recoveringAfterJump = 30;
@@ -27,18 +27,24 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             SubscribeActivating();
             _jumpComponent.OnJumpEvent += JumpEvent;
+            _jumpComponent.OnJumpAction += BreakCoreMechanics;
+        }
+
+        private void BreakCoreMechanics()
+        {
+            _breaker.BanCoreMechanics();
         }
 
         private void JumpEvent()
         {
             SubscribeActivating();
             Recovering(_cancell).Forget();
+            _breaker.ResumeCoreMechanics();
         }
 
         private async UniTaskVoid Recovering(CancellationTokenSource cancell)
         {
             await UniTask.Delay(TimeSpan.FromMilliseconds(_recoveringAfterJump));
-            IsLeapAttack = false;
         }
 
         private void Activate(float distance)
@@ -60,7 +66,6 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
             Unsubscribe();
             _jumpComponent.Jump();
             
-            IsLeapAttack = true;
             _isLeapReady = false;
         }
 

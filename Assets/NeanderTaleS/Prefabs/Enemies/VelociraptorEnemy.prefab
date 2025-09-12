@@ -1400,7 +1400,9 @@ GameObject:
   - component: {fileID: 6611204035972559170}
   - component: {fileID: 2367183625625251103}
   - component: {fileID: 1983874897413343440}
-  - component: {fileID: 7134565994374830648}
+  - component: {fileID: 819541227557244043}
+  - component: {fileID: 1680841913860746690}
+  - component: {fileID: 6389135547484993895}
   m_Layer: 6
   m_Name: VelociraptorEnemy
   m_TagString: Untagged
@@ -1550,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0934ed65dd469d8b549abc7d09539f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 1.9
+  _attackDistance: 2.1
   _distanceComponent: {fileID: 1187640761943971885}
 --- !u!114 &7759915106446561640
 MonoBehaviour:
@@ -1638,7 +1640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpVector: {x: 0, y: 3, z: 3.5}
   _rigidbody: {fileID: 8213584142907808064}
-  _jumpForce: 350
+  _jumpForce: 60
   _canJump: 1
   _groundLayer:
     serializedVersion: 2
@@ -1658,10 +1660,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _distanceComponent: {fileID: 1187640761943971885}
   _jumpComponent: {fileID: 2367183625625251103}
+  _breaker: {fileID: 6389135547484993895}
   _activateDistance: 5
   _jumpDistance: 3.5
+  _recoveringAfterJump: 50
   _isLeapReady: 0
---- !u!114 &7134565994374830648
+--- !u!114 &819541227557244043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1670,13 +1674,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 2655307957745640121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9c69dd0b5e42b8a597c914307ade93, type: 3}
+  m_Script: {fileID: 11500000, guid: 67685270fd6647a6a02fe0a9d85e50e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leapSkill: {fileID: 1983874897413343440}
-  _moveComponent: {fileID: 8612528592944524376}
-  _rotateComponent: {fileID: 9063904517216513020}
-  _attackComponent: {fileID: 1239900918464321311}
+--- !u!114 &1680841913860746690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9ab27793e44c0f80c335d25c2cb92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leapRaptorSkill: {fileID: 1983874897413343440}
+  _collision: {fileID: 819541227557244043}
+  _pushPower: 150
+--- !u!114 &6389135547484993895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024b3f865fb24723bd6793067536b93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2656487090741591563
 GameObject:
   m_ObjectHideFlags: 0

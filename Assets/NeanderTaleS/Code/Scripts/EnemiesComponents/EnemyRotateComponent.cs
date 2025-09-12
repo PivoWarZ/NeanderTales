@@ -1,11 +1,13 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent
+    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IRotatable, IBreakable
     {
         [SerializeField] Transform _rotateTransform;
         [SerializeField] float _rotateSpeed;
@@ -34,14 +36,19 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             
             direction.y = 0;
             
-            var targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            
-            _rotateTransform.rotation = Quaternion.Lerp(_rotateTransform.rotation, targetRotation, _rotateSpeed * Time.deltaTime);
+            Rotate(direction);
         }
 
         public void SetTarget(GameObject target)
         {
             _target = target.transform;
+        }
+        
+        public void Rotate(Vector3 rotateDirection)
+        {
+            var targetRotation = Quaternion.LookRotation(rotateDirection, Vector3.up);
+            
+            _rotateTransform.rotation = Quaternion.Lerp(_rotateTransform.rotation, targetRotation, _rotateSpeed * Time.deltaTime);
         }
 
         public void SetCondition(Func<bool> condition)
@@ -52,6 +59,16 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canRotate = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canRotate = false;
         }
     }
 }

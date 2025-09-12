@@ -1,12 +1,14 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IBreakable
     {
         public bool CanMove;
         
@@ -38,6 +40,11 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             
             _isMoving.Value = true;
             var direction = _target.position - transform.position;
+            Move(direction);
+        }
+        
+        public void Move(Vector3 direction)
+        {
             _rb.linearVelocity = direction.normalized * _moveSpeed;
         }
         
@@ -54,6 +61,16 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public void SetTarget(GameObject target)
         {
             _target = target.transform;
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            CanMove = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            CanMove = false;
         }
     }
 }

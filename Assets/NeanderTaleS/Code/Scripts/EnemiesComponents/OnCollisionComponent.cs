@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         private void OnCollisionEnter(Collision other)
         {
             OnEnterCollision?.Invoke(other);
+            Debug.Log($"Trigger {other.gameObject.name}");
         }
     }
 }

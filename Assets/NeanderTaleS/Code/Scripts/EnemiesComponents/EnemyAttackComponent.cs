@@ -1,11 +1,13 @@
 using System;
 using System.Threading;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyAttackComponent: MonoBehaviour
+    public class EnemyAttackComponent: MonoBehaviour, IAttackable, IBreakable
     {
         public event Action OnAttackRequest;
         public event Action OnAttackAction;
@@ -19,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         {
             _condition.AddCondition(() => _canAttack);
         }
-        
+
         public void Attack()
         {
             OnAttackRequest?.Invoke();
@@ -48,6 +50,16 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canAttack = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canAttack = false;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
     public class LeapPushing: MonoBehaviour
     {
-        [SerializeField] private LeapSkill _leapSkill;
+        [SerializeField] private LeapRaptorSkill _leapRaptorSkill;
         [SerializeField] private OnCollisionComponent _collision;
         [SerializeField] private float _pushPower;
         private Rigidbody _rigidbody;
@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 
         private void Awake()
         {
-            _leapSkill.OnLeapAttack += Push;
+            _leapRaptorSkill.OnLeapAttack += Push;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
