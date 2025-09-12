@@ -30,7 +30,6 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             IsLeapAttack = false;
             SubscribeActivating();
-            Debug.Log(IsLeapAttack);
         }
 
         private void Activate(float distance)

@@ -30,10 +30,11 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             Collision collision = await _task.Task;
             _collision.OnEnterCollision -= Complete;
-            var pushPoint = collision.contacts[0].point;
-            var pushDirection = pushPoint - transform.position;
-            Rigidbody rigidbody = collision.rigidbody;
-            rigidbody.AddForceAtPosition(pushDirection * _pushPower, pushPoint, ForceMode.Impulse);
+            var contactPoint = collision.contacts[0].point;
+            Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            var pushDirection = contactPoint - rigidbody.position;
+            Debug.Log($"Contact POint: {contactPoint}, Push Direction: {pushDirection}, Gameobject: {collision.gameObject}");
+            rigidbody.AddForceAtPosition(pushDirection.normalized * _pushPower, contactPoint, ForceMode.Impulse);
         }
 
         private void Complete(Collision collision)
