@@ -332,12 +332,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36413dd39ed44a58cdfb02d07f0a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpVector: {x: 0, y: 0, z: 0}
   _rigidbody: {fileID: 5319145587862667140}
   _jumpForce: 20
   _canJump: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _isJump: 0
 --- !u!114 &359697210989929046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,7 +681,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4325233130739536308}
-  - {fileID: 1290739738587326115}
   - {fileID: 2809689427266429226}
   - {fileID: 1157329832931295500}
   m_Father: {fileID: 9080620902476989801}
@@ -970,12 +971,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094596269805626829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.8103983, y: -0.12041563, z: -0.46515304, w: 0.33524245}
+  m_LocalPosition: {x: -0.0022257816, y: 0.0015618221, z: 0.0035982453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 3781687719344109545}
+  m_Father: {fileID: 1473802368624655980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7620180881364571099
 SkinnedMeshRenderer:
@@ -1164,7 +1165,8 @@ Transform:
   m_LocalPosition: {x: 6.938894e-20, y: 0.0014283115, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1290739738587326115}
   m_Father: {fileID: 2222012992282134383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6489270313782780092
