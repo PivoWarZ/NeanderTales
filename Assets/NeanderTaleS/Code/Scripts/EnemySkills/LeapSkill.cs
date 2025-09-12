@@ -1,8 +1,9 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemySkills
@@ -16,7 +17,9 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         [SerializeField] private JumpComponent _jumpComponent;
         [SerializeField] private float _activateDistance;
         [SerializeField] private float _jumpDistance;
+        [SerializeField] private float _recoveringAfterJump = 30;
         [SerializeField] private bool _isLeapReady;
+        private CancellationTokenSource _cancell = new ();
         private IDisposable _dispose;
         
 
@@ -28,8 +31,14 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 
         private void JumpEvent()
         {
-            IsLeapAttack = false;
             SubscribeActivating();
+            Recovering(_cancell).Forget();
+        }
+
+        private async UniTaskVoid Recovering(CancellationTokenSource cancell)
+        {
+            await UniTask.Delay(TimeSpan.FromMilliseconds(_recoveringAfterJump));
+            IsLeapAttack = false;
         }
 
         private void Activate(float distance)

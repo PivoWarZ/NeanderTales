@@ -48,13 +48,18 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
         private async UniTaskVoid IsJumping(CancellationTokenSource cancell)
         {
-            while (!IsGrounded() && !cancell.IsCancellationRequested)
+            while (IsGrounded() && !cancell.IsCancellationRequested)
             {
-                await UniTask.Delay(TimeSpan.FromMilliseconds(10));
-                Debug.Log("Cycle");
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            while (!IsGrounded() && !_cancell.IsCancellationRequested)
+            {
+                await UniTask.WaitForFixedUpdate();
             }
             
             OnJumpEvent?.Invoke();
+            Debug.Log("JumpEvent");
             _isJump = false;
         }
         

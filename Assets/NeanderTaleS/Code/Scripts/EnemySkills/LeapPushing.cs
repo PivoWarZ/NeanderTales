@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
@@ -11,12 +10,14 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         [SerializeField] private LeapSkill _leapSkill;
         [SerializeField] private OnCollisionComponent _collision;
         [SerializeField] private float _pushPower;
+        private Rigidbody _rigidbody;
         private UniTaskCompletionSource<Collision> _task;
         private CancellationTokenSource _cancell = new();
 
         private void Awake()
         {
             _leapSkill.OnLeapAttack += Push;
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
         private void Push()
@@ -29,12 +30,18 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         private async UniTaskVoid Run(CancellationTokenSource cancel)
         {
             Collision collision = await _task.Task;
+            _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.linearVelocity = Vector3.zero;
             _collision.OnEnterCollision -= Complete;
             var contactPoint = collision.contacts[0].point;
-            Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            var pushDirection = contactPoint - rigidbody.position;
-            Debug.Log($"Contact POint: {contactPoint}, Push Direction: {pushDirection}, Gameobject: {collision.gameObject}");
-            rigidbody.AddForceAtPosition(pushDirection.normalized * _pushPower, contactPoint, ForceMode.Impulse);
+            bool isRigidbody = collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody);
+            
+            if (isRigidbody)
+            {
+                var pushDirection = rigidbody.position - contactPoint;
+                pushDirection.y = 0;
+                rigidbody.AddForceAtPosition(pushDirection * _pushPower, contactPoint, ForceMode.Impulse);
+            }
         }
 
         private void Complete(Collision collision)

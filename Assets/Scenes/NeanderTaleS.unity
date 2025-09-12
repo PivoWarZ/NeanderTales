@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leapSkill: {fileID: 1222674555}
   _collision: {fileID: 1222674556}
-  _pushPower: 0.2
+  _pushPower: 150
 --- !u!1 &1284012092
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +843,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1983874897413343440, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _recoveringAfterJump
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367183625625251103, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _jumpForce
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: m_Name
       value: VelociraptorEnemy
