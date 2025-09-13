@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.EnemiesComponents
+namespace NeanderTaleS.Code.Scripts.Components
 {
     public class MechanicsBreaker: MonoBehaviour, IMachanicsBreaker
     {
