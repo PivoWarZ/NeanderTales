@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
@@ -11,13 +12,13 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private bool _isLanding;
-        public void Init(PlayerProvider playerProvider, AnimationEventDispatcher eventDispatcher)
+        public void Init(LocalProvider localProvider)
         {
-            _jumpComponent = playerProvider.JumpComponent;
-            _animator = playerProvider.Animator;
-            _event = eventDispatcher;
+            _jumpComponent = localProvider.GetService<JumpComponent>();
+            _animator = localProvider.Animator;
+            _event = localProvider.GetService<AnimationEventDispatcher>();
             
-            playerProvider.MoveComponent.SetCondition(() => !_isLanding);
+            localProvider.GetService<MoveComponent>().SetCondition(() => !_isLanding);
 
             _jumpComponent.OnJumpAction += JumpAnimation;
             _event.OnReceiveEvent += ReceiveEvent;

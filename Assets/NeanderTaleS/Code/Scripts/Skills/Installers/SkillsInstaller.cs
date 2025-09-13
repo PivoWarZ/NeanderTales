@@ -1,25 +1,19 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
-using NeanderTaleS.Code.Scripts.PlayerComponents;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Skills.Installers
 {
-    public class SkillsInstaller: IInitializable
+    public class SkillsInstaller: MonoBehaviour
     {
-        private PlayerProvider _playerProvider;
+        [SerializeField] private LocalProvider _localProvider;
 
-        public SkillsInstaller(PlayerProvider playerProvider)
+        private void Start()
         {
-            _playerProvider = playerProvider;
-        }
-
-        public void Initialize()
-        {
-            AttackComponent attackComponent = _playerProvider.AttackComponent;
-            Transform visual = _playerProvider.Visual;
-            IHitAnimationListener hitAnimationListener = visual.GetComponent<IHitAnimationListener>();
+            AttackComponent attackComponent = _localProvider.GetService<AttackComponent>();
+            IHitAnimationListener hitAnimationListener = _localProvider.GetInterface<IHitAnimationListener>();
            
             AddComboAttack(attackComponent, hitAnimationListener);
         }

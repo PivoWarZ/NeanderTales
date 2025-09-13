@@ -1,22 +1,23 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 {
-    public class TargetAnimationController: MonoBehaviour, IEnemyAnimationController
+    public class TargetAnimationController: MonoBehaviour, IAnimationController
     {
         private EnemyTargetComponent _target;
         private EnemyMoveComponent _move;
         private Animator _animator;
         private AnimationEventDispatcher _event;
         
-        public void Init(EnemyProvider enemyProvider)
+        public void Init(LocalProvider localProvider)
         {
-            _target = enemyProvider.TargetComponent;
-            _animator = enemyProvider.Animator;
-            _event = enemyProvider.AnimationEvent;
-            _move = enemyProvider.MoveComponent;
+            _target = localProvider.GetService<EnemyTargetComponent>();
+            _animator = localProvider.Animator;
+            _event = localProvider.GetService<AnimationEventDispatcher>();
+            _move = localProvider.GetService<EnemyMoveComponent>();
 
             _event.OnReceiveEvent += ReceiveEvent;
             _target.OnTargetChanged += TargetChanged;

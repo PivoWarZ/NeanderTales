@@ -7,15 +7,56 @@ namespace NeanderTaleS.Code.Scripts.Components
     public class LocalProvider: MonoBehaviour
     {
         private List<MonoBehaviour> _components;
+        private Animator _animator;
+        private Rigidbody _rigidbody;
+
+        public Animator Animator => _animator;
+
+        public Rigidbody Rigidbody => _rigidbody;
 
         private void Awake()
         {
             _components = gameObject.GetComponentsInChildren<MonoBehaviour>().ToList();
+            _animator = gameObject.GetComponentInChildren<Animator>();
+            _rigidbody = gameObject.GetComponent<Rigidbody>();
         }
 
-        public T GetComponent<T>() where T : MonoBehaviour
+        public T GetService<T>() where T : MonoBehaviour
         {
             return _components.OfType<T>().FirstOrDefault();
+        }
+
+        public T GetInterface<T>() where T : class
+        {
+            foreach (var component in _components)
+            {
+                if (component is T tComponent)
+                {
+                    return tComponent;
+                }
+            }
+
+            return null;
+        }
+        
+        public List<T> GetInterfaces<T>() where T : class
+        {
+            var list = new List<T>();
+            
+            foreach (var component in _components)
+            {
+                if (component is T tComponent)
+                {
+                    list.Add(tComponent);
+                }
+            }
+
+            if (list.Count == 0)
+            {
+                return null;
+            }
+            
+            return list;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
@@ -13,10 +14,10 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
         private Animator _animator;
         private IDisposable _disposable;
         
-        public void Init(PlayerProvider playerProvider, AnimationEventDispatcher _)
+        public void Init(LocalProvider localProvider)
         {
-            var moveComponent = playerProvider.GetComponent<MoveComponent>();
-            _animator = playerProvider.Animator;
+            var moveComponent = localProvider.GetService<MoveComponent>();
+            _animator = localProvider.Animator;
             _disposable = moveComponent.MoveDirection.Subscribe(SetDirectionAxis);
         }
         

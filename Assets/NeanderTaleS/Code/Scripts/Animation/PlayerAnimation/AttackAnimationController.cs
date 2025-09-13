@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
@@ -10,7 +11,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
     {
         public event Action OnHitAnimation;
         
-        private PlayerProvider _playerProvider;
         private AnimationEventDispatcher _event;
         private AttackComponent _attackComponent;
         private Animator _animator;
@@ -19,12 +19,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
         private const int SECOND_ATTACK = 1;
         private const int THIRD_ATTACK = 2;
         
-        public void Init(PlayerProvider playerProvider, AnimationEventDispatcher eventDispatcher)
+        public void Init(LocalProvider localProvider)
         {
-            _playerProvider = playerProvider;
-            _event = eventDispatcher;
-            _animator = _playerProvider.Animator;
-            _attackComponent = _playerProvider.AttackComponent;
+            _event = localProvider.GetService<AnimationEventDispatcher>();
+            _animator = localProvider.Animator;
+            _attackComponent = localProvider.GetService<AttackComponent>();
             
             _event.OnReceiveEvent += ProcessEvent;
             _attackComponent.OnAttackAction += Attack;

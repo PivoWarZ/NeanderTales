@@ -59,7 +59,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             }
             
             OnJumpEvent?.Invoke();
-            Debug.Log("JumpEvent");
             _isJump = false;
         }
         
