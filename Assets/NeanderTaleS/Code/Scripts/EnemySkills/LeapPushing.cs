@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using UnityEngine;
 
@@ -7,6 +9,8 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
     public class LeapPushing: MonoBehaviour
     {
+        public event Action<GameObject> OnPushing;
+        
         [SerializeField] private LeapRaptorSkill _leapRaptorSkill;
         [SerializeField] private OnCollisionComponent _collision;
         [SerializeField] private float _pushPower;
@@ -41,6 +45,8 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
                 var pushDirection = rigidbody.position - contactPoint;
                 pushDirection.y = 0;
                 rigidbody.AddForceAtPosition(pushDirection * _pushPower, contactPoint, ForceMode.Impulse);
+                
+                OnPushing?.Invoke(collision.gameObject);
             }
         }
 

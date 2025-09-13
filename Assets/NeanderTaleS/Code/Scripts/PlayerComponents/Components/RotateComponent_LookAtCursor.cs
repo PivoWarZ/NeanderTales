@@ -1,11 +1,12 @@
 using System;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class RotateComponent_LookAtCursor: MonoBehaviour, IRotatable
+    public class RotateComponent_LookAtCursor: MonoBehaviour, IRotatable, IBreakable
     {
         public event Action<bool> OnRotate;
         public event Action OnRotateComplete;
@@ -18,7 +19,9 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         private Quaternion _targetRotation;
         private const int OFFSET_ROTATION_ANGLE = 3;
         private const float ROTATE_ANGLE = 10f;
-        
+
+        public float RotateSpeed => rotateSpeed;
+
 
         private void Awake()
         {
@@ -29,6 +32,11 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         private void LateUpdate()
         {
             if (!_isRotate)
+            {
+                return;
+            }
+            
+            if (!_condition.IsTrue())
             {
                 return;
             }
@@ -45,16 +53,17 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
                     OnRotateComplete?.Invoke();
                 }
 
-                _rotateTransform.rotation = Quaternion.Lerp( _rotateTransform.rotation, _targetRotation, rotateSpeed * Time.deltaTime);
+                _rotateTransform.rotation = Quaternion.Slerp( _rotateTransform.rotation, _targetRotation, RotateSpeed * Time.deltaTime);
             }
         }
 
-        public void Rotate(Vector3 hitPoint)
+        public Transform GetRotateTransform()
         {
-            if (!_condition.IsTrue())
-            {
-                return;
-            }
+            return _rotateTransform;
+        }
+
+        public void SetRotateDirection(Vector3 hitPoint)
+        {
             
             var direction = hitPoint - _rotateTransform.position;
             
@@ -79,6 +88,19 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             OnRotate?.Invoke(isRightRotate);
         }
 
+        public void Rotate(Vector3 direction)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            
+            bool isRightRotate = direction.x > 0;
+            OnRotate?.Invoke(isRightRotate);
+            
+            _rotateTransform.rotation = Quaternion.RotateTowards( _rotateTransform.rotation, _targetRotation, RotateSpeed * Time.deltaTime);
+            
+            OnRotateComplete?.Invoke();
+        }
+
         public void AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
@@ -87,6 +109,16 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canRotate = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canRotate = false;
         }
     }
 }

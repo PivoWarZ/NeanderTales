@@ -3,7 +3,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces
     public interface IMachanicsBreaker
     {
         void BanCoreMechanics();
-        void ResumeCoreMechanics();
+        void EnabledCoreMechanics();
         void BanAttacking();
         void ResumeAttacking();
         void BanMoving();

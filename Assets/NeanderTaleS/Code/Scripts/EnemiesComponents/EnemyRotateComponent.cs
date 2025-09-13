@@ -36,7 +36,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             
             direction.y = 0;
             
-            Rotate(direction);
+            SetRotateDirection(direction);
         }
 
         public void SetTarget(GameObject target)
@@ -44,7 +44,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _target = target.transform;
         }
         
-        public void Rotate(Vector3 rotateDirection)
+        public void SetRotateDirection(Vector3 rotateDirection)
         {
             var targetRotation = Quaternion.LookRotation(rotateDirection, Vector3.up);
             

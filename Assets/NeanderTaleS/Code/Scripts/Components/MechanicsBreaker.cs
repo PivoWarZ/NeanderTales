@@ -22,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Components
             BanMoving();
         }
 
-        public void ResumeCoreMechanics()
+        public void EnabledCoreMechanics()
         {
             ResumeAttacking();
             ResumeRotating();

@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
 
         private void Rotate(Vector3 hitPoint)
         {
-            _rotatable.Rotate(hitPoint);
+            _rotatable.SetRotateDirection(hitPoint);
         }
 
         void IDisposable.Dispose()

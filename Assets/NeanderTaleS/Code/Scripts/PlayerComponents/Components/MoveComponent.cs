@@ -1,12 +1,13 @@
 using System;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class MoveComponent: MonoBehaviour, IMovable
+    public class MoveComponent: MonoBehaviour, IMovable, IBreakable
     {
         private ReactiveProperty<Vector3> _moveDirection = new (Vector3.zero);
         [SerializeField] private float _speed;
@@ -52,6 +53,16 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canMove = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canMove = false;
         }
     }
 }

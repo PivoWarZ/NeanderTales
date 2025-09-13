@@ -2,13 +2,14 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class JumpComponent: MonoBehaviour, IJumping
+    public class JumpComponent: MonoBehaviour, IJumping, IBreakable
     {
         public event Action OnJumpRequest;
         public event Action OnJumpAction;
@@ -90,6 +91,16 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         private void OnDestroy()
         {
             _cancell.Cancel();
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canJump = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canJump = false;
         }
     }
 }

@@ -1,11 +1,12 @@
 using System;
 using NeanderTaleS.Code.Scripts.Condition;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class AttackComponent: MonoBehaviour, IAttackable
+    public class AttackComponent: MonoBehaviour, IAttackable, IBreakable
     {
         public event Action OnAttackRequest;
         public event Action OnAttackAction;
@@ -58,6 +59,16 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        void IBreakable.EnabledMechanic()
+        {
+            _canAttack = true;
+        }
+
+        void IBreakable.DisablingMechanic()
+        {
+            _canAttack = false;
         }
     }
 }

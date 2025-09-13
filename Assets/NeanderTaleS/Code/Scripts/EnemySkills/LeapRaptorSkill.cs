@@ -40,7 +40,7 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             SubscribeActivating();
             Recovering(_cancell).Forget();
-            _breaker.ResumeCoreMechanics();
+            _breaker.EnabledCoreMechanics();
         }
 
         private async UniTaskVoid Recovering(CancellationTokenSource cancell)
