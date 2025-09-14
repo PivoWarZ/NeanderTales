@@ -33,33 +33,23 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
         private void LateUpdate()
         {
-            if (!_isRotate)
-            {
-                return;
-            }
-            
             if (!_condition.IsTrue())
             {
                 return;
             }
 
-            if (_rotateTransform.rotation != _targetRotation)
+            if (IsTargetRotation(_targetRotation))
             {
-                if (IsTargetRotation(_targetRotation))
-                {
-                    _rotateTransform.rotation = _targetRotation;
-                    _isRotate = false;
+                _rotateTransform.rotation = _targetRotation;
+                _isRotate = false;
                     
-                    OnRotateComplete?.Invoke();
-                }
-
-                _rotateTransform.rotation = Quaternion.Slerp( _rotateTransform.rotation, _targetRotation, RotateSpeed * Time.deltaTime);
+                OnRotateComplete?.Invoke();
+                
+                return;
             }
-        }
 
-        public Transform GetRotateTransform()
-        {
-            return _rotateTransform;
+            _rotateTransform.rotation = Quaternion.Slerp( _rotateTransform.rotation, _targetRotation, RotateSpeed * Time.deltaTime);
+            
         }
 
         public void SetRotateDirection(Vector3 hitPoint)
@@ -104,7 +94,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
                 if (cycleCount == looping)
                 {
-                    Debug.Log($"<color=yellow>WARNING! Rotate Component: RotateAsync is cycling!</color>");
+                    Debug.Log($"<color=yellow>WARNING! Rotate Component: RotateAsync is LOOPING!</color>");
                 }
             }
             
