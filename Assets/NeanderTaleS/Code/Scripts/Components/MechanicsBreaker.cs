@@ -31,35 +31,35 @@ namespace NeanderTaleS.Code.Scripts.Components
 
         public void BanAttacking()
         {
-            Switch<IAttackable>(false);
+            SwitchSelectedMechanic<IAttackable>(false);
         }
 
         public void ResumeAttacking()
         {
-            Switch<IAttackable>(true);
+            SwitchSelectedMechanic<IAttackable>(true);
         }
 
         public void BanMoving()
         {
-            Switch<IMovable>(false);
+            SwitchSelectedMechanic<IMovable>(false);
         }
 
         public void ResumeMoving()
         {
-            Switch<IMovable>(true);
+            SwitchSelectedMechanic<IMovable>(true);
         }
 
         public void BanRotating()
         {
-            Switch<ICursorFollower>(false);
+            SwitchSelectedMechanic<ICursorFollower>(false);
         }
 
         public void ResumeRotating()
         {
-            Switch<ICursorFollower>(true);
+            SwitchSelectedMechanic<ICursorFollower>(true);
         }
 
-        private void Switch<T>(bool isActive)
+        public void SwitchSelectedMechanic<T>(bool isActive)
         {
             foreach (IBreakable breakable in _breakables)
             {

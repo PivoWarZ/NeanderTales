@@ -26,6 +26,13 @@ namespace NeanderTaleS.Code.Scripts.Components
             return _components.OfType<T>().FirstOrDefault();
         }
 
+        public bool TryGetService<T>(out T service) where T : MonoBehaviour
+        {
+            service = GetService<T>();
+            
+            return service != null;
+        }
+
         public T GetInterface<T>() where T : class
         {
             foreach (var component in _components)

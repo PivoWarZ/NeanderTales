@@ -20,11 +20,9 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         private CompositeCondition _condition;
         private Quaternion _targetRotation;
         private const int OFFSET_ROTATION_ANGLE = 3;
-        private const float ROTATE_ANGLE = 10f;
 
         public float RotateSpeed => rotateSpeed;
-
-
+        
         private void Awake()
         {
             _condition = new CompositeCondition();
