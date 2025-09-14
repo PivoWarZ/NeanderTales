@@ -1,7 +1,8 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Components;
-using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
         private RotateComponent_LookAtCursor _rotateComponent;
         private Rigidbody _rigidbody;
         private IDisposable _dispose;
+        private CancellationTokenSource _cancell = new ();
         
         public void Init(LocalProvider localProvider)
         {
@@ -40,13 +42,13 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
             }
         }
 
-        private void Push(bool isPushing)
+        private async void Push(bool isPushing)
         {
             Vector3 rotateDirection = -_rigidbody.linearVelocity.normalized;
             rotateDirection.y = 0;
             
             _breaker.BanCoreMechanics();
-            _rotateComponent.Rotate(rotateDirection);
+            _rotateComponent.RotateAsync(rotateDirection, _cancell).Forget();
             
             _animator.SetTrigger("Pushing");
         }
@@ -54,6 +56,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
         private void OnDestroy()
         {
             _dispose.Dispose();
+            _cancell.Cancel();
             _eventDispatcher.OnReceiveEvent -= ReceiveEvent;
         }
     }

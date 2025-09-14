@@ -1,7 +1,4 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
-using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Services;
-using NeanderTaleS.Code.Scripts.Skills.Installers;
 using UnityEngine;
 using Zenject;
 

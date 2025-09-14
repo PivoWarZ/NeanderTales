@@ -1,6 +1,4 @@
-using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
-using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents

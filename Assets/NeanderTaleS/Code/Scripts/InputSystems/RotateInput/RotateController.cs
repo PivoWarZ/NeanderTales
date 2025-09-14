@@ -8,12 +8,12 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
     public class RotateController: IInitializable, IDisposable
     {
         private CursorPositionListener _listener;
-        private IRotatable _rotatable;
+        private ICursorFollower _cursorFollower;
 
-        public RotateController(CursorPositionListener listener, IRotatable rotatable)
+        public RotateController(CursorPositionListener listener, ICursorFollower cursorFollower)
         {
             _listener = listener;
-            _rotatable = rotatable;
+            _cursorFollower = cursorFollower;
         }
 
 
@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.InputSystems.RotateInput
 
         private void Rotate(Vector3 hitPoint)
         {
-            _rotatable.SetRotateDirection(hitPoint);
+            _cursorFollower.SetRotateDirection(hitPoint);
         }
 
         void IDisposable.Dispose()

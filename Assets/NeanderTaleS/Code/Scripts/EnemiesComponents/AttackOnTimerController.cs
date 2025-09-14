@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents

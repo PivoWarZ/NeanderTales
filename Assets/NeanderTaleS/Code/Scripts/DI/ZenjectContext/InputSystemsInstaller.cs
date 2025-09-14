@@ -1,4 +1,3 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.InputSystems.AttackInput;
 using NeanderTaleS.Code.Scripts.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.InputSystems.MoveInput;
@@ -16,13 +15,13 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
         public override void InstallBindings()
         {
             IMovable movable = _player.GetComponent<IMovable>();
-            IRotatable rotatable = _player.GetComponent<IRotatable>();
+            ICursorFollower cursorFollower = _player.GetComponent<ICursorFollower>();
             IJumping jumping = _player.GetComponent<IJumping>();
             IAttackable attackable = _player.GetComponent<IAttackable>();
             
             BindAttackInput(attackable);
             BindJumpInput(jumping);
-            BindRotateInput(rotatable);
+            BindRotateInput(cursorFollower);
             BindMoveInput(movable);
         }
 
@@ -60,9 +59,9 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
                 .NonLazy();
         }
 
-        private void BindRotateInput(IRotatable rotatable)
+        private void BindRotateInput(ICursorFollower cursorFollower)
         {
-            if (rotatable == null)
+            if (cursorFollower == null)
             {
                 Debug.LogWarning("<color=yellow> IRotatable instance is null. Input system bindings may not be fully configured. </color>");
             }
@@ -73,7 +72,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
             
             Container.BindInterfacesAndSelfTo<RotateController>()
                 .AsSingle()
-                .WithArguments(rotatable)
+                .WithArguments(cursorFollower)
                 .NonLazy();
         }
 

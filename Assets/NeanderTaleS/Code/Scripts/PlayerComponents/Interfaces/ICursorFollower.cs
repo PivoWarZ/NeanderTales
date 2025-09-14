@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces
 {
-    public interface IRotatable
+    public interface ICursorFollower
     {
         void SetRotateDirection(Vector3 rotateDirection);
     }

@@ -51,12 +51,12 @@ namespace NeanderTaleS.Code.Scripts.Components
 
         public void BanRotating()
         {
-            Switch<IRotatable>(false);
+            Switch<ICursorFollower>(false);
         }
 
         public void ResumeRotating()
         {
-            Switch<IRotatable>(true);
+            Switch<ICursorFollower>(true);
         }
 
         private void Switch<T>(bool isActive)

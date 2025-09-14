@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using UnityEngine;
 
