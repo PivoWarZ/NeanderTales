@@ -1,20 +1,17 @@
-using System;
 using NeanderTaleS.Code.Scripts.Components;
-using UnityEngine;
+
 
 namespace NeanderTaleS.Code.Scripts.WeaponComponents
 {
-    public class WeaponInitializer: MonoBehaviour
+    public class WeaponInitializer
     {
-        [SerializeField] private LocalProvider _localProvider;
-
-        private void Start()
+        public void Init(LocalProvider localProvider)
         {
-            bool hasWeapon = _localProvider.TryGetService<Weapon>(out var weapon);
+            bool hasWeapon = localProvider.TryGetService<Weapon>(out var weapon);
 
             if (hasWeapon)
             {
-                DealDamageComponent dealDamage = _localProvider.GetService<DealDamageComponent>();
+                DealDamageComponent dealDamage = localProvider.GetService<DealDamageComponent>();
                 weapon.Init(dealDamage);
             }
         }

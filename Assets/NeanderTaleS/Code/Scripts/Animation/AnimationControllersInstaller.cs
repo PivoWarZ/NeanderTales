@@ -1,23 +1,19 @@
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Components;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation
 {
-    public class AnimationControllersInstaller: MonoBehaviour
+    public class AnimationControllersInstaller
     {
-        [SerializeField] private LocalProvider _localProvider;
-        private List<IAnimationController> _animationControllers = new ();
-
-        private void Start()
+        public void Init(LocalProvider localProvider)
         {
-            _animationControllers = _localProvider.GetInterfaces<IAnimationController>();
+            List<IAnimationController> animationControllers = localProvider.GetInterfaces<IAnimationController>();
 
-            for (var index = 0; index < _animationControllers.Count; index++)
+            for (var index = 0; index < animationControllers.Count; index++)
             {
-                var animationController = _animationControllers[index];
-                animationController.Init(_localProvider);
+                var animationController = animationControllers[index];
+                animationController.Init(localProvider);
             }
         }
     }

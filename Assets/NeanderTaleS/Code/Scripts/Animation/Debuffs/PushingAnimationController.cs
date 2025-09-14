@@ -27,7 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
             _rotateComponent = localProvider.GetService<RotateComponent_LookAtCursor>();
             _rigidbody = localProvider.Rigidbody;
             _animator = localProvider.Animator;
-            _breaker = localProvider.GetService<MechanicsBreaker>();
+            _breaker = localProvider.MechanicsBreaker;
             
             _dispose = _debuff.Pushing.Where(isPush => isPush).Subscribe(Push);
             _eventDispatcher.OnReceiveEvent += ReceiveEvent;

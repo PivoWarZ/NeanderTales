@@ -5,13 +5,14 @@ using NeanderTaleS.Code.Scripts.InputSystems.RotateInput;
 using NeanderTaleS.Code.Scripts.PlayerComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 {
     public class InputSystemsInstaller: MonoInstaller
     {
-        [SerializeField] Player _player;
+        [FormerlySerializedAs("_entityBootsTrap")] [FormerlySerializedAs("_playerBootsTrap")] [SerializeField] Player _player;
         public override void InstallBindings()
         {
             IMovable movable = _player.GetComponent<IMovable>();

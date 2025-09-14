@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components
 {
     public class LocalProvider: MonoBehaviour
     {
+        public MechanicsBreaker MechanicsBreaker;
+        
         private List<MonoBehaviour> _components;
         private Animator _animator;
         private Rigidbody _rigidbody;
@@ -14,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Components
 
         public Rigidbody Rigidbody => _rigidbody;
 
-        private void Awake()
+        public void Initialize()
         {
             _components = gameObject.GetComponentsInChildren<MonoBehaviour>().ToList();
             _animator = gameObject.GetComponentInChildren<Animator>();
@@ -64,6 +67,21 @@ namespace NeanderTaleS.Code.Scripts.Components
             }
             
             return list;
+        }
+
+        public bool TryGetInterfaces<T>(out List<T> services) where T : class
+        {
+            services = new List<T>();
+            
+            foreach (var component in _components)
+            {
+                if (component is T tComponent)
+                {
+                    services.Add(tComponent);
+                }
+            }
+            
+            return services.Count > 0;
         }
     }
 }

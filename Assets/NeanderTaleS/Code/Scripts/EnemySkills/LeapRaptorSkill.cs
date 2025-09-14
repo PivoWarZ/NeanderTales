@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
@@ -9,17 +10,17 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
-    public class LeapRaptorSkill: MonoBehaviour
+    public class LeapRaptorSkill: MonoBehaviour, IBreakMechanics
     {
         public event Action OnLeapAttack;
         
         [SerializeField] private DistanceToTargetComponent _distanceComponent;
         [SerializeField] private JumpComponent _jumpComponent;
-        [SerializeField] private MechanicsBreaker _breaker;
         [SerializeField] private float _activateDistance;
         [SerializeField] private float _jumpDistance;
         [SerializeField] private float _recoveringAfterJump = 30;
         [SerializeField] private bool _isLeapReady;
+        private MechanicsBreaker _breaker;
         private CancellationTokenSource _cancell = new ();
         private IDisposable _dispose;
         
@@ -29,6 +30,11 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
             SubscribeActivating();
             _jumpComponent.OnJumpEvent += JumpEvent;
             _jumpComponent.OnJumpAction += BreakCoreMechanics;
+        }
+        
+        void IBreakMechanics.SetMechanicsBreaker(MechanicsBreaker breaker)
+        {
+            _breaker = breaker;
         }
 
         private void BreakCoreMechanics()

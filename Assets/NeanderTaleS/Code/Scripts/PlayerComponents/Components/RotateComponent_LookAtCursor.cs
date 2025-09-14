@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         [SerializeField] private float rotateSpeed = 5f;
         [SerializeField] private bool _canRotate = true;
         private bool _isRotate;
-        private CompositeCondition _condition;
+        private CompositeCondition _condition = new ();
         private Quaternion _targetRotation;
         private const int OFFSET_ROTATION_ANGLE = 3;
 
@@ -25,7 +25,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         
         private void Awake()
         {
-            _condition = new CompositeCondition();
             _condition.AddCondition(() => _canRotate);
         }
 

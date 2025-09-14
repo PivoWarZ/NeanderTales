@@ -7,12 +7,10 @@ namespace NeanderTaleS.Code.Scripts.Skills.Installers
 {
     public class SkillsInstaller: MonoBehaviour
     {
-        [SerializeField] private LocalProvider _localProvider;
-
-        private void Start()
+        public void Initialize(LocalProvider localProvider)
         {
-            AttackComponent attackComponent = _localProvider.GetService<AttackComponent>();
-            IHitAnimationListener hitAnimationListener = _localProvider.GetInterface<IHitAnimationListener>();
+            AttackComponent attackComponent = localProvider.GetService<AttackComponent>();
+            IHitAnimationListener hitAnimationListener = localProvider.GetInterface<IHitAnimationListener>();
            
             AddComboAttack(attackComponent, hitAnimationListener);
         }

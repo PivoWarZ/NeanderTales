@@ -1,18 +1,16 @@
 using System.Collections.Generic;
-using System.Linq;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components
 {
-    public class MechanicsBreaker: MonoBehaviour, IMachanicsBreaker
+    public class MechanicsBreaker
     {
         private List<IBreakable> _breakables = new ();
 
-        private void Awake()
+        public void Init(List<IBreakable> breakables)
         {
-            _breakables = GetComponents<IBreakable>().ToList();
+            _breakables = breakables;
         }
 
         public void BanCoreMechanics()
