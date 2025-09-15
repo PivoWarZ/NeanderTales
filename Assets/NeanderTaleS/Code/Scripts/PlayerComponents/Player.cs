@@ -1,5 +1,3 @@
-
-using System;
 using NeanderTaleS.Code.Scripts.Components;
 using UnityEngine;
 

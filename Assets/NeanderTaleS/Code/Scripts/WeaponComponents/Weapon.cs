@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Scripts.Components;
@@ -9,7 +8,7 @@ using DealDamageComponent = NeanderTaleS.Code.Scripts.Components.DealDamageCompo
 
 namespace NeanderTaleS.Code.Scripts.WeaponComponents
 {
-    public class Weapon: MonoBehaviour
+    public class Weapon: MonoBehaviour, IWeapon
     {
         [SerializeField] private float _damage;
         [SerializeField] OnCollisionComponent _onCollision;

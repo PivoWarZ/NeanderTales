@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Animation;
+using NeanderTaleS.Code.Scripts.Animation.EnemyAnimation;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.Skills.Installers;
@@ -22,16 +21,18 @@ namespace NeanderTaleS.Code.Scripts.Components
             
             InstallMechanicsBreaker();
 
-            InitializeMechanicBreakers();
+            InitializeBreakMechanicsComponents();
 
             InitializeAnimatorControllers(_localProvider);
 
             InitializeSkill(_localProvider);
 
             InitializeCurrentWeapon(_localProvider);
+            
         }
 
-        private void InitializeMechanicBreakers()
+
+        private void InitializeBreakMechanicsComponents()
         {
             bool isBreakers = _localProvider.TryGetInterfaces<IBreakMechanics>(out List<IBreakMechanics> mechanicsBreakers);
 

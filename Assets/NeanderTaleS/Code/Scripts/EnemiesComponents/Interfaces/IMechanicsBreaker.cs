@@ -1,6 +1,6 @@
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces
 {
-    public interface IMachanicsBreaker
+    public interface IMechanicsBreaker
     {
         void BanCoreMechanics();
         void EnabledCoreMechanics();

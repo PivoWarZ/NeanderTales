@@ -2,13 +2,14 @@ using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
+using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IBreakable
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IBreakable, IConditionComponent
     {
         public bool CanMove;
         
@@ -48,7 +49,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _rb.linearVelocity = direction.normalized * _moveSpeed;
         }
         
-        public void SetCondition(Func<bool> condition)
+        public void AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }

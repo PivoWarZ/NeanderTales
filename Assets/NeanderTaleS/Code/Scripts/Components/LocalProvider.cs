@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
+using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components

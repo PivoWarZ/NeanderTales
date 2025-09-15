@@ -10,8 +10,8 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void Awake()
         {
-            _enemyMoveComponent.SetCondition(() => !IsAttackDistance());
-            _enemyAttackComponent.SetCondition(IsAttackDistance);
+            _enemyMoveComponent.AddCondition(() => !IsAttackDistance());
+            _enemyAttackComponent.AddCondition(IsAttackDistance);
         }
 
         private bool IsAttackDistance()

@@ -16,7 +16,6 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
                 DealDamageComponent dealDamage = localProvider.GetService<DealDamageComponent>();
                 IAttackable attackComponent = localProvider.GetInterface<IAttackable>();
                 weapon.Init(dealDamage, attackComponent);
-                Debug.Log($"Weapon Initializes {weapon} => {dealDamage}");
             }
         }
     }
