@@ -20,9 +20,13 @@ namespace NeanderTaleS.Code.Scripts.Effects.StepsFX
             
             _effectRight = Instantiate(_particle, transform).GetComponent<ParticleSystem>();
             _effectRight.gameObject.transform.localScale *= _scale;
+            var offsetRight = _effectRight.gameObject.transform.position.y;
+            _effectRight.transform.position = new Vector3(_effectRight.transform.position.x, offsetRight, _effectRight.transform.position.z);
             
             _effectLeft = Instantiate(_particle, transform).GetComponent<ParticleSystem>();
             _effectLeft.gameObject.transform.localScale *= _scale;
+            var offsetLeft = _effectRight.gameObject.transform.position.y;
+            _effectRight.transform.position = new Vector3(_effectRight.transform.position.x, offsetLeft, _effectRight.transform.position.z);
         }
 
         public void Initialize(StepsListener lefsStep, StepsListener rightStep)
