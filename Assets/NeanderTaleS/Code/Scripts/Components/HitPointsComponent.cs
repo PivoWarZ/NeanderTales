@@ -1,6 +1,6 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
-using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using R3;
 using Sirenix.OdinInspector;
 using UnityEngine;

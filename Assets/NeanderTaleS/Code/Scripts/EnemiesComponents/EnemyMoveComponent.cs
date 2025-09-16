@@ -1,8 +1,8 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
-using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
 using UnityEngine;
@@ -46,7 +46,8 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         
         public void Move(Vector3 direction)
         {
-            _rb.linearVelocity = direction.normalized * _moveSpeed;
+            _rb.AddForce(direction.normalized * _moveSpeed, ForceMode.Acceleration);
+            Debug.Log(_rb.linearVelocity);
         }
         
         public void AddCondition(Func<bool> condition)

@@ -1,4 +1,4 @@
-namespace NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces
 {
     public interface IMechanicsBreaker
     {
