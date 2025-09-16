@@ -14,7 +14,6 @@ namespace NeanderTaleS.Code.Scripts.Components
         public event Action OnTakeDamageEvent;
         
         [SerializeField] private SerializableReactiveProperty<float> _hitPoints = new ();
-        private float _startHitPoints;
         private bool _canTakeDamage = true;
         private CompositeCondition _condition  = new ();
         
@@ -23,7 +22,6 @@ namespace NeanderTaleS.Code.Scripts.Components
         private void Awake()
         {
             _condition.AddCondition(() => _canTakeDamage);
-            _startHitPoints = _hitPoints.Value;
         }
         
         [Button]
@@ -42,8 +40,6 @@ namespace NeanderTaleS.Code.Scripts.Components
             
             Debug.Log($"Hit: {_hitPoints.Value}");
         }
-        
-        public float GetStartHitPoints() => _startHitPoints;
 
         public void TakeDamageEvent()
         {

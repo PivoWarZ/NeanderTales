@@ -8,7 +8,6 @@ namespace NeanderTaleS.Code.Scripts.Components
         event TakeDamageRequestHandler OnTakeDamageRequest;
         event Action<float> OnTakeDamageAction;
         event Action OnTakeDamageEvent;
-        float GetStartHitPoints();
         ReadOnlyReactiveProperty<float> HitPoints { get; }
         void TakeDamage(float damage);
     }

@@ -29,9 +29,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _damageble.OnTakeDamageAction += TakeDamage;
             _event.OnReceiveEvent += ReceiveEvent;
             
-            _startHitPoints = _damageble.GetStartHitPoints();
+            _startHitPoints = _damageble.HitPoints.CurrentValue;
             _lowDamage = _startHitPoints * LOW_DAMAGE_THREASHOLD;
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
+            
+            Debug.Log($"LowDamage: {_lowDamage}, mediumDamage: {_mediumDamage}");
         }
 
         private void ReceiveEvent(string eventName)

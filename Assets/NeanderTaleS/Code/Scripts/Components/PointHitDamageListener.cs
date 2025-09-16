@@ -8,9 +8,10 @@ namespace NeanderTaleS.Code.Scripts.Components
 {
     public class PointHitDamageListener: MonoBehaviour
     {
-        public event Action<Vector3> OnHitPointLocation;
+        public event Action<Vector3> OnHitPoint;
         
         [SerializeField] private OnCollisionComponent _onCollision;
+        [SerializeField] private HitPointsComponent _hitPointsComponent;
         private Vector3 _hitPointPosition;
 
         public Vector3 GetLastHitPointPosition => _hitPointPosition;
@@ -18,6 +19,13 @@ namespace NeanderTaleS.Code.Scripts.Components
         private void Awake()
         {
             _onCollision.OnEnterCollision += OnEnterCollision;
+            _hitPointsComponent.OnTakeDamageAction += HitPoint;
+        }
+
+        private void HitPoint(float obj)
+        {
+            OnHitPoint?.Invoke(_hitPointPosition);
+            Debug.Log(_hitPointPosition);
         }
 
         private void OnEnterCollision(Collision other)
@@ -28,8 +36,6 @@ namespace NeanderTaleS.Code.Scripts.Components
             if (isWeapon != null && other.contacts.Length > 0)
             {
                 _hitPointPosition = other.contacts[0].point;
-                OnHitPointLocation?.Invoke(_hitPointPosition);
-                Debug.Log(_hitPointPosition);
             }
         }
 
