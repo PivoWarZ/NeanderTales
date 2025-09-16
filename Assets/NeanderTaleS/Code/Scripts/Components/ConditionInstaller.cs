@@ -13,7 +13,12 @@ namespace NeanderTaleS.Code.Scripts.Components
 
         private void Start()
         {
-            _hitPointsComponent = _localProvider.GetComponent<ITakeDamageble>();
+            InstallConditions(_localProvider);
+        }
+
+        public void InstallConditions(LocalProvider localProvider)
+        {
+            _hitPointsComponent = localProvider.GetComponent<ITakeDamageble>();
 
             AddHitPointsEmptyCondition();
         }

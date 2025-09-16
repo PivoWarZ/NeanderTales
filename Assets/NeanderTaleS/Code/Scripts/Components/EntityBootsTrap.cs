@@ -14,7 +14,6 @@ namespace NeanderTaleS.Code.Scripts.Components
     public class EntityBootsTrap: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
-        private CancellationTokenSource _cancell = new ();
 
         public void EntityInitialize()
         {
@@ -29,9 +28,7 @@ namespace NeanderTaleS.Code.Scripts.Components
             InitializeSkill(_localProvider);
 
             InitializeCurrentWeapon(_localProvider);
-            
         }
-
 
         private void InitializeBreakMechanicsComponents()
         {
@@ -76,11 +73,6 @@ namespace NeanderTaleS.Code.Scripts.Components
         {
             AnimationControllersInstaller installer = new ();
             installer.Init(localProvider);
-        }
-
-        private void OnDestroy()
-        {
-            _cancell.Cancel();
         }
     }
 }

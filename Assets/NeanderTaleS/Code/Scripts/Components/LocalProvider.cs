@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components
@@ -22,6 +23,16 @@ namespace NeanderTaleS.Code.Scripts.Components
             _components = gameObject.GetComponentsInChildren<MonoBehaviour>().ToList();
             _animator = gameObject.GetComponentInChildren<Animator>();
             _rigidbody = gameObject.GetComponent<Rigidbody>();
+        }
+
+        [Button]
+        public void PrintServices()
+        {
+            foreach (var monoBehaviour in _components)
+            {
+                var name = monoBehaviour.GetType().Name;
+                Debug.Log($"<color=yellow>{name}</color>");
+            }
         }
 
         public T GetService<T>() where T : MonoBehaviour

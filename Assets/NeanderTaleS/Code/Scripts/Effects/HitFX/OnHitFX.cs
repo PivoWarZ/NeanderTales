@@ -13,6 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Effects.HitFX
 
         private void Awake()
         {
+            _particle.playOnAwake = false;
             _effect = Instantiate(_particle, transform).GetComponent<ParticleSystem>();
             _effect.gameObject.transform.localScale *= _scale;
             

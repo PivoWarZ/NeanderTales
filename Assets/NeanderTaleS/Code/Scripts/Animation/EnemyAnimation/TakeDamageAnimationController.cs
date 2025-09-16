@@ -32,8 +32,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _startHitPoints = _damageble.HitPoints.CurrentValue;
             _lowDamage = _startHitPoints * LOW_DAMAGE_THREASHOLD;
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
-            
-            Debug.Log($"LowDamage: {_lowDamage}, mediumDamage: {_mediumDamage}");
         }
 
         private void ReceiveEvent(string eventName)

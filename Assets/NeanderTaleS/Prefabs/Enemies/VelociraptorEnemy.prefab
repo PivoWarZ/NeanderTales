@@ -1405,9 +1405,10 @@ GameObject:
   - component: {fileID: 3301620534429963819}
   - component: {fileID: 4772832267246098261}
   - component: {fileID: 7957157952340615903}
-  - component: {fileID: 1510963084760476254}
   - component: {fileID: 975144928046521169}
   - component: {fileID: 1456651634301549235}
+  - component: {fileID: 8530462013662292724}
+  - component: {fileID: 6262279093128388059}
   m_Layer: 6
   m_Name: VelociraptorEnemy
   m_TagString: Untagged
@@ -1744,19 +1745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bootsTrap: {fileID: 4772832267246098261}
---- !u!114 &1510963084760476254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655307957745640121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _localProvider: {fileID: 5016542898823372062}
 --- !u!114 &975144928046521169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,6 +1774,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onCollision: {fileID: 819541227557244043}
   _hitPointsComponent: {fileID: 3301620534429963819}
+--- !u!114 &8530462013662292724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localProvider: {fileID: 5016542898823372062}
+--- !u!114 &6262279093128388059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008c88b0122d4b67ae157da5d63579a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 4177348820499729751}
+  _leftHand: {fileID: 8067880177083548075}
+  _rightHand: {fileID: 4441800019940241208}
+  _leftFoot: {fileID: 7439084537048250991}
+  _rightFoot: {fileID: 2984135022010572202}
 --- !u!1 &2656487090741591563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,8 +3310,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3706111023399273531}
   - component: {fileID: 420043153023561297}
+  - component: {fileID: 344869288253096007}
+  - component: {fileID: 4300518885274081642}
   m_Layer: 6
-  m_Name: VFX
+  m_Name: '[VFX]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3329,6 +3349,36 @@ MonoBehaviour:
   _particle: {fileID: 5991545297567742199, guid: 36a3ddd9e9258474aa29a08939eeda45, type: 3}
   _scale: 0.25
   _hitDamage: {fileID: 1456651634301549235}
+--- !u!114 &344869288253096007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546708524337815417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdb21ce6fb048f588dad523cb49f4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listener: {fileID: 7482177765962371168, guid: cf4c57dff93080941859c2a023568190, type: 3}
+  _root: {fileID: 6262279093128388059}
+  _stepFX: {fileID: 4300518885274081642}
+--- !u!114 &4300518885274081642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546708524337815417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdc834bda194e5dab90ef2b3a5cfff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particle: {fileID: 198006683868144142, guid: 2397083e876e5b1408fcc1333f50c082, type: 3}
+  _scale: 1.5
+  _offsetY: 0
 --- !u!1 &5558348016481547831
 GameObject:
   m_ObjectHideFlags: 0
