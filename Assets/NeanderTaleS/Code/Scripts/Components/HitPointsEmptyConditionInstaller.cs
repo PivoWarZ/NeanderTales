@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 
-namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
+namespace NeanderTaleS.Code.Scripts.Components
 {
     public class HitPointsEmptyConditionInstaller
     {

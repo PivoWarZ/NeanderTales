@@ -1,5 +1,5 @@
 using System;
-using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using UnityEngine;
 using Zenject;
 

@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using R3;
@@ -15,13 +16,16 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private IMechanicsBreaker _breaker;
         private AnimationEventDispatcher _eventDispatcher;
         private ITakeDamageble _damageble;
+        private PointHitDamageListener _pointHit;
         private IDisposable _disposable;
+        
         public void Init(LocalProvider localProvider)
         {
             _animator = localProvider.Animator;
             _breaker = localProvider.GetInterface<IMechanicsBreaker>();
             _eventDispatcher = localProvider.GetService<AnimationEventDispatcher>();
             _damageble = localProvider.GetInterface<ITakeDamageble>();
+            _pointHit = localProvider.GetService<PointHitDamageListener>();
 
             _eventDispatcher.OnReceiveEvent += ReceiveEvent;
             _disposable = _damageble.HitPoints.Where(hp => hp <= 0).Subscribe(DyingAnimation);
@@ -37,7 +41,18 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
         private void DyingAnimation(float _)
         {
-            _animator.SetTrigger("Dying");
+            Vector3 hitPointPosition = _pointHit.GetLastHitPointPosition;
+            bool isDyingForward = hitPointPosition.z > 0.6f;
+
+            if (isDyingForward)
+            {
+                _animator.SetTrigger("DyingForward");
+            }
+            else
+            {
+                _animator.SetTrigger("DyingBackward");
+            }
+
         }
 
         private void OnDestroy()

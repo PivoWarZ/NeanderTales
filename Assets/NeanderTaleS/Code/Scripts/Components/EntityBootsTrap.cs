@@ -3,6 +3,7 @@ using System.Threading;
 using NeanderTaleS.Code.Scripts.Animation;
 using NeanderTaleS.Code.Scripts.Animation.EnemyAnimation;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
 using NeanderTaleS.Code.Scripts.Skills.Installers;
 using NeanderTaleS.Code.Scripts.WeaponComponents;

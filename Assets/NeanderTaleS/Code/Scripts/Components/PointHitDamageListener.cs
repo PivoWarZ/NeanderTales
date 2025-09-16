@@ -1,15 +1,19 @@
+using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.WeaponInterfaces;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.WeaponComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components
 {
-    public class PointDamageListener: MonoBehaviour
+    public class PointHitDamageListener: MonoBehaviour
     {
+        public event Action<Vector3> OnHitPointLocation;
+        
         [SerializeField] private OnCollisionComponent _onCollision;
-        private Vector3 _hitPoint;
+        private Vector3 _hitPointPosition;
 
-        public Vector3 WeaponHitPoint => _hitPoint;
+        public Vector3 GetLastHitPointPosition => _hitPointPosition;
 
         private void Awake()
         {
@@ -23,8 +27,9 @@ namespace NeanderTaleS.Code.Scripts.Components
 
             if (isWeapon != null && other.contacts.Length > 0)
             {
-                _hitPoint = other.contacts[0].point;
-                Debug.Log(_hitPoint);
+                _hitPointPosition = other.contacts[0].point;
+                OnHitPointLocation?.Invoke(_hitPointPosition);
+                Debug.Log(_hitPointPosition);
             }
         }
 

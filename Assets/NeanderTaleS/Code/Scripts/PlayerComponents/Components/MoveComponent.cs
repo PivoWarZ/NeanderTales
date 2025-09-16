@@ -1,7 +1,7 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
-using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using R3;
 using UnityEngine;
 

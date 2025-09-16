@@ -1,6 +1,6 @@
 using System;
 
-namespace NeanderTaleS.Code.Scripts.Animation.Interfaces
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces
 {
     public interface IHitAnimationListener
     {

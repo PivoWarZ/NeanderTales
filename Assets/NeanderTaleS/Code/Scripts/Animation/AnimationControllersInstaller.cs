@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 
 namespace NeanderTaleS.Code.Scripts.Animation

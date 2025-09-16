@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces
 {
     public interface IDyingAnimation
     {

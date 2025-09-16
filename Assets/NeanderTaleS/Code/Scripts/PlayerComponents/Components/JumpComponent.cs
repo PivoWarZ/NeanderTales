@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
-using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

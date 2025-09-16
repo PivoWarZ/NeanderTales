@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using R3;
 using UnityEngine;
 

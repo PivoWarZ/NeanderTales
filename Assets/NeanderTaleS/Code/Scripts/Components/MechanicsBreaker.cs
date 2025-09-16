@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.EnemiesComponents.Interfaces;
-using NeanderTaleS.Code.Scripts.PlayerComponents.Interfaces;
 
 namespace NeanderTaleS.Code.Scripts.Components
 {

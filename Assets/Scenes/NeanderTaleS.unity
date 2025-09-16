@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e649399253a40128e8012e2de96afed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 10
   _onCollision: {fileID: 899810657}
 --- !u!54 &423126095
 Rigidbody:
@@ -1067,10 +1067,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5995859075392740509, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _attackDistance
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 7459229977868427391, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 118177245}
+    - target: {fileID: 8748836860598527867, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
