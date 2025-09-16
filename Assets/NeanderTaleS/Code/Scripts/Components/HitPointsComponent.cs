@@ -37,8 +37,6 @@ namespace NeanderTaleS.Code.Scripts.Components
             OnTakeDamageAction?.Invoke(damage);
             
             _hitPoints.Value -= damage;
-            
-            Debug.Log($"Hit: {_hitPoints.Value}");
         }
 
         public void TakeDamageEvent()

@@ -910,9 +910,21 @@ PrefabInstance:
       propertyPath: _scale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1983874897413343440, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _activateDistance
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2367183625625251103, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: _jumpForce
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367183625625251103, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _jumpVector.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367183625625251103, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _jumpVector.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: m_Name
@@ -992,7 +1004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8612528592944524376, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: _moveSpeed
-      value: 50
+      value: 46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1017,7 +1029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3953000827751131406, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: _damage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9080620902476989801, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_LocalPosition.x

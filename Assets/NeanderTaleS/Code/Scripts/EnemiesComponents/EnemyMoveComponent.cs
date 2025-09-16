@@ -47,7 +47,6 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public void Move(Vector3 direction)
         {
             _rb.AddForce(direction.normalized * _moveSpeed, ForceMode.Acceleration);
-            Debug.Log(_rb.linearVelocity);
         }
         
         public void AddCondition(Func<bool> condition)
