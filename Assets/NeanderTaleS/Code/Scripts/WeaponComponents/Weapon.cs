@@ -13,6 +13,7 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
     {
         [SerializeField] private float _damage;
         [SerializeField] OnCollisionComponent _onCollision;
+        [SerializeField] Collider _collider;
         private List<ITakeDamageble> _hitPointsCpmponents = new ();
         private DealDamageComponent _damageComponent;
         private IAttackable _attackable;
@@ -34,13 +35,13 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
 
         private void DisabledWeaponCollider()
         {
-            _onCollision.gameObject.SetActive(false);
+            _collider.enabled = false;
         }
 
         private void PrepareToAttack()
         {
             _hitPointsCpmponents.Clear();
-            _onCollision.gameObject.SetActive(true);
+            _collider.enabled = true;
         }
 
         private void OnCollisionEnter(Collision other)

@@ -25,12 +25,10 @@ namespace NeanderTaleS.Code.Scripts.Components
         private void HitPoint(float obj)
         {
             OnHitPoint?.Invoke(_hitPointPosition);
-            Debug.Log(_hitPointPosition);
         }
 
         private void OnEnterCollision(Collision other)
         {
-            Debug.Log(other.collider.name);
             var isWeapon = other.collider.gameObject.GetComponentInParent<IWeapon>();
 
             if (isWeapon != null && other.contacts.Length > 0)

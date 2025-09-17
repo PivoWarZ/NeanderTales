@@ -40,7 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5818181735743057975}
-  m_Layer: 6
+  - component: {fileID: 3525649656801692557}
+  m_Layer: 10
   m_Name: bitepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +64,21 @@ Transform:
   - {fileID: 8880558165225693953}
   m_Father: {fileID: 6493757484198341086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3525649656801692557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124336053303980281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e649399253a40128e8012e2de96afed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _onCollision: {fileID: 819541227557244043}
+  _collider: {fileID: 1004498819814907405}
 --- !u!1 &158010843670620140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,8 +1282,7 @@ GameObject:
   - component: {fileID: 2830892887845050736}
   - component: {fileID: 4232918626648511917}
   - component: {fileID: 1004498819814907405}
-  - component: {fileID: 928701737442540739}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: bite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1283,8 +1298,8 @@ Transform:
   m_GameObject: {fileID: 2414898185325117227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1, z: 1.445}
-  m_LocalScale: {x: 0.63189006, y: 0.63189006, z: 0.63189006}
+  m_LocalPosition: {x: -0, y: 0.9768, z: 1.5647}
+  m_LocalScale: {x: 0.049675193, y: 0.049675193, z: 0.049675193}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5818181735743057975}
@@ -1357,24 +1372,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &928701737442540739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2414898185325117227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b2f4bcd7d04ae984e2b74aba1b4f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2655307957745640121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1412,7 @@ GameObject:
   - component: {fileID: 1456651634301549235}
   - component: {fileID: 8530462013662292724}
   - component: {fileID: 6262279093128388059}
+  - component: {fileID: 5485445614536379380}
   m_Layer: 6
   m_Name: VelociraptorEnemy
   m_TagString: Untagged
@@ -1426,8 +1430,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4814103987790947346}
   - {fileID: 3706111023399273531}
@@ -1441,7 +1445,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2655307957745640121}
   serializedVersion: 4
-  m_Mass: 40
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1513,7 +1517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
-  _moveSpeed: 6
+  _moveSpeed: 46
   _rb: {fileID: 8213584142907808064}
 --- !u!114 &1187640761943971885
 MonoBehaviour:
@@ -1541,7 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0934ed65dd469d8b549abc7d09539f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 1.9
+  _attackDistance: 2.3
   _distanceComponent: {fileID: 1187640761943971885}
 --- !u!114 &7759915106446561640
 MonoBehaviour:
@@ -1627,9 +1631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36413dd39ed44a58cdfb02d07f0a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpVector: {x: 0, y: 3, z: 3.5}
+  _jumpVector: {x: 0, y: 2.5, z: 5}
   _rigidbody: {fileID: 8213584142907808064}
-  _jumpForce: 60
+  _jumpForce: 150
   _canJump: 1
   _groundLayer:
     serializedVersion: 2
@@ -1649,7 +1653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _distanceComponent: {fileID: 1187640761943971885}
   _jumpComponent: {fileID: 2367183625625251103}
-  _activateDistance: 5
+  _activateDistance: 6
   _jumpDistance: 3.5
   _recoveringAfterJump: 50
   _isLeapReady: 0
@@ -1804,6 +1808,18 @@ MonoBehaviour:
   _rightHand: {fileID: 4441800019940241208}
   _leftFoot: {fileID: 7439084537048250991}
   _rightFoot: {fileID: 2984135022010572202}
+--- !u!114 &5485445614536379380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68a5c063ad649cba311c388ab1d7ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2656487090741591563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,6 +3380,7 @@ MonoBehaviour:
   _listener: {fileID: 7482177765962371168, guid: cf4c57dff93080941859c2a023568190, type: 3}
   _root: {fileID: 6262279093128388059}
   _stepFX: {fileID: 4300518885274081642}
+  _scale: 1
 --- !u!114 &4300518885274081642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3377,7 +3394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: {fileID: 198006683868144142, guid: 2397083e876e5b1408fcc1333f50c082, type: 3}
-  _scale: 1.5
+  _scale: 3
   _offsetY: 0
 --- !u!1 &5558348016481547831
 GameObject:

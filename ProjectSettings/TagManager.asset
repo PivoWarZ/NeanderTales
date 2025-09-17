@@ -16,8 +16,8 @@ TagManager:
   - Enemy
   - Player
   - Steps
-  - 
-  - 
+  - PlayerWeapon
+  - EnemyWeapon
   - 
   - 
   - 
