@@ -93,6 +93,8 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             while (!IsTargetRotation(targetRotation) && cycleCount < looping && !cancell.IsCancellationRequested)
             {
                 await UniTask.WaitForFixedUpdate();
+                
+                _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
                 cycleCount++;
 
                 if (cycleCount == looping)

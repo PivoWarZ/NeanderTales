@@ -14,16 +14,22 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
         [SerializeField] private float _damage;
         [SerializeField] OnCollisionComponent _onCollision;
         [SerializeField] Collider _collider;
+        [SerializeField] private bool _isTrigger;
         private List<ITakeDamageble> _hitPointsCpmponents = new ();
         private DealDamageComponent _damageComponent;
         private IAttackable _attackable;
 
         private void Awake()
         {
+            if (_isTrigger)
+            {
+                _onCollision.OnEnterTrigger += OnTriggerEnter;
+            }
+
             _onCollision.OnEnterCollision += OnCollisionEnter;
             DisabledWeaponCollider();
         }
-
+        
         public void Init(DealDamageComponent damageComponent, IAttackable attackable)
         {
             _damageComponent = damageComponent;
@@ -50,14 +56,30 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
 
             if (isDamageble)
             {
-                if (IsComponentDamaged(hitPointsComponent))
-                {
-                    return;
-                }
-
-                _damageComponent.DealDamage(hitPointsComponent, _damage);
-                _hitPointsCpmponents.Add(hitPointsComponent);
+                TryDealDamage(hitPointsComponent);
             }
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
+            
+            if (isDamageble)
+            {
+                TryDealDamage(hitPointsComponent);
+            }
+        }
+
+
+        private void TryDealDamage(ITakeDamageble hitPointsComponent)
+        {
+            if (IsComponentDamaged(hitPointsComponent))
+            {
+                return;
+            }
+
+            _damageComponent.DealDamage(hitPointsComponent, _damage);
+            _hitPointsCpmponents.Add(hitPointsComponent);
         }
 
         private bool IsComponentDamaged(ITakeDamageble component)
