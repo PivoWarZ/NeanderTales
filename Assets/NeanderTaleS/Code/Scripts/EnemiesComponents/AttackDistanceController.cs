@@ -4,7 +4,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
     public class AttackDistanceController: MonoBehaviour
     {
-        [SerializeField] private AttackDistanceComponent _attackDistanceComponent;
+        /*[SerializeField] private AttackDistanceComponent _attackDistanceComponent;
         [SerializeField] private EnemyAttackComponent _enemyAttackComponent;
         [SerializeField] private EnemyMoveComponent _enemyMoveComponent;
 
@@ -17,6 +17,6 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         private bool IsAttackDistance()
         {
             return _attackDistanceComponent.IsAttackDistance;
-        }
+        }*/
     }
 }

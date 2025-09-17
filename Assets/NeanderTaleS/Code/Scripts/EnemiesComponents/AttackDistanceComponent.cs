@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class AttackDistanceComponent: MonoBehaviour, ITargetInitComponent
+    public class AttackDistanceComponent: MonoBehaviour, ITargetInitComponent, IAttackDistance
     {
         public bool IsAttackDistance { get; private set; }
         

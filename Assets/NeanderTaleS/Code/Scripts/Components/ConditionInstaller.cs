@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 using Zenject;
@@ -9,7 +11,11 @@ namespace NeanderTaleS.Code.Scripts.Components
     public class ConditionInstaller: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
+        [SerializeField] private bool _isHitPointsEmpty;
+        [SerializeField] private bool _isAttackDistance;
         private ITakeDamageble _hitPointsComponent;
+        private IAttackable _attackComponent;
+        private IMovable _movableComponent;
 
         private void Start()
         {
@@ -21,10 +27,67 @@ namespace NeanderTaleS.Code.Scripts.Components
             _hitPointsComponent = localProvider.GetComponent<ITakeDamageble>();
 
             AddHitPointsEmptyCondition();
+            AddAttackDistanceCondition();
+        }
+
+        private void AddAttackDistanceCondition()
+        {
+            if (!_isAttackDistance)
+            {
+                return;
+            }
+
+            bool isRangeEntity = _localProvider.TryGetInterface<IAttackDistance>(out var attackDistance);
+
+            if (!isRangeEntity)
+            {
+                Debug.Log("<color=yellow>IAttackDistance not found. Condition not added.</color>");
+                return;
+            }
+
+            bool movable = _localProvider.TryGetInterface<IMovable>(out var moveComponent);
+
+            if (!movable)
+            {
+                Debug.Log("<color=yellow>IMovable not found. Condition not added.</color>");
+                return;
+            }
+
+            if (moveComponent is IConditionComponent condition)
+            {
+                condition.AddCondition(() => !attackDistance.IsAttackDistance);
+            }
+            else
+            {
+                Debug.Log("<color=yellow>IMovable is not IConditionComponent not found. Condition not added.</color>");
+            }
+            
+            bool attackable = _localProvider.TryGetInterface<IAttackable>(out var attackComponent);
+
+            if (!attackable)
+            {
+                Debug.Log("<color=yellow>IRotatable not found. Condition not added.</color>");
+                return;
+            }
+
+            if (attackComponent is IConditionComponent conditionComponent)
+            {
+                conditionComponent.AddCondition(() => attackDistance.IsAttackDistance);
+            }
+            else
+            {
+                Debug.Log("<color=yellow>IRotatable is not IConditionComponent not found. Condition not added.</color>");
+            }
+
         }
 
         private void AddHitPointsEmptyCondition()
         {
+            if (!_isHitPointsEmpty)
+            {
+                return;
+            }
+
             List<IConditionComponent> components = _localProvider.GetInterfaces<IConditionComponent>();
 
             for (var index = 0; index < components.Count; index++)

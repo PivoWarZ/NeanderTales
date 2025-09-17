@@ -13,25 +13,33 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private EnemyAttackComponent _attackComponent;
         private Animator _animator;
         private AnimationEventDispatcher _event;
-        private bool isBite;
+        private ITakeDamageble _hitPointsComponent;
+        private bool _isBite;
         public void Init(LocalProvider localProvider)
         {
             _attackComponent = localProvider.GetService<EnemyAttackComponent>();
+            _hitPointsComponent = localProvider.GetInterface<ITakeDamageble>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
             
-            AddCondition<IRotatable>(localProvider, () => !isBite);
-            AddCondition<IMovable>(localProvider, () => !isBite);
+            AddCondition<IRotatable>(localProvider, () => !_isBite);
+            AddCondition<IMovable>(localProvider, () => !_isBite);
 
             _attackComponent.OnAttackAction += Attack;
             _event.OnReceiveEvent += ReceiveEvent;
+            _hitPointsComponent.OnTakeDamageEvent += IsBite;
         }
-        
+
+        private void IsBite()
+        {
+            _isBite = false;
+        }
+
         private void ReceiveEvent(string eventName)
         {
             if (eventName == "BiteStarted")
             {
-                isBite = true;
+                _isBite = true;
             }
 
             if (eventName == "Bite")
@@ -40,7 +48,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
             if (eventName == "BiteAnimationComplete")
             {
-                isBite = false;
+                _isBite = false;
                 _attackComponent.AttackEVent();
             }
         }
