@@ -1,13 +1,12 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyAttackComponent: MonoBehaviour, IAttackable, IBreakable, IConditionComponent
+    public class EnemyAttackComponent: MonoBehaviour, IAttackable, IConditionComponent
     {
         public event Action OnAttackRequest;
         public event Action OnAttackAction;
@@ -51,15 +50,10 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         {
             _condition.RemoveCondition(condition);
         }
-
-        void IBreakable.EnabledMechanic()
+        
+        public CompositeCondition GetCompositeCondition()
         {
-            _canAttack = true;
-        }
-
-        void IBreakable.DisablingMechanic()
-        {
-            _canAttack = false;
+            return _condition;
         }
     }
 }

@@ -1,14 +1,12 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IBreakable, IConditionComponent, IRotatable
+    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IConditionComponent, IRotatable
     {
         [SerializeField] Transform _rotateTransform;
         [SerializeField] float _rotateSpeed;
@@ -56,20 +54,15 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         {
             _condition.AddCondition(condition);
         }
+        
+        public CompositeCondition GetCompositeCondition()
+        {
+            return _condition;
+        }
 
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
-        }
-
-        void IBreakable.EnabledMechanic()
-        {
-            _canRotate = true;
-        }
-
-        void IBreakable.DisablingMechanic()
-        {
-            _canRotate = false;
         }
     }
 }

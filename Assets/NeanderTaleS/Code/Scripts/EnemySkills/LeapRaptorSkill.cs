@@ -1,8 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
@@ -11,17 +10,18 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemySkills
 {
-    public class LeapRaptorSkill: MonoBehaviour, IBreakMechanics
+    public class LeapRaptorSkill: MonoBehaviour
     {
         public event Action OnLeapAttack;
         
         [SerializeField] private DistanceToTargetComponent _distanceComponent;
         [SerializeField] private JumpComponent _jumpComponent;
+        [SerializeField] private ConditionInstaller _conditionInstaller;
         [SerializeField] private float _activateDistance;
         [SerializeField] private float _jumpDistance;
         [SerializeField] private float _recoveringAfterJump = 30;
         [SerializeField] private bool _isLeapReady;
-        private MechanicsBreaker _breaker;
+        private bool _isLeaping;
         private CancellationTokenSource _cancell = new ();
         private IDisposable _dispose;
         
@@ -30,24 +30,28 @@ namespace NeanderTaleS.Code.Scripts.EnemySkills
         {
             SubscribeActivating();
             _jumpComponent.OnJumpEvent += JumpEvent;
-            _jumpComponent.OnJumpAction += BreakCoreMechanics;
-        }
-        
-        void IBreakMechanics.SetMechanicsBreaker(MechanicsBreaker breaker)
-        {
-            _breaker = breaker;
+            _jumpComponent.OnJumpAction += Leaping;
+            
+            _conditionInstaller.AddCondition<IMovable>(LeapingOver);
+            _conditionInstaller.AddCondition<IRotatable>(LeapingOver);
+            _conditionInstaller.AddCondition<IAttackable>(LeapingOver);
         }
 
-        private void BreakCoreMechanics()
+        private bool LeapingOver()
         {
-            _breaker.BanCoreMechanics();
+            return !_isLeaping;
+        }
+
+        private void Leaping()
+        {
+            _isLeaping = true;
         }
 
         private void JumpEvent()
         {
             SubscribeActivating();
             Recovering(_cancell).Forget();
-            _breaker.EnabledCoreMechanics();
+            _isLeaping = false;
         }
 
         private async UniTaskVoid Recovering(CancellationTokenSource cancell)

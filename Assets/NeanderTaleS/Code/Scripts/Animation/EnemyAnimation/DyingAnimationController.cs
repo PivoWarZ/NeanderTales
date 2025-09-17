@@ -1,6 +1,5 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using R3;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         public event Action<Vector3> OnDyingAnimationComplete;
         
         private Animator _animator;
-        private IMechanicsBreaker _breaker;
         private AnimationEventDispatcher _eventDispatcher;
         private ITakeDamageble _damageble;
         private PointHitDamageListener _pointHit;
@@ -21,7 +19,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         public void Init(LocalProvider localProvider)
         {
             _animator = localProvider.Animator;
-            _breaker = localProvider.GetInterface<IMechanicsBreaker>();
             _eventDispatcher = localProvider.GetService<AnimationEventDispatcher>();
             _damageble = localProvider.GetInterface<ITakeDamageble>();
             _pointHit = localProvider.GetService<PointHitDamageListener>();

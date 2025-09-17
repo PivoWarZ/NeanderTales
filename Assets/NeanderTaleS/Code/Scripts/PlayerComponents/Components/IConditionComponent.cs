@@ -1,4 +1,5 @@
 using System;
+using NeanderTaleS.Code.Scripts.Condition;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
@@ -6,5 +7,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
     {
         void AddCondition(Func<bool> condition);
         void RemoveCondition(Func<bool> condition);
+        
+        CompositeCondition GetCompositeCondition();
     }
 }

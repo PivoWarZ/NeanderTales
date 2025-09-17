@@ -1,9 +1,7 @@
-using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
-using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
@@ -14,25 +12,28 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private ITakeDamageble _hitPointsComponent;
-        private bool _isBite;
+        private bool _isBite = false;
+
+
         public void Init(LocalProvider localProvider)
         {
             _attackComponent = localProvider.GetService<EnemyAttackComponent>();
             _hitPointsComponent = localProvider.GetInterface<ITakeDamageble>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
-            
-            AddCondition<IRotatable>(localProvider, () => !_isBite);
-            AddCondition<IMovable>(localProvider, () => !_isBite);
+
+            var conDitionInstaller = localProvider.GetService<ConditionInstaller>();
+            conDitionInstaller.AddCondition<IRotatable>(IsBiteOver);
+            conDitionInstaller.AddCondition<IMovable>(IsBiteOver);
 
             _attackComponent.OnAttackAction += Attack;
             _event.OnReceiveEvent += ReceiveEvent;
-            _hitPointsComponent.OnTakeDamageEvent += IsBite;
+            _hitPointsComponent.OnTakeDamageEvent += Reset;
         }
-
-        private void IsBite()
+        
+        private bool IsBiteOver()
         {
-            _isBite = false;
+            return !_isBite;
         }
 
         private void ReceiveEvent(string eventName)
@@ -57,25 +58,18 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         {
             _animator.SetTrigger("Attack");
         }
-        
-        private void AddCondition<T>(LocalProvider localProvider, Func<bool> condition) where T : class
+
+        private void Reset()
         {
-            var conditionComponent = localProvider.TryGetInterface<IRotatable>(out var rotatable);
-
-            if (conditionComponent)
-            {
-                if (rotatable is IConditionComponent component)
-                {
-                    component.AddCondition(condition);
-                }
-            }
+            _isBite = false;
+            Debug.Log($"IS Bite {_isBite}");
         }
-
-
+        
         private void OnDestroy()
         {
             _attackComponent.OnAttackAction -= Attack;
             _event.OnReceiveEvent -= ReceiveEvent;
+            _hitPointsComponent.OnTakeDamageEvent -= Reset;
         }
     }
 }

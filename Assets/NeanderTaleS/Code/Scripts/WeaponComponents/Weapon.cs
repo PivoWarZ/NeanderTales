@@ -3,7 +3,6 @@ using System.Linq;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.WeaponInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
-using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using UnityEngine;
 using DealDamageComponent = NeanderTaleS.Code.Scripts.Components.DealDamageComponent;
 
@@ -12,7 +11,7 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
     public class Weapon: MonoBehaviour, IWeapon
     {
         [SerializeField] private float _damage;
-        [SerializeField] OnCollisionComponent _onCollision;
+        //[SerializeField] OnCollisionComponent _onCollision;
         [SerializeField] Collider _collider;
         [SerializeField] private bool _isTrigger;
         private List<ITakeDamageble> _hitPointsCpmponents = new ();
@@ -23,10 +22,13 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
         {
             if (_isTrigger)
             {
-                _onCollision.OnEnterTrigger += OnTriggerEnter;
+               // _onCollision.OnEnterTrigger += EnterTrigger;
+                _collider.isTrigger = true;
             }
+            
+            _collider.enabled = false;
 
-            _onCollision.OnEnterCollision += OnCollisionEnter;
+           // _onCollision.OnEnterCollision += EnterCollision;
             DisabledWeaponCollider();
         }
         
@@ -53,6 +55,7 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
         private void OnCollisionEnter(Collision other)
         {
             bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
+            Debug.Log($"{gameObject.name} OnCollisionEnter: {other.gameObject.name}");
 
             if (isDamageble)
             {
@@ -62,6 +65,11 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
         
         private void OnTriggerEnter(Collider other)
         {
+            if (!_isTrigger)
+            {
+                return;
+            }
+
             bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
             
             if (isDamageble)
@@ -96,7 +104,8 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
         {
             _attackable.OnAttackAction -= PrepareToAttack;
             _attackable.OnAttackEvent -= DisabledWeaponCollider;
-            _onCollision.OnEnterCollision -= OnCollisionEnter;
+          //  _onCollision.OnEnterCollision -= EnterCollision;
+           // _onCollision.OnEnterTrigger -= EnterTrigger;
         }
     }
 }

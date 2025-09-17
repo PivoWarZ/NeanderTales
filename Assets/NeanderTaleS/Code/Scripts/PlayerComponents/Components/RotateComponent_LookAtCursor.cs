@@ -2,13 +2,12 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IBreakable, IConditionComponent, IRotateAsync
+    public class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IConditionComponent, IRotateAsync
     {
         public event Action<bool> OnRotate;
         public event Action OnRotateComplete;
@@ -123,14 +122,9 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _condition.RemoveCondition(condition);
         }
 
-        void IBreakable.EnabledMechanic()
+        public CompositeCondition GetCompositeCondition()
         {
-            _canRotate = true;
-        }
-
-        void IBreakable.DisablingMechanic()
-        {
-            _canRotate = false;
+            return _condition;
         }
     }
 }

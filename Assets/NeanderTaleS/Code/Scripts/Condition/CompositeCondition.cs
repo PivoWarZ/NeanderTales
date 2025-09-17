@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Condition
 {
@@ -28,6 +29,14 @@ namespace NeanderTaleS.Code.Scripts.Condition
             }
             
             return true;
+        }
+
+        public void Print()
+        {
+            foreach (var compositeCondition in _compositeConditions)
+            {
+                Debug.Log($"<color=yellow>{compositeCondition.Method} => {compositeCondition.Invoke()}</color>");
+            }
         }
     }
 }

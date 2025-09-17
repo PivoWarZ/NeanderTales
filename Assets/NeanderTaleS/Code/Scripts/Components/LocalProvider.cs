@@ -7,8 +7,6 @@ namespace NeanderTaleS.Code.Scripts.Components
 {
     public class LocalProvider: MonoBehaviour
     {
-        public MechanicsBreaker MechanicsBreaker;
-        
         private List<MonoBehaviour> _components;
         private Animator _animator;
         private Rigidbody _rigidbody;

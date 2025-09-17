@@ -1,40 +1,46 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
+using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class AttackDistanceComponent: MonoBehaviour, ITargetInitComponent, IAttackDistance
+    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance
     {
-        public bool IsAttackDistance { get; private set; }
         
         [SerializeField] private float _attackDistance;
         [SerializeField] private DistanceToTargetComponent _distanceComponent;
+        [SerializeField] public bool _isAttackDistance;
         private float _targetDistance;
-        private Transform _target;
-
-        private void Update()
-        {
-            if (_target == null)
-            {
-                return;
-            }
-            
-            _targetDistance = _distanceComponent.TargetDistance.CurrentValue;
-
-            if (_targetDistance <= _attackDistance)
-            {
-                IsAttackDistance = true;
-            }
-            else
-            {
-                IsAttackDistance = false;
-            }
-        }
+        private IDisposable _dispose;
         
-        public void SetTarget(GameObject target)
+
+        public bool IsAttackDistance => _isAttackDistance;
+        
+        private void Awake()
         {
-            _target = target.transform;
+            _dispose = _distanceComponent.TargetDistance.Where(distance => distance <= _attackDistance).Subscribe(IsDistanceAttack);
+        }
+
+        private void IsDistanceAttack(float distance)
+        {
+            _dispose?.Dispose();
+            _dispose = _distanceComponent.TargetDistance.Where(distance => distance > _attackDistance).Subscribe(IsDistanceMoving);
+            
+            _isAttackDistance = true;
+        }
+
+        private void IsDistanceMoving(float distance)
+        {
+            _dispose?.Dispose();
+            _dispose = _distanceComponent.TargetDistance.Where(distance => distance <= _attackDistance).Subscribe(IsDistanceAttack);
+            
+            _isAttackDistance = false;
+        }
+
+        private void OnDestroy()
+        {
+            _dispose?.Dispose();
         }
     }
 }

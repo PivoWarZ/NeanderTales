@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
-
 namespace NeanderTaleS.Code.Scripts.Components
 {
-    public class MechanicsBreaker
+    /*public class MechanicsBreaker
     {
         private List<IBreakable> _breakables = new ();
 
@@ -74,5 +70,5 @@ namespace NeanderTaleS.Code.Scripts.Components
                 }
             }
         }
-    }
+    }*/
 }

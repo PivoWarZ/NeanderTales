@@ -79,6 +79,7 @@ MonoBehaviour:
   _damage: 1
   _onCollision: {fileID: 819541227557244043}
   _collider: {fileID: 1004498819814907405}
+  _isTrigger: 1
 --- !u!1 &158010843670620140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1395,6 @@ GameObject:
   - component: {fileID: 8612528592944524376}
   - component: {fileID: 1187640761943971885}
   - component: {fileID: 5995859075392740509}
-  - component: {fileID: 7759915106446561640}
   - component: {fileID: 1239900918464321311}
   - component: {fileID: 3550457154440446407}
   - component: {fileID: 4817985915276944495}
@@ -1445,7 +1445,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2655307957745640121}
   serializedVersion: 4
-  m_Mass: 120
+  m_Mass: 12
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateTransform: {fileID: 3377864916881948251}
   _rotateSpeed: 10
+  _canRotate: 1
 --- !u!114 &8612528592944524376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1517,8 +1518,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
-  _moveSpeed: 46
+  _moveSpeed: 7
   _rb: {fileID: 8213584142907808064}
+  _isMoving:
+    value: 0
 --- !u!114 &1187640761943971885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,23 +1548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0934ed65dd469d8b549abc7d09539f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 2.3
+  _attackDistance: 2.9
   _distanceComponent: {fileID: 1187640761943971885}
---- !u!114 &7759915106446561640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655307957745640121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2462df16d5cc42808d0da90fad0789ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackDistanceComponent: {fileID: 5995859075392740509}
-  _enemyAttackComponent: {fileID: 1239900918464321311}
-  _enemyMoveComponent: {fileID: 8612528592944524376}
 --- !u!114 &1239900918464321311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,9 +1619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36413dd39ed44a58cdfb02d07f0a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpVector: {x: 0, y: 2.5, z: 5}
+  _jumpVector: {x: 0, y: 2.5, z: 2.5}
   _rigidbody: {fileID: 8213584142907808064}
-  _jumpForce: 150
+  _jumpForce: 20
   _canJump: 1
   _groundLayer:
     serializedVersion: 2
@@ -1683,7 +1671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leapRaptorSkill: {fileID: 1983874897413343440}
   _collision: {fileID: 819541227557244043}
-  _pushPower: 150
+  _pushPower: 250
 --- !u!114 &5016542898823372062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,6 +1779,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localProvider: {fileID: 5016542898823372062}
+  _isHitPointsEmpty: 1
+  _isAttackDistance: 1
 --- !u!114 &6262279093128388059
 MonoBehaviour:
   m_ObjectHideFlags: 0

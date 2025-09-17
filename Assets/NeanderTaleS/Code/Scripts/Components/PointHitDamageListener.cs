@@ -1,7 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.WeaponInterfaces;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
-using NeanderTaleS.Code.Scripts.WeaponComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Components

@@ -26,6 +26,8 @@ namespace NeanderTaleS.Code.Scripts.Components
             
             hitPointsComponent.TakeDamage(damage);
             
+            hitPointsComponent.TakeDamageEvent();
+            
             OnDealDamageEvent?.Invoke();
         }
     }

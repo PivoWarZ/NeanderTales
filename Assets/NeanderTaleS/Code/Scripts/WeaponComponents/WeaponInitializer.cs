@@ -1,6 +1,5 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
-using UnityEngine;
 
 
 namespace NeanderTaleS.Code.Scripts.WeaponComponents
@@ -13,7 +12,6 @@ namespace NeanderTaleS.Code.Scripts.WeaponComponents
 
             if (hasWeapon)
             {
-                Debug.Log($"Weapon => {weapon}");
                 DealDamageComponent dealDamage = localProvider.GetService<DealDamageComponent>();
                 IAttackable attackComponent = localProvider.GetInterface<IAttackable>();
                 weapon.Init(dealDamage, attackComponent);

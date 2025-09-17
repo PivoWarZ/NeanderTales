@@ -10,5 +10,6 @@ namespace NeanderTaleS.Code.Scripts.Components
         event Action OnTakeDamageEvent;
         ReadOnlyReactiveProperty<float> HitPoints { get; }
         void TakeDamage(float damage);
+        void TakeDamageEvent();
     }
 }

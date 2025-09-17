@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using NeanderTaleS.Code.Scripts.Components;
 using UnityEngine;
 
@@ -9,21 +10,25 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         private ITakeDamageble _damageble;
         private Animator _animator;
         private AnimationEventDispatcher _event;
-        private MechanicsBreaker _mechanicsBreaker;
         private float _startHitPoints;
         private float _lowDamage;
         private float _mediumDamage;
         private const float LOW_DAMAGE_THREASHOLD = 0.2f;
         private const float MEDIUM_DAMAGE_THREASHOLD = 0.5f;
-        private bool _isStrongDamage = false;
+        private bool _isStrongDamage;
         
         public void Init(LocalProvider localProvider)
         {
             _damageble = localProvider.GetInterface<ITakeDamageble>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
-            _mechanicsBreaker = localProvider.MechanicsBreaker;
-
+            
+            var conDitionInstaller = localProvider.GetService<ConditionInstaller>();
+            Debug.Log($"Condition Installer => {localProvider.GetService<ConditionInstaller>()}");
+            conDitionInstaller.AddCondition<IRotatable>(IsNormalDamage);
+            conDitionInstaller.AddCondition<IMovable>(IsNormalDamage);
+            conDitionInstaller.AddCondition<IAttackable>(IsNormalDamage);
+            
             _damageble.OnTakeDamageAction += TakeDamage;
             _event.OnReceiveEvent += ReceiveEvent;
             
@@ -32,12 +37,16 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
         }
 
+        private bool IsNormalDamage()
+        {
+            return !_isStrongDamage;
+        }
+
         private void ReceiveEvent(string eventName)
         {
             if (eventName == "StrongDamageAnimationComplete")
             {
                 _isStrongDamage = false;
-                _mechanicsBreaker.EnabledCoreMechanics();
             }
         }
 
@@ -62,7 +71,6 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             }
             
             _animator.SetTrigger("StrongDamage");
-            _mechanicsBreaker.BanCoreMechanics();
             _isStrongDamage = true;
         }
 

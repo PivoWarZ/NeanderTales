@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using UnityEngine;
 

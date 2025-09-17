@@ -1,7 +1,5 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
@@ -9,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IBreakable, IConditionComponent
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent
     {
         public bool CanMove;
         
@@ -59,20 +57,15 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         {
             _condition.RemoveCondition(condition);
         }
+        
+        public CompositeCondition GetCompositeCondition()
+        {
+            return _condition;
+        }
 
         public void SetTarget(GameObject target)
         {
             _target = target.transform;
-        }
-
-        void IBreakable.EnabledMechanic()
-        {
-            CanMove = true;
-        }
-
-        void IBreakable.DisablingMechanic()
-        {
-            CanMove = false;
         }
     }
 }

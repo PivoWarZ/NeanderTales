@@ -1,4 +1,3 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
 using R3;
 using UnityEngine;
@@ -7,7 +6,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
     public class DistanceToTargetComponent: MonoBehaviour, ITargetInitComponent
     {
-        [SerializeField] private SerializableReactiveProperty<float> _targetDistance;
+        [SerializeField] private SerializableReactiveProperty<float> _targetDistance = new ();
         private Transform _target;
         
         public ReadOnlyReactiveProperty<float> TargetDistance => _targetDistance;

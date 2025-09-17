@@ -1,4 +1,3 @@
-using System;
 using NeanderTaleS.Code.Scripts.Effects.StepsFX;
 using UnityEngine;
 

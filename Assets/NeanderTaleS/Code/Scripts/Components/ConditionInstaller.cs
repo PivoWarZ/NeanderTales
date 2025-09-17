@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
-using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Components
 {
@@ -28,6 +26,19 @@ namespace NeanderTaleS.Code.Scripts.Components
 
             AddHitPointsEmptyCondition();
             AddAttackDistanceCondition();
+        }
+        
+        public void AddCondition<T>(Func<bool> condition) where T : class
+        {
+            var conditionComponent = _localProvider.TryGetInterface<T>(out var value);
+
+            if (conditionComponent)
+            {
+                if (value is IConditionComponent component)
+                {
+                    component.AddCondition(condition);
+                }
+            }
         }
 
         private void AddAttackDistanceCondition()
