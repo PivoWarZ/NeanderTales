@@ -1,5 +1,4 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.ServiceInterfaces;
 using NeanderTaleS.Code.Scripts.Components;

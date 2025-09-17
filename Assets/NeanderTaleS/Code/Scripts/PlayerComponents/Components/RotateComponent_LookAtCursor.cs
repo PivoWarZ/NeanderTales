@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IBreakable, IConditionComponent
+    public class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IBreakable, IConditionComponent, IRotateAsync
     {
         public event Action<bool> OnRotate;
         public event Action OnRotateComplete;
@@ -70,9 +70,20 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             OnRotate?.Invoke(isRightRotate);
         }
 
+        private Quaternion TargetRotation(Vector3 direction)
+        {
+            return Quaternion.LookRotation(direction, Vector3.up);
+        }
+
+        public void Rotate(Vector3 direction)
+        {
+            Quaternion targetRotation = TargetRotation(direction);
+            _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+        }
+
         public async UniTask<UniTask> RotateAsync(Vector3 direction, CancellationTokenSource cancell)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            Quaternion targetRotation = TargetRotation(direction);
             bool isRightRotate = direction.x > 0;
             int cycleCount = 0;
             int looping = 50;
@@ -82,7 +93,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             while (!IsTargetRotation(targetRotation) && cycleCount < looping && !cancell.IsCancellationRequested)
             {
                 await UniTask.WaitForFixedUpdate();
-                _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
                 cycleCount++;
 
                 if (cycleCount == looping)

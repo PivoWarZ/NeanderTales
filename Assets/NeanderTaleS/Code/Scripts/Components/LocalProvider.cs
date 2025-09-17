@@ -58,7 +58,14 @@ namespace NeanderTaleS.Code.Scripts.Components
 
             return null;
         }
-        
+
+        public bool TryGetInterface<T>(out T result) where T : class
+        {
+            result = GetInterface<T>();
+            
+            return result != null;
+        }
+
         public List<T> GetInterfaces<T>() where T : class
         {
             var list = new List<T>();

@@ -15,7 +15,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Rigidbody _rb;
-        ReactiveProperty<bool> _isMoving = new ();
+        [SerializeField] private SerializableReactiveProperty<bool> _isMoving = new ();
         private Transform _target;
         private CompositeCondition _condition = new();
         
@@ -38,15 +38,16 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
                 _isMoving.Value = false;
                 return;
             }
-            
+
             _isMoving.Value = true;
+
             var direction = _target.position - transform.position;
             Move(direction);
         }
         
         public void Move(Vector3 direction)
         {
-            _rb.AddForce(direction.normalized * _moveSpeed, ForceMode.Acceleration);
+            _rb.linearVelocity = direction.normalized * _moveSpeed;
         }
         
         public void AddCondition(Func<bool> condition)

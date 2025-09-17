@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 {
-    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, ICursorFollower, IBreakable, IConditionComponent
+    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IBreakable, IConditionComponent, IRotatable
     {
         [SerializeField] Transform _rotateTransform;
         [SerializeField] float _rotateSpeed;
@@ -37,7 +37,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             
             direction.y = 0;
             
-            SetRotateDirection(direction);
+            Rotate(direction);
         }
 
         public void SetTarget(GameObject target)
@@ -45,7 +45,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
             _target = target.transform;
         }
         
-        public void SetRotateDirection(Vector3 rotateDirection)
+        public void Rotate(Vector3 rotateDirection)
         {
             var targetRotation = Quaternion.LookRotation(rotateDirection, Vector3.up);
             
