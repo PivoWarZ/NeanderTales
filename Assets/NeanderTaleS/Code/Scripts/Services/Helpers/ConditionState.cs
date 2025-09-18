@@ -1,3 +1,4 @@
+using System;
 using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
@@ -17,9 +18,19 @@ namespace NeanderTaleS.Code.Scripts.Services.Helpers
 
             foreach (var conditionComponent in conditionComponents)
             {
-                Debug.Log($"<color=green>{conditionComponent.GetType()}</color> ==> {conditionComponent.GetCompositeCondition().IsTrue()}");
+                Debug.Log($"<color=green>{conditionComponent.GetType()}</color> ==> {PrintBoolean(conditionComponent.GetCompositeCondition().IsTrue)}");
                 conditionComponent.GetCompositeCondition().Print();
             }
+        }
+        
+        private string PrintBoolean(Func<bool> condition)
+        {
+            if (condition.Invoke())
+            {
+                return "<color=green>TRUE</color>";
+            }
+
+            return "<color=red>FALSE</color>";
         }
     }
 }

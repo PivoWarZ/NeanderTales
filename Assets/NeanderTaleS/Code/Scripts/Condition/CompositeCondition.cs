@@ -35,8 +35,17 @@ namespace NeanderTaleS.Code.Scripts.Condition
         {
             foreach (var compositeCondition in _compositeConditions)
             {
-                Debug.Log($"<color=yellow>{compositeCondition.Method} => {compositeCondition.Invoke()}</color>");
+                Debug.Log($"<color=yellow>{compositeCondition.Method}</color> => {PrintBoolean(compositeCondition)}");
             }
+        }
+        private string PrintBoolean(Func<bool> condition)
+        {
+            if (condition.Invoke())
+            {
+                return "<color=green>true</color>";
+            }
+
+            return "<color=red>false</color>";
         }
     }
 }
