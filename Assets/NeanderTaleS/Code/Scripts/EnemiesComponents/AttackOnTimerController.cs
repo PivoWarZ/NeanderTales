@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void AttackRequest()
         {
-            _timerComponent.IsAttackTime = false;
+            _timerComponent.IsAttackReady = false;
         }
 
         private void StartAttackTimer(GameObject target)

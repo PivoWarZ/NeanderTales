@@ -15,7 +15,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
                 return;
             }
 
-            if (!_timer.IsAttackTime)
+            if (!_timer.IsAttackReady)
             {
                 return;
             }

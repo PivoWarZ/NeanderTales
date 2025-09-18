@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
     {
         [SerializeField] private float _attackColdown = 2f;
         private Timer _attackTimer;
-        public bool IsAttackTime;
+        public bool IsAttackReady;
 
         private void Awake()
         {
@@ -25,7 +25,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
 
         private void AttackReady()
         {
-            IsAttackTime = true;
+            IsAttackReady = true;
         }
 
         public void StartAttackTimer()
@@ -46,7 +46,7 @@ namespace NeanderTaleS.Code.Scripts.EnemiesComponents
         public void StopAttackTimer()
         {
             _attackTimer.Stop();
-            IsAttackTime = false;
+            IsAttackReady = false;
         }
 
         private void OnDestroy()

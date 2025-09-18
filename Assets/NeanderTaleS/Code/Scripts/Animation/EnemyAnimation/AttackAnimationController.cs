@@ -28,7 +28,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
             _attackComponent.OnAttackAction += Attack;
             _event.OnReceiveEvent += ReceiveEvent;
-            _hitPointsComponent.OnTakeDamageEvent += Reset;
+            _hitPointsComponent.OnTakeDamageEvent += ReloadAttack;
         }
         
         private bool IsBiteOver()
@@ -59,9 +59,10 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _animator.SetTrigger("Attack");
         }
 
-        private void Reset()
+        private void ReloadAttack()
         {
             _isBite = false;
+            _attackComponent.AttackEVent();
             Debug.Log($"IS Bite {_isBite}");
         }
         
@@ -69,7 +70,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
         {
             _attackComponent.OnAttackAction -= Attack;
             _event.OnReceiveEvent -= ReceiveEvent;
-            _hitPointsComponent.OnTakeDamageEvent -= Reset;
+            _hitPointsComponent.OnTakeDamageEvent -= ReloadAttack;
         }
     }
 }

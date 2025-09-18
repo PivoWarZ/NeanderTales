@@ -353,6 +353,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &495919611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+  m_PrefabInstance: {fileID: 1426350409007809948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &603244348
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +560,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5016542898823372062, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
   m_PrefabInstance: {fileID: 1426350409007809948}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 495919611}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ae4d3b961d4834ad45671227bbb876, type: 3}
@@ -853,12 +858,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8530462013662292724, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
   m_PrefabInstance: {fileID: 1426350409007809948}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 495919611}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1636239254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495919611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fec217b29449938e85deca0a3dcb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pushing:
+    value: 0
 --- !u!1 &1747279678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1131,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1083579434}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1636239254}
     - targetCorrespondingSourceObject: {fileID: 124336053303980281, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 910970454}
