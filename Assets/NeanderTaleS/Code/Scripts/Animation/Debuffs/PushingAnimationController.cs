@@ -50,7 +50,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
                 _debuff.Pushing.Value = false;
                 _isPushing = false;
                 
-                _animator.SetBool("Pushing", _isPushing);
+                _animator.SetTrigger("Push");
             }
         }
 
@@ -62,8 +62,7 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
             _isPushing = true;
             _rotateComponent.RotateAsync(rotateDirection, _cancell).Forget();
             
-            _animator.SetBool("Pushing", _isPushing);
-            _animator.SetTrigger("Push");
+            _animator.SetBool("Push", _isPushing);
         }
 
         private void OnDestroy()

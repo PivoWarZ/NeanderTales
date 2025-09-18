@@ -3,13 +3,14 @@ using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
+namespace NeanderTaleS.Code.Scripts.Animation
 {
     public class TakeDamageAnimationController: MonoBehaviour, IAnimationController
     {
         private ITakeDamageble _damageble;
         private Animator _animator;
         private AnimationEventDispatcher _event;
+        private DebuffsComponent _debuffs;
         private float _startHitPoints;
         private float _lowDamage;
         private float _mediumDamage;
@@ -22,9 +23,9 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
             _damageble = localProvider.GetInterface<ITakeDamageble>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
+            _debuffs = localProvider.GetService<DebuffsComponent>();
             
             var conDitionInstaller = localProvider.GetService<ConditionInstaller>();
-            Debug.Log($"Condition Installer => {localProvider.GetService<ConditionInstaller>()}");
             conDitionInstaller.AddCondition<IRotatable>(IsNormalDamage);
             conDitionInstaller.AddCondition<IMovable>(IsNormalDamage);
             conDitionInstaller.AddCondition<IAttackable>(IsNormalDamage);
@@ -52,6 +53,11 @@ namespace NeanderTaleS.Code.Scripts.Animation.EnemyAnimation
 
         private void TakeDamage(float damage)
         {
+            if (_debuffs.IsStun())
+            {
+                return;
+            }
+
             if (_isStrongDamage)
             {
                 return;
