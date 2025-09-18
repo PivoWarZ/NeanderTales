@@ -1,4 +1,5 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
@@ -17,10 +18,16 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
             
-            localProvider.GetService<MoveComponent>().SetCondition(() => !_isLanding);
+            var conditionInstaller = localProvider.GetService<ConditionInstaller>();
+            conditionInstaller.AddCondition<IMovable>(JumpOver);
 
             _jumpComponent.OnJumpAction += JumpAnimation;
             _event.OnReceiveEvent += ReceiveEvent;
+        }
+
+        private bool JumpOver()
+        {
+            return !_isLanding;
         }
 
         private void ReceiveEvent(string eventName)

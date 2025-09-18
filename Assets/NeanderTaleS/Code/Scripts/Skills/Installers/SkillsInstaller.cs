@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
@@ -11,14 +11,10 @@ namespace NeanderTaleS.Code.Scripts.Skills.Installers
         {
             AttackComponent attackComponent = localProvider.GetService<AttackComponent>();
             IHitAnimationListener hitAnimationListener = localProvider.GetInterface<IHitAnimationListener>();
+            ConditionInstaller conditionInstaller = localProvider.GetService<ConditionInstaller>();
            
-            AddComboAttack(attackComponent, hitAnimationListener);
-        }
-
-        private static void AddComboAttack(AttackComponent attackComponent, IHitAnimationListener hitAnimationListener)
-        {
             ComboAttack combo = new ComboAttack();
-            combo.Init(attackComponent, hitAnimationListener);
+            combo.Init(attackComponent, conditionInstaller);
         }
     }
 }

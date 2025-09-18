@@ -1,7 +1,8 @@
 using System;
+using NeanderTaleS.Code.Scripts.Components;
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Components
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.Components
 {
     public interface ITakeDamageble
     {

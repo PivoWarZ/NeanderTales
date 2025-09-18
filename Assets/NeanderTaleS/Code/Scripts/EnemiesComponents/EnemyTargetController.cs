@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.EnemiesComponents

@@ -1,3 +1,4 @@
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using Sirenix.OdinInspector;

@@ -1,4 +1,5 @@
 using System;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 

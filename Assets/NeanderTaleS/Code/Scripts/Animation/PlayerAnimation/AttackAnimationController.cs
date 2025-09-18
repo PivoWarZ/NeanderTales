@@ -1,19 +1,19 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
 {
-    public class AttackAnimationController: MonoBehaviour, IHitAnimationListener, IAnimationController
+    public class AttackAnimationController: MonoBehaviour, IAnimationController
     {
-        public event Action OnHitAnimation;
-        
         private AnimationEventDispatcher _event;
         private AttackComponent _attackComponent;
         private Animator _animator;
         private int _comboAttackCount;
+        private bool _isAttack;
         private const int FIRST_ATTACK = 0;
         private const int SECOND_ATTACK = 1;
         private const int THIRD_ATTACK = 2;
@@ -24,10 +24,18 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
             _animator = localProvider.Animator;
             _attackComponent = localProvider.GetService<AttackComponent>();
             
+            var conditionInstaller = localProvider.GetService<ConditionInstaller>();
+            conditionInstaller.AddCondition<IAttackable>(IsAttackOver);
+            
             _event.OnReceiveEvent += ProcessEvent;
             _attackComponent.OnAttackAction += Attack;
         }
-        
+
+        private bool IsAttackOver()
+        {
+            return !_isAttack;
+        }
+
         private void ProcessEvent(string eventName)
         {
             if (eventName == "AttackStarted")
@@ -42,19 +50,19 @@ namespace NeanderTaleS.Code.Scripts.Animation.PlayerAnimation
                 _animator.SetBool("SecondAttack", false);
                 _animator.SetBool("ThirdAttack", false);
                 _attackComponent.AttackEvent();
-                _attackComponent.SetCanAttack(true);
+                _isAttack = false;
             }
 
             if (eventName == "Hit")
             {
+                _isAttack = false;
                 _comboAttackCount++;
-                OnHitAnimation?.Invoke();
             }
         }
         
         public void Attack()
         {
-            _attackComponent.SetCanAttack(false);
+            _isAttack = true;
             
             if (_comboAttackCount == FIRST_ATTACK)
             {

@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;
@@ -49,6 +49,8 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
             {
                 _debuff.Pushing.Value = false;
                 _isPushing = false;
+                
+                _animator.SetBool("Pushing", _isPushing);
             }
         }
 
@@ -60,7 +62,8 @@ namespace NeanderTaleS.Code.Scripts.Animation.Debuffs
             _isPushing = true;
             _rotateComponent.RotateAsync(rotateDirection, _cancell).Forget();
             
-            _animator.SetTrigger("Pushing");
+            _animator.SetBool("Pushing", _isPushing);
+            _animator.SetTrigger("Push");
         }
 
         private void OnDestroy()

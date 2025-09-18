@@ -1,5 +1,5 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using R3;

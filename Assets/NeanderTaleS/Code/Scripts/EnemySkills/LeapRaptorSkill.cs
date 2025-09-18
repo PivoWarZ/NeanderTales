@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;

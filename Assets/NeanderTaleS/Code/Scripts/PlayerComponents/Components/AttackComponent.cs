@@ -1,11 +1,11 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class AttackComponent: MonoBehaviour, IAttackable
+    public class AttackComponent: MonoBehaviour, IAttackable, IConditionComponent
     {
         public event Action OnAttackRequest;
         public event Action OnAttackAction;
@@ -45,19 +45,19 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             OnAttackEvent?.Invoke();
         }
 
-        public void SetCanAttack(bool value)
-        {
-            _canAttack = value;
-        }
-
-        public void SetCondition(Func<bool> condition)
+        void IConditionComponent.AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }
 
-        public void RemoveCondition(Func<bool> condition)
+        void IConditionComponent.RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        CompositeCondition IConditionComponent.GetCompositeCondition()
+        {
+            return _condition;
         }
     }
 }

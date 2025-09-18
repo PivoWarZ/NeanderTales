@@ -1,5 +1,7 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 
 namespace NeanderTaleS.Code.Scripts.Skills
@@ -11,13 +13,20 @@ namespace NeanderTaleS.Code.Scripts.Skills
         private int _comboCounter = 3;
         private int _comboCounterCurrentValue;
 
-        public void Init(AttackComponent attackComponent, IHitAnimationListener hitAnimationListener)
+        public void Init(AttackComponent attackComponent, ConditionInstaller conditionInstaller)
         {
+            _comboCounterCurrentValue = _comboCounter;
             _attackComponent = attackComponent;
-            _hitAnimation = hitAnimationListener;
             
-            _hitAnimation.OnHitAnimation += StartCombo;
+            conditionInstaller.AddCondition<IAttackable>(IsComboAttack);
+            
+            _attackComponent.OnAttackAction += StartCombo;
             _attackComponent.OnAttackEvent += RestoreCounter;
+        }
+
+        private bool IsComboAttack()
+        {
+            return _comboCounterCurrentValue > 0;
         }
 
         private void RestoreCounter()
@@ -27,11 +36,8 @@ namespace NeanderTaleS.Code.Scripts.Skills
 
         private void StartCombo()
         {
-            if (_comboCounterCurrentValue > 0)
-            {
-                _attackComponent.SetCanAttack(true);
-                _comboCounterCurrentValue--;
-            }
+            _comboCounterCurrentValue--;
+
         }
 
         public void Dispose()

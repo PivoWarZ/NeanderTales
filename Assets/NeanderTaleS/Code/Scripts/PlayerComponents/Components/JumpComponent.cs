@@ -1,14 +1,14 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class JumpComponent: MonoBehaviour, IJumping
+    public class JumpComponent: MonoBehaviour, IJumping, IConditionComponent
     {
         public event Action OnJumpRequest;
         public event Action OnJumpAction;
@@ -76,15 +76,20 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
         {
             return Physics.CheckSphere(transform.position, 0.1f, _groundLayer, QueryTriggerInteraction.Ignore);
         }
-        
-        private void SetCondition(Func<bool> condition)
+
+        void IConditionComponent.AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }
 
-        private void RemoveCondition(Func<bool> condition)
+        void IConditionComponent.RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        CompositeCondition IConditionComponent.GetCompositeCondition()
+        {
+            return _condition;
         }
 
         private void OnDestroy()

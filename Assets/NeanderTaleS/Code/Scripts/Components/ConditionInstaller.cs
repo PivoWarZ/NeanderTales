@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 using UnityEngine;
 

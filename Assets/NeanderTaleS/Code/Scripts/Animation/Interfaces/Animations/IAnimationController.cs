@@ -1,6 +1,6 @@
 using NeanderTaleS.Code.Scripts.Components;
 
-namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.AnimationInterfaces
+namespace NeanderTaleS.Code.Scripts.Animation.Interfaces.Animations
 {
     public interface IAnimationController
     {

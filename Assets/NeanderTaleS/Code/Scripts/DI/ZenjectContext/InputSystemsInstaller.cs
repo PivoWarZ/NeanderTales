@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.InputSystems.AttackInput;
 using NeanderTaleS.Code.Scripts.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.InputSystems.MoveInput;

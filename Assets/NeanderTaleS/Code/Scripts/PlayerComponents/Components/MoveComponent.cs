@@ -1,12 +1,12 @@
 using System;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 {
-    public class MoveComponent: MonoBehaviour, IMovable
+    public class MoveComponent: MonoBehaviour, IMovable, IConditionComponent
     {
         private ReactiveProperty<Vector3> _moveDirection = new (Vector3.zero);
         [SerializeField] private float _speed;
@@ -20,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             _condition.AddCondition(() => _canMove);
         }
 
-        public void Move(Vector3 direction)
+        void IMovable.Move(Vector3 direction)
         {
             _moveDirection.Value = direction;
             
@@ -44,14 +44,19 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             }
         }
 
-        public void SetCondition(Func<bool> condition)
+        void IConditionComponent.AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
         }
 
-        public void RemoveCondition(Func<bool> condition)
+        void IConditionComponent.RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        CompositeCondition IConditionComponent.GetCompositeCondition()
+        {
+            return _condition;
         }
     }
 }

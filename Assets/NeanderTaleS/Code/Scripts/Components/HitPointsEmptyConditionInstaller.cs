@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.PlayerComponents.Components;
 
 namespace NeanderTaleS.Code.Scripts.Components

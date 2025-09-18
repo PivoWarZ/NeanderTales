@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Animation.Interfaces.ComponentInterfaces;
+using NeanderTaleS.Code.Scripts.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Condition;
 using UnityEngine;
 
@@ -82,7 +82,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
 
         public async UniTask<UniTask> RotateAsync(Vector3 direction, CancellationTokenSource cancell)
         {
-            Quaternion targetRotation = TargetRotation(direction);
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             bool isRightRotate = direction.x > 0;
             int cycleCount = 0;
             int looping = 50;
@@ -92,7 +92,6 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             while (!IsTargetRotation(targetRotation) && cycleCount < looping && !cancell.IsCancellationRequested)
             {
                 await UniTask.WaitForFixedUpdate();
-                
                 _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
                 cycleCount++;
 
@@ -103,6 +102,7 @@ namespace NeanderTaleS.Code.Scripts.PlayerComponents.Components
             }
             
             OnRotateComplete?.Invoke();
+            Debug.Log($"RotateAsync: rotate complete");
             
             return UniTask.CompletedTask;
         }
