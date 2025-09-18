@@ -6,7 +6,7 @@ using NeanderTaleS.Code.CoreScripts.PlayerComponents.Components;
 
 namespace NeanderTaleS.Code.CoreScripts.Skills
 {
-    public class ComboAttack: IDisposable
+    /*public class ComboAttack: IDisposable
     {
         private IHitAnimationListener _hitAnimation;
         private AttackComponent _attackComponent;
@@ -18,13 +18,13 @@ namespace NeanderTaleS.Code.CoreScripts.Skills
             _comboCounterCurrentValue = _comboCounter;
             _attackComponent = attackComponent;
             
-            conditionInstaller.AddCondition<IAttackable>(IsComboAttack);
+            conditionInstaller.AddCondition<IAttackable>(CanComboAttack);
             
             _attackComponent.OnAttackAction += StartCombo;
             _attackComponent.OnAttackEvent += RestoreCounter;
         }
 
-        private bool IsComboAttack()
+        private bool CanComboAttack()
         {
             return _comboCounterCurrentValue > 0;
         }
@@ -45,5 +45,5 @@ namespace NeanderTaleS.Code.CoreScripts.Skills
             _hitAnimation.OnHitAnimation -= StartCombo;
             _attackComponent.OnAttackEvent -= RestoreCounter;
         }
-    }
+    }*/
 }

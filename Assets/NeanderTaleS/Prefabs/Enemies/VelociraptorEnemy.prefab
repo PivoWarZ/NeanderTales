@@ -81,6 +81,7 @@ MonoBehaviour:
   _damage: 1
   _collider: {fileID: 1004498819814907405}
   _isTrigger: 1
+  _isPlayer: 0
 --- !u!114 &5913996947631457841
 MonoBehaviour:
   m_ObjectHideFlags: 0

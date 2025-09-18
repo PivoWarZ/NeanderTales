@@ -10,9 +10,9 @@ namespace NeanderTaleS.Code.CoreScripts.WeaponComponents
     public class Weapon: MonoBehaviour, IWeapon
     {
         [SerializeField] private float _damage;
-        //[SerializeField] OnCollisionComponent _onCollision;
         [SerializeField] Collider _collider;
         [SerializeField] private bool _isTrigger;
+        [SerializeField] private bool _isPlayer;
         private List<ITakeDamageble> _hitPointsCpmponents = new ();
         private DealDamageComponent _damageComponent;
         private IAttackable _attackable;
@@ -21,13 +21,11 @@ namespace NeanderTaleS.Code.CoreScripts.WeaponComponents
         {
             if (_isTrigger)
             {
-               // _onCollision.OnEnterTrigger += EnterTrigger;
                 _collider.isTrigger = true;
             }
             
             _collider.enabled = false;
-
-           // _onCollision.OnEnterCollision += EnterCollision;
+            
             DisabledWeaponCollider();
         }
         
@@ -53,8 +51,12 @@ namespace NeanderTaleS.Code.CoreScripts.WeaponComponents
 
         private void OnCollisionEnter(Collision other)
         {
+            if (_isPlayer && other.gameObject.CompareTag("Player"))
+            {
+                return;
+            }
+
             bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
-            Debug.Log($"{gameObject.name} OnCollisionEnter: {other.gameObject.name}");
 
             if (isDamageble)
             {

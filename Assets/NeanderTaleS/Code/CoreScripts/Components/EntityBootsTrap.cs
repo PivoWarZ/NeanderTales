@@ -1,4 +1,6 @@
 using NeanderTaleS.Code.CoreScripts.Animation;
+using NeanderTaleS.Code.CoreScripts.Animation.Interfaces.Components;
+using NeanderTaleS.Code.CoreScripts.PlayerComponents.Components;
 using NeanderTaleS.Code.CoreScripts.Skills.Installers;
 using NeanderTaleS.Code.CoreScripts.WeaponComponents;
 using UnityEngine;
@@ -15,18 +17,20 @@ namespace NeanderTaleS.Code.CoreScripts.Components
 
             InitializeAnimatorControllers(_localProvider);
 
-            InitializeSkill(_localProvider);
-
             InitializeCurrentWeapon(_localProvider);
+            
+            InitializeStamina(_localProvider);
+            
         }
 
-        private void InitializeSkill(LocalProvider localProvider)
+        private void InitializeStamina(LocalProvider localProvider)
         {
-            var isSkillEntity = localProvider.TryGetService<SkillsInstaller>(out var skills);
+            bool isStamina = localProvider.TryGetService<StaminaComponent>(out var staminaComponent);
 
-            if (isSkillEntity)
+            if (isStamina)
             {
-                skills.Initialize(localProvider);
+                IAttackable attacker = localProvider.GetInterface<IAttackable>();
+                staminaComponent.Init(attacker);
             }
         }
 

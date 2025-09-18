@@ -281,50 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad71a8dfc7ea41c5b55b79908b71227d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2088107031115257059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4711817628979098387}
-  - component: {fileID: 1918432144426948002}
-  m_Layer: 7
-  m_Name: Skills
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4711817628979098387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088107031115257059}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9080620902476989801}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1918432144426948002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088107031115257059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45db340b00a7463081369ff1296f36e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2346672185299292474
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,9 +303,12 @@ GameObject:
   - component: {fileID: 3811988362015805041}
   - component: {fileID: 2826552407883347534}
   - component: {fileID: 6706283635484932385}
+  - component: {fileID: 6758787101959582716}
+  - component: {fileID: 1187062126279146756}
+  - component: {fileID: 6199720679450843442}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +329,6 @@ Transform:
   - {fileID: 3781687719344109545}
   - {fileID: 4520775942163491703}
   - {fileID: 8196823976687308812}
-  - {fileID: 4711817628979098387}
   - {fileID: 8424497937732306920}
   - {fileID: 6862805215491281200}
   m_Father: {fileID: 0}
@@ -585,6 +543,53 @@ MonoBehaviour:
   _localProvider: {fileID: 2668145536497192509}
   _isHitPointsEmpty: 1
   _isAttackDistance: 0
+--- !u!114 &6758787101959582716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346672185299292474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f3e4f430854a46a6da549cff624865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _user: {fileID: 6199720679450843442}
+  _conditionInstaller: {fileID: 6706283635484932385}
+  maxStamina:
+    value: 5
+  _stamina:
+    value: 5
+--- !u!114 &1187062126279146756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346672185299292474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380900301c8f4f50921118e30b1557bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecoveringSpeed: 1
+  _staminaComponent: {fileID: 6758787101959582716}
+--- !u!114 &6199720679450843442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346672185299292474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007f278f85f3411a94a7b33205895365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackComponent: {fileID: 6016746398369903631}
+  _staminaPrice: 5
+  _comboStaminaModifier: 2
 --- !u!1 &2682165294302972793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1266,7 @@ MonoBehaviour:
   _damage: 1
   _collider: {fileID: 3082433153652415156}
   _isTrigger: 0
+  _isPlayer: 1
 --- !u!54 &2651440677167597404
 Rigidbody:
   m_ObjectHideFlags: 0

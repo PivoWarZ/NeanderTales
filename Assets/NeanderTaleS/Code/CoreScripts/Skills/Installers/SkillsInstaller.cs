@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.CoreScripts.Skills.Installers
 {
-    public class SkillsInstaller: MonoBehaviour
+    /*public class SkillsInstaller: MonoBehaviour
     {
         public void Initialize(LocalProvider localProvider)
         {
@@ -16,5 +16,5 @@ namespace NeanderTaleS.Code.CoreScripts.Skills.Installers
             ComboAttack combo = new ComboAttack();
             combo.Init(attackComponent, conditionInstaller);
         }
-    }
+    }*/
 }

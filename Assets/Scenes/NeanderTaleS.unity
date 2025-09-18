@@ -2188,13 +2188,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70343c26bfa4437b13d3a4be2a60129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _portrait: {fileID: 1578802338}
-  _name: {fileID: 1829861236}
-  _level: {fileID: 570287147}
-  _health: {fileID: 218343275}
-  _stamina: {fileID: 1150951664}
-  _experience: {fileID: 53917970}
-  _levelUpMarker: {fileID: 1598452654}
+  Portrait: {fileID: 0}
+  Name: {fileID: 0}
+  Level: {fileID: 0}
+  Health: {fileID: 0}
+  Stamina: {fileID: 0}
+  Experience: {fileID: 0}
+  LevelUpMarker: {fileID: 0}
 --- !u!1 &1578802336
 GameObject:
   m_ObjectHideFlags: 0

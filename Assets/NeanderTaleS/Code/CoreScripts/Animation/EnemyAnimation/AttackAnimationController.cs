@@ -63,7 +63,6 @@ namespace NeanderTaleS.Code.CoreScripts.Animation.EnemyAnimation
         {
             _isBite = false;
             _attackComponent.AttackEVent();
-            Debug.Log($"IS Bite {_isBite}");
         }
         
         private void OnDestroy()
