@@ -1,6 +1,6 @@
 using System;
 
-namespace NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components
+namespace NeanderTaleS.Code.Scripts.Core.Interfaces.Components
 {
     public interface IAttackable
     {

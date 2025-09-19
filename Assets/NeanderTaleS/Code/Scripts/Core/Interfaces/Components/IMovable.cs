@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components
+namespace NeanderTaleS.Code.Scripts.Core.Interfaces.Components
 {
     public interface IMovable
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.WeaponInterfaces;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.WeaponInterfaces;
 using UnityEngine;
 using DealDamageComponent = NeanderTaleS.Code.Scripts.Core.Components.DealDamageComponent;
 

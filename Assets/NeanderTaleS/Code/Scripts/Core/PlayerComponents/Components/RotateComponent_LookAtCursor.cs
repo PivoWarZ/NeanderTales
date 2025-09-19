@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.Condition;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
@@ -102,7 +102,6 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             }
             
             OnRotateComplete?.Invoke();
-            Debug.Log($"RotateAsync: rotate complete");
             
             return UniTask.CompletedTask;
         }

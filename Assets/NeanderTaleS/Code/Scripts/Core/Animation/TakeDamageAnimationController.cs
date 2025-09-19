@@ -1,6 +1,6 @@
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Animations;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation
@@ -53,7 +53,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
 
         private void TakeDamage(float damage)
         {
-            if (_debuffs.IsStun())
+            if (!_debuffs.IsStunOver())
             {
                 return;
             }

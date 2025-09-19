@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using R3;
 using UnityEngine;
 

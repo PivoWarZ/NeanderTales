@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Animations;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using R3;
 using UnityEngine;
@@ -17,7 +17,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
         private Animator _animator;
         private RotateComponent_LookAtCursor _rotateComponent;
         private Rigidbody _rigidbody;
-        private bool _isPushing;
         private IDisposable _dispose;
         private CancellationTokenSource _cancell = new ();
         
@@ -29,18 +28,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
             _rigidbody = localProvider.Rigidbody;
             _animator = localProvider.Animator;
             
-            var conDitionInstaller = localProvider.GetService<ConditionInstaller>();
-            conDitionInstaller.AddCondition<IRotatable>(IsPushingOver);
-            conDitionInstaller.AddCondition<IMovable>(IsPushingOver);
-            conDitionInstaller.AddCondition<IAttackable>(IsPushingOver);
-            
             _dispose = _debuff.Pushing.Where(isPush => isPush).Subscribe(Push);
             _eventDispatcher.OnReceiveEvent += ReceiveEvent;
-        }
-
-        private bool IsPushingOver()
-        {
-            return !_isPushing;
         }
 
         private void ReceiveEvent(string eventName)
@@ -48,21 +37,18 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
             if (eventName == "Standing")
             {
                 _debuff.Pushing.Value = false;
-                _isPushing = false;
-                
-                _animator.SetTrigger("Push");
             }
         }
 
-        private void Push(bool isPushing)
+        private void Push(bool _)
         {
             Vector3 rotateDirection = -_rigidbody.linearVelocity.normalized;
             rotateDirection.y = 0;
             
-            _isPushing = true;
+            _debuff.Pushing.Value = true;
             _rotateComponent.RotateAsync(rotateDirection, _cancell).Forget();
             
-            _animator.SetBool("Push", _isPushing);
+            _animator.SetTrigger("Push");;
         }
 
         private void OnDestroy()

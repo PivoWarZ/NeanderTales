@@ -1,3 +1,4 @@
+using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using UnityEngine;
 
@@ -14,10 +15,25 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 
         private void Stunned(GameObject target)
         {
-            var targetProvider = target.GetComponent<LocalProvider>();
-            var debuffs = targetProvider.GetService<DebuffsComponent>();
-            
-            debuffs.Pushing.Value = true;
+            var provider = target.TryGetComponent<LocalProvider>(out var targetProvider);
+
+            if (!provider)
+            {
+                return;
+            }
+
+            var debuffs = targetProvider.TryGetService<DebuffsComponent>(out var debuffsComponent);
+
+            if (debuffs)
+            {
+                debuffsComponent.Pushing.Value = true;
+            }
+
+        }
+
+        private void OnDestroy()
+        {
+            _leapPushing.OnPushing -= Stunned;
         }
     }
 }

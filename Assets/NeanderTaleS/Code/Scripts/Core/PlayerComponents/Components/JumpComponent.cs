@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.Condition;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -21,11 +21,10 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private bool _isJump;
         private CancellationTokenSource _cancell;
-        private CompositeCondition _condition;
+        private CompositeCondition _condition = new ();
 
         private void Awake()
         {
-            _condition = new CompositeCondition();
             _condition.AddCondition(() => _canJump);
             _condition.AddCondition(IsGrounded);
             _condition.AddCondition(() => !_isJump);

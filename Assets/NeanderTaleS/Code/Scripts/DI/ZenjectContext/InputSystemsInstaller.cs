@@ -1,8 +1,8 @@
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.AttackInput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.MoveInput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.RotateInput;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using UnityEngine;
 using UnityEngine.Serialization;

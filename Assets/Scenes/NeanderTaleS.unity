@@ -260,6 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deed0f6671d046239842338003bcc5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &118177254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6706283635484932385, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+  m_PrefabInstance: {fileID: 6435604485725821032}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118177245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &162213798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1753,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184988064}
   m_CullTransparentMesh: 1
+--- !u!114 &1242075466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8530462013662292724, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+  m_PrefabInstance: {fileID: 1426350409007809948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1284012092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -142}
+  m_AnchoredPosition: {x: 314, y: -156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1569030003
@@ -3086,6 +3108,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 118177245}
+    - target: {fileID: 8660556919412742384, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _conditionInstaller
+      value: 
+      objectReference: {fileID: 1242075466}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3099,9 +3125,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1542826924899996819, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _conditionInstaller
+      value: 
+      objectReference: {fileID: 118177254}
     - target: {fileID: 2346672185299292474, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199720679450843442, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _staminaPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199720679450843442, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _comboStaminaModifier
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080620902476989801, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_LocalPosition.x

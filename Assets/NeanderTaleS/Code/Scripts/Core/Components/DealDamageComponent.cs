@@ -1,6 +1,6 @@
 using System;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.Condition;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components

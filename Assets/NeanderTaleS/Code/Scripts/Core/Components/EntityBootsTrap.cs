@@ -1,5 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Animation;
-using NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
 using UnityEngine;
@@ -20,6 +20,17 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             InitializeStamina(_localProvider);
             
+            InitializeDebuffComponent(_localProvider);
+        }
+
+        private void InitializeDebuffComponent(LocalProvider localProvider)
+        {
+            var isDebuff = localProvider.TryGetService<DebuffsComponent>(out DebuffsComponent debuffsComponent);
+
+            if (isDebuff)
+            {
+                debuffsComponent.Init();
+            }
         }
 
         private void InitializeStamina(LocalProvider localProvider)

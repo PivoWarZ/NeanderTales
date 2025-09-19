@@ -1,7 +1,7 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Condition;
 
-namespace NeanderTaleS.Code.Scripts.Core.Animation.Interfaces.Components
+namespace NeanderTaleS.Code.Scripts.Core.Interfaces.Components
 {
     public interface IConditionComponent
     {
