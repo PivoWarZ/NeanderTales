@@ -5,9 +5,9 @@ namespace NeanderTaleS.Code.Scripts.Core.Services
 {
     public class PlayerService
     {
-        private Player _player;
+        private GameObject _player;
 
-        public PlayerService(Player player)
+        public PlayerService(GameObject player)
         {
             _player = player;
         }

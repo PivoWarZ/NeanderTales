@@ -1,9 +1,10 @@
 using System;
 using R3;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI
 {
-    public class PlayerStatePresenter: IDisposable
+    public class PlayerStatePresenter
     {
         private PlayerStatsModel _model;
         private PlayerStateView _view;
@@ -13,33 +14,61 @@ namespace NeanderTaleS.Code.Scripts.UI
         {
             _model = model;
             _view = view;
+        }
 
-            var hpDispose = _model.HitPoints.Subscribe(SetHealthBar);
-            var staminaDispose = _model.Stamina.Subscribe(SetStaminaBar);
-            var expDispose = _model.Experience.Subscribe(SetExperienceBar);
+        public void Init()
+        {
+            var hpDispose = _model.CurrentHitPoints.Subscribe(SetHealthBar);
+            var staminaDispose = _model.CurrentStamina.Subscribe(SetStaminaBar);
+            var expDispose = _model.CurrentExperience.Subscribe(SetExperienceBar);
+            var lvlDispose = _model.Level.Subscribe(SetPlayerLevel);
             
             _disposables.Add(hpDispose);
             _disposables.Add(staminaDispose);
             _disposables.Add(expDispose);
+            _disposables.Add(lvlDispose);
+            
+            LoadSprite();
+            HideLevelUpMarker();
+        }
+        
+        private void SetPlayerLevel(int level)
+        {
+            _view.Level.text = level.ToString();
+        }
+
+        private void HideLevelUpMarker()
+        {
+            _view.LevelUpMarker.gameObject.SetActive(false);
+        }
+
+        private void LoadSprite()
+        {
+            var sprite = Resources.Load<Sprite>("PlayerLogo");
+            _view.Portrait.sprite = sprite;
         }
 
         private void SetHealthBar(float currentHitPoints)
         {
-            _view.Health.value = currentHitPoints / _model.MaxStaminaValue.CurrentValue;
+            var newValue = currentHitPoints / _model.MaxHitPoints.CurrentValue;
+            _view.SetHealth(newValue);
         }
 
         private void SetStaminaBar(float currentStaminaValue)
         {
-            _view.Stamina.value = currentStaminaValue / _model.MaxStaminaValue.CurrentValue;
+            var newValue = currentStaminaValue / _model.MaxStamina.CurrentValue;
+            _view.SetStamina(newValue);
         }
 
         private void SetExperienceBar(float currentExperience)
         {
-            _view.Experience.value = currentExperience / _model.RequiredExperience.CurrentValue;
+            var newValue = currentExperience / _model.RequiredExperience.CurrentValue;
+            _view.SetExperience(newValue);
         }
         
-        void IDisposable.Dispose()
+        public void Dispose()
         {
+            Debug.Log("PlayerStatePresenter.Dispose");
             _disposables.Dispose();
         }
     }

@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         private void Awake()
         {
-            _disposable = _hitPoints.HitPoints.Where(hp => hp <= 0).Subscribe(Dying);
+            _disposable = _hitPoints.CurrentHitPoints.Where(hp => hp <= 0).Subscribe(Dying);
         }
 
         private void Dying(float _)

@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Core.Interfaces.Components
+namespace NeanderTaleS.Code.Scripts.Interfaces.Components
 {
     public interface IRotatable
     {

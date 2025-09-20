@@ -1,5 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {

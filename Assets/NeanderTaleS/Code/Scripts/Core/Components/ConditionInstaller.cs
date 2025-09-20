@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
@@ -109,7 +109,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         private bool IsAlive()
         {
-            float hitPoints = _hitPointsComponent.HitPoints.CurrentValue;
+            float hitPoints = _hitPointsComponent.CurrentHitPoints.CurrentValue;
             return hitPoints > 0;
         }
     }

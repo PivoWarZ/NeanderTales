@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
     {
         [SerializeField] private EntityBootsTrap _entityBootsTrap;
 
-        private void Awake()
+        public void Init()
         {
             _entityBootsTrap.EntityInitialize();
         }

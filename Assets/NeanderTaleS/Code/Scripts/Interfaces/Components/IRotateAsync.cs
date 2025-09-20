@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Core.Interfaces.Components
+namespace NeanderTaleS.Code.Scripts.Interfaces.Components
 {
     public interface IRotateAsync: IRotatable
     {

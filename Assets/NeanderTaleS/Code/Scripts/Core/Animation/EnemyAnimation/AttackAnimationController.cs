@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Animations;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation

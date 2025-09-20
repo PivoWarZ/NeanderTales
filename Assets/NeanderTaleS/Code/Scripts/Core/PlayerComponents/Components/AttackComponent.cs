@@ -1,6 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Condition;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
@@ -13,11 +13,10 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         
         [SerializeField] private int _damage = 5;
         [SerializeField] private bool _canAttack = true;
-        private CompositeCondition _condition;
+        private CompositeCondition _condition = new ();
 
         private void Awake()
         {
-            _condition = new CompositeCondition();
             _condition.AddCondition(() => _canAttack);
         }
 

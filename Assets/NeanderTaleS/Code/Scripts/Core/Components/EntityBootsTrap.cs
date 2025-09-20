@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Core.Animation;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components

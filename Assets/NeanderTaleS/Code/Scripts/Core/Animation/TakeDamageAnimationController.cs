@@ -1,6 +1,6 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Animations;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Animations;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation
@@ -33,7 +33,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             _damageble.OnTakeDamageAction += TakeDamage;
             _event.OnReceiveEvent += ReceiveEvent;
             
-            _startHitPoints = _damageble.HitPoints.CurrentValue;
+            _startHitPoints = _damageble.CurrentHitPoints.CurrentValue;
             _lowDamage = _startHitPoints * LOW_DAMAGE_THREASHOLD;
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
         }

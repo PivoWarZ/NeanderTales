@@ -4,13 +4,12 @@ namespace NeanderTaleS.Code.Scripts.UI
 {
     public class PlayerStatsModel
     {
-        public ReadOnlyReactiveProperty<float> StartHitPointValue;
-        public ReadOnlyReactiveProperty<float> MaxStaminaValue;
-        public ReadOnlyReactiveProperty<float> RequiredExperience;
-        public ReadOnlyReactiveProperty<float> HitPoints;
-        public ReadOnlyReactiveProperty<float> Stamina;
+        public ReadOnlyReactiveProperty<float> MaxHitPoints;
+        public ReadOnlyReactiveProperty<float> CurrentHitPoints;
         public ReadOnlyReactiveProperty<float> MaxStamina;
-        public ReadOnlyReactiveProperty<float> Experience;
+        public ReadOnlyReactiveProperty<float> CurrentStamina;
+        public ReadOnlyReactiveProperty<float> RequiredExperience;
+        public ReadOnlyReactiveProperty<float> CurrentExperience;
         public ReadOnlyReactiveProperty<int> Level;
     }
 }

@@ -3,8 +3,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using R3;
 using UnityEngine;
 

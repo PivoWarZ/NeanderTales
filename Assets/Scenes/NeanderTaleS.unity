@@ -652,7 +652,6 @@ GameObject:
   - component: {fileID: 375753517}
   - component: {fileID: 375753521}
   - component: {fileID: 375753520}
-  - component: {fileID: 375753519}
   m_Layer: 5
   m_Name: EnemyState
   m_TagString: Untagged
@@ -681,23 +680,6 @@ RectTransform:
   m_AnchoredPosition: {x: 59, y: -144}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &375753519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375753516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 2047
 --- !u!114 &375753520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcfdf80357041da882bb11f51fcd9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 118177248}
+  _experienceComponent: {fileID: 1242075493}
+  _player: {fileID: 118177245}
+  _hudUI: {fileID: 1743164346}
+--- !u!1 &1147365659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+  m_PrefabInstance: {fileID: 1426350409007809948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150951662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,7 +1717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.31042877, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.71980536, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1758,12 +1747,37 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8530462013662292724, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
   m_PrefabInstance: {fileID: 1426350409007809948}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1147365659}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1242075474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3301620534429963819, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+  m_PrefabInstance: {fileID: 1426350409007809948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147365659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fdee8c166e43f9aad47c45ebfdb2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1242075493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147365659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62513c4d8e2a41bd958a02db7acddf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _experience: 5
+  _hitPointsComponent: {fileID: 1242075474}
 --- !u!1 &1284012092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,8 +2145,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1569030001}
   - component: {fileID: 1569030005}
+  - component: {fileID: 1569030007}
   - component: {fileID: 1569030004}
-  - component: {fileID: 1569030003}
   - component: {fileID: 1569030006}
   m_Layer: 5
   m_Name: PlayerStates
@@ -2166,23 +2180,6 @@ RectTransform:
   m_AnchoredPosition: {x: 314, y: -156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1569030003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569030000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 2047
 --- !u!114 &1569030004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,13 +2238,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70343c26bfa4437b13d3a4be2a60129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 0}
-  Name: {fileID: 0}
-  Level: {fileID: 0}
-  Health: {fileID: 0}
-  Stamina: {fileID: 0}
-  Experience: {fileID: 0}
-  LevelUpMarker: {fileID: 0}
+  Portrait: {fileID: 1578802338}
+  Name: {fileID: 1829861236}
+  Level: {fileID: 570287147}
+  Health: {fileID: 218343275}
+  Stamina: {fileID: 1150951664}
+  Experience: {fileID: 53917970}
+  LevelUpMarker: {fileID: 1598452654}
+--- !u!114 &1569030007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569030000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 2047
 --- !u!1 &1578802336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,14 +2388,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.42177534, g: 1, b: 0.19811308, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300106, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2530,8 +2544,9 @@ GameObject:
   - component: {fileID: 1743164344}
   - component: {fileID: 1743164343}
   - component: {fileID: 1743164342}
+  - component: {fileID: 1743164346}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HudUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2621,6 +2636,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1743164346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743164341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11ed09776574a46958833968bd85716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStateView: {fileID: 1569030006}
 --- !u!1 &1829861234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3092,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: VelociraptorEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3301620534429963819, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _maxHitPoints.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301620534429963819, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      propertyPath: _currentHitPoints.value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3377864916881948251, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.58
@@ -3115,7 +3151,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242075493}
   m_SourcePrefab: {fileID: 100100000, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
 --- !u!1001 &6435604485725821032
 PrefabInstance:
@@ -3125,6 +3164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187062126279146756, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: RecoveringSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1542826924899996819, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: _conditionInstaller
       value: 
@@ -3133,13 +3176,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2826552407883347534, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _maxHitPoints.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826552407883347534, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _currentHitPoints.value
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6199720679450843442, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: _staminaPrice
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6199720679450843442, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: _comboStaminaModifier
-      value: 0
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758787101959582716, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: _stamina.value
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758787101959582716, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
+      propertyPath: maxStamina.value
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9080620902476989801, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Core.Condition;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

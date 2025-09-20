@@ -1,6 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Condition;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using R3;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -13,11 +13,13 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         public event Action<float> OnTakeDamageAction;
         public event Action OnTakeDamageEvent;
         
-        [SerializeField] private SerializableReactiveProperty<float> _hitPoints = new ();
+        [SerializeField] private SerializableReactiveProperty<float> _maxHitPoints = new ();
+        [SerializeField] private SerializableReactiveProperty<float> _currentHitPoints = new ();
         private bool _canTakeDamage = true;
         private CompositeCondition _condition  = new ();
         
-        public ReadOnlyReactiveProperty<float> HitPoints => _hitPoints;
+        public ReadOnlyReactiveProperty<float> MaxHitPoints => _maxHitPoints;
+        public ReadOnlyReactiveProperty<float> CurrentHitPoints => _currentHitPoints;
 
         private void Awake()
         {
@@ -36,8 +38,9 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             OnTakeDamageAction?.Invoke(damage);
             
-            _hitPoints.Value -= damage;
-            //Debug.Log($"{gameObject.name} HitPoints: {_hitPoints.Value}");
+            var newValue = _currentHitPoints.Value -= damage;
+            _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);
+            
         }
 
         public void TakeDamageEvent()

@@ -2,9 +2,8 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Animations;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Animations;
 using R3;
 using UnityEngine;
 
@@ -37,6 +36,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
             if (eventName == "Standing")
             {
                 _debuff.Pushing.Value = false;
+                _animator.SetBool("IsPush", false);
             }
         }
 
@@ -48,7 +48,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
             _debuff.Pushing.Value = true;
             _rotateComponent.RotateAsync(rotateDirection, _cancell).Forget();
             
-            _animator.SetTrigger("Push");;
+            _animator.SetTrigger("Push");
+            _animator.SetBool("IsPush", true);
         }
 
         private void OnDestroy()

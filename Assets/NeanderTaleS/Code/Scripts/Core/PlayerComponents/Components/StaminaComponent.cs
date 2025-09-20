@@ -1,11 +1,11 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class StaminaComponent: MonoBehaviour
+    public class StaminaComponent: MonoBehaviour, IStamina
     {
         [SerializeField] private StaminaUser _user;
         [SerializeField] private ConditionInstaller _conditionInstaller;

@@ -1,6 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
