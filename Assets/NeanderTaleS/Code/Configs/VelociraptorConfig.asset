@@ -18,9 +18,9 @@ MonoBehaviour:
   BaseSpeed: 7
   BaseStunChance: 100
   BasePushPower: 270
-  _size: 2
-  HitPoints: 40
-  Damage: 10
-  Speed: 7
-  StunChance: 100
-  PushPower: 270
+  _size: 0.5
+  HitPoints: 10
+  Damage: 2.5
+  Speed: 4.375
+  StunChance: 0
+  PushPower: 67.5

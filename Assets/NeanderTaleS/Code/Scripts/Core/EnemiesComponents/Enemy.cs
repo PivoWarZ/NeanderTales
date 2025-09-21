@@ -68,7 +68,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             var distanceToWeapon = (weapon.transform.position - transform.position).magnitude;
             var distanceToTatget = Mathf.Min(distanceToWeapon + 1.3f * _config.SizeCoefficient, 3.5f);
             distance.SetStartValue(distanceToTatget);
-            Debug.Log(distanceToTatget);
             return distanceToTatget;
         }
 
