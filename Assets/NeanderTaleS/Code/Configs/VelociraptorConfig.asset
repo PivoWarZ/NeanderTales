@@ -16,15 +16,11 @@ MonoBehaviour:
   BaseHitPoints: 40
   BaseDamage: 10
   BaseSpeed: 7
-  BaseAttackDistance: 3.5
-  BaseActivatingDistance: 7
   BaseStunChance: 100
   BasePushPower: 270
-  _size: 1
-  HitPoints: 20
-  Damage: 5
-  Speed: 4
-  AttackDistance: 1.75
-  ActivatingDistance: 3.5
-  StunChance: 25
-  PushPower: 135
+  _size: 2
+  HitPoints: 40
+  Damage: 10
+  Speed: 7
+  StunChance: 100
+  PushPower: 270

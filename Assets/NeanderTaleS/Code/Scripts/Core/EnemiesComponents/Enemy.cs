@@ -27,8 +27,10 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             SetHitPoints();
             SetDamage();
             SetSpeed();
-            SetAttackDistance();
-            SetActivatingDistance();
+            var attackdistance = SetAttackDistance();
+            var jumpDistance = SetLeapSkillJumpDistance(attackdistance);
+            var activateLeapSkill = SetLeapSkillActivatingDistance(jumpDistance);
+            SetActivatingDistance(activateLeapSkill);
             SetStunChance();
             SetPushPower();
             
@@ -70,10 +72,28 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             return distanceToTatget;
         }
 
-        private void SetActivatingDistance()
+        private float SetLeapSkillActivatingDistance(float jumpDistance)
         {
+            var offset = 1f;
+            var activating = jumpDistance + offset;
+            _provider.GetService<LeapRaptorSkill>().SetActivateDistance(activating);
+            
+            return activating;
+        }
+
+        private float SetLeapSkillJumpDistance(float attackDistance)
+        {
+            var offset = 0.5f;
+            var jumpDistance = attackDistance + offset;
+            _provider.GetService<LeapRaptorSkill>().SetJumpDistance(jumpDistance);
+            return jumpDistance;
+        }
+
+        private void SetActivatingDistance(float LeapSkillActivating)
+        {
+            float offset = 1f;
             var activator = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IEnemyActivator activatingDistance);
-            activator.SetStartValue(_config.ActivatingDistance);
+            activator.SetStartValue(LeapSkillActivating + offset);
         }
 
         private void SetStunChance()

@@ -11,8 +11,6 @@ namespace NeanderTaleS.Code.Configs
         public float HitPoints;
         public float Damage;
         public float Speed;
-        public float AttackDistance;
-        public float ActivatingDistance;
         public float StunChance;
         public float PushPower;
         public float SizeCoefficient => Mathf.InverseLerp(0f, 2f, Size);
@@ -23,9 +21,7 @@ namespace NeanderTaleS.Code.Configs
         {
             HitPoints = BaseHitPoints * SizeCoefficient;
             Damage = BaseDamage * SizeCoefficient;
-            Speed = Mathf.Max(BaseSpeed * SizeCoefficient, 4f);
-            AttackDistance = BaseAttackDistance * SizeCoefficient;
-            ActivatingDistance = BaseActivatingDistance * SizeCoefficient;
+            Speed = Mathf.Max(4, BaseSpeed - BaseSpeed * (1 - SizeCoefficient) * 0.5f);
             StunChance = Mathf.Max(BaseStunChance - BaseStunChance * (1 - SizeCoefficient) * 1.5f, 0f);
             PushPower = BasePushPower * SizeCoefficient;
         }

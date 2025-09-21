@@ -37,6 +37,16 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
             _conditionInstaller.AddCondition<IAttackable>(LeapingOver);
         }
 
+        public void SetJumpDistance(float distance)
+        {
+            _jumpDistance = distance;
+        }
+
+        public void SetActivateDistance(float distance)
+        {
+            _activateDistance = distance;
+        }
+
         private bool LeapingOver()
         {
             return !_isLeaping;

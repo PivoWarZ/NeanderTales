@@ -9,8 +9,6 @@ namespace NeanderTaleS.Code.Configs
         public float BaseHitPoints;
         public float BaseDamage;
         public float BaseSpeed;
-        public float BaseAttackDistance;
-        public float BaseActivatingDistance;
         public float BaseStunChance;
         public float BasePushPower;
     }
