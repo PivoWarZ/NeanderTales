@@ -1321,6 +1321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dino: {fileID: 1147365659}
   _hud: {fileID: 1743164346}
+  _view: {fileID: 0}
 --- !u!1 &1020082519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,9 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcfdf80357041da882bb11f51fcd9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _experienceComponent: {fileID: 1242075493}
   _player: {fileID: 118177245}
-  _hudUI: {fileID: 1743164346}
 --- !u!1 &1147365659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
@@ -1824,17 +1823,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184988064}
   m_CullTransparentMesh: 1
---- !u!114 &1242075493 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4387369790916239605, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-  m_PrefabInstance: {fileID: 1426350409007809948}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147365659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62513c4d8e2a41bd958a02db7acddf5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1284012092
 GameObject:
   m_ObjectHideFlags: 0
