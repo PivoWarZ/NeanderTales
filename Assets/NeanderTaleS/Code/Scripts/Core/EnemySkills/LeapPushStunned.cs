@@ -1,14 +1,17 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushStunned: MonoBehaviour
+    public class LeapPushStunned: MonoBehaviour, IStunChance, IStartValueSetter
     {
         [SerializeField] private LeapPushing _leapPushing;
         [SerializeField] private float _chance;
+
+        public float StunChance => _chance;
 
         private void Awake()
         {
@@ -42,7 +45,12 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         {
             var value = Random.Range(0, 100);
             
-            return value <= _chance;
+            return value <= StunChance;
+        }
+        
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+            _chance = currentValue;
         }
 
         public void SetStunnedChance(float chance)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance
+    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance, IStartValueSetter
     {
         
         [SerializeField] private float _attackDistance;
@@ -41,6 +41,11 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void OnDestroy()
         {
             _dispose?.Dispose();
+        }
+
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+            _attackDistance = currentValue;
         }
     }
 }

@@ -15,8 +15,10 @@ namespace NeanderTaleS.Code.Configs
         public float ActivatingDistance;
         public float StunChance;
         public float PushPower;
-        public float SizeCoefficient => Mathf.InverseLerp(0f, 2f, _size);
-        
+        public float SizeCoefficient => Mathf.InverseLerp(0f, 2f, Size);
+
+        public float Size => _size;
+
         private void OnValidate()
         {
             HitPoints = BaseHitPoints * SizeCoefficient;

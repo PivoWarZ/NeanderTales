@@ -2,11 +2,12 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushing: MonoBehaviour
+    public class LeapPushing: MonoBehaviour, IPushing, IStartValueSetter
     {
         public event Action<GameObject> OnPushing;
         
@@ -16,6 +17,8 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         private Rigidbody _rigidbody;
         private UniTaskCompletionSource<Collision> _task;
         private CancellationTokenSource _cancell = new();
+
+        public float PushPower => _pushPower;
 
         private void Awake()
         {
@@ -43,7 +46,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
             {
                 var pushDirection = rigidbody.position - contactPoint;
                 pushDirection.y = 0;
-                rigidbody.AddForceAtPosition(pushDirection * _pushPower, contactPoint, ForceMode.Impulse);
+                rigidbody.AddForceAtPosition(pushDirection * PushPower, contactPoint, ForceMode.Impulse);
                 
                 OnPushing?.Invoke(collision.gameObject);
             }
@@ -52,6 +55,11 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         private void Complete(Collision collision)
         {
             _task.TrySetResult(collision);
+        }
+        
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+            _pushPower = currentValue;
         }
 
         private void OnDestroy()

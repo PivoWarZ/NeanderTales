@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent, IStartValueSetter
     {
         public bool CanMove;
         
@@ -65,6 +65,11 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         public void SetTarget(GameObject target)
         {
             _target = target.transform;
+        }
+
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+            _moveSpeed = currentValue;
         }
     }
 }

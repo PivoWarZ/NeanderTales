@@ -7,7 +7,7 @@ using DealDamageComponent = NeanderTaleS.Code.Scripts.Core.Components.DealDamage
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {
-    public class Weapon: MonoBehaviour, IWeapon
+    public class Weapon: MonoBehaviour, IWeapon, IStartValueSetter
     {
         [SerializeField] private float _damage;
         [SerializeField] Collider _collider;
@@ -100,13 +100,16 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 
             return _hitPointsCpmponents.Any(hitPointsCpmponent => hitPointsCpmponent == component);
         }
+        
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+           _damage = currentValue;
+        }
 
         private void OnDestroy()
         {
             _attackable.OnAttackAction -= PrepareToAttack;
             _attackable.OnAttackEvent -= DisabledWeaponCollider;
-          //  _onCollision.OnEnterCollision -= EnterCollision;
-           // _onCollision.OnEnterTrigger -= EnterTrigger;
         }
     }
 }
