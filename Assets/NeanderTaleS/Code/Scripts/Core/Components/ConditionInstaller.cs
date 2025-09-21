@@ -14,7 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         private IAttackable _attackComponent;
         private IMovable _movableComponent;
 
-        private void Start()
+        public void Init()
         {
             InstallConditions(_localProvider);
         }

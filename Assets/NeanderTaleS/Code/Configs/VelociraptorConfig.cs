@@ -14,6 +14,7 @@ namespace NeanderTaleS.Code.Configs
         public float AttackDistance;
         public float ActivatingDistance;
         public float StunChance;
+        public float PushPower;
         public float SizeCoefficient => Mathf.InverseLerp(0f, 2f, _size);
         
         private void OnValidate()
@@ -24,6 +25,7 @@ namespace NeanderTaleS.Code.Configs
             AttackDistance = BaseAttackDistance * SizeCoefficient;
             ActivatingDistance = BaseActivatingDistance * SizeCoefficient;
             StunChance = Mathf.Max(BaseStunChance - BaseStunChance * (1 - SizeCoefficient) * 1.5f, 0f);
+            PushPower = BasePushPower * SizeCoefficient;
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class HitPointsComponent: MonoBehaviour, ITakeDamageble
+    public class HitPointsComponent: MonoBehaviour, ITakeDamageble, IStartValueSetter
     {
         public event TakeDamageRequestHandler OnTakeDamageRequest;
         public event Action<float, ITakeDamageble> OnTakeDamageAction;
@@ -40,7 +40,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             var newValue = _currentHitPoints.Value -= damage;
             _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);
-            
         }
 
         public void TakeDamageEvent()
@@ -56,6 +55,12 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
+        }
+
+        public void SetStartValue(float currentValue, float maxValue = 0)
+        {
+            _maxHitPoints.Value = maxValue;
+            _currentHitPoints.Value = currentValue;
         }
     }
 }

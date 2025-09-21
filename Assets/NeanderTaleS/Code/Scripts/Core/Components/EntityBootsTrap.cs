@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Animation;
+using NeanderTaleS.Code.Scripts.Core.EnemySkills;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
@@ -21,6 +22,14 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             InitializeStamina(_localProvider);
             
             InitializeDebuffComponent(_localProvider);
+
+            InitializeConditionInstaller(_localProvider);
+        }
+
+        private void InitializeConditionInstaller(LocalProvider localProvider)
+        {
+            var conditionInstaller = localProvider.GetService<ConditionInstaller>();
+            conditionInstaller.Init();
         }
 
         private void InitializeDebuffComponent(LocalProvider localProvider)

@@ -19,10 +19,12 @@ MonoBehaviour:
   BaseAttackDistance: 2.5
   BaseActivatingDistance: 7
   BaseStunChance: 100
-  _size: 1.464
-  HitPoints: 29.279999
-  Damage: 7.3199997
-  Speed: 5.124
-  AttackDistance: 1.8299999
-  ActivatingDistance: 5.124
-  StunChance: 59.8
+  BasePushPower: 270
+  _size: 0.928
+  HitPoints: 18.56
+  Damage: 4.64
+  Speed: 4
+  AttackDistance: 1.16
+  ActivatingDistance: 3.248
+  StunChance: 19.599998
+  PushPower: 125.28

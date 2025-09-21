@@ -24,13 +24,16 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void OnTargetDistance(GameObject target)
         {
             _distance.SetTarget(target);
-            _distance.TargetDistance
-                .Where(distanceToTarget => distanceToTarget <= _activatingDistance)
+            
+           _dispose = _distance.TargetDistance
+              .Where(distanceToTarget => distanceToTarget <= _activatingDistance)
                 .Subscribe(Activating);
         }
 
         private void Activating(float _)
         {
+            _dispose.Dispose();
+            
             var target = _targetComponent.Target;
             _targetInitComponents = _localProvider.GetInterfaces<ITargetInitComponent>();
             

@@ -26,7 +26,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         private IDisposable _dispose;
         
 
-        private void Awake()
+        public void Init()
         {
             SubscribeActivating();
             _jumpComponent.OnJumpEvent += JumpEvent;
@@ -93,7 +93,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 
         private void Unsubscribe()
         {
-            _dispose.Dispose();
+            _dispose?.Dispose();
         }
 
         private void OnDestroy()
