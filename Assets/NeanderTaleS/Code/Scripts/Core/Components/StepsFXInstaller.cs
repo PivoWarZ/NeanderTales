@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         public StepsListener LeftFoot => _leftFoot;
 
-        private void Awake()
+        public void Init()
         {
             var leftFootTransform = _root.LeftFoot;
             var rightFootTransform = _root.RightFoot;

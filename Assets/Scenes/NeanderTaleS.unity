@@ -1608,17 +1608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ae4d3b961d4834ad45671227bbb876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1147365696 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8530462013662292724, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-  m_PrefabInstance: {fileID: 1426350409007809948}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147365659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb33ba4f9d8f4c929e815943c0926e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1150951662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,21 +3203,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1187640761943971885, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _targetDistance.value
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983874897413343440, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _conditionInstaller
-      value: 
-      objectReference: {fileID: 1147365696}
     - target: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: m_Name
       value: VelociraptorEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2655307957745640121, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3377864916881948251, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3270,38 +3247,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6409736086815200631, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _activatingDistance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6624993619954163120, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7459229977868427391, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 118177245}
-    - target: {fileID: 7957157952340615903, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _config
-      value: 
-      objectReference: {fileID: 11400000, guid: 05b050a95d65da746a46e81fd030039f, type: 2}
-    - target: {fileID: 7957157952340615903, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _provider
-      value: 
-      objectReference: {fileID: 1147365669}
-    - target: {fileID: 8530462013662292724, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _localProvider
-      value: 
-      objectReference: {fileID: 1147365669}
-    - target: {fileID: 8612528592944524376, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: CanMove
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8660556919412742384, guid: ad496f2a247205c4eb93092a0736481e, type: 3}
-      propertyPath: _conditionInstaller
-      value: 
-      objectReference: {fileID: 1147365696}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3318,14 +3267,6 @@ PrefabInstance:
     - target: {fileID: 2346672185299292474, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2826552407883347534, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
-      propertyPath: _maxHitPoints.value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2826552407883347534, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
-      propertyPath: _currentHitPoints.value
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9080620902476989801, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
       propertyPath: m_LocalPosition.x

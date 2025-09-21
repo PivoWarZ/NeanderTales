@@ -1417,7 +1417,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1522,8 +1522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bootsTrap: {fileID: 4772832267246098261}
-  _provider: {fileID: 0}
-  _config: {fileID: 0}
+  _provider: {fileID: 5016542898823372062}
+  _config: {fileID: 11400000, guid: 05b050a95d65da746a46e81fd030039f, type: 2}
 --- !u!114 &4772832267246098261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d769acb2ef41619d671f30a86edd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanMove: 0
+  CanMove: 1
   _moveSpeed: 7
   _rb: {fileID: 8213584142907808064}
   _isMoving:
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetDistance:
-    value: 0
+    value: 100
 --- !u!114 &5995859075392740509
 MonoBehaviour:
   m_ObjectHideFlags: 0

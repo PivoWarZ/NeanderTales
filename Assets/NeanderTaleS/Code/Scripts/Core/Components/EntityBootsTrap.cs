@@ -24,6 +24,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             InitializeDebuffComponent(_localProvider);
 
             InitializeConditionInstaller(_localProvider);
+            
         }
 
         private void InitializeConditionInstaller(LocalProvider localProvider)

@@ -5,25 +5,26 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 {
     public class OnStepFX: MonoBehaviour
     {
+        public float Scale = 3f;
+        
         [SerializeField] private ParticleSystem _particle;
-        [SerializeField] private float _scale = 1f;
         [SerializeField] private float _offsetY = -0.1f;
         private ParticleSystem _effectRight;
         private ParticleSystem _effectLeft;
         private StepsListener _lefsStep;
         private StepsListener _rightStep;
 
-        private void Awake()
+        public void CreateEffects()
         {
             _particle.playOnAwake = false;
             
             _effectRight = Instantiate(_particle, transform).GetComponent<ParticleSystem>();
-            _effectRight.gameObject.transform.localScale *= _scale;
+            _effectRight.gameObject.transform.localScale *= Scale;
             var offsetRight = _effectRight.gameObject.transform.position.y;
             _effectRight.transform.position = new Vector3(_effectRight.transform.position.x, offsetRight, _effectRight.transform.position.z);
             
             _effectLeft = Instantiate(_particle, transform).GetComponent<ParticleSystem>();
-            _effectLeft.gameObject.transform.localScale *= _scale;
+            _effectLeft.gameObject.transform.localScale *= Scale;
             var offsetLeft = _effectRight.gameObject.transform.position.y;
             _effectRight.transform.position = new Vector3(_effectRight.transform.position.x, offsetLeft, _effectRight.transform.position.z);
         }
@@ -39,12 +40,14 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 
         private void StepFXRight(Transform footTransform)
         {
+            Debug.Log("StepFXRight");
             _effectRight.transform.position = footTransform.position;
             _effectRight.Play();
         }
 
         private void StepFXLeft(Transform footTransform)
         {
+            Debug.Log("StepFXLeft");
             _effectLeft.transform.position = footTransform.position;
             _effectLeft.Play();
         }

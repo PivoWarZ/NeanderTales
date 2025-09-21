@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Configs;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
 using NeanderTaleS.Code.Scripts.Core.EnemySkills;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
@@ -33,9 +34,23 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             SetActivatingDistance(activateLeapSkill);
             SetStunChance();
             SetPushPower();
-            
+            SetStepFxScale();
+            InitializeStepFXInstaller();
         }
-        
+
+        private void InitializeStepFXInstaller()
+        {
+            var stepFxInstaller = _provider.GetService<StepsFXInstaller>();
+            stepFxInstaller.Init();
+        }
+
+        private void SetStepFxScale()
+        {
+            var stepFX = _provider.GetService<OnStepFX>();
+            stepFX.Scale *= _config.SizeCoefficient;
+            stepFX.CreateEffects();
+        }
+
         private void InitializeLeapSkill(LocalProvider localProvider)
         {
             var leapSkill = localProvider.GetService<LeapRaptorSkill>();
