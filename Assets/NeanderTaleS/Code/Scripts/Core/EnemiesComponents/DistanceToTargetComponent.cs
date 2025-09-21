@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class DistanceToTargetComponent: MonoBehaviour, ITargetInitComponent
+    public class DistanceToTargetComponent: MonoBehaviour
     {
         [SerializeField] private SerializableReactiveProperty<float> _targetDistance = new ();
         private Transform _target;

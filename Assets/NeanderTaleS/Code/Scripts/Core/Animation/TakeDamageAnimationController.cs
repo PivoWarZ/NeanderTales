@@ -51,7 +51,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             }
         }
 
-        private void TakeDamage(float damage)
+        private void TakeDamage(float damage, ITakeDamageble _)
         {
             if (!_debuffs.IsStunOver())
             {

@@ -1,6 +1,6 @@
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.UI
+namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
     public class PlayerStatsModel
     {

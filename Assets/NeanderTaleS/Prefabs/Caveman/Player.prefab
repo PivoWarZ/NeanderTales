@@ -526,8 +526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fdee8c166e43f9aad47c45ebfdb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitPoints:
-    value: 100
+  _maxHitPoints:
+    value: 10
+  _currentHitPoints:
+    value: 10
 --- !u!114 &6706283635484932385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,9 +560,9 @@ MonoBehaviour:
   _user: {fileID: 6199720679450843442}
   _conditionInstaller: {fileID: 6706283635484932385}
   maxStamina:
-    value: 5
+    value: 15
   _stamina:
-    value: 5
+    value: 15
 --- !u!114 &1187062126279146756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380900301c8f4f50921118e30b1557bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RecoveringSpeed: 1
+  RecoveringSpeed: 3
   _staminaComponent: {fileID: 6758787101959582716}
 --- !u!114 &6199720679450843442
 MonoBehaviour:
@@ -588,8 +590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackComponent: {fileID: 6016746398369903631}
-  _staminaPrice: 5
-  _comboStaminaModifier: 2
+  _staminaPrice: 3
+  _comboStaminaModifier: 1.5
 --- !u!1 &2682165294302972793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pushing:
     value: 0
+  _conditionInstaller: {fileID: 6706283635484932385}
 --- !u!1 &8157699509838406570
 GameObject:
   m_ObjectHideFlags: 0

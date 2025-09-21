@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408708c4c0954ac39540cd1d16395051, type: 3}
+  m_Name: VelociraptorConfig
+  m_EditorClassIdentifier: 
+  Logo: {fileID: 21300000, guid: 41ca1a85e3878f54ebde30a3c2b72f13, type: 3}
+  BaseHitPoints: 40
+  BaseDamage: 10
+  BaseSpeed: 7
+  BaseAttackDistance: 2.5
+  BaseActivatingDistance: 7
+  BaseStunChance: 100
+  _size: 1.464
+  HitPoints: 29.279999
+  Damage: 7.3199997
+  Speed: 5.124
+  AttackDistance: 1.8299999
+  ActivatingDistance: 5.124
+  StunChance: 59.8

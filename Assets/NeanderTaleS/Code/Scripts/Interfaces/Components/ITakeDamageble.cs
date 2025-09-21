@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Interfaces.Components
     public interface ITakeDamageble
     {
         event TakeDamageRequestHandler OnTakeDamageRequest;
-        event Action<float> OnTakeDamageAction;
+        event Action<float, ITakeDamageble> OnTakeDamageAction;
         event Action OnTakeDamageEvent;
         ReadOnlyReactiveProperty<float> CurrentHitPoints { get; }
         ReadOnlyReactiveProperty<float> MaxHitPoints { get; }

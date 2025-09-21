@@ -1,23 +1,39 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using R3;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
     public class EnemyTargetController: MonoBehaviour
     {
-        [SerializeField] EnemyTargetComponent _targetComponent;
+        [SerializeField] private EnemyTargetComponent _targetComponent;
+        [SerializeField] private DistanceToTargetComponent _distance;
+        [SerializeField] private LocalProvider _localProvider;
+        [SerializeField] private float _activatingDistance = 7f;
         private List<ITargetInitComponent> _targetInitComponents = new ();
+        private IDisposable _dispose;
 
         private void Awake()
         {
-            _targetComponent.OnTargetChanged += SetTarget;
-            _targetInitComponents = gameObject.GetComponents<ITargetInitComponent>().ToList();
+            _targetComponent.OnTargetChanged += OnTargetDistance;
         }
 
-        private void SetTarget(GameObject target)
+        private void OnTargetDistance(GameObject target)
         {
+            _distance.SetTarget(target);
+            _distance.TargetDistance
+                .Where(distanceToTarget => distanceToTarget <= _activatingDistance)
+                .Subscribe(Activating);
+        }
+
+        private void Activating(float _)
+        {
+            var target = _targetComponent.Target;
+            _targetInitComponents = _localProvider.GetInterfaces<ITargetInitComponent>();
+            
             if (_targetInitComponents.Count == 0)
             {
                 return;
@@ -32,7 +48,8 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         private void OnDestroy()
         {
-            _targetComponent.OnTargetChanged -= SetTarget;
+            _targetComponent.OnTargetChanged -= OnTargetDistance;
+            _dispose?.Dispose();
         }
     }
 }

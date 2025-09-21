@@ -40,7 +40,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             {
                 return;
             }
-            
+
             OnJumpAction?.Invoke();
             OnJumpImpulse();
         }

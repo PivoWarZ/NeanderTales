@@ -1,11 +1,10 @@
-using System;
 using DG.Tweening;
 using NeanderTaleS.Code.Scripts.Interfaces.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NeanderTaleS.Code.Scripts.UI
+namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
     public class PlayerStateView: MonoBehaviour, IPlayerStateSliders
     {

@@ -12,10 +12,12 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         public GameObject Target => _target;
 
-        [Button]
-        private void OnHunt()
+        private void Awake()
         {
-            OnTargetChanged?.Invoke(_target);
+            if (_target)
+            {
+                OnTargetChanged?.Invoke(_target);
+            }
         }
 
         public void SetTarget(GameObject target)

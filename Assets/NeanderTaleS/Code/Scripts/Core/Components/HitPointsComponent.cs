@@ -10,7 +10,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
     public class HitPointsComponent: MonoBehaviour, ITakeDamageble
     {
         public event TakeDamageRequestHandler OnTakeDamageRequest;
-        public event Action<float> OnTakeDamageAction;
+        public event Action<float, ITakeDamageble> OnTakeDamageAction;
         public event Action OnTakeDamageEvent;
         
         [SerializeField] private SerializableReactiveProperty<float> _maxHitPoints = new ();
@@ -36,7 +36,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
                 return;
             }
             
-            OnTakeDamageAction?.Invoke(damage);
+            OnTakeDamageAction?.Invoke(damage, this);
             
             var newValue = _currentHitPoints.Value -= damage;
             _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);

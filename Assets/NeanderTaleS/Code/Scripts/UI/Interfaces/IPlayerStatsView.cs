@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine.UI;
 
-namespace NeanderTaleS.Code.Scripts.UI
+namespace NeanderTaleS.Code.Scripts.UI.Interfaces
 {
     public interface IPlayerStatsView
     {

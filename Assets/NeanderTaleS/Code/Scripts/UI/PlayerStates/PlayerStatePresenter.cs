@@ -1,8 +1,7 @@
-using System;
 using R3;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.UI
+namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
     public class PlayerStatePresenter
     {
@@ -68,7 +67,6 @@ namespace NeanderTaleS.Code.Scripts.UI
         
         public void Dispose()
         {
-            Debug.Log("PlayerStatePresenter.Dispose");
             _disposables.Dispose();
         }
     }

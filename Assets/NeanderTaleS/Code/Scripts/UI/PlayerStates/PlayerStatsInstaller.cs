@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 
-namespace NeanderTaleS.Code.Scripts.UI
+namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
     public class PlayerStatsInstaller: IDisposable
     {

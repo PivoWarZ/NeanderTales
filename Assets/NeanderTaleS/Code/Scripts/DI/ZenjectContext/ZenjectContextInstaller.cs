@@ -4,6 +4,7 @@ using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using NeanderTaleS.Code.Scripts.Systems.Experience;
 using NeanderTaleS.Code.Scripts.UI;
+using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using UnityEngine;
 using Zenject;
 
@@ -34,7 +35,6 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
         private void BindPlayerService(GameObject player)
         {
             Container.Bind<PlayerService>().AsSingle().WithArguments(player).NonLazy();
-            Debug.Log($"PlayerService");
         }
     }
 }

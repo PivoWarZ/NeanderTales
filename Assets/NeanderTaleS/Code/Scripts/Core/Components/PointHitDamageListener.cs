@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.WeaponInterfaces;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             _hitPointsComponent.OnTakeDamageAction += HitPoint;
         }
 
-        private void HitPoint(float obj)
+        private void HitPoint(float _, ITakeDamageble __)
         {
             OnHitPoint?.Invoke(_hitPointPosition);
         }

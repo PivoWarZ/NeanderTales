@@ -16,11 +16,23 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
             _jumpComponent = localProvider.GetService<JumpComponent>();
 
             _jumpComponent.OnJumpAction += Jump;
+            _jumpComponent.OnJumpEvent += JumpComplete;
+        }
+
+        private void JumpComplete()
+        {
+            _animator.SetBool("IsJump", false);
         }
 
         private void Jump()
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetBool("IsJump", true);
+        }
+
+        private void OnDestroy()
+        {
+            _jumpComponent.OnJumpAction -= Jump;
+            _jumpComponent.OnJumpEvent -= JumpComplete;
         }
     }
 }

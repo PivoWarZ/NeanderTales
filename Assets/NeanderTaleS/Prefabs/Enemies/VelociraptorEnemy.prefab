@@ -1475,6 +1475,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3377864916881948251}
   - component: {fileID: 8213584142907808064}
+  - component: {fileID: 7957157952340615903}
+  - component: {fileID: 4772832267246098261}
   - component: {fileID: 7459229977868427391}
   - component: {fileID: 6409736086815200631}
   - component: {fileID: 9063904517216513020}
@@ -1492,14 +1494,13 @@ GameObject:
   - component: {fileID: 5016542898823372062}
   - component: {fileID: 5619192916665783757}
   - component: {fileID: 3301620534429963819}
-  - component: {fileID: 4772832267246098261}
-  - component: {fileID: 7957157952340615903}
   - component: {fileID: 975144928046521169}
   - component: {fileID: 1456651634301549235}
   - component: {fileID: 8530462013662292724}
   - component: {fileID: 6262279093128388059}
   - component: {fileID: 5485445614536379380}
   - component: {fileID: 8660556919412742384}
+  - component: {fileID: 4387369790916239605}
   m_Layer: 6
   m_Name: VelociraptorEnemy
   m_TagString: Untagged
@@ -1552,6 +1553,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7957157952340615903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d24c96a68c14cc286fe57fa69732e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bootsTrap: {fileID: 4772832267246098261}
+  _metaData: {fileID: 11400000, guid: 05b050a95d65da746a46e81fd030039f, type: 2}
+--- !u!114 &4772832267246098261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54910d4d46f43008e5731b2ddab73f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localProvider: {fileID: 5016542898823372062}
 --- !u!114 &7459229977868427391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,6 +1606,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetComponent: {fileID: 7459229977868427391}
+  _distance: {fileID: 1187640761943971885}
+  _localProvider: {fileID: 5016542898823372062}
+  _activatingDistance: 7
 --- !u!114 &9063904517216513020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,7 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leapRaptorSkill: {fileID: 1983874897413343440}
   _collision: {fileID: 819541227557244043}
-  _pushPower: 250
+  _pushPower: 260
 --- !u!114 &5016542898823372062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,6 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leapPushing: {fileID: 1680841913860746690}
+  _chance: 100
 --- !u!114 &3301620534429963819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,34 +1831,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fdee8c166e43f9aad47c45ebfdb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitPoints:
+  _maxHitPoints:
     value: 10
---- !u!114 &4772832267246098261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655307957745640121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54910d4d46f43008e5731b2ddab73f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _localProvider: {fileID: 5016542898823372062}
---- !u!114 &7957157952340615903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655307957745640121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d24c96a68c14cc286fe57fa69732e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bootsTrap: {fileID: 4772832267246098261}
+  _currentHitPoints:
+    value: 10
 --- !u!114 &975144928046521169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,6 +1922,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pushing:
     value: 0
+  _conditionInstaller: {fileID: 8530462013662292724}
+--- !u!114 &4387369790916239605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655307957745640121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62513c4d8e2a41bd958a02db7acddf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _experience: 5
+  _hitPointsComponent: {fileID: 3301620534429963819}
 --- !u!1 &2656487090741591563
 GameObject:
   m_ObjectHideFlags: 0
