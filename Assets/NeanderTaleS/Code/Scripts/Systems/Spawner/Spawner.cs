@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Configs;
+using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using Sirenix.OdinInspector;

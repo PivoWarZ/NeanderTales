@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Configs;
+using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
 using NeanderTaleS.Code.Scripts.Core.EnemySkills;

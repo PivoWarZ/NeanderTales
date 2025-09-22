@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Configs
+namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
 {
-    [CreateAssetMenu(fileName = "VelociraptorConfig", menuName = "NeanderTales/Enemies/Velociraptor/ New Velociraptor Config")]
+    [CreateAssetMenu(fileName = "VelociraptorConfig", menuName = "NeanderTaleS/Enemies/Velociraptor/ New Velociraptor Config")]
     public class VelociraptorConfig: EnemyMetaData
     {
         

@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Configs
+namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
 {
     public class EnemyMetaData: ScriptableObject
     {
