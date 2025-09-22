@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
     public class CharacterUpgrade: Upgrade
     {
@@ -25,9 +25,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
             var speed = _config.GetHealth(level);
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
-
             Debug.Log($"CharacterUpgrade доделать было _character.Upgrade");
-            Debug.Log($"speed: {speed}, stamina: {stamina}, power: {power}");
+
         }
     }
 }

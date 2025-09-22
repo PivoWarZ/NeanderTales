@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina
 {
     [Serializable]
-    public class PowerUpgradeTable
+    public class StaminaUpgradeTable
     {
-        [SerializeField] private int _startPower;
-        [SerializeField] private int _endPower;
+        [SerializeField] private int _startStamina;
+        [SerializeField] private int _endStamina;
         [SerializeField] private int[] _table;
 
         public void OnValidate(int maxLevel)
@@ -17,21 +17,21 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 
         private void EvaluateTable(int maxLevel)
         {
-            var step = (_endPower - _startPower) / maxLevel;
+            var speedStep = (_endStamina - _startStamina) / maxLevel;
             var table = new int[maxLevel];
-            table[0] = _startPower;
-            table[maxLevel-1] = _endPower;
+            table[0] = _startStamina;
+            table[maxLevel-1] = _endStamina;
 
             for (int level = 1; level < maxLevel - 1; level++)
             {
-                var power = table[level-1] + step;
-                table[level] = power;
+                var stamina = table[level-1] + speedStep;
+                table[level] = stamina;
             }
-           
+            
             _table = table;
         }
         
-        public int GetPower(int level)
+        public int GetStamina(int level)
         {
             return _table[level-1];
         }

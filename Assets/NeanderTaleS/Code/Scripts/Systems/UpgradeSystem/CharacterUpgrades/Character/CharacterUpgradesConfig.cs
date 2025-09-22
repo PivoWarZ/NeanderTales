@@ -1,6 +1,9 @@
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
     [CreateAssetMenu(fileName = "CharacterUpgrades", menuName = "NeanderTaleS/UpgradeManager/Character/ New Character Upgrades")]
     public class CharacterUpgradesConfig: UpgradeConfig
@@ -34,6 +37,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
             HealthTable.OnValidate(MaxLevel);
             StaminaTable.OnValidate(MaxLevel);
             PowerTable.OnValidate(MaxLevel);
+            PriceTable.OnValidate(MaxLevel);
         }
     }
 }

@@ -1,9 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
 {
     public abstract class UpgradeConfig: ScriptableObject
     {
+        [PreviewField]
         public Sprite Logo;
         public string ID;
         public int MaxLevel;
@@ -15,9 +17,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
         {
             return PriceTable.GetNextPrice(level);
         }
-
+        
+        [Button]
         public virtual void OnValidate()
         {
+            Debug.Log("OnValidate вызывается, MaxLevel = " + MaxLevel);
             PriceTable.OnValidate(MaxLevel);
         }
     }
