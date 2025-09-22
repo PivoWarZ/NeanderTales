@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
-    public class EnemyStateInstaller: MonoBehaviour
+    public class EnemyStateInstaller
     {
-        [SerializeField] GameObject _dino;
-        [SerializeField] HudUI _hud;
+        GameObject _dino;
+        HudUI _hud;
         private EnemyStateAdapter _adapter;
         private EnemyStateView _view;
 

@@ -3,16 +3,23 @@ using NeanderTaleS.Code.Scripts.Core.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.MoveInput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.RotateInput;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
+using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 {
     public class InputSystemsInstaller: MonoInstaller
     {
-        [SerializeField] Player _player;
+        private GameObject _player;
+
+        [Inject]
+        public void Construct(PlayerService service)
+        {
+            _player = service.GetPlayer();
+        }
+
         public override void InstallBindings()
         {
             IMovable movable = _player.GetComponent<IMovable>();

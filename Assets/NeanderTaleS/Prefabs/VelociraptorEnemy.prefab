@@ -1473,7 +1473,7 @@ Transform:
   m_GameObject: {fileID: 2655307957745640121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.58, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62513c4d8e2a41bd958a02db7acddf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _experience: 5
+  Experience: 0
   _hitPointsComponent: {fileID: 3301620534429963819}
 --- !u!1 &2656487090741591563
 GameObject:
@@ -3466,8 +3466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdc834bda194e5dab90ef2b3a5cfff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scale: 3
   _particle: {fileID: 198006683868144142, guid: 2397083e876e5b1408fcc1333f50c082, type: 3}
-  _scale: 3
   _offsetY: 0
 --- !u!1 &5558348016481547831
 GameObject:

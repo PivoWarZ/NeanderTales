@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NeanderTaleS.Code.Configs;
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
@@ -17,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [Header("---------Spawner--------")]
         [SerializeField] private VelociraptorConfig _config;
         [SerializeField] private Enemy _prefab;
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private Transform _worldTransform;
         [Space]
         [Header("---------Level---------")] 
@@ -26,7 +27,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [SerializeField] private GameObject _player;
 
         [Inject]
-        public void Construct(PlayerService playerService)
+        public void Construct(SpawnPoints spawnPointses)
+        {
+            Debug.Log("Spawner Construct");
+            _spawnPoints = spawnPointses.GetEnemySpawnPoints();
+        }
+
+        public void Initialize(PlayerService playerService)
         {
             _player = playerService.GetPlayer();
         }
@@ -34,7 +41,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [Button]
         public void Spawn()
         {
-            var random = Random.Range(0, _spawnPoints.Length);
+            var random = Random.Range(0, _spawnPoints.Count);
             Vector3 randomPosition = _spawnPoints[random].position;
             
             var dino = Instantiate(_prefab, randomPosition, Quaternion.identity);
@@ -49,6 +56,5 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
         }
-
     }
 }
