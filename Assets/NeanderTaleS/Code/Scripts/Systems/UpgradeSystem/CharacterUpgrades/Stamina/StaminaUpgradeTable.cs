@@ -17,17 +17,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stam
 
         private void EvaluateTable(int maxLevel)
         {
-            var speedStep = (_endStamina - _startStamina) / maxLevel;
+            var step = (_endStamina - _startStamina) / maxLevel;
+            if (step <= 0) step = 1;
             var table = new int[maxLevel];
             table[0] = _startStamina;
             table[maxLevel-1] = _endStamina;
 
             for (int level = 1; level < maxLevel - 1; level++)
             {
-                var stamina = table[level-1] + speedStep;
-                table[level] = stamina;
+                var value = table[level-1] + step;
+                table[level] = value;
             }
-            
+           
             _table = table;
         }
         

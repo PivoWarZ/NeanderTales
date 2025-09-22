@@ -18,6 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Heal
         private void EvaluateTable(int maxLevel)
         {
             var step = (_endHealth - _startHealth) / maxLevel;
+            if (step <= 0) step = 1;
             var table = new int[maxLevel];
             table[0] = _startHealth;
             table[maxLevel-1] = _endHealth;

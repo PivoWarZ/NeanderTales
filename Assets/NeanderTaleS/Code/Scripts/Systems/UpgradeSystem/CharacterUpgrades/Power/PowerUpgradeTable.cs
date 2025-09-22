@@ -18,6 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Powe
         private void EvaluateTable(int maxLevel)
         {
             var step = (_endPower - _startPower) / maxLevel;
+            if (step <= 0) step = 1;
             var table = new int[maxLevel];
             table[0] = _startPower;
             table[maxLevel-1] = _endPower;
