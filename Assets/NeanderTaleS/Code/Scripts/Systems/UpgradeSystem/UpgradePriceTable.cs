@@ -23,6 +23,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             EvaluatePriceTable(maxLevel);
         }
 
+        public void OnValidate(int maxLevel, int value)
+        {
+            EvaluatePriceTable(maxLevel, value);
+        }
+
         private void EvaluatePriceTable(int maxLevel)
         {
             var table = new int[maxLevel];
@@ -30,6 +35,19 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             for (int level = 2; level <= maxLevel; level++)
             {
                 table[level-1] = _basePrice * level;
+            }
+            
+            _levelsPrice = table;
+        }
+
+        private void EvaluatePriceTable(int maxLevel, int value)
+        {
+            var table = new int[maxLevel];
+            table[0] = default;
+            
+            for (int level = 2; level <= maxLevel; level++)
+            {
+                table[level-1] = value;
             }
             
             _levelsPrice = table;

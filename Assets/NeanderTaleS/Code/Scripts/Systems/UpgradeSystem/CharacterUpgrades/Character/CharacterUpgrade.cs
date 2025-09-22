@@ -25,7 +25,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             var speed = _config.GetHealth(level);
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
-            Debug.Log($"CharacterUpgrade доделать было _character.Upgrade");
+            Debug.Log($"CharacterUpgrade:");
+            Debug.Log($"Speed: {speed}");
+            Debug.Log($"Stamina: {stamina}");
+            Debug.Log($"Power: {power}");
 
         }
     }

@@ -18,7 +18,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             return PriceTable.GetNextPrice(level);
         }
         
-        [Button]
         public virtual void OnValidate()
         {
             Debug.Log("OnValidate вызывается, MaxLevel = " + MaxLevel);

@@ -6,27 +6,51 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Powe
     [Serializable]
     public class PowerUpgradeTable
     {
-        [SerializeField] private int _startPower;
-        [SerializeField] private int _endPower;
+        [SerializeField] private int _startValue;
+        [SerializeField] private int _endValue;
+        [SerializeField] private int _step;
+        [SerializeField] private bool _isStep;
         [SerializeField] private int[] _table;
 
         public void OnValidate(int maxLevel)
         {
-            EvaluateTable(maxLevel);
+            if (_isStep)
+            {
+                EvaluateStepTable(maxLevel, _step);
+            }
+            else
+            {
+                EvaluateTable(maxLevel);
+            }
         }
 
-        private void EvaluateTable(int maxLevel)
+        private void EvaluateStepTable(int maxLevel, int step)
         {
-            var step = (_endPower - _startPower) / maxLevel;
-            if (step <= 0) step = 1;
             var table = new int[maxLevel];
-            table[0] = _startPower;
-            table[maxLevel-1] = _endPower;
+            table[0] = default;
+            table[maxLevel-1] = step;
 
             for (int level = 1; level < maxLevel - 1; level++)
             {
-                var power = table[level-1] + step;
-                table[level] = power;
+                var value = step;
+                table[level] = value;
+            }
+           
+            _table = table;
+        }
+        
+        private void EvaluateTable(int maxLevel)
+        {
+            var step = (_endValue - _startValue) / maxLevel;
+            if (step <= 0) step = 1;
+            var table = new int[maxLevel];
+            table[0] = _startValue;
+            table[maxLevel-1] = _endValue;
+
+            for (int level = 1; level < maxLevel - 1; level++)
+            {
+                var value = table[level-1] + step;
+                table[level] = value;
             }
            
             _table = table;
