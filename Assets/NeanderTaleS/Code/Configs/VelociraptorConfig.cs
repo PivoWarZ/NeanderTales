@@ -25,5 +25,10 @@ namespace NeanderTaleS.Code.Configs
             StunChance = Mathf.Max(BaseStunChance - BaseStunChance * (1 - SizeCoefficient) * 1.5f, 0f);
             PushPower = BasePushPower * SizeCoefficient;
         }
+
+        public void SetSize(float size)
+        {
+            _size = size;
+        }
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class ExperienceComponent: MonoBehaviour, IExperienceDealer
+    public class ExperienceRewardComponent: MonoBehaviour, IExperienceDealer
     {
         public event Action<float> OnDealExperience;
+       
+        public float Experience;
         
-        [SerializeField] private float _experience;
         [SerializeField] private HitPointsComponent _hitPointsComponent;
         private IDisposable _disposable;
 
@@ -20,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         private void DealExperience(float _)
         {
-            OnDealExperience?.Invoke(_experience);
+            OnDealExperience?.Invoke(Experience);
         }
 
         private void OnDestroy()

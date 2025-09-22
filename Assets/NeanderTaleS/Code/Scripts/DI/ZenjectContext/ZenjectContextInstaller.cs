@@ -12,7 +12,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
 {
     public class ZenjectContextInstaller: MonoInstaller
     {
-        [SerializeField] private ExperienceComponent _experienceComponent;
+        [SerializeField] private ExperienceRewardComponent experienceRewardComponent;
         [SerializeField] GameObject _player;
         [SerializeField] HudUI _hudUI;
         public override void InstallBindings()
@@ -29,7 +29,7 @@ namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
         private void BindExperienceSystem()
         {
             Container.Bind<IExperienceStorage>().To<ExperienceStorage>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ExperienceSystem>().AsSingle().WithArguments(_experienceComponent).NonLazy();
+            Container.BindInterfacesAndSelfTo<ExperienceSystem>().AsSingle().WithArguments(experienceRewardComponent).NonLazy();
         }
 
         private void BindPlayerService(GameObject player)

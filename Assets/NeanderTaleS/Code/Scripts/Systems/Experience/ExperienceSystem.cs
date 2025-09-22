@@ -6,15 +6,15 @@ namespace NeanderTaleS.Code.Scripts.Systems.Experience
 {
     public class ExperienceSystem: IDisposable
     {
-        private ExperienceComponent _component;
+        private ExperienceRewardComponent _rewardComponent;
         private IExperienceStorage _storage;
 
-        public ExperienceSystem(ExperienceComponent component, IExperienceStorage storage)
+        public ExperienceSystem(ExperienceRewardComponent rewardComponent, IExperienceStorage storage)
         {
-            _component = component;
+            _rewardComponent = rewardComponent;
             _storage = storage;
             
-            _component.OnDealExperience += AddExperience;
+            _rewardComponent.OnDealExperience += AddExperience;
         }
 
         private void AddExperience(float value)
@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Experience
 
         void IDisposable.Dispose()
         {
-            _component.OnDealExperience -= AddExperience;
+            _rewardComponent.OnDealExperience -= AddExperience;
         }
     }
 }

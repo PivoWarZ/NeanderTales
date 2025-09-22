@@ -7,6 +7,7 @@ using NeanderTaleS.Code.Scripts.Core.EnemySkills;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.WeaponInterfaces;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
@@ -17,9 +18,12 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         [SerializeField] private LocalProvider _provider;
         [SerializeField] private VelociraptorConfig _config;
         private List<IStartValueSetter> _startValueSetters;
-
-        private void Awake()
+        
+        [Button]
+        public void InitEnemy(VelociraptorConfig config)
         {
+            _config = config;
+            
             _bootsTrap.EntityInitialize();
             InitializeLeapSkill(_provider);
             
@@ -35,7 +39,15 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             SetStunChance();
             SetPushPower();
             SetStepFxScale();
+            SetExperienceReward();
             InitializeStepFXInstaller();
+        }
+
+        private void SetExperienceReward()
+        {
+            var exp = _provider.GetService<ExperienceRewardComponent>();
+            int modifier = 2; 
+            exp.Experience *= _config.Size * modifier;
         }
 
         private void InitializeStepFXInstaller()
