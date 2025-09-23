@@ -19,18 +19,16 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
             _experience = experience;
             _upgrade = upgrade;
             _character = character;
-        }
-        
-        
-        public void Initialize()
-        {
-            Init();
+            _upgrade.Construct(_character);
         }
 
-        public void Init()
+
+        void IInitializable.Initialize()
         {
-            _upgrade.Construct(_character);
             _experience.OnLevelUp += CanLevelUp;
+            
+            var nextLevelExperience = _upgrade.NextPrice;
+            _experience.SetRequiredExperience(nextLevelExperience);
         }
 
         private void CanLevelUp()

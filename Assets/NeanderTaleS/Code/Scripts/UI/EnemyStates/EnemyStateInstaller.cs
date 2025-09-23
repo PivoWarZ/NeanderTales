@@ -2,6 +2,7 @@ using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
+/*
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
     public class EnemyStateInstaller
@@ -16,8 +17,7 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
             ITakeDamageable takeDamageable = _dino.GetComponent<ITakeDamageable>();
             takeDamageable.OnTakeDamageAction += ShowPopup;
 
-            _view = _hud.EnemyStatesView;
-            _view.gameObject.SetActive(false);
+
             
             _adapter = new EnemyStateAdapter(_view);
         }
@@ -32,4 +32,4 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
             _adapter.Dispose();
         }
     }
-}
+}*/

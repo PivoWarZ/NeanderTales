@@ -58,6 +58,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
+            
+            OnSpawned?.Invoke(dino);
         }
         
         public void Spawn(Transform spawnPoint)
@@ -73,6 +75,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
+            
+            OnSpawned?.Invoke(dino);
         }
     }
 }

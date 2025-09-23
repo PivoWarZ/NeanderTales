@@ -3,6 +3,7 @@ using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
+using NeanderTaleS.Code.Scripts.UI.EnemyStates;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -34,6 +35,10 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             BindSpawner();
             
+            Container.BindInterfacesAndSelfTo<EnemyStateAdapter>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemySpawnedHandler>().AsSingle().NonLazy();
+            
         }
 
         private void BindSpawner()
@@ -64,6 +69,9 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInstance(hudUi)
                 .AsSingle()
                 .NonLazy();
+
+            EnemyStateView enemyview = hud.EnemyStatesView;
+            Container.BindInstance(enemyview);
         }
 
         private GameObject BindPlayerService(GameObject player)

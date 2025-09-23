@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
     public class ExperienceSystem: IDisposable
     {
         private IExperienceStorage _storage;
-        private List<IExperienceDealer> _dealers;
+        private List<IExperienceDealer> _dealers = new ();
 
         public ExperienceSystem(IExperienceStorage storage)
         {
@@ -20,14 +20,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
             dealer.OnDealExperience += AddExperience;
         }
 
-        private void AddExperience(float value, IExperienceDealer dealer)
+        private void AddExperience(float value)
         {
             _storage.AddExperience(value);
-            _dealers.Remove(dealer);
-            dealer.OnDealExperience -= AddExperience;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             if (_dealers != null && _dealers.Count > 0)
             {

@@ -8,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
     public class ExperienceRewardComponent: MonoBehaviour, IExperienceDealer
     {
-        public event Action<float,  IExperienceDealer> OnDealExperience;
+        public event Action<float> OnDealExperience;
        
         public float Experience;
         
@@ -22,7 +22,9 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         private void DealExperience(float _)
         {
-            OnDealExperience?.Invoke(Experience, this);
+            OnDealExperience?.Invoke(Experience);
+            Debug.Log($"Experience: {Experience}");
+            
         }
 
         private void OnDestroy()

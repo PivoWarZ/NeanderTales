@@ -3,11 +3,12 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
+using Zenject;
 using Timer = NeanderTaleS.Code.Scripts.Core.Services.Timer;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
-    public class EnemyStateAdapter: IDisposable
+    public class EnemyStateAdapter: IDisposable, IInitializable
     {
         private EnemyStateView _view;
         private Timer _timer = new ();
@@ -18,13 +19,35 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
         public EnemyStateAdapter(EnemyStateView view)
         {
             _view = view;
-            
+        }
+
+
+        void IInitializable.Initialize()
+        {
             _timer.IsLoop = false;
             _timer.Duration = LIFE_TIME;
 
             _timer.OnEnded += HidePopup;
             
             Run(_cancell).Forget();
+        }
+        
+        public void Construct(float damage, ITakeDamageable takeDamageable)
+        {
+            _view.gameObject.SetActive(true);
+            
+            if (_takeDamageable != takeDamageable || _takeDamageable == null)
+            {
+                _takeDamageable = takeDamageable;
+                
+                InitView(damage, _takeDamageable);
+                _timer.Start();
+            }
+            else
+            {
+                SetSlider(damage, _takeDamageable);
+                _timer.ForceStart();
+            }
         }
 
         private async UniTaskVoid Run(CancellationTokenSource token)
@@ -43,24 +66,6 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
         private void HidePopup()
         {
             _view.gameObject.SetActive(false);
-        }
-
-        public void Init(float damage, ITakeDamageable takeDamageable)
-        {
-            _view.gameObject.SetActive(true);
-            
-            if (_takeDamageable != takeDamageable || _takeDamageable == null)
-            {
-                _takeDamageable = takeDamageable;
-                
-                InitView(damage, _takeDamageable);
-                _timer.Start();
-            }
-            else
-            {
-                SetSlider(damage, _takeDamageable);
-                _timer.ForceStart();
-            }
         }
 
         public void SetSlider(float damage, ITakeDamageable takeDamageable)

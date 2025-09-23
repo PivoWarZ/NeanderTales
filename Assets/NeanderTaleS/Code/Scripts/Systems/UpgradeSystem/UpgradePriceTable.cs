@@ -34,7 +34,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             table[0] = default;
             for (int level = 2; level <= maxLevel; level++)
             {
-                table[level-1] = _basePrice * level;
+                table[level-1] = table[level-2] + _basePrice * level * level;
             }
             
             _levelsPrice = table;

@@ -17,9 +17,9 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 
         public void Init()
         {
-            var hpDispose = _model.CurrentHitPoints.Subscribe(SetHealthBar);
-            var staminaDispose = _model.CurrentStamina.Subscribe(SetStaminaBar);
-            var expDispose = _model.CurrentExperience.Subscribe(SetExperienceBar);
+            var hpDispose = _model.CurrentHitPoints.Merge(_model.MaxHitPoints).Subscribe(SetHealthBar);
+            var staminaDispose = _model.CurrentStamina.Merge(_model.MaxStamina).Subscribe(SetStaminaBar);
+            var expDispose = _model.CurrentExperience.Merge(_model.RequiredExperience).Subscribe(SetExperienceBar);
             var lvlDispose = _model.Level.Subscribe(SetPlayerLevel);
             
             _disposables.Add(hpDispose);
@@ -49,19 +49,19 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 
         private void SetHealthBar(float currentHitPoints)
         {
-            var newValue = currentHitPoints / _model.MaxHitPoints.CurrentValue;
+            var newValue = _model.CurrentHitPoints.CurrentValue / _model.MaxHitPoints.CurrentValue;
             _view.SetHealth(newValue);
         }
 
         private void SetStaminaBar(float currentStaminaValue)
         {
-            var newValue = currentStaminaValue / _model.MaxStamina.CurrentValue;
+            var newValue = _model.CurrentStamina.CurrentValue / _model.MaxStamina.CurrentValue;
             _view.SetStamina(newValue);
         }
 
-        private void SetExperienceBar(float currentExperience)
+        private void SetExperienceBar(float _)
         {
-            var newValue = currentExperience / _model.RequiredExperience.CurrentValue;
+            var newValue = _model.CurrentExperience.CurrentValue / _model.RequiredExperience.CurrentValue;
             _view.SetExperience(newValue);
         }
         
