@@ -8,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
     public class Player: MonoBehaviour, ICharacterUpgrade
     {
         [SerializeField] private EntityBootsTrap _entityBootsTrap;
-        [SerializeField] private LocalProvider localProvider;
+        [SerializeField] private LocalProvider _localProvider;
         private LastAddedCharacteristics _lastAdded = new ();
         private ITakeDamageable _hitPoints;
         private IStamina _stamina;
@@ -20,11 +20,14 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
         public void Init()
         {
             _entityBootsTrap.EntityInitialize();
-            
+         //   _hitPoints = _localProvider.GetInterface<ITakeDamageable>();
+          //  _stamina = _localProvider.GetInterface<IStamina>();
+          //  _additionalDamage = _localProvider.GetInterface<IAdditionalDamage>();
         }
 
         void ICharacterUpgrade.Upgrade(int level, int health, int stamina, int power)
         {
+            Debug.Log("Upgrade level " + level);
             var newHealth = health - _lastAdded.Health;
             var newStamina = stamina - _lastAdded.Stamina;
             var newPower = power - _lastAdded.Power;

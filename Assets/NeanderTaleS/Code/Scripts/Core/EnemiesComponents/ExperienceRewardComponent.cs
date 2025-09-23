@@ -1,13 +1,14 @@
 using System;
+using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using R3;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Core.Components
+namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
     public class ExperienceRewardComponent: MonoBehaviour, IExperienceDealer
     {
-        public event Action<float> OnDealExperience;
+        public event Action<float,  IExperienceDealer> OnDealExperience;
        
         public float Experience;
         
@@ -21,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         private void DealExperience(float _)
         {
-            OnDealExperience?.Invoke(Experience);
+            OnDealExperience?.Invoke(Experience, this);
         }
 
         private void OnDestroy()

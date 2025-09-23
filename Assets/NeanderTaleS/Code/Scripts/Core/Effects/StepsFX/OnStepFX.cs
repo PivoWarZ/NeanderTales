@@ -43,14 +43,12 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 
         private void StepFXRight(Transform footTransform)
         {
-            Debug.Log("StepFXRight");
             _effectRight.transform.position = footTransform.position;
             _effectRight.Play();
         }
 
         private void StepFXLeft(Transform footTransform)
         {
-            Debug.Log("StepFXLeft");
             _effectLeft.transform.position = footTransform.position;
             _effectLeft.Play();
         }

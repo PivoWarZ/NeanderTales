@@ -1,9 +1,11 @@
+using System;
 using R3;
 
 namespace NeanderTaleS.Code.Scripts.Interfaces.Systems
 {
     public interface IExperienceStorage
     {
+        event Action OnLevelUp;
         ReadOnlyReactiveProperty<float> RequiredExperience{ get; }
         ReadOnlyReactiveProperty<float> CurrentExperience { get; }
 

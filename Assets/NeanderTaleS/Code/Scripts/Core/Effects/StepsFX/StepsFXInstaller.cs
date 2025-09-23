@@ -18,7 +18,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 
         public void Init()
         {
-            Debug.Log("StepsFXInstaller Init");
             var leftFootTransform = _root.LeftFoot;
             var rightFootTransform = _root.RightFoot;
             

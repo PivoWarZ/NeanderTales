@@ -1,30 +1,47 @@
 using System;
+using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Experience
 {
     public class ExperienceSystem: IDisposable
     {
-        private ExperienceRewardComponent _rewardComponent;
         private IExperienceStorage _storage;
+        private List<IExperienceDealer> _dealers;
 
-        public ExperienceSystem(ExperienceRewardComponent rewardComponent, IExperienceStorage storage)
+        public ExperienceSystem(IExperienceStorage storage)
         {
-            _rewardComponent = rewardComponent;
             _storage = storage;
-            
-            _rewardComponent.OnDealExperience += AddExperience;
         }
 
-        private void AddExperience(float value)
+        public void AddExperienceDealer(IExperienceDealer dealer)
+        {
+            _dealers.Add(dealer);
+            dealer.OnDealExperience += AddExperience;
+        }
+
+        private void AddExperience(float value, IExperienceDealer dealer)
         {
             _storage.AddExperience(value);
+            _dealers.Remove(dealer);
+            dealer.OnDealExperience -= AddExperience;
         }
 
         void IDisposable.Dispose()
         {
-            _rewardComponent.OnDealExperience -= AddExperience;
+            if (_dealers != null && _dealers.Count > 0)
+            {
+                foreach (var experienceDealer in _dealers)
+                {
+                    experienceDealer.OnDealExperience -= AddExperience;
+                }
+                
+                _dealers.Clear();
+                _dealers = null;
+            }
+
         }
     }
 }

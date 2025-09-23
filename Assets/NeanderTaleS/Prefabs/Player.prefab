@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityBootsTrap: {fileID: 4713431902921475130}
+  localProvider: {fileID: 2668145536497192509}
 --- !u!114 &5178345274205057928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,8 +561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _user: {fileID: 6199720679450843442}
   _conditionInstaller: {fileID: 6706283635484932385}
-  maxStamina:
-    value: 15
+  _maxStamina:
+    value: 5
   _stamina:
     value: 15
 --- !u!114 &1187062126279146756
@@ -605,7 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1f32a74034f73b7f15ae2021576f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdditionalDamage: 0
   _dealDamageComponent: {fileID: 6362824722104419000}
 --- !u!1 &2682165294302972793
 GameObject:

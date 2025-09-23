@@ -28,6 +28,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             InitializeStepFX();
             
+            Debug.Log("Entity Initialize");
+            
         }
 
         private void InitializeStepFX()
