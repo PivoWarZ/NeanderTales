@@ -12,10 +12,15 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         [SerializeField] private float _chance;
 
         public float StunChance => _chance;
-
+        
         private void Awake()
         {
             _leapPushing.OnPushing += Stunned;
+        }
+
+        void IStunChance.SetStunChance(float chance)
+        {
+            _chance = chance;
         }
 
         private void Stunned(GameObject target)

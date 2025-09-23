@@ -10,7 +10,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         [SerializeField] private LocalProvider _localProvider;
         [SerializeField] private bool _isHitPointsEmpty;
         [SerializeField] private bool _isAttackDistance;
-        private ITakeDamageble _hitPointsComponent;
+        private ITakeDamageable _hitPointsComponent;
         private IAttackable _attackComponent;
         private IMovable _movableComponent;
 
@@ -21,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         public void InstallConditions(LocalProvider localProvider)
         {
-            _hitPointsComponent = localProvider.GetComponent<ITakeDamageble>();
+            _hitPointsComponent = localProvider.GetComponent<ITakeDamageable>();
 
             AddHitPointsEmptyCondition();
             AddAttackDistanceCondition();

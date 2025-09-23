@@ -14,7 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         private bool _canDealDamage;
         private CompositeCondition _condition = new ();
 
-        public void DealDamage(ITakeDamageble hitPointsComponent, float damage)
+        public void DealDamage(ITakeDamageable hitPointsComponent, float damage)
         {
             OnDealDamageRequest?.Invoke(ref damage);
 

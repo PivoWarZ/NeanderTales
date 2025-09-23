@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushing: MonoBehaviour, IPushing, IStartValueSetter
+    public class LeapPushing: MonoBehaviour, IPushing
     {
         public event Action<GameObject> OnPushing;
         
@@ -19,6 +19,11 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         private CancellationTokenSource _cancell = new();
 
         public float PushPower => _pushPower;
+
+        void IPushing.SetPushPower(float power)
+        {
+            _pushPower = power;
+        }
 
         private void Awake()
         {
@@ -55,11 +60,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         private void Complete(Collision collision)
         {
             _task.TrySetResult(collision);
-        }
-        
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _pushPower = currentValue;
         }
 
         private void OnDestroy()

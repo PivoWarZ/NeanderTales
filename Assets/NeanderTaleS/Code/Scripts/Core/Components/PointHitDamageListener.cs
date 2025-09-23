@@ -22,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             _hitPointsComponent.OnTakeDamageAction += HitPoint;
         }
 
-        private void HitPoint(float _, ITakeDamageble __)
+        private void HitPoint(float _, ITakeDamageable __)
         {
             OnHitPoint?.Invoke(_hitPointPosition);
         }

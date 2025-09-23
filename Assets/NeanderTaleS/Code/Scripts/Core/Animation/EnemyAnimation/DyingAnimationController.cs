@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
         
         private Animator _animator;
         private AnimationEventDispatcher _eventDispatcher;
-        private ITakeDamageble _damageble;
+        private ITakeDamageable _damageable;
         private PointHitDamageListener _pointHit;
         private IDisposable _disposable;
         
@@ -21,11 +21,11 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
         {
             _animator = localProvider.Animator;
             _eventDispatcher = localProvider.GetService<AnimationEventDispatcher>();
-            _damageble = localProvider.GetInterface<ITakeDamageble>();
+            _damageable = localProvider.GetInterface<ITakeDamageable>();
             _pointHit = localProvider.GetService<PointHitDamageListener>();
 
             _eventDispatcher.OnReceiveEvent += ReceiveEvent;
-            _disposable = _damageble.CurrentHitPoints.Where(hp => hp <= 0).Subscribe(DyingAnimation);
+            _disposable = _damageable.CurrentHitPoints.Where(hp => hp <= 0).Subscribe(DyingAnimation);
         }
 
         private void ReceiveEvent(string eventName)

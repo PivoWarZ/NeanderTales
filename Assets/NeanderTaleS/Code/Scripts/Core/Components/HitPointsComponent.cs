@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class HitPointsComponent: MonoBehaviour, ITakeDamageble, IStartValueSetter
+    public class HitPointsComponent: MonoBehaviour, ITakeDamageable
     {
         public event TakeDamageRequestHandler OnTakeDamageRequest;
-        public event Action<float, ITakeDamageble> OnTakeDamageAction;
+        public event Action<float, ITakeDamageable> OnTakeDamageAction;
         public event Action OnTakeDamageEvent;
         
         [SerializeField] private SerializableReactiveProperty<float> _maxHitPoints = new ();
@@ -46,7 +46,13 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         {
             OnTakeDamageEvent?.Invoke();
         }
-        
+
+        void ITakeDamageable.AddedHitPoints(float currentHitPoints, float maxHitPoints)
+        {
+            _currentHitPoints.Value += currentHitPoints;
+            _maxHitPoints.Value += maxHitPoints;
+        }
+
         public void SetCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
@@ -55,12 +61,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         public void RemoveCondition(Func<bool> condition)
         {
             _condition.RemoveCondition(condition);
-        }
-
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _maxHitPoints.Value = maxValue;
-            _currentHitPoints.Value = currentValue;
         }
     }
 }

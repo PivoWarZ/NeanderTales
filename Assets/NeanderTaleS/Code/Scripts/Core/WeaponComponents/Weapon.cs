@@ -7,13 +7,13 @@ using DealDamageComponent = NeanderTaleS.Code.Scripts.Core.Components.DealDamage
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {
-    public class Weapon: MonoBehaviour, IWeapon, IStartValueSetter
+    public class Weapon: MonoBehaviour, IWeapon
     {
         [SerializeField] private float _damage;
         [SerializeField] Collider _collider;
         [SerializeField] private bool _isTrigger;
         [SerializeField] private bool _isPlayer;
-        private List<ITakeDamageble> _hitPointsCpmponents = new ();
+        private List<ITakeDamageable> _hitPointsCpmponents = new ();
         private DealDamageComponent _damageComponent;
         private IAttackable _attackable;
 
@@ -56,7 +56,7 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
                 return;
             }
 
-            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
+            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageable>(out var hitPointsComponent);
 
             if (isDamageble)
             {
@@ -71,7 +71,7 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
                 return;
             }
 
-            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageble>(out var hitPointsComponent);
+            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageable>(out var hitPointsComponent);
             
             if (isDamageble)
             {
@@ -80,7 +80,7 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
         }
 
 
-        private void TryDealDamage(ITakeDamageble hitPointsComponent)
+        private void TryDealDamage(ITakeDamageable hitPointsComponent)
         {
             if (IsComponentDamaged(hitPointsComponent))
             {
@@ -91,7 +91,7 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
             _hitPointsCpmponents.Add(hitPointsComponent);
         }
 
-        private bool IsComponentDamaged(ITakeDamageble component)
+        private bool IsComponentDamaged(ITakeDamageable component)
         {
             if (_hitPointsCpmponents.Count == 0)
             {
@@ -101,9 +101,9 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
             return _hitPointsCpmponents.Any(hitPointsCpmponent => hitPointsCpmponent == component);
         }
         
-        public void SetStartValue(float currentValue, float maxValue = 0)
+        public void SetDamage(float damage)
         {
-           _damage = currentValue;
+            _damage = damage;
         }
 
         private void OnDestroy()

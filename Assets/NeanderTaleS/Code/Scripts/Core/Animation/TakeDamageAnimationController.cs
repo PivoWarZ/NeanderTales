@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
 {
     public class TakeDamageAnimationController: MonoBehaviour, IAnimationController
     {
-        private ITakeDamageble _damageble;
+        private ITakeDamageable _damageable;
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private DebuffsComponent _debuffs;
@@ -20,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
         
         public void Init(LocalProvider localProvider)
         {
-            _damageble = localProvider.GetInterface<ITakeDamageble>();
+            _damageable = localProvider.GetInterface<ITakeDamageable>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
             _debuffs = localProvider.GetService<DebuffsComponent>();
@@ -30,10 +30,10 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             conDitionInstaller.AddCondition<IMovable>(IsNormalDamage);
             conDitionInstaller.AddCondition<IAttackable>(IsNormalDamage);
             
-            _damageble.OnTakeDamageAction += TakeDamage;
+            _damageable.OnTakeDamageAction += TakeDamage;
             _event.OnReceiveEvent += ReceiveEvent;
             
-            _startHitPoints = _damageble.CurrentHitPoints.CurrentValue;
+            _startHitPoints = _damageable.CurrentHitPoints.CurrentValue;
             _lowDamage = _startHitPoints * LOW_DAMAGE_THREASHOLD;
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
         }
@@ -51,7 +51,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             }
         }
 
-        private void TakeDamage(float damage, ITakeDamageble _)
+        private void TakeDamage(float damage, ITakeDamageable _)
         {
             if (!_debuffs.IsStunOver())
             {
@@ -82,7 +82,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
 
         private void OnDestroy()
         {
-            _damageble.OnTakeDamageAction -= TakeDamage;
+            _damageable.OnTakeDamageAction -= TakeDamage;
             _event.OnReceiveEvent -= ReceiveEvent;
         }
     }

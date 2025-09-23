@@ -9,20 +9,26 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
     {
         [SerializeField] private StaminaUser _user;
         [SerializeField] private ConditionInstaller _conditionInstaller;
-        [SerializeField] private SerializableReactiveProperty<float> maxStamina = new (5);
+        [SerializeField] private SerializableReactiveProperty<float> _maxStamina = new (5);
         [SerializeField] private SerializableReactiveProperty<float> _stamina = new (5);
         
-        public ReadOnlyReactiveProperty<float> MaxStamina => maxStamina;
+        public ReadOnlyReactiveProperty<float> MaxStamina => _maxStamina;
         public ReadOnlyReactiveProperty<float> Stamina => _stamina;
 
+        private void Awake()
+        {
+            _user.OnSpend += Spend;
+        }
+        
         public void Init(IAttackable attackable)
         {
             _conditionInstaller.AddCondition<IAttackable>(CanStaminaPrice);
         }
 
-        private void Awake()
+        void IStamina.AddedStamina(float stamina, float maxStamina)
         {
-            _user.OnSpend += Spend;
+            _stamina.Value += stamina;
+            _maxStamina.Value += maxStamina;
         }
 
         private void Spend(float price)

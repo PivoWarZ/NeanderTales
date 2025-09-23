@@ -13,8 +13,8 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 
         private void Awake()
         {
-            ITakeDamageble takeDamageble = _dino.GetComponent<ITakeDamageble>();
-            takeDamageble.OnTakeDamageAction += ShowPopup;
+            ITakeDamageable takeDamageable = _dino.GetComponent<ITakeDamageable>();
+            takeDamageable.OnTakeDamageAction += ShowPopup;
 
             _view = _hud.EnemyStatesView;
             _view.gameObject.SetActive(false);
@@ -22,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
             _adapter = new EnemyStateAdapter(_view);
         }
 
-        private void ShowPopup(float damage, ITakeDamageble hitPointsComponent)
+        private void ShowPopup(float damage, ITakeDamageable hitPointsComponent)
         {
             _adapter.Init(damage, hitPointsComponent);
         }

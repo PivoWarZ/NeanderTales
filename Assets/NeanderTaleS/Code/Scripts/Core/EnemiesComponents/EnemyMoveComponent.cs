@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent, IStartValueSetter
+    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent
     {
         public bool CanMove;
         
@@ -46,7 +46,12 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         {
             _rb.linearVelocity = direction.normalized * _moveSpeed;
         }
-        
+
+        public void SetSpeed(float speed)
+        {
+            _moveSpeed = speed;
+        }
+
         public void AddCondition(Func<bool> condition)
         {
             _condition.AddCondition(condition);
@@ -65,11 +70,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         public void SetTarget(GameObject target)
         {
             _target = target.transform;
-        }
-
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _moveSpeed = currentValue;
         }
     }
 }

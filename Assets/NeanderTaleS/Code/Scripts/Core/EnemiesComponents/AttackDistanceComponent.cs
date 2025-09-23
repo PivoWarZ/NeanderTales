@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance, IStartValueSetter
+    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance
     {
         
         [SerializeField] private float _attackDistance;
@@ -16,12 +16,17 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         
 
         public bool IsAttackDistance => _isAttackDistance;
-        
+
         private void Awake()
         {
             _dispose = _distanceComponent.TargetDistance.Where(distance => distance <= _attackDistance).Subscribe(IsDistanceAttack);
         }
 
+        public void SetAttackDistance(float distance)
+        {
+            _attackDistance = distance;
+        }
+        
         private void IsDistanceAttack(float distance)
         {
             _dispose?.Dispose();
@@ -41,11 +46,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void OnDestroy()
         {
             _dispose?.Dispose();
-        }
-
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _attackDistance = currentValue;
         }
     }
 }

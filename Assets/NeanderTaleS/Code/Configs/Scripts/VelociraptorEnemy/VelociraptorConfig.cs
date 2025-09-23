@@ -14,6 +14,7 @@ namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
         public float Speed;
         public float StunChance;
         public float PushPower;
+        public float Experience;
         public float SizeCoefficient => Mathf.InverseLerp(0f, 2f, Size);
 
         public float Size => _size;
@@ -22,6 +23,7 @@ namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
         {
             var gain = (Level - 1) * LevelGain;
             
+            Experience = BaseExperience * Size * Level;
             HitPoints = BaseHitPoints * SizeCoefficient + BaseHitPoints * SizeCoefficient * gain;
             Damage = BaseDamage * SizeCoefficient + BaseDamage * SizeCoefficient * gain;
             Speed = Mathf.Max(4, BaseSpeed - BaseSpeed * (1 - SizeCoefficient) * 0.5f);

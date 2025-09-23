@@ -6,12 +6,12 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
     public class HitPointsEmptyConditionInstaller
     {
         private LocalProvider _localProvider;
-        private ITakeDamageble _hitPointsComponent;
+        private ITakeDamageable _hitPointsComponent;
 
         public HitPointsEmptyConditionInstaller(LocalProvider localProvider)
         {
             _localProvider = localProvider;
-            _hitPointsComponent = localProvider.GetInterface<ITakeDamageble>();
+            _hitPointsComponent = localProvider.GetInterface<ITakeDamageable>();
         }
 
         public void SetHitPpointsEmptyCondition()

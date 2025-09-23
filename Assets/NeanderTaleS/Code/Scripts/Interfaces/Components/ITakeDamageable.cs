@@ -4,14 +4,15 @@ using R3;
 
 namespace NeanderTaleS.Code.Scripts.Interfaces.Components
 {
-    public interface ITakeDamageble
+    public interface ITakeDamageable
     {
         event TakeDamageRequestHandler OnTakeDamageRequest;
-        event Action<float, ITakeDamageble> OnTakeDamageAction;
+        event Action<float, ITakeDamageable> OnTakeDamageAction;
         event Action OnTakeDamageEvent;
         ReadOnlyReactiveProperty<float> CurrentHitPoints { get; }
         ReadOnlyReactiveProperty<float> MaxHitPoints { get; }
         void TakeDamage(float damage);
         void TakeDamageEvent();
+        void AddedHitPoints(float currentHitPoints, float maxHitPoints);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
+using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
@@ -36,13 +37,13 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         {
             PlayerStatsModel model = new PlayerStatsModel
             {
-                MaxHitPoints = _provider.GetInterface<ITakeDamageble>().MaxHitPoints,
-                CurrentHitPoints = _provider.GetInterface<ITakeDamageble>().CurrentHitPoints,
+                MaxHitPoints = _provider.GetInterface<ITakeDamageable>().MaxHitPoints,
+                CurrentHitPoints = _provider.GetInterface<ITakeDamageable>().CurrentHitPoints,
                 MaxStamina = _provider.GetInterface<IStamina>().MaxStamina,
                 CurrentStamina = _provider.GetInterface<IStamina>().Stamina,
                 RequiredExperience = _experienceStorage.RequiredExperience,
                 CurrentExperience = _experienceStorage.CurrentExperience,
-                Level = _experienceStorage.Level
+                Level = _provider.GetComponent<Player>().Level
             };
             
             return model;

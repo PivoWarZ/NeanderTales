@@ -35,6 +35,11 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             _rigidbody.linearVelocity = velocity;
         }
 
+        void IMovable.SetSpeed(float speed)
+        {
+            _speed = speed;
+        }
+
         private void StopRotation(Vector3 direction)
         {
             if (direction == Vector3.zero || !_condition.IsTrue())

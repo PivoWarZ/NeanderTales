@@ -10,5 +10,6 @@ namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
         public float BaseSpeed;
         public float BaseStunChance;
         public float BasePushPower;
+        public float BaseExperience;
     }
 }

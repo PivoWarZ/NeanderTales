@@ -18,6 +18,11 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         public float ActivatingDistance => _activatingDistance;
 
+        void IEnemyActivator.SetActivatingDistance(float distance)
+        {
+            _activatingDistance = distance;
+        }
+
         private void Awake()
         {
             _targetComponent.OnTargetChanged += OnTargetDistance;

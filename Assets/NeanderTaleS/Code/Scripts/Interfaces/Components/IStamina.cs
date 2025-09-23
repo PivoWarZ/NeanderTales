@@ -6,5 +6,7 @@ namespace NeanderTaleS.Code.Scripts.Interfaces.Components
     {
         public ReadOnlyReactiveProperty<float> MaxStamina { get; }
         public ReadOnlyReactiveProperty<float> Stamina { get; }
+        
+        void AddedStamina(float stamina, float maxStamina);
     }
 }

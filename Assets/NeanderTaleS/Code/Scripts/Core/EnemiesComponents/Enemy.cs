@@ -18,7 +18,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         [SerializeField] private EntityBootsTrap _bootsTrap;
         [SerializeField] private LocalProvider _provider;
         [SerializeField] private VelociraptorConfig _config;
-        private List<IStartValueSetter> _startValueSetters;
         
         [Button]
         public void InitEnemy(VelociraptorConfig config)
@@ -28,7 +27,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
             _bootsTrap.EntityInitialize();
             InitializeLeapSkill(_provider);
             
-            _startValueSetters = _provider.GetInterfaces<IStartValueSetter>();
             SetScale();
             SetHitPoints();
             SetDamage();
@@ -47,8 +45,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void SetExperienceReward()
         {
             var exp = _provider.GetService<ExperienceRewardComponent>();
-            int modifier = 2; 
-            exp.Experience *= _config.Size * modifier;
+            exp.Experience = _config.Experience;
         }
 
         private void InitializeStepFXInstaller()
@@ -72,30 +69,30 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         private void SetHitPoints()
         {
-           var health = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is ITakeDamageble hitPoints);
-           health.SetStartValue(_config.HitPoints, _config.HitPoints);
+            var health = _provider.GetInterface<ITakeDamageable>();
+           health.AddedHitPoints(_config.HitPoints, _config.HitPoints);
         }
 
         private void SetDamage()
         {
-            var damage = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IWeapon weapon);
-            damage.SetStartValue(_config.Damage);
+            var damage = _provider.GetInterface<IWeapon>();
+            damage.SetDamage(_config.Damage);
 
         }
 
         private void SetSpeed()
         {
-            var speed = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IMovable move);
-            speed.SetStartValue(_config.Speed);
+            var speed = _provider.GetInterface<IMovable>();
+            speed.SetSpeed(_config.Speed);
         }
 
         private float SetAttackDistance()
         {
-            var distance = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IAttackDistance attackDistance);
+            var distance = _provider.GetInterface<IAttackDistance>();
             var weapon = _provider.GetService<Weapon>();
             var distanceToWeapon = (weapon.transform.position - transform.position).magnitude;
             var distanceToTatget = Mathf.Min(distanceToWeapon + 1.3f * _config.SizeCoefficient, 3.5f);
-            distance.SetStartValue(distanceToTatget);
+            distance.SetAttackDistance(distanceToTatget);
             return distanceToTatget;
         }
 
@@ -119,20 +116,20 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void SetActivatingDistance(float LeapSkillActivating)
         {
             float offset = 1f;
-            var activator = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IEnemyActivator activatingDistance);
-            activator.SetStartValue(LeapSkillActivating + offset);
+            var activator = _provider.GetInterface<IEnemyActivator>();
+            activator.SetActivatingDistance(LeapSkillActivating + offset);
         }
 
         private void SetStunChance()
         {
-            var stunChance = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IStunChance chance);
-            stunChance.SetStartValue(_config.StunChance);
+            var stunChance = _provider.GetInterface<IStunChance>();
+            stunChance.SetStunChance(_config.StunChance);
         }
 
         private void SetPushPower()
         {
-            var pushing = _startValueSetters.FirstOrDefault(IStartValueSetter => IStartValueSetter is IPushing push);
-            pushing.SetStartValue(_config.PushPower);
+            var pushing = _provider.GetInterface<IPushing>();
+            pushing.SetPushPower(_config.PushPower);
         }
 
         private void SetScale()
