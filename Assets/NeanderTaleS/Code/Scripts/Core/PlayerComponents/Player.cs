@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
         private ITakeDamageable _hitPoints;
         private IStamina _stamina;
         private IAdditionalDamage _additionalDamage;
-        private ReactiveProperty<int> _level;
+        private ReactiveProperty<int> _level = new ();
         
         public ReadOnlyReactiveProperty<int> Level => _level;
 

@@ -43,6 +43,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void InstantiateCamera(GameObject player)
         {
+            Debug.Log("Instantiating camera");
             var mainCamera = Instantiate(_camera, _container);
             var cinemashine = Instantiate(_sinematicCamera, _container);
             cinemashine.GetComponent<CinemachineCamera>().Follow = player.transform;
