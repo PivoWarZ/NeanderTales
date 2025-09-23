@@ -4,10 +4,12 @@ using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using UnityEngine;
+using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
-    public class PlayerStatsInstaller: IDisposable
+    public class PlayerStatsInstaller: IInitializable, IDisposable
     {
         private LocalProvider _provider;
         private PlayerStatsModel _model;
@@ -21,7 +23,11 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
             _provider = player.GetComponent<LocalProvider>();
             _View = hudUI.PlayerStateView;
             _experienceStorage = experienceStorage;
-            
+        }
+        
+        
+        public void Initialize()
+        {
             Init();
         }
 
@@ -45,7 +51,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
                 CurrentExperience = _experienceStorage.CurrentExperience,
                 Level = _provider.GetComponent<Player>().Level
             };
-            
+
             return model;
         }
 

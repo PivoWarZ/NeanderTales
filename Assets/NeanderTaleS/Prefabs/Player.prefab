@@ -529,9 +529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHitPoints:
-    value: 10
+    value: 0
   _currentHitPoints:
-    value: 10
+    value: 0
 --- !u!114 &6706283635484932385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,9 +562,9 @@ MonoBehaviour:
   _user: {fileID: 6199720679450843442}
   _conditionInstaller: {fileID: 6706283635484932385}
   _maxStamina:
-    value: 5
+    value: 0
   _stamina:
-    value: 15
+    value: 1
 --- !u!114 &1187062126279146756
 MonoBehaviour:
   m_ObjectHideFlags: 0

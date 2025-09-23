@@ -27,6 +27,12 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
 
         void ICharacterUpgrade.Upgrade(int level, int health, int stamina, int power)
         {
+            if (level == 1)
+            {
+                SetFirstLevel(level, health, stamina, power);
+                return;
+            }
+
             Debug.Log("Upgrade level " + level);
             var newHealth = health - _lastAdded.Health;
             var newStamina = stamina - _lastAdded.Stamina;
@@ -35,8 +41,20 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
             _level.Value = level;
             _hitPoints.AddedHitPoints(newHealth, newHealth);
             _stamina.AddedStamina(newStamina, newStamina);
-            _additionalDamage.AdditionalDamage += newPower;
+            _additionalDamage.AdditionalPercentDamage += newPower;
 
+            _lastAdded.Health = health;
+            _lastAdded.Stamina = stamina;
+            _lastAdded.Power = power;
+        }
+
+        private void SetFirstLevel(int level, int health, int stamina, int power)
+        {
+            _level.Value = level;
+            _hitPoints.AddedHitPoints(health, health);
+            _stamina.AddedStamina(stamina, stamina);
+            _additionalDamage.AdditionalPercentDamage += power;
+            
             _lastAdded.Health = health;
             _lastAdded.Stamina = stamina;
             _lastAdded.Power = power;

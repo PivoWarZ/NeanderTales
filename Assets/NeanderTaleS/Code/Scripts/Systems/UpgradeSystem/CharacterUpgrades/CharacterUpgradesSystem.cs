@@ -29,7 +29,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 
         public void Init()
         {
-            Debug.Log("Upgraded System Initialize");
             _upgrade.Construct(_character);
             _experience.OnLevelUp += CanLevelUp;
         }

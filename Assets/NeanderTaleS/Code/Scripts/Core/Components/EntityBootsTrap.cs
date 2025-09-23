@@ -28,8 +28,13 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             InitializeStepFX();
             
-            Debug.Log("Entity Initialize");
+            InitializeAdditionalDamage();
             
+        }
+
+        private void InitializeAdditionalDamage()
+        {
+            _localProvider.GetService<AdditionalDamageComponent>().Init();
         }
 
         private void InitializeStepFX()

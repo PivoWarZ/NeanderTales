@@ -1,7 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
-using NeanderTaleS.Code.Scripts.Systems.Experience;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using Unity.Cinemachine;
@@ -23,17 +21,13 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         public override void InstallBindings()
         {
             var player = BindPlayerService(_player);
+            Container.Bind<ICharacterUpgrade>().FromInstance(player.GetComponent<ICharacterUpgrade>());
             
             InstantiateCamera(player);
             
             InstantiateEventSystem();
-
-            BindExperienceSystem();
             
             BindHudUI();
-
-
-            Container.BindInterfacesAndSelfTo<PlayerStatsInstaller>().AsSingle().NonLazy();
         }
 
         private void InstantiateEventSystem()
@@ -56,11 +50,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInstance(hudUi)
                 .AsSingle()
                 .NonLazy();
-        }
-
-        private void BindExperienceSystem()
-        {
-            Container.Bind<IExperienceStorage>().To<ExperienceStorage>().AsSingle().NonLazy();
         }
 
         private GameObject BindPlayerService(GameObject player)

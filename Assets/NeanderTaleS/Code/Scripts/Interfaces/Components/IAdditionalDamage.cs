@@ -3,6 +3,6 @@ namespace NeanderTaleS.Code.Scripts.Interfaces.Components
     public interface IAdditionalDamage
     {
         void AddDamage(ref float damage);
-        float AdditionalDamage { get; set; }
+        float AdditionalPercentDamage { get; set; }
     }
 }

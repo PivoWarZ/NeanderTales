@@ -6,7 +6,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
     public class AdditionalDamageComponent: MonoBehaviour, IAdditionalDamage
     {
-        public float AdditionalDamage { get; set; }
+        public float AdditionalPercentDamage { get; set; }
 
         [SerializeField] DealDamageComponent _dealDamageComponent;
 
@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 
         public void AddDamage(ref float damage)
         {
-            damage *= 1 + AdditionalDamage / 100;
+            damage *= 1 + AdditionalPercentDamage / 100;
         }
     }
 }

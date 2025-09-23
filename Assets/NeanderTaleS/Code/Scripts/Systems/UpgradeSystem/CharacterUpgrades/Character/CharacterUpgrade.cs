@@ -22,15 +22,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
         protected override void OnUpgrade()
         {
             int level = Level.CurrentValue;
-            var speed = _config.GetHealth(level);
+            var health = _config.GetHealth(level);
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
-            Debug.Log($"CharacterUpgrade:");
-            Debug.Log($"Speed: {speed}");
-            Debug.Log($"Stamina: {stamina}");
-            Debug.Log($"Power: {power}");
             
-            _character.Upgrade(level, speed, stamina, power);
+            _character.Upgrade(level, health, stamina, power);
 
         }
     }
