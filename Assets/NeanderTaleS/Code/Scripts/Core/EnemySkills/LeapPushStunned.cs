@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushStunned: MonoBehaviour, IStunChance, IStartValueSetter
+    public class LeapPushStunned: MonoBehaviour, IStunChance
     {
         [SerializeField] private LeapPushing _leapPushing;
         [SerializeField] private float _chance;
@@ -43,7 +43,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
             {
                 debuffsComponent.Pushing.Value = true;
             }
-
         }
 
         private bool IsStunLeaping()
@@ -51,11 +50,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
             var value = Random.Range(0, 100);
             
             return value <= StunChance;
-        }
-        
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _chance = currentValue;
         }
 
         public void SetStunnedChance(float chance)

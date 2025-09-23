@@ -6,14 +6,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
     public class CharacterUpgrade: Upgrade
     {
         private readonly CharacterUpgradesConfig _config;
-        private Player _character;
+        private ICharacterUpgrade _character;
 
         public CharacterUpgrade(CharacterUpgradesConfig config) : base(config)
         {
             _config = config;
         }
         
-        public void Construct(Player character)
+        public void Construct(ICharacterUpgrade character)
         {
             _character = character;
             OnUpgrade();
@@ -29,6 +29,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             Debug.Log($"Speed: {speed}");
             Debug.Log($"Stamina: {stamina}");
             Debug.Log($"Power: {power}");
+            
+            _character.Upgrade(level, speed, stamina, power);
 
         }
     }

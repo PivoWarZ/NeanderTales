@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyTargetController: MonoBehaviour, IEnemyActivator, IStartValueSetter
+    public class EnemyTargetController: MonoBehaviour, IEnemyActivator
     {
         [SerializeField] private EnemyTargetComponent _targetComponent;
         [SerializeField] private DistanceToTargetComponent _distance;
@@ -18,14 +18,14 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         public float ActivatingDistance => _activatingDistance;
 
-        void IEnemyActivator.SetActivatingDistance(float distance)
-        {
-            _activatingDistance = distance;
-        }
-
         private void Awake()
         {
             _targetComponent.OnTargetChanged += OnTargetDistance;
+        }
+        
+        void IEnemyActivator.SetActivatingDistance(float distance)
+        {
+            _activatingDistance = distance;
         }
 
         private void OnTargetDistance(GameObject target)
@@ -54,11 +54,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
                 var targetInitComponent = _targetInitComponents[i];
                 targetInitComponent.SetTarget(target);
             }
-        }
-        
-        public void SetStartValue(float currentValue, float maxValue = 0)
-        {
-            _activatingDistance = currentValue;
         }
 
         private void OnDestroy()

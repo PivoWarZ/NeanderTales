@@ -2,13 +2,12 @@ using NeanderTaleS.Code.Scripts.Core.InputSystems.AttackInput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.MoveInput;
 using NeanderTaleS.Code.Scripts.Core.InputSystems.RotateInput;
-using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
+namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
     public class InputSystemsInstaller: MonoInstaller
     {

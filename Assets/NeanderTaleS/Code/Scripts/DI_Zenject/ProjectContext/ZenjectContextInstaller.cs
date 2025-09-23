@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.DI.ZenjectContext
+namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
     public class ZenjectContextInstaller: MonoInstaller
     {
