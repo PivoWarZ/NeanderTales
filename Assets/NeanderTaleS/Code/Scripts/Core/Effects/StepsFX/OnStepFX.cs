@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
@@ -13,7 +14,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
         private ParticleSystem _effectLeft;
         private StepsListener _lefsStep;
         private StepsListener _rightStep;
-
+        
+        [Button]
         public void CreateEffects()
         {
             _particle.playOnAwake = false;
@@ -33,6 +35,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
         {
             _lefsStep = lefsStep;
             _rightStep = rightStep;
+            CreateEffects();
 
             _lefsStep.OnStep += StepFXLeft;
             _rightStep.OnStep += StepFXRight;

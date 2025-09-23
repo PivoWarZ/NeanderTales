@@ -18,6 +18,8 @@ MonoBehaviour:
   BaseSpeed: 7
   BaseStunChance: 100
   BasePushPower: 270
+  Level: 1
+  LevelGain: 0.1
   _size: 0.5
   HitPoints: 10
   Damage: 2.5

@@ -1,7 +1,7 @@
-using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
+using NeanderTaleS.Code.Scripts.Core.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Core.Components
+namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 {
     public class StepsFXInstaller: MonoBehaviour
     {
@@ -18,6 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         public void Init()
         {
+            Debug.Log("StepsFXInstaller Init");
             var leftFootTransform = _root.LeftFoot;
             var rightFootTransform = _root.RightFoot;
             

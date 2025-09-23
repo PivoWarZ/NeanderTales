@@ -15,37 +15,31 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
     {
         public event Action<GameObject> OnSpawned;
         
+        public Transform WorldTransform;
+        
         [Header("---------Spawner--------")]
         [SerializeField] private VelociraptorConfig _config;
         [SerializeField] private Enemy _prefab;
         [SerializeField] private List<Transform> _spawnPoints;
-        [SerializeField] private Transform _worldTransform;
         [Space]
         [Header("---------Level---------")] 
+        [SerializeField, Range(0, 10)] private int level = 1;
         [SerializeField, Range(0.5f, 2f)] private float _minSizeValue = 0.5f;
         [SerializeField, Range(0.5f, 2f)] private float _maxSizeValue = 1f;
         [SerializeField] private GameObject _player;
-
-        [Inject]
-        public void Construct(SpawnPoints spawnPointses)
-        {
-            Debug.Log("Spawner Construct");
-            _spawnPoints = spawnPointses.GetEnemySpawnPoints();
-        }
 
         public void Initialize(PlayerService playerService)
         {
             _player = playerService.GetPlayer();
         }
-
-        [Button]
+        
         public void Spawn()
         {
             var random = Random.Range(0, _spawnPoints.Count);
             Vector3 randomPosition = _spawnPoints[random].position;
             
             var dino = Instantiate(_prefab, randomPosition, Quaternion.identity);
-            dino.transform.SetParent(_worldTransform);
+            dino.transform.SetParent(WorldTransform);
             dino.gameObject.SetActive(false);
             
             dino.GetComponent<EnemyTargetComponent>().SetTarget(_player);
@@ -55,6 +49,27 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
+        }
+        
+        public void Spawn(Transform spawnPoint)
+        {
+            var dino = Instantiate(_prefab, spawnPoint.position, Quaternion.identity);
+            dino.transform.SetParent(WorldTransform);
+            dino.gameObject.SetActive(false);
+            
+            dino.GetComponent<EnemyTargetComponent>().SetTarget(_player);
+            
+            var size = Random.Range(_minSizeValue, _maxSizeValue);
+            _config.SetSize(size);
+            
+            dino.GetComponent<Enemy>().InitEnemy(_config);
+            dino.gameObject.SetActive(true);
+        }
+
+        public void SetRange(float min, float max)
+        {
+            _minSizeValue = min;
+            _maxSizeValue = max;
         }
     }
 }

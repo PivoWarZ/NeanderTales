@@ -1,4 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Animation;
+using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
 using NeanderTaleS.Code.Scripts.Core.EnemySkills;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
@@ -25,6 +26,13 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
             InitializeConditionInstaller(_localProvider);
             
+            InitializeStepFX();
+            
+        }
+
+        private void InitializeStepFX()
+        {
+            _localProvider.GetService<StepsFXInstaller>().Init();
         }
 
         private void InitializeConditionInstaller(LocalProvider localProvider)
