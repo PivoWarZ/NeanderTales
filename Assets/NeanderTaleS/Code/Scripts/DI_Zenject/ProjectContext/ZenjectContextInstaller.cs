@@ -1,7 +1,8 @@
+using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
-using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,6 +18,8 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         [SerializeField] private Camera _camera;
         [SerializeField] private CinemachineCamera _sinematicCamera;
         [SerializeField] private EventSystem _eventSystem;
+        [SerializeField] private VelociraptorConfig _dinoConfig;
+        [SerializeField] private GameObject _dinoPrefab;
         
         public override void InstallBindings()
         {
@@ -28,6 +31,17 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             InstantiateEventSystem();
             
             BindHudUI();
+            
+            BindSpawner();
+            
+        }
+
+        private void BindSpawner()
+        {
+            Container.Bind<Spawner>()
+                .AsSingle()
+                .WithArguments(_dinoConfig, _dinoPrefab)
+                .NonLazy();
         }
 
         private void InstantiateEventSystem()
@@ -55,7 +69,12 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private GameObject BindPlayerService(GameObject player)
         {
             var entity = Instantiate(player, _container);
-            Container.Bind<PlayerService>().AsSingle().WithArguments(entity).NonLazy();
+            
+            Container.Bind<PlayerService>()
+                .AsSingle()
+                .WithArguments(entity)
+                .NonLazy();
+            
             entity.GetComponent<Player>().Init();
             
             return entity;

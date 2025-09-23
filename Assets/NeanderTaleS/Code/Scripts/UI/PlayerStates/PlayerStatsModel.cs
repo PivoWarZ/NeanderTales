@@ -11,5 +11,6 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         public ReadOnlyReactiveProperty<float> RequiredExperience;
         public ReadOnlyReactiveProperty<float> CurrentExperience;
         public ReadOnlyReactiveProperty<int> Level;
+        public ReadOnlyReactiveProperty<int> Coins;
     }
 }

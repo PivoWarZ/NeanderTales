@@ -3,7 +3,7 @@ using UnityEngine;
 namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
 {
     [CreateAssetMenu(fileName = "VelociraptorConfig", menuName = "NeanderTaleS/Enemies/Velociraptor/ New Velociraptor Config")]
-    public class VelociraptorConfig: EnemyMetaData
+    public class VelociraptorConfig: EnemyMetaConfigs
     {
         public int Level = 1;
         public float LevelGain = 0.1f;

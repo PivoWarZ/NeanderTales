@@ -1,9 +1,11 @@
+using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy
 {
-    public class EnemyMetaData: ScriptableObject
+    public class EnemyMetaConfigs: ScriptableObject
     {
+        public Enemy Prefab;
         public Sprite Logo;
         public float BaseHitPoints;
         public float BaseDamage;

@@ -42,7 +42,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);
         }
 
-        public void TakeDamageEvent()
+        void ITakeDamageable.TakeDamageEvent()
         {
             OnTakeDamageEvent?.Invoke();
         }

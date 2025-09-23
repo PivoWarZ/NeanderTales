@@ -85,6 +85,8 @@ MonoBehaviour:
   _camera: {fileID: 725477580719864866, guid: 0ae1d694c82751e4684fea4204a657bd, type: 3}
   _sinematicCamera: {fileID: 7983795074628788857, guid: ad79841759c5c8847a50026d68e644e6, type: 3}
   _eventSystem: {fileID: 2234538879929439168, guid: d25230d35f7f68a4fa45ece80bd7d046, type: 3}
+  _dinoConfig: {fileID: 11400000, guid: 05b050a95d65da746a46e81fd030039f, type: 2}
+  _dinoPrefab: {fileID: 2655307957745640121, guid: a7034f0e5bf8e9044b755f4237e284e7, type: 3}
 --- !u!114 &392402856676945663
 MonoBehaviour:
   m_ObjectHideFlags: 0

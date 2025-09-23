@@ -34,7 +34,12 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         private void InitializeAdditionalDamage()
         {
-            _localProvider.GetService<AdditionalDamageComponent>().Init();
+            bool isAdditionalDamage = _localProvider.TryGetService<AdditionalDamageComponent>(out var addDamage);
+            
+            if (isAdditionalDamage)
+            {
+                addDamage.Init();
+            }
         }
 
         private void InitializeStepFX()

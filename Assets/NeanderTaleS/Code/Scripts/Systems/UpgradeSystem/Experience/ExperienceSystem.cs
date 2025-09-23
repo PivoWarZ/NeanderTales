@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Experience
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 {
     public class ExperienceSystem: IDisposable
     {

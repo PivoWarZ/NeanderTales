@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408708c4c0954ac39540cd1d16395051, type: 3}
   m_Name: VelociraptorConfig
   m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
   Logo: {fileID: 21300000, guid: 41ca1a85e3878f54ebde30a3c2b72f13, type: 3}
   BaseHitPoints: 40
   BaseDamage: 10
@@ -21,10 +22,10 @@ MonoBehaviour:
   BaseExperience: 40
   Level: 1
   LevelGain: 0.1
-  _size: 0.5
-  HitPoints: 10
-  Damage: 2.5
-  Speed: 4.375
-  StunChance: 0
-  PushPower: 67.5
-  Experience: 20
+  _size: 0.8205039
+  HitPoints: 18.759514
+  Damage: 4.6898785
+  Speed: 5.1414576
+  StunChance: 20.348173
+  PushPower: 126.62671
+  Experience: 37.519028
