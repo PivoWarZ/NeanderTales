@@ -20,9 +20,9 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
         public void Init()
         {
             _entityBootsTrap.EntityInitialize();
-         //   _hitPoints = _localProvider.GetInterface<ITakeDamageable>();
-          //  _stamina = _localProvider.GetInterface<IStamina>();
-          //  _additionalDamage = _localProvider.GetInterface<IAdditionalDamage>();
+            _hitPoints = _localProvider.GetInterface<ITakeDamageable>();
+            _stamina = _localProvider.GetInterface<IStamina>();
+            _additionalDamage = _localProvider.GetInterface<IAdditionalDamage>();
         }
 
         void ICharacterUpgrade.Upgrade(int level, int health, int stamina, int power)

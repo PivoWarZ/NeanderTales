@@ -295,9 +295,9 @@ GameObject:
   - component: {fileID: 6506537731207281398}
   - component: {fileID: 4960156149893440604}
   - component: {fileID: 6016746398369903631}
+  - component: {fileID: 2668145536497192509}
   - component: {fileID: 5319145587862667140}
   - component: {fileID: 4955837961592764997}
-  - component: {fileID: 2668145536497192509}
   - component: {fileID: 4713431902921475130}
   - component: {fileID: 6362824722104419000}
   - component: {fileID: 3811988362015805041}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityBootsTrap: {fileID: 4713431902921475130}
-  localProvider: {fileID: 2668145536497192509}
+  _localProvider: {fileID: 2668145536497192509}
 --- !u!114 &5178345274205057928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +412,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _canAttack: 1
+--- !u!114 &2668145536497192509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346672185299292474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ae4d3b961d4834ad45671227bbb876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &5319145587862667140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -462,18 +474,6 @@ CapsuleCollider:
   m_Height: 1.6833655
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
---- !u!114 &2668145536497192509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2346672185299292474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ae4d3b961d4834ad45671227bbb876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4713431902921475130
 MonoBehaviour:
   m_ObjectHideFlags: 0
