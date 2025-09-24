@@ -27,6 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             var power = _config.GetPower(level);
             
             _character.Upgrade(level, health, stamina, power);
+            Debug.Log($"{level} / {health} / {stamina} / {power}");
 
         }
     }

@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using NeanderTaleS.Code.Configs;
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
@@ -70,7 +67,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void SetHitPoints()
         {
             var health = _provider.GetInterface<ITakeDamageable>();
-           health.AddedHitPoints(_config.HitPoints, _config.HitPoints);
+           health.AddedtHitPoints(_config.HitPoints, _config.HitPoints);
         }
 
         private void SetDamage()

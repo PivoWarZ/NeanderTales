@@ -1,6 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Animation;
 using NeanderTaleS.Code.Scripts.Core.Effects.StepsFX;
-using NeanderTaleS.Code.Scripts.Core.EnemySkills;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Core.WeaponComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;

@@ -1,4 +1,3 @@
-using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using R3;
 using UnityEngine;

@@ -1,11 +1,9 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
-using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
     public class CharacterUpgradesSystem: IInitializable, IDisposable
     {
@@ -33,10 +31,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 
         private void CanLevelUp()
         {
+            _upgrade.LevelUp();
+            
             var nextLevelExperience = _upgrade.NextPrice;
             _experience.SetRequiredExperience(nextLevelExperience);
-            
-            _upgrade.LevelUp();
         }
 
         public void Dispose()

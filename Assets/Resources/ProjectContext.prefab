@@ -111,7 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3e96ff38cc420f8a04bd134c65a61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 8087142b22a0b9347ab51cd6f0348cdb, type: 2}
+  _characterConfig: {fileID: 11400000, guid: 8087142b22a0b9347ab51cd6f0348cdb, type: 2}
+  _healthConfig: {fileID: 11400000, guid: 74627f80fc8e02c469ec555d8477ecb9, type: 2}
+  _staminaConfig: {fileID: 11400000, guid: cf6b737057f20ce43a2fbd57e2df5504, type: 2}
+  _powerConfig: {fileID: 11400000, guid: 00dc227579ef97a4797d9bc5e0867de6, type: 2}
 --- !u!1 &2869052420373200839
 GameObject:
   m_ObjectHideFlags: 0

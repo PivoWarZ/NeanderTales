@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
-using R3;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {

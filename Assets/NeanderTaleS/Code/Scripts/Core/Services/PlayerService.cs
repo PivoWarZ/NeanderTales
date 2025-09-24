@@ -1,4 +1,3 @@
-using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services

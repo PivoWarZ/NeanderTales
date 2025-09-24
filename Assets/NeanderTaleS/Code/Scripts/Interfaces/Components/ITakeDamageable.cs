@@ -13,6 +13,6 @@ namespace NeanderTaleS.Code.Scripts.Interfaces.Components
         ReadOnlyReactiveProperty<float> MaxHitPoints { get; }
         void TakeDamage(float damage);
         void TakeDamageEvent();
-        void AddedHitPoints(float currentHitPoints, float maxHitPoints);
+        void AddedtHitPoints(float currentHitPoints, float maxHitPoints = 0);
     }
 }

@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStateView: {fileID: 7198750014136267954}
   _enemyStates: {fileID: 7441619726070122899}
+  _upgradesPopup: {fileID: 8949067063955675828}
 --- !u!1 &814027633026728687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _content: {fileID: 1144116911478418518}
+  _showPopupButton: {fileID: 5025974262788999595}
   _closeButton: {fileID: 5454436396886496894}
   _starsCount: {fileID: 1038083773530405397}
 --- !u!1 &7435440695421956935

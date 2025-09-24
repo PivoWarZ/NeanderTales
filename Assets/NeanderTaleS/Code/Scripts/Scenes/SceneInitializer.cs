@@ -21,8 +21,6 @@ namespace NeanderTaleS.Code.Scripts.Scenes
             
             _player = service.GetPlayer();
             _player.transform.SetParent(_spawnSettings.WorldTransform);
-            
-            Debug.Log($"Scene initialized");
         }
 
         [Button]

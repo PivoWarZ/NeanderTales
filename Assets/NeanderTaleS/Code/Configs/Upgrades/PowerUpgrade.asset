@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logo: {fileID: 21300002, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   ID: PowerUpgrade
+  Discription: "\u0422\u0432\u043E\u0438 \u0443\u0434\u0430\u0440\u044B \u0441\u0442\u0430\u043D\u043E\u0432\u044F\u0442\u0441\u044F
+    \u0441\u0438\u043B\u044C\u043D\u0435\u0435"
   MaxLevel: 100
   PriceTable:
     _basePrice: 1

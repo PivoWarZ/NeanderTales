@@ -47,10 +47,11 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             OnTakeDamageEvent?.Invoke();
         }
 
-        void ITakeDamageable.AddedHitPoints(float currentHitPoints, float maxHitPoints)
+        void ITakeDamageable.AddedtHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _currentHitPoints.Value += currentHitPoints;
             _maxHitPoints.Value += maxHitPoints;
+            _currentHitPoints.Value = Math.Min(_currentHitPoints.Value, MaxHitPoints.CurrentValue);
         }
 
         public void SetCondition(Func<bool> condition)

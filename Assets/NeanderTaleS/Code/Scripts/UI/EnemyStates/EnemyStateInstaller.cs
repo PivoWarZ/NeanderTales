@@ -1,6 +1,4 @@
-using System;
-using NeanderTaleS.Code.Scripts.Interfaces.Components;
-using UnityEngine;
+
 
 /*
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates

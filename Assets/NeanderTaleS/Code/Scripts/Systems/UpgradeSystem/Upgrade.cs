@@ -7,6 +7,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
     {
         public string Id => _config.ID;
         public Sprite Logo => _config.Logo;
+
+        public string Discription => _config.Discription;
         public ReadOnlyReactiveProperty<int> Level => _level;
         public int MaxLevel => _config.MaxLevel;
         public int NextPrice => _config.GetNextPrice(Level.CurrentValue +1);

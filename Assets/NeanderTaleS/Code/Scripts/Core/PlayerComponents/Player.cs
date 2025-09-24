@@ -39,7 +39,8 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
             var newPower = power - _lastAdded.Power;
             
             _level.Value = level;
-            _hitPoints.AddedHitPoints(newHealth, newHealth);
+            _hitPoints.AddedtHitPoints(newHealth, newHealth);
+            _hitPoints.AddedtHitPoints(_hitPoints.MaxHitPoints.CurrentValue);
             _stamina.AddedStamina(newStamina, newStamina);
             _additionalDamage.AdditionalPercentDamage += newPower;
 
@@ -51,7 +52,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
         private void SetFirstLevel(int level, int health, int stamina, int power)
         {
             _level.Value = level;
-            _hitPoints.AddedHitPoints(health, health);
+            _hitPoints.AddedtHitPoints(health, health);
             _stamina.AddedStamina(stamina, stamina);
             _additionalDamage.AdditionalPercentDamage += power;
             

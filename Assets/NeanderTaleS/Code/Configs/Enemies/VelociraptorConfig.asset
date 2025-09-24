@@ -19,13 +19,13 @@ MonoBehaviour:
   BaseSpeed: 7
   BaseStunChance: 100
   BasePushPower: 270
-  BaseExperience: 40
+  BaseExperience: 80
   Level: 1
   LevelGain: 0.1
-  _size: 0.8205039
-  HitPoints: 18.759514
-  Damage: 4.6898785
-  Speed: 5.1414576
-  StunChance: 20.348173
-  PushPower: 126.62671
-  Experience: 37.519028
+  _size: 0.733366
+  HitPoints: 14.66732
+  Damage: 3.66683
+  Speed: 4.7833905
+  StunChance: 5.002451
+  PushPower: 99.00441
+  Experience: 58.66928

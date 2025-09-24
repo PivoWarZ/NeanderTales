@@ -8,6 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
         [PreviewField]
         public Sprite Logo;
         public string ID;
+        public string Discription;
         public int MaxLevel;
         public UpgradePriceTable PriceTable;
 

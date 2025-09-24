@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 {
-    public class ExperienceStorage: IExperienceStorage, ICoinsStorage
+    public class ExperienceStorage: IInitializable, IExperienceStorage, ICoinsStorage, IDisposable
     {
         public event Action OnLevelUp;
         
@@ -16,19 +16,17 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 
         public ReadOnlyReactiveProperty<float> RequiredExperience => _requiredExperience;
         public ReadOnlyReactiveProperty<float> CurrentExperience => _currentExperience;
-
-        public ExperienceStorage()
+        
+        void IInitializable.Initialize()
         {
-            Debug.Log($"ExperienceStorage {_currentExperience.Value} / {_requiredExperience.Value}");
+            Coins = new ReactiveProperty<int>(0);
         }
-
+        
         void IExperienceStorage.AddExperience(float exp)
         {
             _currentExperience.Value += exp;
             
-            LevelUp();
-            
-            Debug.Log($"{CurrentExperience.CurrentValue} / {RequiredExperience.CurrentValue}");
+            TryLevelUp();
         }
 
         void IExperienceStorage.SetRequiredExperience(float exp)
@@ -36,14 +34,24 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
             _requiredExperience.Value = exp;
         }
 
-        private void LevelUp()
+        private void TryLevelUp()
         {
-            Debug.Log($"ExperienceStorage {_currentExperience.Value} / {_requiredExperience.Value}");
             if (_currentExperience.Value >= _requiredExperience.Value)
             {
                 OnLevelUp?.Invoke();
-                LevelUp();
             }
+        }
+
+        public void Dispose()
+        {
+            RequiredExperience.Dispose();
+            CurrentExperience.Dispose();
+            _requiredExperience.Dispose();
+            _currentExperience.Dispose();
+            Coins.Dispose();
+            Coins = null;
+            _requiredExperience = null;
+            _currentExperience = null;
         }
     }
 }

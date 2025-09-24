@@ -544,12 +544,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8f873ea6c44e7c8f91f934f7d09266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 5823651225823044472}
-  Logo: {fileID: 7558029809498847327}
-  Title: {fileID: 4351876700302454460}
-  Description: {fileID: 3507310272587596626}
-  Level: {fileID: 4362032859903252910}
-  UpgradeButton: {fileID: 2433352622349121018}
+  _background: {fileID: 5823651225823044472}
+  _logo: {fileID: 7558029809498847327}
+  _title: {fileID: 4351876700302454460}
+  _description: {fileID: 3507310272587596626}
+  _level: {fileID: 4362032859903252910}
+  _upgradeButton: {fileID: 2433352622349121018}
 --- !u!1 &5652310522326962753
 GameObject:
   m_ObjectHideFlags: 0

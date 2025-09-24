@@ -38,8 +38,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             _level = settings.Level;
             _minSizeValue = settings.MinSize;
             _maxSizeValue = settings.MaxSize;
-            
-            Debug.Log($"Spawner Initialized");
         }
 
         public void Spawn()

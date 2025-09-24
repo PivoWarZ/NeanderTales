@@ -49,12 +49,12 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         {
             while (IsGrounded() && !cancell.IsCancellationRequested)
             {
-                await UniTask.WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate(cancell.Token);
             }
 
             while (!IsGrounded() && !_cancell.IsCancellationRequested)
             {
-                await UniTask.WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate(cancell.Token);
             }
             
             OnJumpEvent?.Invoke();
