@@ -20,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
             _spawner.Initialize(_spawnSettings);
             
             _player = service.GetPlayer();
-            _player.transform.SetParent(_spawnSettings.WorldTransform);
+            _player.transform.position = _playerStartTransform.position;
         }
 
         [Button]
