@@ -77,6 +77,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private GameObject BindPlayerService(GameObject player)
         {
             var entity = Instantiate(player, _container);
+            entity.gameObject.SetActive(false);
             
             Container.Bind<PlayerService>()
                 .AsSingle()

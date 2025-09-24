@@ -26,7 +26,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Heal
             float zero = 0;
             var hpAdded = (float) _config.GetHealth(level);
             _hitPoints.AddedtHitPoints(zero, hpAdded);
-            Debug.Log($"Health upgrade {level} HP added {hpAdded}");
         }
     }
 }

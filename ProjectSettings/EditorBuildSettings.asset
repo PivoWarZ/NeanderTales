@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AddresabblesHomework.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 1d17904ca7d7b824aad53b18220b50d8
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5787bdf44e16d75488b32ecc13b08f75
+  - enabled: 1
+    path: Assets/Scenes/GreenScene.unity
+    guid: c4a193ed07426e84babee3c58c7795ba
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f27c0e92f83caab4896464d6d23abae6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

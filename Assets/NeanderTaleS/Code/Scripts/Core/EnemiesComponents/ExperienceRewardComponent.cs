@@ -23,8 +23,6 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         private void DealExperience(float _)
         {
             OnDealExperience?.Invoke(Experience);
-            Debug.Log($"Experience: {Experience}");
-            
         }
 
         private void OnDestroy()

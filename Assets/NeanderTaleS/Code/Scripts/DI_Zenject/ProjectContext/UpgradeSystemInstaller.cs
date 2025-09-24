@@ -8,6 +8,7 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -43,6 +44,8 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<LevelUpListener_RewardCoins>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
+
+            SceneManager.LoadScene("MainMenu");
         }
 
         private void BindCharacterUpgrade()

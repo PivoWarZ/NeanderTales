@@ -37,7 +37,6 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 
         private void DataChanged(int _)
         {
-            Debug.Log($"DataChanged {_}");
             _level = _model.Level.CurrentValue;
             OnDataChanged?.Invoke();
         }
