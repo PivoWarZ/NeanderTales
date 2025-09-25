@@ -30,6 +30,8 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindJumpInput(jumping);
             BindRotateInput(cursorFollower);
             BindMoveInput(movable);
+            
+            Debug.Log($"Binding {GetType().Name}");
         }
 
         private void BindAttackInput(IAttackable attackable)

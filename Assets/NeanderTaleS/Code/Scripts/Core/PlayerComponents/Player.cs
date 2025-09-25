@@ -49,6 +49,17 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
             _lastAdded.Power = power;
         }
 
+        public void ResetValues()
+        {
+            var reserHP = -_hitPoints.MaxHitPoints.CurrentValue;
+            _hitPoints.AddedtHitPoints(reserHP, reserHP);
+            
+            var resetStamina = -_stamina.MaxStamina.CurrentValue;
+            _stamina.AddedStamina(resetStamina, resetStamina);
+            
+            _additionalDamage.AdditionalPercentDamage = 0;
+        }
+
         private void SetFirstLevel(int level, int health, int stamina, int power)
         {
             _level.Value = level;

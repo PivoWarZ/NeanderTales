@@ -11,13 +11,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
     public class EnemySpawnedHandler: IInitializable, IDisposable
     {
         private Spawner _spawner;
-        private EnemyTakeDamageObserver _takeDamageObserver;
+        private EnemyTakeDamageObserver_ShowPopup _takeDamageObserverShowPopup;
         private ExperienceSystem _experienceSystem;
 
-        public EnemySpawnedHandler(Spawner spawner, EnemyTakeDamageObserver takeDamageObserver, ExperienceSystem experienceSystem)
+        public EnemySpawnedHandler(Spawner spawner, EnemyTakeDamageObserver_ShowPopup takeDamageObserverShowPopup, ExperienceSystem experienceSystem)
         {
             _spawner = spawner;
-            _takeDamageObserver = takeDamageObserver;
+            _takeDamageObserverShowPopup = takeDamageObserverShowPopup;
             _experienceSystem = experienceSystem;
         }
         
@@ -32,7 +32,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
 
             if (isTakeDamageable)
             {
-                _takeDamageObserver.AddDamageable(takeDamageable);
+                _takeDamageObserverShowPopup.AddDamageable(takeDamageable);
             }
 
             bool isExpDealer = enemy.TryGetComponent<IExperienceDealer>(out var dealer);

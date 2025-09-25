@@ -36,9 +36,10 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindSpawner();
             
             Container.BindInterfacesAndSelfTo<EnemyStateAdapter>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver_ShowPopup>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<EnemySpawnedHandler>().AsSingle().NonLazy();
             
+            Debug.Log($"Binding {GetType().Name}");
         }
 
         private void BindSpawner()

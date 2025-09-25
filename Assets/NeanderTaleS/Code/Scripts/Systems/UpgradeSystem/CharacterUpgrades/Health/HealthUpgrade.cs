@@ -23,9 +23,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Heal
         protected override void OnUpgrade()
         {
             int level = Level.CurrentValue;
-            float zero = 0;
             var hpAdded = (float) _config.GetHealth(level);
-            _hitPoints.AddedtHitPoints(zero, hpAdded);
+            _hitPoints.AddedtHitPoints(hpAdded, hpAdded);
         }
     }
 }

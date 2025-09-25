@@ -16,9 +16,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
 
             bool isDataFound = gameRepository.TryGetData<CharacterStorage>(out var characterStorage);
 
-            if (!isDataFound)
+            if (isDataFound)
             {
-                data.Health = characterStorage.CharacterData.Health;
                 data.PositionX = characterStorage.CharacterData.PositionX;
                 data.PositionY = characterStorage.CharacterData.PositionY;
                 data.PositionZ = characterStorage.CharacterData.PositionZ;
@@ -41,7 +40,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
             
             CharacterData data = new CharacterData
             {
-                Health = player.GetComponent<ITakeDamageable>().CurrentHitPoints.CurrentValue,
                 PositionX = player.transform.position.x,
                 PositionY = player.transform.position.y,
                 PositionZ = player.transform.position.z,

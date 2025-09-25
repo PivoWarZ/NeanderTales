@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95dc3ee8aef467ba50c2dfec7cf6b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quitText: {fileID: 868521489}
+  _infoPopup: {fileID: 1590848138}
   _nextScene: Home
 --- !u!136 &243787336
 CapsuleCollider:
@@ -378,11 +378,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 611577683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &868521489 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6709557658285208152, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
-  m_PrefabInstance: {fileID: 1301422981698674989}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &937786694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,6 +871,17 @@ Transform:
   - {fileID: 2046577412}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1590848138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5136023379251767852, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
+  m_PrefabInstance: {fileID: 1301422981698674989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1688187080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 971932928063113805, guid: 513f7e548b1864e9191b993e98d583e7, type: 3}
@@ -1238,6 +1244,14 @@ PrefabInstance:
     - target: {fileID: 1179814564863541946, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
       propertyPath: m_Name
       value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179814564863541946, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709557658285208152, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7623840872550396540, guid: a29d87265b31d7c4781fa8534eb5b8be, type: 3}
       propertyPath: m_Pivot.x

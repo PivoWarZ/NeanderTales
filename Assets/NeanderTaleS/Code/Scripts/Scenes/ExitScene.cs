@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         [SerializeField] string  _nextScene;
         private bool _isExit;
 
-        private async void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             _infoPopup.text = $"Press Scace to go {_nextScene}";
             _infoPopup.transform.parent.gameObject.SetActive(true);

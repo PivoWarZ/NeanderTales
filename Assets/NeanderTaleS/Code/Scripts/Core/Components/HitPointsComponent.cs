@@ -39,6 +39,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             OnTakeDamageAction?.Invoke(damage, this);
             
             var newValue = _currentHitPoints.Value -= damage;
+            
             _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);
         }
 
@@ -51,7 +52,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         {
             _currentHitPoints.Value += currentHitPoints;
             _maxHitPoints.Value += maxHitPoints;
-            _currentHitPoints.Value = Math.Min(_currentHitPoints.Value, MaxHitPoints.CurrentValue);
+            _currentHitPoints.Value = Mathf.Clamp(_currentHitPoints.Value, 0, MaxHitPoints.CurrentValue);
         }
 
         public void SetCondition(Func<bool> condition)

@@ -22,9 +22,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stam
         protected override void OnUpgrade()
         {
             int level = Level.CurrentValue;
-            float notAddedCurrentValue = 0;
             var addStamina = _config.GetStamina(level);
-            _stamina.AddedStamina(notAddedCurrentValue, addStamina);
+            _stamina.AddedStamina(addStamina, addStamina);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Animations;
@@ -28,6 +29,11 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.PlayerAnimation
             
             _event.OnReceiveEvent += ProcessEvent;
             _attackComponent.OnAttackAction += Attack;
+        }
+
+        private void Awake()
+        {
+            _isAttack = false;
         }
 
         private bool IsAttackOver()
