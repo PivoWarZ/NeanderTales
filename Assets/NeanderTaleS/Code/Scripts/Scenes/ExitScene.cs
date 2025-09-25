@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +12,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
 
         private void OnTriggerEnter(Collider other)
         {
-            _infoPopup.text = $"Press Scace to go {_nextScene}";
+            _infoPopup.text = $"Press E to go {_nextScene}";
             _infoPopup.transform.parent.gameObject.SetActive(true);
             _isExit = true;
 
@@ -34,7 +31,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
                 return;
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.E))
             {
                 SceneManager.LoadScene(_nextScene);
             }

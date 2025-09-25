@@ -1,10 +1,7 @@
-using System;
-using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using R3;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 

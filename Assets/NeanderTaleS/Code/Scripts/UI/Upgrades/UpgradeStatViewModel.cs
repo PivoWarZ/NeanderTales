@@ -2,7 +2,6 @@ using System;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
 using R3;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {

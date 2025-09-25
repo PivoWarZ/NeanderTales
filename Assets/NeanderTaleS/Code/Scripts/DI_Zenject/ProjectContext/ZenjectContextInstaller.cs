@@ -1,6 +1,7 @@
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Observers;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.EnemyStates;
@@ -35,11 +36,26 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             BindSpawner();
             
-            Container.BindInterfacesAndSelfTo<EnemyStateAdapter>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver_ShowPopup>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemySpawnedHandler>().AsSingle().NonLazy();
+            BindEnemyStateAdapter();
+            BindEnemyTakeDamageObserver_ShowPopup();
+            BindEnemySpawnedHandler();
             
             Debug.Log($"Binding {GetType().Name}");
+        }
+
+        private void BindEnemySpawnedHandler()
+        {
+            Container.BindInterfacesAndSelfTo<EnemySpawnedHandler>().AsSingle().NonLazy();
+        }
+
+        private void BindEnemyTakeDamageObserver_ShowPopup()
+        {
+            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver_ShowPopup>().AsSingle().NonLazy();
+        }
+
+        private void BindEnemyStateAdapter()
+        {
+            Container.BindInterfacesAndSelfTo<EnemyStateAdapter>().AsSingle().NonLazy();
         }
 
         private void BindSpawner()

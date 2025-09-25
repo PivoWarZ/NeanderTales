@@ -1,5 +1,4 @@
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {

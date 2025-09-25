@@ -1,7 +1,8 @@
+using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
@@ -11,17 +12,28 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         [SerializeField] private TMP_Text _infoPopup;
         private SaveLoadManager _saveLoadManager;
         private bool _isTriggerEnter;
+        private ITakeDamageable _hitPoints;
         
         [Inject]
-        public void Construct(SaveLoadManager manager)
+        public void Construct(SaveLoadManager manager, PlayerService playerService)
         {
             _saveLoadManager = manager;
+            _hitPoints = playerService.GetPlayer().GetComponent<ITakeDamageable>();
         }
 
-        private async void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             _infoPopup.text = $"Press E to SaveGame";
             _infoPopup.transform.parent.gameObject.SetActive(true);
+            
+            var currentPoints = _hitPoints.CurrentHitPoints.CurrentValue;
+            var maxPoints = _hitPoints.MaxHitPoints.CurrentValue;
+
+            if (currentPoints < maxPoints)
+            {
+                _hitPoints.AddedtHitPoints(maxPoints - currentPoints);
+            }
+
             _isTriggerEnter = true;
 
         }

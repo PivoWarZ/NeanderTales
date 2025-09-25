@@ -2,7 +2,6 @@ using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
 {

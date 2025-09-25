@@ -1,7 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using R3;
-using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience

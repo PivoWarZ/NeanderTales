@@ -4,7 +4,6 @@ using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -13,15 +12,40 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
     {
         public override void InstallBindings()
         {
-            Container.Bind<IContext>().To<ZenjectContext>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CharacterSaveLoader>().AsSingle();
-            Container.BindInterfacesAndSelfTo<GameRepository>().AsSingle();
-            Container.Bind<IGameStateSaver>().To<SaveToFileGameStateSaver>().AsSingle();
-            Container.Bind<SaveLoadManager>().AsSingle();
+            BindContext();
+            BindSaveLoaders();
+            BindGameRepository();
+            BindIGameStateSaver();
+            BindSaveLoadManager();
             Container.Bind<GameLoader>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ExperienceSaveLoad>().AsSingle();
             
             Debug.Log($"Binding {GetType().Name}");
+        }
+
+        private void BindIGameStateSaver()
+        {
+            Container.Bind<IGameStateSaver>().To<SaveToFileGameStateSaver>().AsSingle();
+        }
+
+        private void BindSaveLoadManager()
+        {
+            Container.Bind<SaveLoadManager>().AsSingle();
+        }
+
+        private void BindGameRepository()
+        {
+            Container.BindInterfacesAndSelfTo<GameRepository>().AsSingle();
+        }
+
+        private void BindSaveLoaders()
+        {
+            Container.BindInterfacesAndSelfTo<CharacterSaveLoader>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ExperienceSaveLoad>().AsSingle();
+        }
+
+        private void BindContext()
+        {
+            Container.Bind<IContext>().To<ZenjectContext>().AsSingle();
         }
     }
 }

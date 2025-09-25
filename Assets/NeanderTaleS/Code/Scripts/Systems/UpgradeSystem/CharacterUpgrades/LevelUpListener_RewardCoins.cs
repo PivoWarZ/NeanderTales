@@ -1,5 +1,4 @@
 using System;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using Zenject;
 

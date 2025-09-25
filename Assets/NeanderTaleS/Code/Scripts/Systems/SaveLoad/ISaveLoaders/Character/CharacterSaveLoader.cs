@@ -1,5 +1,4 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using UnityEngine;

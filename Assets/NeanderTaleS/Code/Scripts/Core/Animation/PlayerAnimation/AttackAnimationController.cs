@@ -1,4 +1,3 @@
-using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Animations;

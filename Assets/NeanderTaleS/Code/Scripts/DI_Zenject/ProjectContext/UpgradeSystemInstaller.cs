@@ -8,7 +8,6 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -26,29 +25,64 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             BindCharacterUpgrade();
 
-            Container.BindInterfacesAndSelfTo<PlayerStatsInstaller>().AsSingle().NonLazy();
+            BindPlayerStatsInstaller();
             
-            HealthUpgrade healthUpgrade = new HealthUpgrade(_healthConfig);
-            Container.Bind<Upgrade>().FromInstance(healthUpgrade).AsCached();
-            Container.BindInstance(healthUpgrade).AsSingle();
+            BindHealthUpgrade();
+
+            BindStaminaUpgrade();
+
+            BindPowerUpgrade();
+
+            BindStatsUpgradeInstaller();
+
+            BindLevelUpListener_RewardCoins();
+
+            BindStarsCountAdapter();
             
-            StaminaUpgrade staminaUpgrade = new StaminaUpgrade(_staminaConfig);
-            Container.Bind<Upgrade>().FromInstance(staminaUpgrade).AsCached();
-            Container.BindInstance(staminaUpgrade).AsSingle();
-            
-            PowerUpgrade powerUpgrade = new PowerUpgrade(_powerConfig);
-            Container.Bind<Upgrade>().FromInstance(powerUpgrade).AsCached();
-            Container.BindInstance(powerUpgrade).AsSingle();
-            
+            Debug.Log($"Binding {GetType().Name}");
+        }
+
+        private void BindStarsCountAdapter()
+        {
+            Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
+        }
+
+        private void BindLevelUpListener_RewardCoins()
+        {
+            Container.BindInterfacesAndSelfTo<LevelUpListener_RewardCoins>().AsSingle().NonLazy();
+        }
+
+        private void BindStatsUpgradeInstaller()
+        {
             Container.Bind<StatsUpgradesInstaller>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradeManager>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradePopupInstaller>().AsSingle().NonLazy();
-            
-            Container.BindInterfacesAndSelfTo<LevelUpListener_RewardCoins>().AsSingle().NonLazy();
+        }
 
-            Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
-            
-            Debug.Log($"Binding {GetType().Name}");
+        private void BindPowerUpgrade()
+        {
+            PowerUpgrade powerUpgrade = new PowerUpgrade(_powerConfig);
+            Container.Bind<Upgrade>().FromInstance(powerUpgrade).AsCached();
+            Container.BindInstance(powerUpgrade).AsSingle();
+        }
+
+        private void BindStaminaUpgrade()
+        {
+            StaminaUpgrade staminaUpgrade = new StaminaUpgrade(_staminaConfig);
+            Container.Bind<Upgrade>().FromInstance(staminaUpgrade).AsCached();
+            Container.BindInstance(staminaUpgrade).AsSingle();
+        }
+
+        private void BindHealthUpgrade()
+        {
+            HealthUpgrade healthUpgrade = new HealthUpgrade(_healthConfig);
+            Container.Bind<Upgrade>().FromInstance(healthUpgrade).AsCached();
+            Container.BindInstance(healthUpgrade).AsSingle();
+        }
+
+        private void BindPlayerStatsInstaller()
+        {
+            Container.BindInterfacesAndSelfTo<PlayerStatsInstaller>().AsSingle().NonLazy();
         }
 
         private void BindCharacterUpgrade()

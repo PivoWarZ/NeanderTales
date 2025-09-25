@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NeanderTaleS.Code.Scripts.Systems.GameCycle;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
@@ -13,6 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
     public class StatsUpgradeManager: IInitializable, IDisposable
     {
         private readonly StatsUpgradePopupInstaller _popupInstaller;
+        private readonly GameCycleManager _gameCycle;
         private readonly ICoinsStorage _storage;
         private readonly HudUI _hud;
         private List<Upgrade> _upgrades = new ();
@@ -21,11 +23,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
         private Button _hidePopupButton;
         IDisposable _disposable;
 
-        public StatsUpgradeManager(StatsUpgradePopupInstaller popupInstaller, ICoinsStorage storage, HudUI hud)
+        public StatsUpgradeManager(StatsUpgradePopupInstaller popupInstaller, ICoinsStorage storage, HudUI hud, GameCycleManager gameCycle)
         {
             _popupInstaller = popupInstaller;
             _storage = storage;
             _hud = hud;
+            _gameCycle = gameCycle;
         }
 
         void IInitializable.Initialize()
@@ -67,11 +70,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
         private void HidePopup()
         {
             _hud.UpgradesPopup.gameObject.SetActive(false);
+            _gameCycle.ResumeGame();
         }
 
         private void ShowPopup()
         {
             _hud.UpgradesPopup.gameObject.SetActive(true);
+            _gameCycle.PauseGame();
         }
 
         private void InitUpgradeBox(UpgradeStatView view, Upgrade model)

@@ -1,5 +1,3 @@
-using log4net.Core;
-
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
 {
     public struct CharacterData
