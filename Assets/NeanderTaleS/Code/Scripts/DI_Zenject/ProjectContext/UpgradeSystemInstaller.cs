@@ -44,8 +44,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<LevelUpListener_RewardCoins>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
-
-            SceneManager.LoadScene("MainMenu");
         }
 
         private void BindCharacterUpgrade()

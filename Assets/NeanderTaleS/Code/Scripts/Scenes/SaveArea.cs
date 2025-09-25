@@ -1,42 +1,47 @@
-using System;
-using System.Threading;
-using Cysharp.Threading.Tasks;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
 {
-    public class ExitScene: MonoBehaviour
+    public class SaveArea: MonoBehaviour
     {
         [SerializeField] private TMP_Text _infoPopup;
-        [SerializeField] string  _nextScene;
-        private bool _isExit;
+        private SaveLoadManager _saveLoadManager;
+        private bool _isTriggerEnter;
+        
+        [Inject]
+        public void Construct(SaveLoadManager manager)
+        {
+            _saveLoadManager = manager;
+        }
 
         private async void OnTriggerEnter(Collider other)
         {
-            _infoPopup.text = $"Press Scace to go {_nextScene}";
+            _infoPopup.text = $"Press E to SaveGame";
             _infoPopup.transform.parent.gameObject.SetActive(true);
-            _isExit = true;
+            _isTriggerEnter = true;
 
         }
 
         private void OnTriggerExit(Collider other)
         {
             _infoPopup.transform.parent.gameObject.SetActive(false);
-            _isExit = false;
+            _isTriggerEnter = false;
         }
 
         private void Update()
         {
-            if (!_isExit)
+            if (!_isTriggerEnter)
             {
                 return;
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.E))
             {
-                SceneManager.LoadScene(_nextScene);
+                _saveLoadManager.SaveGame();
             }
         }
     }
