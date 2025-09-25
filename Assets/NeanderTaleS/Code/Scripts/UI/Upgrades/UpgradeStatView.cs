@@ -24,7 +24,6 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
             _viewModel.OnDataChanged += Refresh;
             _upgradeButton.onClick.AddListener(UpgradeRequest);
             
-            
             Init(viewModel);
         }
 

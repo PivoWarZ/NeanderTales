@@ -32,8 +32,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
                 SetFirstLevel(level, health, stamina, power);
                 return;
             }
-
-            Debug.Log("Upgrade level " + level);
+            
             var newHealth = health - _lastAdded.Health;
             var newStamina = stamina - _lastAdded.Stamina;
             var newPower = power - _lastAdded.Power;

@@ -27,9 +27,8 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 
         void IStamina.AddedStamina(float stamina, float maxStamina)
         {
-            _stamina.Value += stamina;
-            _maxStamina.Value += maxStamina;
-            _stamina.Value = Mathf.Clamp(_stamina.Value, 0, MaxStamina.CurrentValue);
+            _maxStamina.Value = Mathf.Max(0, _maxStamina.Value + maxStamina);
+            _stamina.Value = Mathf.Clamp(_stamina.Value += stamina, 0, MaxStamina.CurrentValue);
         }
 
         private void Spend(float price)

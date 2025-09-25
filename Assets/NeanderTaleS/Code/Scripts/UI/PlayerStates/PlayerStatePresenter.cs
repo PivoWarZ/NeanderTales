@@ -50,12 +50,28 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         private void SetHealthBar(float currentHitPoints)
         {
             var newValue = _model.CurrentHitPoints.CurrentValue / _model.MaxHitPoints.CurrentValue;
+            
+            if (Mathf.Approximately(_model.MaxHitPoints.CurrentValue, 0))
+            {
+                newValue = 0;
+            }
+
+            newValue = Mathf.Clamp(newValue, 0, 1);
+
             _view.SetHealth(newValue);
         }
 
         private void SetStaminaBar(float currentStaminaValue)
         {
             var newValue = _model.CurrentStamina.CurrentValue / _model.MaxStamina.CurrentValue;
+            
+            if (Mathf.Approximately(_model.MaxHitPoints.CurrentValue, 0))
+            {
+                newValue = 0;
+            }
+
+            newValue = Mathf.Clamp(newValue, 0, 1);
+            
             _view.SetStamina(newValue);
         }
 

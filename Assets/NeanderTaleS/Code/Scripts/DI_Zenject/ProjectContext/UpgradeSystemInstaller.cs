@@ -30,12 +30,15 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             HealthUpgrade healthUpgrade = new HealthUpgrade(_healthConfig);
             Container.Bind<Upgrade>().FromInstance(healthUpgrade).AsCached();
+            Container.BindInstance(healthUpgrade).AsSingle();
             
             StaminaUpgrade staminaUpgrade = new StaminaUpgrade(_staminaConfig);
             Container.Bind<Upgrade>().FromInstance(staminaUpgrade).AsCached();
+            Container.BindInstance(staminaUpgrade).AsSingle();
             
             PowerUpgrade powerUpgrade = new PowerUpgrade(_powerConfig);
             Container.Bind<Upgrade>().FromInstance(powerUpgrade).AsCached();
+            Container.BindInstance(powerUpgrade).AsSingle();
             
             Container.Bind<StatsUpgradesInstaller>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradeManager>().AsSingle().NonLazy();

@@ -32,6 +32,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         private void LoadGame()
         {
             _gameLoader.LoadGame();
+            _cycleManager.StartGame();
         }
 
         private void StartGame()

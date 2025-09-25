@@ -16,6 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad
         {
             await SceneManager.LoadSceneAsync("Home");
             _saveLoadManager.LoadGame();
+            
         }
     }
 }

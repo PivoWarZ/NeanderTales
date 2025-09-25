@@ -82,11 +82,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
                 StaminaUpgradeLevel = staminaLevel,
                 PowerUpgradeLevel = powerLevel
             };
+
+            ExperienceDataStorage saveData = new ExperienceDataStorage(data);
             
-            gameRepository.SaveData(data);
+            gameRepository.SaveData(saveData);
             Debug.Log($"<color=green>Experience Data Saved:</color>");
-            Debug.Log($"<color=green>Experience: {experience}</color>");
             Debug.Log($"<color=green>Character Level: {characterLevel}</color>");
+            Debug.Log($"<color=green>Experience: {experience}</color>");
             Debug.Log($"<color=green>Health Level: {healthLevel}</color>");
             Debug.Log($"<color=green>Stamina Level: {staminaLevel}</color>");
             Debug.Log($"<color=green>Power Level: {powerLevel}</color>");
@@ -94,7 +96,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
 
         private void Upgrade(Upgrade upgrade, int level)
         {
-            for (int i = 0; i < level; i++)
+            upgrade.Reset();
+            
+            for (int i = 0; i < level - 1; i++)
             {
                 upgrade.LevelUp();
             }

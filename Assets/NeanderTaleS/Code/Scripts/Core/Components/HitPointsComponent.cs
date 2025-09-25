@@ -50,9 +50,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         void ITakeDamageable.AddedtHitPoints(float currentHitPoints, float maxHitPoints)
         {
-            _currentHitPoints.Value += currentHitPoints;
-            _maxHitPoints.Value += maxHitPoints;
-            _currentHitPoints.Value = Mathf.Clamp(_currentHitPoints.Value, 0, MaxHitPoints.CurrentValue);
+            _maxHitPoints.Value = Math.Max(0, _maxHitPoints.Value + maxHitPoints);
+            _currentHitPoints.Value = Mathf.Clamp(_currentHitPoints.Value += currentHitPoints, 0, MaxHitPoints.CurrentValue);
         }
 
         public void SetCondition(Func<bool> condition)

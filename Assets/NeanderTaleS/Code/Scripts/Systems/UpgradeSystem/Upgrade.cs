@@ -35,6 +35,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             OnUpgrade();
         }
 
+        public void Reset()
+        {
+            _level.Value = 0;
+        }
+
         protected abstract void OnUpgrade();
     }
 }
