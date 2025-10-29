@@ -8,6 +8,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
     public class BootsTrap: MonoBehaviour
     {
         [SerializeField] private List<MonoInstaller> _installers;
+        
 
         private void Awake()
         {
