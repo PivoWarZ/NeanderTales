@@ -5,70 +5,32 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
 {
-    public class Player: MonoBehaviour, ICharacterUpgrade
+    public class Player: MonoBehaviour, IUpgradePlayer
     {
         [SerializeField] private EntityBootsTrap _entityBootsTrap;
         [SerializeField] private LocalProvider _localProvider;
         private LastAddedCharacteristics _lastAdded = new ();
-        private ITakeDamageable _hitPoints;
-        private IStamina _stamina;
+        private IHitPointsComponent _hitPoints;
+        private IStaminaComponent _staminaComponent;
         private IAdditionalDamage _additionalDamage;
         private ReactiveProperty<int> _level = new ();
         
         public ReadOnlyReactiveProperty<int> Level => _level;
 
-        public void Init()
+        public void Awake()
         {
             _entityBootsTrap.EntityInitialize();
-            _hitPoints = _localProvider.GetInterface<ITakeDamageable>();
-            _stamina = _localProvider.GetInterface<IStamina>();
+            _hitPoints = _localProvider.GetInterface<IHitPointsComponent>();
+            _staminaComponent = _localProvider.GetInterface<IStaminaComponent>();
             _additionalDamage = _localProvider.GetInterface<IAdditionalDamage>();
         }
 
-        void ICharacterUpgrade.Upgrade(int level, int health, int stamina, int power)
-        {
-            if (level == 1)
-            {
-                SetFirstLevel(level, health, stamina, power);
-                return;
-            }
-            
-            var newHealth = health - _lastAdded.Health;
-            var newStamina = stamina - _lastAdded.Stamina;
-            var newPower = power - _lastAdded.Power;
-            
-            _level.Value = level;
-            _hitPoints.AddedtHitPoints(newHealth, newHealth);
-            _hitPoints.AddedtHitPoints(_hitPoints.MaxHitPoints.CurrentValue);
-            _stamina.AddedStamina(newStamina, newStamina);
-            _additionalDamage.AdditionalPercentDamage += newPower;
-
-            _lastAdded.Health = health;
-            _lastAdded.Stamina = stamina;
-            _lastAdded.Power = power;
-        }
-
-        public void ResetValues()
-        {
-            var reserHP = -_hitPoints.MaxHitPoints.CurrentValue;
-            _hitPoints.AddedtHitPoints(reserHP, reserHP);
-            
-            var resetStamina = -_stamina.MaxStamina.CurrentValue;
-            _stamina.AddedStamina(resetStamina, resetStamina);
-            
-            _additionalDamage.AdditionalPercentDamage = 0;
-        }
-
-        private void SetFirstLevel(int level, int health, int stamina, int power)
+        void IUpgradePlayer.Upgrade(int level, int health, int stamina, int power)
         {
             _level.Value = level;
-            _hitPoints.AddedtHitPoints(health, health);
-            _stamina.AddedStamina(stamina, stamina);
+            _hitPoints.SetHitPoints(_hitPoints.CurrentHitPoints.CurrentValue + health, health);
+            _staminaComponent.SetStamina(_staminaComponent.Stamina.CurrentValue + stamina, stamina);
             _additionalDamage.AdditionalPercentDamage += power;
-            
-            _lastAdded.Health = health;
-            _lastAdded.Stamina = stamina;
-            _lastAdded.Power = power;
         }
     }
 }

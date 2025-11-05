@@ -1,9 +1,8 @@
-using NeanderTaleS.Code.Scripts.Core.InputSystems.AttackInput;
-using NeanderTaleS.Code.Scripts.Core.InputSystems.JumpIntput;
-using NeanderTaleS.Code.Scripts.Core.InputSystems.MoveInput;
-using NeanderTaleS.Code.Scripts.Core.InputSystems.RotateInput;
-using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput;
 using UnityEngine;
 using Zenject;
 
@@ -11,94 +10,66 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
     public class InputSystemsInstaller: MonoInstaller
     {
-        private GameObject _player;
-
-        [Inject]
-        public void Construct(PlayerService service)
-        {
-            _player = service.GetPlayer();
-        }
-
         public override void InstallBindings()
         {
-            IMovable movable = _player.GetComponent<IMovable>();
-            ICursorFollower cursorFollower = _player.GetComponent<ICursorFollower>();
-            IJumping jumping = _player.GetComponent<IJumping>();
-            IAttackable attackable = _player.GetComponent<IAttackable>();
-            
-            BindAttackInput(attackable);
-            BindJumpInput(jumping);
-            BindRotateInput(cursorFollower);
-            BindMoveInput(movable);
+            BindAttackInput();
+            BindJumpInput();
+            BindRotateInput();
+            BindMoveInput();
+            BindInputInitializer();
             
             Debug.Log($"Binding {GetType().Name}");
         }
-
-        private void BindAttackInput(IAttackable attackable)
+        
+        private void BindAttackInput()
         {
-            if (attackable == null)
-            {
-                Debug.LogWarning("<color=yellow> IAnimationController instance is null. Input system bindings may not be fully configured. </color>");
-            }
-            
+
             Container.BindInterfacesAndSelfTo<AttackInputListener>()
                 .AsSingle()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<AttackInputController>()
                 .AsSingle()
-                .WithArguments(attackable)
                 .NonLazy();
         }
 
-        private void BindJumpInput(IJumping jumping)
+        private void BindJumpInput()
         {
-            if (jumping == null)
-            {
-                Debug.LogWarning("<color=yellow> IJumping instance is null. Input system bindings may not be fully configured. </color>");
-            }
-            
             Container.BindInterfacesAndSelfTo<JumpInputListener>()
                 .AsSingle()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<JumpInputController>()
                 .AsSingle()
-                .WithArguments(jumping)
                 .NonLazy();
         }
 
-        private void BindRotateInput(ICursorFollower cursorFollower)
+        private void BindRotateInput()
         {
-            if (cursorFollower == null)
-            {
-                Debug.LogWarning("<color=yellow> IRotatable instance is null. Input system bindings may not be fully configured. </color>");
-            }
-            
             Container.BindInterfacesAndSelfTo<CursorPositionListener>()
                 .AsSingle()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<RotateController>()
                 .AsSingle()
-                .WithArguments(cursorFollower)
                 .NonLazy();
         }
 
-        private void BindMoveInput(IMovable movable)
+        private void BindMoveInput()
         {
-            if (movable == null)
-            {
-                Debug.LogWarning("<color=yellow> IMovable instance is null. Input system bindings may not be fully configured. </color>");
-            }
-
-            Container.BindInterfacesAndSelfTo<PlayerInputListener>()
+            Container.BindInterfacesAndSelfTo<MoveInputListener>()
                 .AsSingle()
                 .NonLazy();
 
-            Container.BindInterfacesAndSelfTo<PlayerInputController>()
+            Container.BindInterfacesAndSelfTo<MoveInputController>()
                 .AsSingle()
-                .WithArguments(movable)
+                .NonLazy();
+        }
+        
+        private void BindInputInitializer()
+        {
+            Container.BindInterfacesAndSelfTo<InputInitializer>()
+                .AsSingle()
                 .NonLazy();
         }
     }

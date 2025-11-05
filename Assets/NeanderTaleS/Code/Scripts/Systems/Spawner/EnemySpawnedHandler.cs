@@ -28,7 +28,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
 
         private void OnSpawn(GameObject enemy)
         {
-            bool isTakeDamageable = enemy.TryGetComponent<ITakeDamageable>(out var takeDamageable);
+            bool isTakeDamageable = enemy.TryGetComponent<ITakeDamageEvents>(out var takeDamageable);
 
             if (isTakeDamageable)
             {

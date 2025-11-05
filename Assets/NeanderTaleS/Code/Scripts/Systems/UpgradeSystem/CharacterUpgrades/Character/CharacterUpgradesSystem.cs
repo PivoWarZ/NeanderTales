@@ -1,25 +1,23 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
+using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgradesSystem: IInitializable, IDisposable
+    public class CharacterUpgradesSystem: IInitializable, IDisposable, IInitializedAsPlayer
     {
         private IExperienceStorage _experience;
         private CharacterUpgrade _upgrade;
-        private ICharacterUpgrade _character;
         private IDisposable _disposable;
 
-        public CharacterUpgradesSystem(IExperienceStorage experience, CharacterUpgrade upgrade, ICharacterUpgrade character)
+        public CharacterUpgradesSystem(IExperienceStorage experience, CharacterUpgrade upgrade)
         {
             _experience = experience;
             _upgrade = upgrade;
-            _character = character;
-            _upgrade.Construct(_character);
         }
-
 
         void IInitializable.Initialize()
         {
@@ -40,6 +38,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
         public void Dispose()
         {
             _experience.OnLevelUp -= CanLevelUp;
+        }
+
+        public void Initialize(GameObject player)
+        {
+            IUpgradePlayer upgradePlayer = player.GetComponent<IUpgradePlayer>();
+
+            if (upgradePlayer == null)
+            {
+                throw new Exception($"{GetType()} Player not found");
+            }
+
+            _upgrade.Construct(upgradePlayer);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Observers
     {
         private GameCycleManager _gameCycle;
         private SaveLoadManager _saveLoad;
-        private ITakeDamageable _hitpoints;
+        private IHitPointsComponent _hitpoints;
         private GameObject _player;
         private IDisposable _disposable;
 
@@ -21,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.Observers
         {
             _gameCycle = gameCycle;
             _saveLoad = saveLoad;
-            _hitpoints = playerService.GetPlayer().GetComponent<ITakeDamageable>();
+            _hitpoints = playerService.GetPlayer().GetComponent<IHitPointsComponent>();
             _player = playerService.GetPlayer();
         }
 

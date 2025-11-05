@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
@@ -13,6 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
         {
             _cycles = gameCycles.ToList();
             _manager = gameCycleManager;
+            Initialize();
         }
 
         public void Initialize()

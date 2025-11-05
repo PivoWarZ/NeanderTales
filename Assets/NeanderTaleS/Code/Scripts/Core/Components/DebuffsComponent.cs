@@ -18,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         {
             _conditionInstaller.AddCondition<IMovable>(IsStunOver);
             _conditionInstaller.AddCondition<IRotatable>(IsStunOver);
-            _conditionInstaller.AddCondition<IAttackable>(IsStunOver);
+            _conditionInstaller.AddCondition<IAttackEvents>(IsStunOver);
             _conditionInstaller.AddCondition<IJumping>(IsStunOver);
         }
 

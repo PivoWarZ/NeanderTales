@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
 {
@@ -32,21 +33,25 @@ namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
         public void StartGame()
         {
             _startGameListeners.ForEach(listener => listener.OnStartGame());
+            Debug.Log($"<color=green>{GetType().Name}: Start game... </color>");
         }
 
         public void FinishGame()
         {
             _finishGameListeners.ForEach(listener => listener.OnFinishGame());
+            Debug.Log($"<color=red>{GetType().Name}: Finish game...</color>");
         }
 
         public void PauseGame()
         {
             _pauseGameListeners.ForEach(listener => listener.OnPauseGame());
+            Debug.Log($"<color=yellow>{GetType().Name}: Pause game...</color>");
         }
 
         public void ResumeGame()
         {
             _resumeGameListeners.ForEach(listener => listener.OnResumeGame());
+            Debug.Log($"<color=green>{GetType().Name}: Resume game...</color>");
         }
 
         public void RemoveListener<T>(T listener)

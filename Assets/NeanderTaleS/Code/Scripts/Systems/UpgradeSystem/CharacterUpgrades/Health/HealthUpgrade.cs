@@ -1,21 +1,22 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health
 {
     public class HealthUpgrade: Upgrade, ICharacterStatUpgrade
     {
         private readonly HealthUpgradeConfig _config;
-        private ITakeDamageable _hitPoints;
+        private IHitPointsComponent _hitPoints;
 
         public HealthUpgrade(HealthUpgradeConfig config) : base(config)
         {
             _config = config;
         }
         
-        public void Construct(PlayerService service)
+        public void Construct(GameObject player)
         {
-            _hitPoints = service.GetPlayer().GetComponent<ITakeDamageable>();
+            _hitPoints = player.GetComponent<IHitPointsComponent>();
             OnUpgrade();
         }
 
@@ -23,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Heal
         {
             int level = Level.CurrentValue;
             var hpAdded = (float) _config.GetHealth(level);
-            _hitPoints.AddedtHitPoints(hpAdded, hpAdded);
+            _hitPoints.AddHitPoints(hpAdded, hpAdded);
         }
     }
 }

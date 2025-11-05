@@ -16,8 +16,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             _localProvider.Initialize();
 
             InitializeAnimatorControllers(_localProvider);
-
-            InitializeCurrentWeapon(_localProvider);
             
             InitializeStamina(_localProvider);
             
@@ -68,15 +66,9 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
             if (isStamina)
             {
-                IAttackable attacker = localProvider.GetInterface<IAttackable>();
+                IAttackEvents attacker = localProvider.GetInterface<IAttackEvents>();
                 staminaComponent.Init(attacker);
             }
-        }
-
-        private void InitializeCurrentWeapon(LocalProvider localProvider)
-        {
-            WeaponInitializer initializer = new();
-            initializer.Init(localProvider);
         }
 
         private void InitializeAnimatorControllers(LocalProvider localProvider)

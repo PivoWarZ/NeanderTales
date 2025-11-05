@@ -12,7 +12,7 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
     {
         private EnemyStateView _view;
         private Timer _timer = new ();
-        ITakeDamageable _takeDamageable;
+        IHitPointsComponent _hitPointsComponent;
         private const float LIFE_TIME = 3f;
         private CancellationTokenSource _cancell = new ();
 
@@ -32,20 +32,20 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
             Run(_cancell).Forget();
         }
         
-        public void Construct(float damage, ITakeDamageable takeDamageable)
+        public void Construct(float damage, IHitPointsComponent hitPointsComponent)
         {
             _view.gameObject.SetActive(true);
             
-            if (_takeDamageable != takeDamageable || _takeDamageable == null)
+            if (_hitPointsComponent != hitPointsComponent || _hitPointsComponent == null)
             {
-                _takeDamageable = takeDamageable;
+                _hitPointsComponent = hitPointsComponent;
                 
-                InitView(damage, _takeDamageable);
+                InitView(damage, _hitPointsComponent);
                 _timer.Start();
             }
             else
             {
-                SetSlider(damage, _takeDamageable);
+                SetSlider(damage, _hitPointsComponent);
                 _timer.ForceStart();
             }
         }
@@ -68,15 +68,15 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
             _view.gameObject.SetActive(false);
         }
 
-        public void SetSlider(float damage, ITakeDamageable takeDamageable)
+        public void SetSlider(float damage, IHitPointsComponent hitPoints)
         {
-            var newValue = (takeDamageable.CurrentHitPoints.CurrentValue - damage) / takeDamageable.MaxHitPoints.CurrentValue;
+            var newValue = (hitPoints.CurrentHitPoints.CurrentValue - damage) / hitPoints.MaxHitPoints.CurrentValue;
             _view.SetSlider(newValue);
         }
 
-        private void InitView(float damage, ITakeDamageable takeDamageable)
+        private void InitView(float damage, IHitPointsComponent hitPoints)
         {
-            var newValue = (takeDamageable.CurrentHitPoints.CurrentValue - damage) / takeDamageable.MaxHitPoints.CurrentValue;
+            var newValue = (hitPoints.CurrentHitPoints.CurrentValue - damage) / hitPoints.MaxHitPoints.CurrentValue;
             _view.Init(newValue);
         }
 

@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Observers;
+using NeanderTaleS.Code.Scripts.Systems.Factory;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.EnemyStates;
@@ -14,7 +14,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
     public class ZenjectContextInstaller: MonoInstaller
     {
-        [SerializeField] private GameObject _player;
         [SerializeField] private HudUI _hudUI;
         [SerializeField] private Transform _container;
         [SerializeField] private Camera _camera;
@@ -25,10 +24,9 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         
         public override void InstallBindings()
         {
-            var player = BindPlayerService(_player);
-            Container.Bind<ICharacterUpgrade>().FromInstance(player.GetComponent<ICharacterUpgrade>());
+            BindPlayerInstaller();
             
-            InstantiateCamera(player);
+            InstantiateCamera();
             
             InstantiateEventSystem();
             
@@ -37,10 +35,22 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindSpawner();
             
             BindEnemyStateAdapter();
+            
             BindEnemyTakeDamageObserver_ShowPopup();
+            
             BindEnemySpawnedHandler();
+
+            BindPlayerService();
+
             
             Debug.Log($"Binding {GetType().Name}");
+        }
+
+        private void BindPlayerInstaller()
+        {
+            Container.BindInterfacesAndSelfTo<PlayerInstaller>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindEnemySpawnedHandler()
@@ -71,19 +81,23 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Instantiate(_eventSystem, _container);
         }
 
-        private void InstantiateCamera(GameObject player)
+        private void InstantiateCamera()
         {
             var mainCamera = Instantiate(_camera, _container);
             var cinemashine = Instantiate(_sinematicCamera, _container);
-            cinemashine.GetComponent<CinemachineCamera>().Follow = player.transform;
+            
+            Container.BindInterfacesAndSelfTo<CamerasProvider>()
+                .AsSingle()
+                .WithArguments(mainCamera, cinemashine)
+                .NonLazy();
         }
 
         private void BindHudUI()
         {
             var hud = Instantiate(_hudUI, _container);
-            HudUI hudUi = hud.GetComponent<HudUI>();
+            HudUI hudUI = hud.GetComponent<HudUI>();
             
-            Container.BindInstance(hudUi)
+            Container.BindInstance(hudUI)
                 .AsSingle()
                 .NonLazy();
 
@@ -91,19 +105,11 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInstance(enemyview);
         }
 
-        private GameObject BindPlayerService(GameObject player)
+        private void BindPlayerService()
         {
-            var entity = Instantiate(player, _container);
-            entity.gameObject.SetActive(false);
-            
-            Container.Bind<PlayerService>()
+            Container.BindInterfacesAndSelfTo<PlayerService>()
                 .AsSingle()
-                .WithArguments(entity)
                 .NonLazy();
-            
-            entity.GetComponent<Player>().Init();
-            
-            return entity;
         }
     }
 }

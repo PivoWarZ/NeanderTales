@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.PlayerAnimation
             _attackComponent = localProvider.GetService<AttackComponent>();
             
             var conditionInstaller = localProvider.GetService<ConditionInstaller>();
-            conditionInstaller.AddCondition<IAttackable>(IsAttackOver);
+            conditionInstaller.AddCondition<IAttackEvents>(IsAttackOver);
             
             _event.OnReceiveEvent += ProcessEvent;
             _attackComponent.OnAttackAction += Attack;

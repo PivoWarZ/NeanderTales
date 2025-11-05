@@ -34,7 +34,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
             
             _conditionInstaller.AddCondition<IMovable>(LeapingOver);
             _conditionInstaller.AddCondition<IRotatable>(LeapingOver);
-            _conditionInstaller.AddCondition<IAttackable>(LeapingOver);
+            _conditionInstaller.AddCondition<IAttackEvents>(LeapingOver);
         }
 
         public void SetJumpDistance(float distance)

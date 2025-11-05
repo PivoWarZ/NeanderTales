@@ -66,8 +66,8 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 
         private void SetHitPoints()
         {
-            var health = _provider.GetInterface<ITakeDamageable>();
-           health.AddedtHitPoints(_config.HitPoints, _config.HitPoints);
+            var health = _provider.GetInterface<IHitPointsComponent>();
+           health.AddHitPoints(_config.HitPoints, _config.HitPoints);
         }
 
         private void SetDamage()

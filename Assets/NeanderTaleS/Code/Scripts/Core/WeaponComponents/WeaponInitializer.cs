@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.Interfaces.Components;
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {
-    public class WeaponInitializer
+    /*public class WeaponInitializer
     {
         public void Init(LocalProvider localProvider)
         {
@@ -12,9 +12,10 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
             if (hasWeapon)
             {
                 DealDamageComponent dealDamage = localProvider.GetService<DealDamageComponent>();
-                IAttackable attackComponent = localProvider.GetInterface<IAttackable>();
-                weapon.Init(dealDamage, attackComponent);
+                IAttackEvents attackComponent = localProvider.GetInterface<IAttackEvents>();
+                IDealDamage dealDamageComponent = localProvider.GetInterface<IDealDamage>();
+                weapon.Init(dealDamage, attackComponent, dealDamageComponent);
             }
         }
-    }
+    }*/
 }

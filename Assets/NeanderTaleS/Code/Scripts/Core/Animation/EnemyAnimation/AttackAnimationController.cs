@@ -11,14 +11,14 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
         private EnemyAttackComponent _attackComponent;
         private Animator _animator;
         private AnimationEventDispatcher _event;
-        private ITakeDamageable _hitPointsComponent;
+        private ITakeDamageEvents _hitPointsComponent;
         private bool _isBite = false;
 
 
         public void Init(LocalProvider localProvider)
         {
             _attackComponent = localProvider.GetService<EnemyAttackComponent>();
-            _hitPointsComponent = localProvider.GetInterface<ITakeDamageable>();
+            _hitPointsComponent = localProvider.GetInterface<ITakeDamageEvents>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
 

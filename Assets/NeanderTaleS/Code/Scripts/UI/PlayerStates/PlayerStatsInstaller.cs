@@ -4,29 +4,38 @@ using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
-    public class PlayerStatsInstaller: IInitializable, IDisposable
+    public class PlayerStatsInstaller: IInitializedAsPlayer, IDisposable
     {
         private LocalProvider _provider;
         private PlayerStatsModel _model;
         private PlayerStatePresenter _presenter;
         private PlayerStateView _View;
-        IExperienceStorage _experienceStorage;
+        IExperienceGetter _experienceGetter;
         
-        public  PlayerStatsInstaller(PlayerService service, HudUI hudUI, IExperienceStorage experienceStorage)
+        public  PlayerStatsInstaller(HudUI hudUI, IExperienceGetter experienceGetter)
         {
-            var player = service.GetPlayer();
-            _provider = player.GetComponent<LocalProvider>();
             _View = hudUI.PlayerStateView;
-            _experienceStorage = experienceStorage;
+            _experienceGetter = experienceGetter;
         }
         
         
-        public void Initialize()
+        public void Initialize(GameObject player)
         {
+            var localProvider = player.GetComponent<LocalProvider>();
+
+            if (!localProvider)
+            {
+                throw new Exception($"{GetType()} Player not found");
+            }
+            
+            _provider = localProvider;
+            
             Init();
         }
 
@@ -42,12 +51,12 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         {
             PlayerStatsModel model = new PlayerStatsModel
             {
-                MaxHitPoints = _provider.GetInterface<ITakeDamageable>().MaxHitPoints,
-                CurrentHitPoints = _provider.GetInterface<ITakeDamageable>().CurrentHitPoints,
-                MaxStamina = _provider.GetInterface<IStamina>().MaxStamina,
-                CurrentStamina = _provider.GetInterface<IStamina>().Stamina,
-                RequiredExperience = _experienceStorage.RequiredExperience,
-                CurrentExperience = _experienceStorage.CurrentExperience,
+                MaxHitPoints = _provider.GetInterface<IHitPointsComponent>().MaxHitPoints,
+                CurrentHitPoints = _provider.GetInterface<IHitPointsComponent>().CurrentHitPoints,
+                MaxStamina = _provider.GetInterface<IStaminaComponent>().MaxStamina,
+                CurrentStamina = _provider.GetInterface<IStaminaComponent>().Stamina,
+                RequiredExperience = _experienceGetter.RequiredExperience,
+                CurrentExperience = _experienceGetter.CurrentExperience,
                 Level = _provider.GetComponent<Player>().Level
             };
 

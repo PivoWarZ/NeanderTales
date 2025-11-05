@@ -88,6 +88,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private void BindCharacterUpgrade()
         {
             Container.BindInstance(_characterConfig);
+            
             Container.Bind<CharacterUpgrade>()
                 .AsSingle()
                 .NonLazy();

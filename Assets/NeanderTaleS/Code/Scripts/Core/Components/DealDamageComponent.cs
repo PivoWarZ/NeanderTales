@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class DealDamageComponent: MonoBehaviour
+    public class DealDamageComponent: MonoBehaviour, IDealDamageEvents, IDealDamage
     {
         public event DealDamageRequestHandler OnDealDamageRequest;
         public event Action<float> OnDealDamageAction;
@@ -14,7 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         private bool _canDealDamage;
         private CompositeCondition _condition = new ();
 
-        public void DealDamage(ITakeDamageable hitPointsComponent, float damage)
+        public void DealDamage(IDamageable damageable, float damage)
         {
             OnDealDamageRequest?.Invoke(ref damage);
 
@@ -25,9 +25,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             
             OnDealDamageAction?.Invoke(damage);
             
-            hitPointsComponent.TakeDamage(damage);
-            
-            hitPointsComponent.TakeDamageEvent();
+            damageable.TakeDamage(damage);
             
             OnDealDamageEvent?.Invoke();
         }

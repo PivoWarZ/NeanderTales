@@ -7,21 +7,21 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
     public class EnemyTakeDamageObserver_ShowPopup: IDisposable
     {
         private EnemyStateAdapter _adapter;
-        private List<ITakeDamageable> _enemies = new ();
+        private List<ITakeDamageEvents> _enemies = new ();
 
         public EnemyTakeDamageObserver_ShowPopup(EnemyStateAdapter adapter)
         {
             _adapter = adapter;
         }
 
-        public void AddDamageable(ITakeDamageable damageable)
+        public void AddDamageable(ITakeDamageEvents damageEvents)
         {
-            _enemies.Add(damageable);
+            _enemies.Add(damageEvents);
 
-            damageable.OnTakeDamageAction += ShowPopup;
+            damageEvents.OnTakeDamageAction += ShowPopup;
         }
 
-        private void ShowPopup(float damage, ITakeDamageable hitPointsComponent)
+        private void ShowPopup(float damage, IHitPointsComponent hitPointsComponent)
         {
             _adapter.Construct(damage, hitPointsComponent);
         }

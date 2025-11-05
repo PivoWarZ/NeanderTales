@@ -6,12 +6,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 {
     public class ExperienceSystem: IDisposable
     {
-        private IExperienceStorage _storage;
+        private IExperienceSetter _experienceSetter;
         private List<IExperienceDealer> _dealers = new ();
 
-        public ExperienceSystem(IExperienceStorage storage)
+        public ExperienceSystem(IExperienceSetter experienceSetter)
         {
-            _storage = storage;
+            _experienceSetter = experienceSetter;
         }
 
         public void AddExperienceDealer(IExperienceDealer dealer)
@@ -22,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 
         private void AddExperience(float value)
         {
-            _storage.AddExperience(value);
+            _experienceSetter.AddExperience(value);
         }
 
         public void Dispose()

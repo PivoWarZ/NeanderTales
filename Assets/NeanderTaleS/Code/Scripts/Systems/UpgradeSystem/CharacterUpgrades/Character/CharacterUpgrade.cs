@@ -5,16 +5,16 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
     public class CharacterUpgrade: Upgrade
     {
         private readonly CharacterUpgradesConfig _config;
-        private ICharacterUpgrade _character;
+        private IUpgradePlayer _upgradePlayer;
 
         public CharacterUpgrade(CharacterUpgradesConfig config) : base(config)
         {
             _config = config;
         }
         
-        public void Construct(ICharacterUpgrade character)
+        public void Construct(IUpgradePlayer upgradePlayer)
         {
-            _character = character;
+            _upgradePlayer = upgradePlayer;
             OnUpgrade();
         }
 
@@ -25,7 +25,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
             
-            _character.Upgrade(level, health, stamina, power);
+            _upgradePlayer.Upgrade(level, health, stamina, power);
         }
     }
 }

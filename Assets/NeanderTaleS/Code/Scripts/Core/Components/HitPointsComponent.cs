@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class HitPointsComponent: MonoBehaviour, ITakeDamageable
+    public class HitPointsComponent: MonoBehaviour, ITakeDamageEvents, IHitPointsComponent, IDamageable
     {
         public event TakeDamageRequestHandler OnTakeDamageRequest;
-        public event Action<float, ITakeDamageable> OnTakeDamageAction;
+        public event Action<float, IHitPointsComponent> OnTakeDamageAction;
         public event Action OnTakeDamageEvent;
         
         [SerializeField] private SerializableReactiveProperty<float> _maxHitPoints = new ();
@@ -27,7 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         }
         
         [Button]
-        public void TakeDamage(float damage)
+        void IDamageable.TakeDamage(float damage)
         {
             OnTakeDamageRequest?.Invoke(ref damage);
             
@@ -41,17 +41,20 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             var newValue = _currentHitPoints.Value -= damage;
             
             _currentHitPoints.Value = Math.Min(newValue, MaxHitPoints.CurrentValue);
-        }
-
-        void ITakeDamageable.TakeDamageEvent()
-        {
+            
             OnTakeDamageEvent?.Invoke();
         }
 
-        void ITakeDamageable.AddedtHitPoints(float currentHitPoints, float maxHitPoints)
+        void IHitPointsComponent.AddHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _maxHitPoints.Value = Math.Max(0, _maxHitPoints.Value + maxHitPoints);
             _currentHitPoints.Value = Mathf.Clamp(_currentHitPoints.Value += currentHitPoints, 0, MaxHitPoints.CurrentValue);
+        }
+
+        void IHitPointsComponent.SetHitPoints(float currentHitPoints, float maxHitPoints)
+        {
+            _currentHitPoints.Value = Mathf.Clamp(currentHitPoints, 0, MaxHitPoints.CurrentValue);
+            _maxHitPoints.Value = Math.Max(0, _maxHitPoints.Value);
         }
 
         public void SetCondition(Func<bool> condition)

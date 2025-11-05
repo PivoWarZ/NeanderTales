@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.WeaponInterfaces;
 using UnityEngine;
-using DealDamageComponent = NeanderTaleS.Code.Scripts.Core.Components.DealDamageComponent;
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {
@@ -11,11 +11,15 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
     {
         [SerializeField] private float _damage;
         [SerializeField] Collider _collider;
+        [SerializeField] ParticleSystem _hitParticle;
+        [SerializeField] private float _particleSize = 0.01f;
+        [SerializeField] Transform _firePoint;
         [SerializeField] private bool _isTrigger;
         [SerializeField] private bool _isPlayer;
-        private List<ITakeDamageable> _hitPointsCpmponents = new ();
-        private DealDamageComponent _damageComponent;
-        private IAttackable _attackable;
+        private ParticleSystem _hitEffect;
+        private List<IDamageable> _damagedTargets = new ();
+        private IDealDamage _dealDamageComponent;
+        private IAttackEvents _attackEvents;
 
         private void Awake()
         {
@@ -25,28 +29,22 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
             }
             
             _collider.enabled = false;
+            _hitEffect =  Instantiate(_hitParticle, _firePoint.transform);
+            _firePoint.gameObject.transform.localScale = new Vector3(_particleSize, _particleSize, _particleSize);
             
             DisabledWeaponCollider();
+
+            _attackEvents = GetComponentInParent<IAttackEvents>();
+            _dealDamageComponent = GetComponentInParent<IDealDamage>();
+            
+            _attackEvents.OnAttackAction += PrepareToAttack;
+            _attackEvents.OnAttackEvent += DisabledWeaponCollider;
         }
         
-        public void Init(DealDamageComponent damageComponent, IAttackable attackable)
+        private void OnDestroy()
         {
-            _damageComponent = damageComponent;
-            _attackable = attackable;
-
-            _attackable.OnAttackAction += PrepareToAttack;
-            _attackable.OnAttackEvent += DisabledWeaponCollider;
-        }
-
-        private void DisabledWeaponCollider()
-        {
-            _collider.enabled = false;
-        }
-
-        private void PrepareToAttack()
-        {
-            _hitPointsCpmponents.Clear();
-            _collider.enabled = true;
+            _attackEvents.OnAttackAction -= PrepareToAttack;
+            _attackEvents.OnAttackEvent -= DisabledWeaponCollider;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -56,60 +54,106 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
                 return;
             }
 
-            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageable>(out var hitPointsComponent);
+            var target = other.gameObject;
 
-            if (isDamageble)
+            if (!IsDamageable(target, out var damageable))
             {
-                TryDealDamage(hitPointsComponent);
+                return;
+            }
+            
+            var isDamageDealing = TryDealDamage(damageable);
+            
+            if (isDamageDealing)
+            {
+               PlayHitParticle(other);
             }
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            if (!_isTrigger)
+            var target = other.gameObject;
+
+            if (!IsDamageable(target, out var damageable))
             {
                 return;
             }
-
-            bool isDamageble = other.gameObject.TryGetComponent<ITakeDamageable>(out var hitPointsComponent);
             
+            var isDamageDealing = TryDealDamage(damageable);
+            
+            if (isDamageDealing)
+            {
+                PlayHitParticle();
+            }
+        }
+        
+        private void DisabledWeaponCollider()
+        {
+            _collider.enabled = false;
+        }
+
+        private void PrepareToAttack()
+        {
+            _damagedTargets.Clear();
+            _collider.enabled = true;
+        }
+
+        private void PlayHitParticle(Collision other = null)
+        {
+            if (_isTrigger)
+            {
+                _hitEffect.transform.position = _firePoint.position;
+                _hitEffect.Play();
+                return;
+            }
+
+            if (other == null)
+            {
+                return;
+            }
+            
+            _hitEffect.transform.position = other.contacts[0].point;
+            _hitEffect.Play();
+        }
+
+        private bool IsDamageable(GameObject target, out IDamageable damageableComponent)
+        {
+            bool isDamageble = target.TryGetComponent<IDamageable>(out var damageable);
+
             if (isDamageble)
             {
-                TryDealDamage(hitPointsComponent);
+                damageableComponent = damageable;
+                return true;
             }
+            
+            damageableComponent = null;
+            return false;
         }
 
-
-        private void TryDealDamage(ITakeDamageable hitPointsComponent)
+        private bool TryDealDamage(IDamageable damageable)
         {
-            if (IsComponentDamaged(hitPointsComponent))
-            {
-                return;
-            }
-
-            _damageComponent.DealDamage(hitPointsComponent, _damage);
-            _hitPointsCpmponents.Add(hitPointsComponent);
-        }
-
-        private bool IsComponentDamaged(ITakeDamageable component)
-        {
-            if (_hitPointsCpmponents.Count == 0)
+            if (IsComponentDamaged(damageable))
             {
                 return false;
             }
 
-            return _hitPointsCpmponents.Any(hitPointsCpmponent => hitPointsCpmponent == component);
+            _dealDamageComponent.DealDamage(damageable, _damage); 
+            _damagedTargets.Add(damageable);
+            return true;
+        }
+
+        private bool IsComponentDamaged(IDamageable component)
+        {
+            if (_damagedTargets.Count == 0)
+            {
+                return false;
+            }
+
+            return _damagedTargets.Any(damageable => damageable == component);
         }
         
         public void SetDamage(float damage)
         {
             _damage = damage;
-        }
-
-        private void OnDestroy()
-        {
-            _attackable.OnAttackAction -= PrepareToAttack;
-            _attackable.OnAttackEvent -= DisabledWeaponCollider;
         }
     }
 }

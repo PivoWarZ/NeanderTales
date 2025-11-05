@@ -23,6 +23,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Effects.HitFX
         {
             _effect.transform.position = position;
             _effect.Play();
+            Debug.Log($"Play Effect, {_particle}");
         }
     }
 }

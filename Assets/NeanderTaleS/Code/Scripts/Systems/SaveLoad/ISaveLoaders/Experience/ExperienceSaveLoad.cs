@@ -16,9 +16,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
     {
         void ISaveLoader.LoadGame(IContext context, IGameRepository gameRepository)
         {
-            var playerUpgrade = context.GetService<ICharacterUpgrade>();
-            
-            playerUpgrade.ResetValues();
             
             bool isDataFound = gameRepository.TryGetData<ExperienceDataStorage>(out var dataStorage);
             ExperienceData data = new ExperienceData();
@@ -37,7 +34,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
                 return;
             }
 
-            var storage = context.GetService<IExperienceStorage>();
+            var storage = context.GetService<IExperienceSetter>();
             var healthUpgrade = context.GetService<HealthUpgrade>();
             var staminaUpgrade = context.GetService<StaminaUpgrade>();
             var powerUpgrade = context.GetService<PowerUpgrade>();

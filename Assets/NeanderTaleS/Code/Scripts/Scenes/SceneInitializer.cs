@@ -1,5 +1,7 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.Factory;
+using NeanderTaleS.Code.Scripts.Systems.GameCycle;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using R3;
 using UnityEngine;
@@ -19,19 +21,21 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         private CompositeDisposable _combatDisposable = new ();
 
         [Inject]
-        public void Construct(Spawner spawner, PlayerService service)
+        public void Construct(Spawner spawner, IPlayerCreator creator, PlayerService playerService, GameCycleManager gameCycle)
         {
             _spawner = spawner;
             _spawner.Initialize(_spawnSettings);
             
-            _player = service.GetPlayer();
-            _player.transform.position = _playerStartTransform.position;
+            creator.CreatePlayer(_playerStartTransform.position);
+            _player = playerService.GetPlayer();
             _player.gameObject.SetActive(true);
+            
+            gameCycle.StartGame();
         }
 
         private void Awake()
         {
-            _spawner.OnSpawned += Subscribe;
+//            _spawner.OnSpawned += Subscribe;
             _exit.SetActive(_isHome);
         }
         
@@ -51,7 +55,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
 
         private void Subscribe(GameObject enemy)
         {
-           var dispose = enemy.GetComponent<ITakeDamageable>().CurrentHitPoints
+           var dispose = enemy.GetComponent<IHitPointsComponent>().CurrentHitPoints
                 .Where(hp => hp <= 0)
                 .Subscribe(OnEnemyDie);
            _combatDisposable.Add(dispose);
@@ -69,6 +73,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
 
         private void OnDestroy()
         {
+            _spawner.OnSpawned -= Subscribe;
             _combatDisposable.Dispose();
         }
     }

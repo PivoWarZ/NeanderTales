@@ -24,9 +24,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [Range(0.5f, 2f)] private float _maxSizeValue = 1f;
         private GameObject _player;
 
-        public Spawner(PlayerService service, VelociraptorConfig config, GameObject prefab)
+        public Spawner(VelociraptorConfig config, GameObject prefab)
         {
-            _player = service.GetPlayer();
             _config = config;
             _prefab = prefab;
         }

@@ -7,7 +7,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
 {
     public class TakeDamageAnimationController: MonoBehaviour, IAnimationController
     {
-        private ITakeDamageable _damageable;
+        private IHitPointsComponent _hitPoints;
+        private ITakeDamageEvents _damageEvents;
         private Animator _animator;
         private AnimationEventDispatcher _event;
         private DebuffsComponent _debuffs;
@@ -20,7 +21,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
         
         public void Init(LocalProvider localProvider)
         {
-            _damageable = localProvider.GetInterface<ITakeDamageable>();
+            _hitPoints = localProvider.GetInterface<IHitPointsComponent>();
+            _damageEvents = localProvider.GetInterface<ITakeDamageEvents>();
             _animator = localProvider.Animator;
             _event = localProvider.GetService<AnimationEventDispatcher>();
             _debuffs = localProvider.GetService<DebuffsComponent>();
@@ -28,12 +30,12 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             var conDitionInstaller = localProvider.GetService<ConditionInstaller>();
             conDitionInstaller.AddCondition<IRotatable>(IsNormalDamage);
             conDitionInstaller.AddCondition<IMovable>(IsNormalDamage);
-            conDitionInstaller.AddCondition<IAttackable>(IsNormalDamage);
+            conDitionInstaller.AddCondition<IAttackEvents>(IsNormalDamage);
             
-            _damageable.OnTakeDamageAction += TakeDamage;
+            _damageEvents.OnTakeDamageAction += TakeDamage;
             _event.OnReceiveEvent += ReceiveEvent;
             
-            _startHitPoints = _damageable.CurrentHitPoints.CurrentValue;
+            _startHitPoints = _hitPoints.CurrentHitPoints.CurrentValue;
             _lowDamage = _startHitPoints * LOW_DAMAGE_THREASHOLD;
             _mediumDamage = _startHitPoints * MEDIUM_DAMAGE_THREASHOLD;
         }
@@ -51,7 +53,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
             }
         }
 
-        private void TakeDamage(float damage, ITakeDamageable _)
+        private void TakeDamage(float damage, IHitPointsComponent _)
         {
             if (!_debuffs.IsStunOver())
             {
@@ -82,7 +84,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation
 
         private void OnDestroy()
         {
-            _damageable.OnTakeDamageAction -= TakeDamage;
+            _damageEvents.OnTakeDamageAction -= TakeDamage;
             _event.OnReceiveEvent -= ReceiveEvent;
         }
     }

@@ -1,21 +1,22 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina
 {
     public class StaminaUpgrade: Upgrade, ICharacterStatUpgrade
     {
         private readonly StaminaUpgradeConfig _config;
-        private IStamina _stamina;
+        private IStaminaComponent _staminaComponent;
 
         public StaminaUpgrade(StaminaUpgradeConfig config) : base(config)
         {
             _config = config;
         }
         
-        public void Construct(PlayerService service)
+        public void Construct(GameObject player)
         {
-            _stamina = service.GetPlayer().GetComponent<IStamina>();
+            _staminaComponent = player.GetComponent<IStaminaComponent>();
             OnUpgrade();
         }
 
@@ -23,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stam
         {
             int level = Level.CurrentValue;
             var addStamina = _config.GetStamina(level);
-            _stamina.AddedStamina(addStamina, addStamina);
+            _staminaComponent.SetStamina(addStamina, addStamina);
         }
     }
 }

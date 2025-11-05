@@ -12,13 +12,13 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         [SerializeField] private TMP_Text _infoPopup;
         private SaveLoadManager _saveLoadManager;
         private bool _isTriggerEnter;
-        private ITakeDamageable _hitPoints;
+        private IHitPointsComponent _hitPoints;
         
         [Inject]
         public void Construct(SaveLoadManager manager, PlayerService playerService)
         {
             _saveLoadManager = manager;
-            _hitPoints = playerService.GetPlayer().GetComponent<ITakeDamageable>();
+            _hitPoints = playerService.GetPlayer().GetComponent<IHitPointsComponent>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -31,7 +31,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
 
             if (currentPoints < maxPoints)
             {
-                _hitPoints.AddedtHitPoints(maxPoints - currentPoints);
+                _hitPoints.AddHitPoints(maxPoints - currentPoints);
             }
 
             _isTriggerEnter = true;

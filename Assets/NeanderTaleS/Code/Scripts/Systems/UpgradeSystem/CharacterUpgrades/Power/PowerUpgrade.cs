@@ -1,5 +1,6 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power
 {
@@ -13,9 +14,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Powe
             _config = config;
         }
         
-        public void Construct(PlayerService service)
+        public void Construct(GameObject player)
         {
-            _damage = service.GetPlayer().GetComponent<IAdditionalDamage>();
+            _damage = player.GetComponent<IAdditionalDamage>();
             OnUpgrade();
         }
 

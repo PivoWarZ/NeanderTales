@@ -8,11 +8,11 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
     {
         public float AdditionalPercentDamage { get; set; }
 
-        [SerializeField] DealDamageComponent _dealDamageComponent;
+        [SerializeField] DealDamageComponent dealDamageComponent;
 
         public void Init()
         {
-            _dealDamageComponent.OnDealDamageRequest += AddDamage;
+            dealDamageComponent.OnDealDamageRequest += AddDamage;
         }
 
         public void AddDamage(ref float damage)

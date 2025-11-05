@@ -13,19 +13,18 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
         
         private Animator _animator;
         private AnimationEventDispatcher _eventDispatcher;
-        private ITakeDamageable _damageable;
-        private PointHitDamageListener _pointHit;
+        private IHitPointsComponent _hitPoints;
         private IDisposable _disposable;
         
         public void Init(LocalProvider localProvider)
         {
             _animator = localProvider.Animator;
             _eventDispatcher = localProvider.GetService<AnimationEventDispatcher>();
-            _damageable = localProvider.GetInterface<ITakeDamageable>();
-            _pointHit = localProvider.GetService<PointHitDamageListener>();
+            _hitPoints = localProvider.GetInterface<IHitPointsComponent>();
+
 
             _eventDispatcher.OnReceiveEvent += ReceiveEvent;
-            _disposable = _damageable.CurrentHitPoints.Where(hp => hp <= 0).Subscribe(DyingAnimation);
+            _disposable = _hitPoints.CurrentHitPoints.Where(hp => hp <= 0).Subscribe(DyingAnimation);
         }
 
         private void ReceiveEvent(string eventName)
@@ -38,17 +37,19 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
 
         private void DyingAnimation(float _)
         {
-            Vector3 hitPointPosition = _pointHit.GetLastHitPointPosition;
-            bool isDyingForward = hitPointPosition.z > 0.6f;
-
-            if (isDyingForward)
-            {
-                _animator.SetTrigger("DyingForward");
-            }
-            else
-            {
-                _animator.SetTrigger("DyingBackward");
-            }
+            // Vector3 hitPointPosition = _pointHit.GetLastHitPointPosition;
+            // bool isDyingForward = hitPointPosition.z > 0.6f;
+            //
+            // if (isDyingForward)
+            // {
+            //     _animator.SetTrigger("DyingForward");
+            // }
+            // else
+            // {
+            //     _animator.SetTrigger("DyingBackward");
+            // }
+            
+            _animator.SetTrigger("DyingBackward");
 
         }
 

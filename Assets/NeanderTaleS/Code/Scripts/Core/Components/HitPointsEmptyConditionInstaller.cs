@@ -1,17 +1,14 @@
-using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Interfaces.Components;
-
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class HitPointsEmptyConditionInstaller
+    /*public class HitPointsEmptyConditionInstaller
     {
         private LocalProvider _localProvider;
-        private ITakeDamageable _hitPointsComponent;
+        private ITakeDamageEvents _hitPointsComponent;
 
         public HitPointsEmptyConditionInstaller(LocalProvider localProvider)
         {
             _localProvider = localProvider;
-            _hitPointsComponent = localProvider.GetInterface<ITakeDamageable>();
+            _hitPointsComponent = localProvider.GetInterface<ITakeDamageEvents>();
         }
 
         public void SetHitPpointsEmptyCondition()
@@ -30,5 +27,5 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
             float hitPoints = _hitPointsComponent.CurrentHitPoints.CurrentValue;
             return hitPoints > 0;
         }
-    }
+    }*/
 }
