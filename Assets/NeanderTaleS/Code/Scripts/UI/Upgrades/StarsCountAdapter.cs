@@ -7,8 +7,8 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
     public class StarsCountAdapter: IInitializable, IDisposable
     {
-        private ICoinsStorage _storage;
-        private UpgradesPopup _popup;
+        private readonly ICoinsStorage _storage;
+        private readonly UpgradesPopup _popup;
         IDisposable _disposable;
 
         public StarsCountAdapter(HudUI hud, ICoinsStorage storage)

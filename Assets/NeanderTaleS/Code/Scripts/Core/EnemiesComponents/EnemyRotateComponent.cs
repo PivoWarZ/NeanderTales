@@ -11,7 +11,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         [SerializeField] float _rotateSpeed;
         [SerializeField] private bool _canRotate = true;
         Transform _target;
-        private CompositeCondition _condition = new ();
+        private readonly CompositeCondition _condition = new ();
 
         private void Awake()
         {

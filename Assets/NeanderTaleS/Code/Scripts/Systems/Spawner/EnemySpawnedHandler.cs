@@ -10,9 +10,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
 {
     public class EnemySpawnedHandler: IInitializable, IDisposable
     {
-        private Spawner _spawner;
-        private EnemyTakeDamageObserver_ShowPopup _takeDamageObserverShowPopup;
-        private ExperienceSystem _experienceSystem;
+        private readonly Spawner _spawner;
+        private readonly EnemyTakeDamageObserver_ShowPopup _takeDamageObserverShowPopup;
+        private readonly ExperienceSystem _experienceSystem;
 
         public EnemySpawnedHandler(Spawner spawner, EnemyTakeDamageObserver_ShowPopup takeDamageObserverShowPopup, ExperienceSystem experienceSystem)
         {

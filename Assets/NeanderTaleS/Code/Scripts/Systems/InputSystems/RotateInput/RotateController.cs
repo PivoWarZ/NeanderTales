@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 {
     public class RotateController: IInitializable, IDisposable, IPlayerInput
     {
-        private CursorPositionListener _listener;
+        private readonly CursorPositionListener _listener;
         private ICursorFollower _cursorFollower;
 
         public RotateController(CursorPositionListener listener)

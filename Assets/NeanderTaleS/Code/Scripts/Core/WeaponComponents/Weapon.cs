@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
         [SerializeField] private bool _isTrigger;
         [SerializeField] private bool _isPlayer;
         private ParticleSystem _hitEffect;
-        private List<IDamageable> _damagedTargets = new ();
+        private readonly List<IDamageable> _damagedTargets = new ();
         private IDealDamage _dealDamageComponent;
         private IAttackEvents _attackEvents;
 

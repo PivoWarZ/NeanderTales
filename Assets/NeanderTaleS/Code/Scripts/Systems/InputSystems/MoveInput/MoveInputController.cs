@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput
 {
     public class MoveInputController: IInitializable, IDisposable, IPlayerInput
     {
-        private MoveInputListener _input;
+        private readonly MoveInputListener _input;
         private IMovable _movable;
 
         public MoveInputController(MoveInputListener input)

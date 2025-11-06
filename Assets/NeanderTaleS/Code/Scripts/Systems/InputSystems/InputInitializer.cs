@@ -1,3 +1,5 @@
+using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems
@@ -11,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems
             _playerInputs = playerInputs;
         }
 
-        public void Initialize(GameObject player)
+        void IInitializedAsPlayer.Initialize(GameObject player)
         {
             foreach (var playerInput in _playerInputs)
             {

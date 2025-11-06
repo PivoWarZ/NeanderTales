@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         [SerializeField] private float _pushPower;
         private Rigidbody _rigidbody;
         private UniTaskCompletionSource<Collision> _task;
-        private CancellationTokenSource _cancell = new();
+        private readonly CancellationTokenSource _cancell = new();
 
         public float PushPower => _pushPower;
 

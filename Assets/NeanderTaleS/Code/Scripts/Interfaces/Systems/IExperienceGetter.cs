@@ -1,4 +1,3 @@
-using System;
 using R3;
 
 namespace NeanderTaleS.Code.Scripts.Interfaces.Systems

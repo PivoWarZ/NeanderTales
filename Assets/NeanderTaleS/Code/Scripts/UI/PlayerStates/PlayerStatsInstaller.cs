@@ -1,31 +1,30 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
-using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Interfaces.Systems;
-using NeanderTaleS.Code.Scripts.Systems.InputSystems;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
-    public class PlayerStatsInstaller: IInitializedAsPlayer, IDisposable
+    public sealed class PlayerStatsInstaller: IInitializedAsPlayer, IDisposable, IPlayerStatsModelGetter
     {
         private LocalProvider _provider;
         private PlayerStatsModel _model;
         private PlayerStatePresenter _presenter;
-        private PlayerStateView _View;
-        IExperienceGetter _experienceGetter;
+        private readonly PlayerStateView _View;
+        readonly IExperienceGetter _experienceGetter;
         
         public  PlayerStatsInstaller(HudUI hudUI, IExperienceGetter experienceGetter)
         {
             _View = hudUI.PlayerStateView;
             _experienceGetter = experienceGetter;
         }
-        
-        
-        public void Initialize(GameObject player)
+
+        public PlayerStatsModel PlayerStatsModel => _model;
+
+
+        void IInitializedAsPlayer.Initialize(GameObject player)
         {
             var localProvider = player.GetComponent<LocalProvider>();
 
@@ -39,7 +38,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
             Init();
         }
 
-        public void Init()
+        private void Init()
         {
             _model = CreatePlayerModel();
             _presenter = CreatePlayerStatePresenter();
@@ -65,7 +64,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 
         private PlayerStatePresenter CreatePlayerStatePresenter()
         {
-            PlayerStatePresenter presenter = new PlayerStatePresenter(_model, _View);
+            PlayerStatePresenter presenter = new PlayerStatePresenter(PlayerStatsModel, _View);
             
             return presenter;
         }

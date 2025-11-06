@@ -18,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         private GameObject _player;
         private Spawner _spawner;
         private int _combatCounter;
-        private CompositeDisposable _combatDisposable = new ();
+        private readonly CompositeDisposable _combatDisposable = new ();
 
         [Inject]
         public void Construct(Spawner spawner, IPlayerCreator creator, PlayerService playerService, GameCycleManager gameCycle)

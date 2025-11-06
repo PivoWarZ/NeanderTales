@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 {
     public sealed class StatsUpgradesInstaller: IInitializedAsPlayer
     {
-        private List<Upgrade> _upgrades = new();
+        private readonly List<Upgrade> _upgrades = new();
         private PlayerService _servise;
 
         public StatsUpgradesInstaller(Upgrade[] upgrades)

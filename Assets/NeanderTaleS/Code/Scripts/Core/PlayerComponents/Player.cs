@@ -9,11 +9,10 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
     {
         [SerializeField] private EntityBootsTrap _entityBootsTrap;
         [SerializeField] private LocalProvider _localProvider;
-        private LastAddedCharacteristics _lastAdded = new ();
         private IHitPointsComponent _hitPoints;
         private IStaminaComponent _staminaComponent;
         private IAdditionalDamage _additionalDamage;
-        private ReactiveProperty<int> _level = new ();
+        [SerializeField]private SerializableReactiveProperty<int> _level = new ();
         
         public ReadOnlyReactiveProperty<int> Level => _level;
 
@@ -27,9 +26,10 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
 
         void IUpgradePlayer.Upgrade(int level, int health, int stamina, int power)
         {
+            Debug.Log($"Level : {level}, Health: {health}, Stamina: {stamina}, Power: {power}");
             _level.Value = level;
-            _hitPoints.SetHitPoints(_hitPoints.CurrentHitPoints.CurrentValue + health, health);
-            _staminaComponent.SetStamina(_staminaComponent.Stamina.CurrentValue + stamina, stamina);
+            _hitPoints.SetHitPoints(health, health);
+            _staminaComponent.SetStamina(stamina, stamina);
             _additionalDamage.AdditionalPercentDamage += power;
         }
     }

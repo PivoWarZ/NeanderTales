@@ -1,5 +1,3 @@
-using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;

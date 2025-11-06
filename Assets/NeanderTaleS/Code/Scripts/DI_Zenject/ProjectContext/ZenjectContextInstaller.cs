@@ -1,5 +1,4 @@
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
-using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;

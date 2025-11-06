@@ -10,11 +10,11 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
     public class EnemyStateAdapter: IDisposable, IInitializable
     {
-        private EnemyStateView _view;
-        private Timer _timer = new ();
+        private readonly EnemyStateView _view;
+        private readonly Timer _timer = new ();
         IHitPointsComponent _hitPointsComponent;
         private const float LIFE_TIME = 3f;
-        private CancellationTokenSource _cancell = new ();
+        private readonly CancellationTokenSource _cancell = new ();
 
         public EnemyStateAdapter(EnemyStateView view)
         {

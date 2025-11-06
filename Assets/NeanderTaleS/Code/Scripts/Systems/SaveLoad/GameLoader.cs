@@ -5,7 +5,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad
 {
     public class GameLoader
     {
-        private SaveLoadManager _saveLoadManager;
+        private readonly SaveLoadManager _saveLoadManager;
 
         public GameLoader(SaveLoadManager saveLoadManager)
         {

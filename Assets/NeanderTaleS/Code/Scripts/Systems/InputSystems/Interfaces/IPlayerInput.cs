@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.InputSystems
+namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces
 {
     public interface IPlayerInput
     {

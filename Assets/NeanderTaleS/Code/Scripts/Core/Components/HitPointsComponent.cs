@@ -15,8 +15,8 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         
         [SerializeField] private SerializableReactiveProperty<float> _maxHitPoints = new ();
         [SerializeField] private SerializableReactiveProperty<float> _currentHitPoints = new ();
-        private bool _canTakeDamage = true;
-        private CompositeCondition _condition  = new ();
+        private readonly bool _canTakeDamage = true;
+        private readonly CompositeCondition _condition  = new ();
         
         public ReadOnlyReactiveProperty<float> MaxHitPoints => _maxHitPoints;
         public ReadOnlyReactiveProperty<float> CurrentHitPoints => _currentHitPoints;
@@ -54,7 +54,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         void IHitPointsComponent.SetHitPoints(float currentHitPoints, float maxHitPoints)
         {
             _currentHitPoints.Value = Mathf.Clamp(currentHitPoints, 0, MaxHitPoints.CurrentValue);
-            _maxHitPoints.Value = Math.Max(0, _maxHitPoints.Value);
+            _maxHitPoints.Value = Math.Max(0, maxHitPoints);
         }
 
         public void SetCondition(Func<bool> condition)

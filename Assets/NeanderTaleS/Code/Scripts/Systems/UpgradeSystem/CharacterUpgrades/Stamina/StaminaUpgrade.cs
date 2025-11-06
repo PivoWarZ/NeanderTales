@@ -1,4 +1,3 @@
-using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
@@ -23,8 +22,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stam
         protected override void OnUpgrade()
         {
             int level = Level.CurrentValue;
-            var addStamina = _config.GetStamina(level);
-            _staminaComponent.SetStamina(addStamina, addStamina);
+            var stamina = _config.GetStamina(level);
+            _staminaComponent.SetStamina(stamina, stamina);
         }
     }
 }

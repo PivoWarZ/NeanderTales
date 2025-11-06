@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
-using NeanderTaleS.Code.Scripts.Core.Services;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,8 +12,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         public event Action<GameObject> OnSpawned;
         
         [Header("---------Spawner--------")]
-        private VelociraptorConfig _config;
-        private GameObject _prefab;
+        private readonly VelociraptorConfig _config;
+        private readonly GameObject _prefab;
         private List<Transform> _spawnPoints = new ();
         private Transform _worldTransform;
 

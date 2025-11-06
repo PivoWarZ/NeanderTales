@@ -6,7 +6,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience
 {
     public class ExperienceSystem: IDisposable
     {
-        private IExperienceSetter _experienceSetter;
+        private readonly IExperienceSetter _experienceSetter;
         private List<IExperienceDealer> _dealers = new ();
 
         public ExperienceSystem(IExperienceSetter experienceSetter)

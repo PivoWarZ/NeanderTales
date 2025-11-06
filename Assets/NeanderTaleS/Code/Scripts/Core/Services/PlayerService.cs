@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services
@@ -7,10 +7,9 @@ namespace NeanderTaleS.Code.Scripts.Core.Services
     {
         private GameObject _player;
 
-        public void Initialize(GameObject player)
+        void IInitializedAsPlayer.Initialize(GameObject player)
         {
             _player = player;
-            Debug.Log(player.name + " has been initialized.");
         }
         
         public GameObject GetPlayer()

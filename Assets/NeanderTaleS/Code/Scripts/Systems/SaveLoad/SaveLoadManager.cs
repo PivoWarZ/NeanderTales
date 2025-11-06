@@ -5,9 +5,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad
 {
     public class SaveLoadManager
     {
-        private ISaveLoader[] _saveLoaders;
-        private IGameRepository _gameRepository;
-        private IContext _context;
+        private readonly ISaveLoader[] _saveLoaders;
+        private readonly IGameRepository _gameRepository;
+        private readonly IContext _context;
 
         public SaveLoadManager(ISaveLoader[] saveLoaders, GameRepository gameRepository, IContext context)
         { 

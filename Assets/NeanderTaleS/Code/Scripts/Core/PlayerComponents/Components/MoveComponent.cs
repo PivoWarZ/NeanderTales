@@ -8,11 +8,11 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
     public class MoveComponent: MonoBehaviour, IMovable, IConditionComponent
     {
-        private ReactiveProperty<Vector3> _moveDirection = new (Vector3.zero);
+        private readonly ReactiveProperty<Vector3> _moveDirection = new (Vector3.zero);
         [SerializeField] private float _speed;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private bool _canMove = true;
-        CompositeCondition _condition = new ();
+        readonly CompositeCondition _condition = new ();
         public ReadOnlyReactiveProperty<Vector3> MoveDirection => _moveDirection;
 
         private void Awake()

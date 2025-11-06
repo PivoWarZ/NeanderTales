@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         
 
         [SerializeField] private bool _canAttack = false;
-        private CompositeCondition _condition = new ();
+        private readonly CompositeCondition _condition = new ();
 
         private void Awake()
         {

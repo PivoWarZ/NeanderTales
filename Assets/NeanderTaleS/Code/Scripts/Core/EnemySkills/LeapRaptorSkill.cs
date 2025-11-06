@@ -22,7 +22,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
         [SerializeField] private float _recoveringAfterJump = 30;
         [SerializeField] private bool _isLeapReady;
         private bool _isLeaping;
-        private CancellationTokenSource _cancell = new ();
+        private readonly CancellationTokenSource _cancell = new ();
         private IDisposable _dispose;
         
 

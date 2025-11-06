@@ -15,7 +15,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         [SerializeField] private Transform _rotateTransform;
         [SerializeField] private float rotateSpeed = 5f;
         [SerializeField] private bool _canRotate = true;
-        private CompositeCondition _condition = new ();
+        private readonly CompositeCondition _condition = new ();
         private Quaternion _targetRotation;
         private const int OFFSET_ROTATION_ANGLE = 3;
 

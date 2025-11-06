@@ -5,9 +5,9 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
     public class PlayerStatePresenter
     {
-        private PlayerStatsModel _model;
-        private PlayerStateView _view;
-        private CompositeDisposable _disposables = new ();
+        private readonly PlayerStatsModel _model;
+        private readonly PlayerStateView _view;
+        private readonly CompositeDisposable _disposables = new ();
 
         public PlayerStatePresenter(PlayerStatsModel model, PlayerStateView view)
         {

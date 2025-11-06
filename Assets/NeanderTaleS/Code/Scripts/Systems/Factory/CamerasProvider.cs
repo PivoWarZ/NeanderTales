@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -6,8 +6,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
 {
     public class CamerasProvider: IInitializedAsPlayer
     {
-        private Camera _camera;
-        private CinemachineCamera _cinemashine;
+        private readonly Camera _camera;
+        private readonly CinemachineCamera _cinemashine;
 
         public CamerasProvider(Camera camera, CinemachineCamera cinemashine)
         {
@@ -19,7 +19,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
 
         public CinemachineCamera Cinemashine => _cinemashine;
 
-        public void Initialize(GameObject player)
+        void IInitializedAsPlayer.Initialize(GameObject player)
         {
             _cinemashine.GetComponent<CinemachineCamera>().Follow = player.transform;
         }

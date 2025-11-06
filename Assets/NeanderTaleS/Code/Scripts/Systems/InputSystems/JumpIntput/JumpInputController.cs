@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput
 {
     public class JumpInputController: IInitializable, IDisposable, IPlayerInput
     {
-        private JumpInputListener _listener;
+        private readonly JumpInputListener _listener;
         private IJumping _jumping;
 
         public JumpInputController(JumpInputListener listener)

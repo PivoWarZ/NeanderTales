@@ -12,7 +12,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
         public event Action OnDealDamageEvent;
 
         private bool _canDealDamage;
-        private CompositeCondition _condition = new ();
+        private readonly CompositeCondition _condition = new ();
 
         public void DealDamage(IDamageable damageable, float damage)
         {

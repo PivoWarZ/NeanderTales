@@ -14,7 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
         [SerializeField] private Rigidbody _rb;
         [SerializeField] private SerializableReactiveProperty<bool> _isMoving = new ();
         private Transform _target;
-        private CompositeCondition _condition = new();
+        private readonly CompositeCondition _condition = new();
         
         public ReadOnlyReactiveProperty<bool> IsMoving => _isMoving;
 

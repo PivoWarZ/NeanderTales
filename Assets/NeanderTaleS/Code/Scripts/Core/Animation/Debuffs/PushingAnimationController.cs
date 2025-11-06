@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
         private RotateComponent_LookAtCursor _rotateComponent;
         private Rigidbody _rigidbody;
         private IDisposable _dispose;
-        private CancellationTokenSource _cancell = new ();
+        private readonly CancellationTokenSource _cancell = new ();
         
         public void Init(LocalProvider localProvider)
         {

@@ -6,7 +6,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 {
     public class LevelUpListener_RewardCoins: IInitializable, IDisposable
     {
-        private ExperienceStorage _storage;
+        private readonly ExperienceStorage _storage;
         private const int REWARD_COINS = 3;
 
         public LevelUpListener_RewardCoins(ExperienceStorage storage)

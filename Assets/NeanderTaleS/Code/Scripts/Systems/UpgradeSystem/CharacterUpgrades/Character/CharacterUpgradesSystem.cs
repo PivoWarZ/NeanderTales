@@ -1,6 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
-using NeanderTaleS.Code.Scripts.Systems.InputSystems;
+using NeanderTaleS.Code.Scripts.Interfaces.Systems;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
 using UnityEngine;
 using Zenject;
@@ -9,8 +9,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
 {
     public class CharacterUpgradesSystem: IInitializable, IDisposable, IInitializedAsPlayer
     {
-        private IExperienceStorage _experience;
-        private CharacterUpgrade _upgrade;
+        private readonly IExperienceStorage _experience;
+        private readonly CharacterUpgrade _upgrade;
         private IDisposable _disposable;
 
         public CharacterUpgradesSystem(IExperienceStorage experience, CharacterUpgrade upgrade)
@@ -40,7 +40,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             _experience.OnLevelUp -= CanLevelUp;
         }
 
-        public void Initialize(GameObject player)
+        void IInitializedAsPlayer.Initialize(GameObject player)
         {
             IUpgradePlayer upgradePlayer = player.GetComponent<IUpgradePlayer>();
 

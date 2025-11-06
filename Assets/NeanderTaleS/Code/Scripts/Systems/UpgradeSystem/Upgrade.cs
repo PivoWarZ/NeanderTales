@@ -13,8 +13,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
         public int MaxLevel => _config.MaxLevel;
         public int NextPrice => _config.GetNextPrice(Level.CurrentValue +1);
         
-        private ReactiveProperty<int> _level = new();
-        private UpgradeConfig _config;
+        private readonly ReactiveProperty<int> _level = new();
+        private readonly UpgradeConfig _config;
         
         public bool IsMaxLevel => _level.Value == _config.MaxLevel;
 

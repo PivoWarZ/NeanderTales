@@ -54,7 +54,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void BindStatsUpgradeInstaller()
         {
-            Container.Bind<StatsUpgradesInstaller>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StatsUpgradesInstaller>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradeManager>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradePopupInstaller>().AsSingle().NonLazy();
         }

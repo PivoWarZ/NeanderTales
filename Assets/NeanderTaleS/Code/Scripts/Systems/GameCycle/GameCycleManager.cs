@@ -5,10 +5,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
 {
     public class GameCycleManager
     {
-        private List<IStartGameListener> _startGameListeners = new ();
-        private List<IFinishGameListener> _finishGameListeners = new ();
-        private List<IPauseGameListener> _pauseGameListeners = new ();
-        private List<IResumeGameListener> _resumeGameListeners = new ();
+        private readonly List<IStartGameListener> _startGameListeners = new ();
+        private readonly List<IFinishGameListener> _finishGameListeners = new ();
+        private readonly List<IPauseGameListener> _pauseGameListeners = new ();
+        private readonly List<IResumeGameListener> _resumeGameListeners = new ();
 
         public void AddStartGameListener(IStartGameListener listener)
         {

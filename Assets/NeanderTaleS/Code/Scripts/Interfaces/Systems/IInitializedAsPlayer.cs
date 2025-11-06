@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.InputSystems
+namespace NeanderTaleS.Code.Scripts.Interfaces.Systems
 {
     public interface IInitializedAsPlayer
     {

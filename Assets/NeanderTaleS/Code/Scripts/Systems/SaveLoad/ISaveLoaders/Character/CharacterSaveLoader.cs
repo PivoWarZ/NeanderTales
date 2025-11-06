@@ -9,6 +9,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
     {
         void ISaveLoader.LoadGame(IContext context, IGameRepository gameRepository)
         {
+            Debug.Log($"<color=yellow>>LoadGame : {context.GetType().Name}</color>");
             var service = context.GetService<PlayerService>();
             var player = service.GetPlayer();
             var data = new CharacterData();

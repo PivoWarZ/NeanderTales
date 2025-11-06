@@ -11,10 +11,10 @@ namespace NeanderTaleS.Code.Scripts.Observers
 {
     public class CharacterDyingObserver_LoadGame: IInitializable, IDisposable
     {
-        private GameCycleManager _gameCycle;
-        private SaveLoadManager _saveLoad;
-        private IHitPointsComponent _hitpoints;
-        private GameObject _player;
+        private readonly GameCycleManager _gameCycle;
+        private readonly SaveLoadManager _saveLoad;
+        private readonly IHitPointsComponent _hitpoints;
+        private readonly GameObject _player;
         private IDisposable _disposable;
 
         public CharacterDyingObserver_LoadGame(PlayerService playerService, GameCycleManager gameCycle, SaveLoadManager saveLoad)

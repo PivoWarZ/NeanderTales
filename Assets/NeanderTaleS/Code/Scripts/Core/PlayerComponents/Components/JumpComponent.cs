@@ -21,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private bool _isJump;
         private CancellationTokenSource _cancell;
-        private CompositeCondition _condition = new ();
+        private readonly CompositeCondition _condition = new ();
 
         private void Awake()
         {

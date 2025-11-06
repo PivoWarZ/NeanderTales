@@ -1,5 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput
 {
     public class AttackInputController: IInitializable, IDisposable, IPlayerInput
     {
-        private AttackInputListener _listener;
+        private readonly AttackInputListener _listener;
         private IAttackComponent _attackComponent;
 
         public AttackInputController(AttackInputListener listener)

@@ -6,7 +6,7 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
     public class EnemyTakeDamageObserver_ShowPopup: IDisposable
     {
-        private EnemyStateAdapter _adapter;
+        private readonly EnemyStateAdapter _adapter;
         private List<ITakeDamageEvents> _enemies = new ();
 
         public EnemyTakeDamageObserver_ShowPopup(EnemyStateAdapter adapter)
