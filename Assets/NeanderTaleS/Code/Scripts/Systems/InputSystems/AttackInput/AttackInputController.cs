@@ -26,7 +26,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput
             _attackComponent.Attack();
         }
 
-        public void Init(GameObject player)
+        void IPlayerInput.Construct(GameObject player)
         {
             _attackComponent = player.GetComponent<IAttackComponent>();
             

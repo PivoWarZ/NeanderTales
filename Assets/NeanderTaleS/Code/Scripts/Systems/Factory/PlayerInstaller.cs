@@ -1,22 +1,22 @@
 using System;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.EventBus;
+using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Factory
 {
-    public sealed class PlayerInstaller: IPlayerCreator, IInitializePlayer
+    public sealed class PlayerInstaller: IPlayerCreator
     {
         private DiContainer _context;
-        private readonly IInitializedAsPlayer[] _initializedAsPlayers;
+        private IEventBus _eventBus;
         private readonly GameObject _playerPrefab;
         private readonly string _prefabPath = "Prefabs/Player";
 
 
-        public PlayerInstaller(IInitializedAsPlayer[] initializedAsPlayers, DiContainer context)
+        public PlayerInstaller(DiContainer context)
         {
-            _initializedAsPlayers = initializedAsPlayers;
             _context = context;
             _playerPrefab = Resources.Load<GameObject>(_prefabPath);
             
@@ -30,15 +30,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
         {
             var player  = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
             _context.InjectGameObject(player);
-            ((IInitializePlayer)this).InitializePlayer(player);
-        }
-
-        void IInitializePlayer.InitializePlayer(GameObject player)
-        {
-            foreach (var initializedAsPlayer in _initializedAsPlayers)
-            {
-                initializedAsPlayer.Initialize(player);
-            }
+            _eventBus.RiseEvent(new InstantiatePlayerEvent(player));
         }
     }
 }

@@ -68,7 +68,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         
         private void BindInputInitializer()
         {
-            Container.BindInterfacesAndSelfTo<InputInitializer>()
+            Container.BindInterfacesAndSelfTo<InputSystemInitializer>()
                 .AsSingle()
                 .NonLazy();
         }

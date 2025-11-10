@@ -36,8 +36,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindEnemyStateAdapter();
             
             BindEnemyTakeDamageObserver_ShowPopup();
-            
-            BindEnemySpawnedHandler();
 
             BindPlayerService();
 
@@ -50,11 +48,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<PlayerInstaller>()
                 .AsSingle()
                 .NonLazy();
-        }
-
-        private void BindEnemySpawnedHandler()
-        {
-            Container.BindInterfacesAndSelfTo<EnemySpawnedHandler>().AsSingle().NonLazy();
         }
 
         private void BindEnemyTakeDamageObserver_ShowPopup()

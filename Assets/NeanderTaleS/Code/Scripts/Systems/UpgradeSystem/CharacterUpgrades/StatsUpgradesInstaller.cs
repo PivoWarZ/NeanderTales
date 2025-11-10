@@ -1,22 +1,22 @@
 using System.Collections.Generic;
+using System.Linq;
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.EventBus;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 {
-    public sealed class StatsUpgradesInstaller: IInitializedAsPlayer
+    public sealed class StatsUpgradesInstaller
     {
         private readonly List<Upgrade> _upgrades = new();
         private PlayerService _servise;
+        private IEventBus _eventBus;
 
-        public StatsUpgradesInstaller(Upgrade[] upgrades)
+        public StatsUpgradesInstaller(Upgrade[] upgrades, IEventBus eventBus)
         {
-            for (var index = 0; index < upgrades.Length; index++)
-            {
-                var upgrade = upgrades[index];
-                _upgrades.Add(upgrade);
-            }
+            _eventBus = eventBus;
+            _upgrades = upgrades.ToList();
         }
         
         public void Initialize(GameObject player)
@@ -25,9 +25,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
             {
                 var upgrade = _upgrades[index];
                 
-                if (upgrade is ICharacterStatUpgrade statsUpgrade)
+                if (upgrade is IUpgradeSystemConstruct construct)
                 {
-                    statsUpgrade.Construct(player);
+                    construct.Construct(player);
                 }
             }
         }

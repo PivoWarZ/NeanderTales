@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Systems.GameCycle;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
-using R3;
 using UnityEngine.UI;
 using Zenject;
 
@@ -14,8 +11,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
     public class StatsUpgradeManager: IInitializable, IDisposable
     {
         private readonly StatsUpgradePopupInstaller _popupInstaller;
-        private readonly GameCycleManager _gameCycle;
-        private readonly ICoinsStorage _storage;
         private readonly HudUI _hud;
         private List<Upgrade> _upgrades = new ();
         private List<UpgradeStatView> _views = new ();
@@ -23,12 +18,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
         private Button _hidePopupButton;
         IDisposable _disposable;
 
-        public StatsUpgradeManager(StatsUpgradePopupInstaller popupInstaller, ICoinsStorage storage, HudUI hud, GameCycleManager gameCycle)
+        public StatsUpgradeManager(StatsUpgradePopupInstaller popupInstaller, HudUI hud)
         {
             _popupInstaller = popupInstaller;
-            _storage = storage;
             _hud = hud;
-            _gameCycle = gameCycle;
         }
 
         void IInitializable.Initialize()
@@ -40,43 +33,28 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
 
             _showPopupButton.onClick.AddListener(ShowPopup);
             _hidePopupButton.onClick.AddListener(HidePopup);
-
-            _disposable = _storage.Coins
-                .Where(coins => coins > 0)
-                .Subscribe(ShowUpgradeButton);
-
         }
 
         private void ShowUpgradeButton(int _)
         {
             _disposable.Dispose();
             _showPopupButton.gameObject.SetActive(true);
-            
-            _disposable = _storage.Coins
-                .Where(coins => coins <= 0)
-                .Subscribe(HideUpgradeButton);
         }
 
         private void HideUpgradeButton(int _)
         {
             _disposable.Dispose();
             _showPopupButton.gameObject.SetActive(false);
-            
-            _disposable = _storage.Coins
-                .Where(coins => coins > 0)
-                .Subscribe(HideUpgradeButton);
         }
 
         private void HidePopup()
         {
             _hud.UpgradesPopup.gameObject.SetActive(false);
-            _gameCycle.ResumeGame();
         }
 
         private void ShowPopup()
         {
             _hud.UpgradesPopup.gameObject.SetActive(true);
-            _gameCycle.PauseGame();
         }
 
         private void InitUpgradeBox(UpgradeStatView view, Upgrade model)
@@ -110,13 +88,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades
         private bool TrySpendCoins(Upgrade upgrade)
         {
             var price = upgrade.NextPrice;
-            var isSpendPossible = _storage.Coins.Value >= price;
+        //    var isSpendPossible = _storage.Coins.CurrentValue >= price;
 
-            if (isSpendPossible)
-            {
-                _storage.Coins.Value -= price;
-                return true;
-            }
+          //  if (isSpendPossible)
+          //  {
+               // _storage.RemoveCoins(price);
+             //   return true;
+         //   }
             
             return false;
         }

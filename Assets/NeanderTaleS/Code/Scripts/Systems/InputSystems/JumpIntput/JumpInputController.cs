@@ -26,7 +26,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput
             _jumping.Jump();
         }
 
-        public void Init(GameObject player)
+        public void Construct(GameObject player)
         {
             _jumping = player.GetComponent<IJumping>();
             

@@ -1,9 +1,10 @@
+using System;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgrade: Upgrade
+    public class CharacterUpgrade: Upgrade, IUpgradeSystemConstruct
     {
         private readonly CharacterUpgradesConfig _config;
         private IUpgradePlayer _upgradePlayer;
@@ -13,9 +14,17 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             _config = config;
         }
         
-        public void Construct(IUpgradePlayer upgradePlayer)
+        public void Construct(GameObject player)
         {
+            player.TryGetComponent<IUpgradePlayer>(out IUpgradePlayer upgradePlayer);
+            
+            if (upgradePlayer == null)
+            {
+                throw new InvalidOperationException($"Component IUpgradePlayer missing: {player.name}.");
+            }
+            
             _upgradePlayer = upgradePlayer;
+
             OnUpgrade();
         }
 
@@ -28,5 +37,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             
             _upgradePlayer.Upgrade(level, health, stamina, power);
         }
+    }
+
+    public interface IUpgradeSystemConstruct
+    {
+        void Construct(GameObject player);
     }
 }

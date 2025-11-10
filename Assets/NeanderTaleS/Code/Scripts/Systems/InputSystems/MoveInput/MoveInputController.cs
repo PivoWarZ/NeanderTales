@@ -31,7 +31,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput
             _movable.Move(direction);
         }
 
-        public void Init(GameObject player)
+        public void Construct(GameObject player)
         {
             _movable = player.GetComponent<IMovable>();
             

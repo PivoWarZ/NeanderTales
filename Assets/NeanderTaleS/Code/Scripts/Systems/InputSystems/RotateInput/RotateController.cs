@@ -32,7 +32,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
             _listener.OnRotatePoinrChanged -= Rotate;
         }
 
-        public void Init(GameObject player)
+        public void Construct(GameObject player)
         {
             _cursorFollower  = player.GetComponent<ICursorFollower>();
 

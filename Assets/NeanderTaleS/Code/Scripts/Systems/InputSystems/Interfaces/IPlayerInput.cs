@@ -4,6 +4,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.Interfaces
 {
     public interface IPlayerInput
     {
-        void Init(GameObject player);
+        void Construct(GameObject player);
     }
 }

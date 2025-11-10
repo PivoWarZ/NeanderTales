@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 {
-    public sealed class PlayerStatsInstaller: IInitializedAsPlayer, IDisposable, IPlayerStatsModelGetter
+    public sealed class PlayerStatsInstaller: IDisposable, IPlayerStatsModelGetter
     {
         private LocalProvider _provider;
         private PlayerStatsModel _model;
@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         public PlayerStatsModel PlayerStatsModel => _model;
 
 
-        void IInitializedAsPlayer.Initialize(GameObject player)
+        public void Initialize(GameObject player)
         {
             var localProvider = player.GetComponent<LocalProvider>();
 

@@ -1,10 +1,10 @@
+using NeanderTaleS.Code.Scripts.Systems.ExperienceSystem;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
@@ -35,8 +35,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             BindStatsUpgradeInstaller();
 
-            BindLevelUpListener_RewardCoins();
-
             BindStarsCountAdapter();
             
             Debug.Log($"Binding {GetType().Name}");
@@ -46,12 +44,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         {
             Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
         }
-
-        private void BindLevelUpListener_RewardCoins()
-        {
-            Container.BindInterfacesAndSelfTo<LevelUpListener_RewardCoins>().AsSingle().NonLazy();
-        }
-
         private void BindStatsUpgradeInstaller()
         {
             Container.BindInterfacesAndSelfTo<StatsUpgradesInstaller>().AsSingle().NonLazy();
@@ -93,7 +85,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsSingle()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<CharacterUpgradesSystem>()
+            Container.BindInterfacesAndSelfTo<CharacterUpgradeSystemSystem>()
                 .AsSingle()
                 .NonLazy();
         }
@@ -104,7 +96,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsSingle()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<ExperienceSystem>()
+            Container.BindInterfacesAndSelfTo<ExperienceManager>()
                 .AsSingle()
                 .NonLazy();
         }

@@ -2,8 +2,8 @@ using System;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
 {
-    public interface ILevelUpListener
+    public interface ILevelUpRequest
     {
-        event Action OnLevelUp;
+        event Action OnLevelUpRequest;
     }
 }

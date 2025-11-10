@@ -1,3 +1,4 @@
+using NeanderTaleS.Code.Scripts.Systems.ExperienceSystem;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
@@ -5,7 +6,6 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Characte
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Experience;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience

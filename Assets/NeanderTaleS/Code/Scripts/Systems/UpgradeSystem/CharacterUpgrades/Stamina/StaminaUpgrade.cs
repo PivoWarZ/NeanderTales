@@ -1,9 +1,10 @@
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina
 {
-    public class StaminaUpgrade: Upgrade, ICharacterStatUpgrade
+    public class StaminaUpgrade: Upgrade, IUpgradeSystemConstruct
     {
         private readonly StaminaUpgradeConfig _config;
         private IStaminaComponent _staminaComponent;
@@ -12,8 +13,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stam
         {
             _config = config;
         }
-        
-        public void Construct(GameObject player)
+
+        void IUpgradeSystemConstruct.Construct(GameObject player)
         {
             _staminaComponent = player.GetComponent<IStaminaComponent>();
             OnUpgrade();

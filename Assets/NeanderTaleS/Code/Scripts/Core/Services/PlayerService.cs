@@ -1,20 +1,32 @@
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using UnityEngine;
+using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services
 {
-    public class PlayerService: IInitializedAsPlayer
+    public class PlayerService: IInitializable
     {
         private GameObject _player;
+        private IEventBus _eventBus;
 
-        void IInitializedAsPlayer.Initialize(GameObject player)
+        public PlayerService(IEventBus eventBus)
         {
-            _player = player;
+            _eventBus = eventBus;
         }
-        
+
         public GameObject GetPlayer()
         {
             return _player.gameObject;
         }
+
+        void IInitializable.Initialize()
+        {
+            //_eventBus.Subscribe<CreatedPlayerEvent>(SetPlayer);
+        }
+
+        //private void SetPlayer(CreatedPlayerEvent @event)
+       // {
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

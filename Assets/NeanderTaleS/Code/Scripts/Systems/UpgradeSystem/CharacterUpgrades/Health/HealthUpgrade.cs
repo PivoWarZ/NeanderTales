@@ -1,9 +1,10 @@
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health
 {
-    public class HealthUpgrade: Upgrade, ICharacterStatUpgrade
+    public class HealthUpgrade: Upgrade, IUpgradeSystemConstruct
     {
         private readonly HealthUpgradeConfig _config;
         private IHitPointsComponent _hitPoints;
@@ -12,8 +13,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Heal
         {
             _config = config;
         }
-        
-        public void Construct(GameObject player)
+
+        void IUpgradeSystemConstruct.Construct(GameObject player)
         {
             _hitPoints = player.GetComponent<IHitPointsComponent>();
             OnUpgrade();
