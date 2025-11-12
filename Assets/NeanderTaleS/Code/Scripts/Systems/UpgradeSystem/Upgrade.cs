@@ -24,15 +24,17 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
             _level.Value = 1;
         }
 
-        public void LevelUp()
+        public bool TryLevelUp()
         {
             if (IsMaxLevel)
             {
-                return;
+                return false;
             }
             
             _level.Value++;
             OnUpgrade();
+            
+            return true;
         }
 
         public void Reset()

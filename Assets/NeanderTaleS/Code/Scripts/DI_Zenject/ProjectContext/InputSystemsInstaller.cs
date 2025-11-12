@@ -1,9 +1,10 @@
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.InputSystems;
 using NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput;
+using NeanderTaleS.Code.Scripts.Systems.InputSystems.Bus;
 using NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput;
 using NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput;
 using NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput;
-using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -18,25 +19,31 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindMoveInput();
             BindInputInitializer();
             
-            Debug.Log($"Binding {GetType().Name}");
+            //Bus
+            
+            Container.BindInterfacesAndSelfTo<InstantiatePlayerObserver_ConstructInputSystem>()
+                .AsCached()
+                .NonLazy();
+            
+            DebugLogger.PrintBinding(this);
         }
         
         private void BindAttackInput()
         {
 
             Container.BindInterfacesAndSelfTo<AttackInputListener>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<AttackInputController>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
         }
 
         private void BindJumpInput()
         {
             Container.BindInterfacesAndSelfTo<JumpInputListener>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<JumpInputController>()
@@ -47,28 +54,28 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private void BindRotateInput()
         {
             Container.BindInterfacesAndSelfTo<CursorPositionListener>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<RotateController>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
         }
 
         private void BindMoveInput()
         {
             Container.BindInterfacesAndSelfTo<MoveInputListener>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
 
             Container.BindInterfacesAndSelfTo<MoveInputController>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
         }
         
         private void BindInputInitializer()
         {
-            Container.BindInterfacesAndSelfTo<InputSystemInitializer>()
+            Container.Bind<InputSystemInitializer>()
                 .AsSingle()
                 .NonLazy();
         }

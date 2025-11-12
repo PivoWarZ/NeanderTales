@@ -1,5 +1,6 @@
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
 using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
@@ -38,9 +39,8 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindEnemyTakeDamageObserver_ShowPopup();
 
             BindPlayerService();
-
             
-            Debug.Log($"Binding {GetType().Name}");
+            DebugLogger.PrintBinding(this);
         }
 
         private void BindPlayerInstaller()
@@ -99,7 +99,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void BindPlayerService()
         {
-            Container.BindInterfacesAndSelfTo<PlayerService>()
+            Container.Bind<PlayerService>()
                 .AsSingle()
                 .NonLazy();
         }

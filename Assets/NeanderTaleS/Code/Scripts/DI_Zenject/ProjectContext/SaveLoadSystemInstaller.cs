@@ -1,9 +1,9 @@
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
-using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -19,7 +19,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindSaveLoadManager();
             Container.Bind<GameLoader>().AsSingle().NonLazy();
             
-            Debug.Log($"Binding {GetType().Name}");
+            DebugLogger.PrintBinding(this);
         }
 
         private void BindIGameStateSaver()

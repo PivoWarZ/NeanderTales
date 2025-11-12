@@ -25,7 +25,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 
         public void SetExperience(float newValue)
         {
-            DOTween.To(() => Experience.value, x => Experience.value = x, newValue, 0.5f);
+            DOTween.To(() => Experience.value, exp => Experience.value = exp, newValue, 0.5f);
         }
 
         public void SetStamina(float newValue)

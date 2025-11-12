@@ -1,12 +1,12 @@
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus.Events
 {
-    public class LevelUpEvent
+    public class LevelUpEvent: IEventBusEvent
     {
-        public LevelUpEvent(int requiredExperienceToNextLevel)
+        public LevelUpEvent(string calling)
         {
-            RequiredExperienceToNextLevel = requiredExperienceToNextLevel;
+            Calling = calling;
         }
 
-        public int RequiredExperienceToNextLevel { get; }
+        public string Calling { get; }
     }
 }

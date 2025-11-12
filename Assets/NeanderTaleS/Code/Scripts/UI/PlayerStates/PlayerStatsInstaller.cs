@@ -2,7 +2,7 @@ using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         private PlayerStatsModel _model;
         private PlayerStatePresenter _presenter;
         private readonly PlayerStateView _View;
-        readonly IExperienceGetter _experienceGetter;
+        private readonly IExperienceGetter _experienceGetter;
         
         public  PlayerStatsInstaller(HudUI hudUI, IExperienceGetter experienceGetter)
         {
@@ -22,23 +22,15 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
         }
 
         public PlayerStatsModel PlayerStatsModel => _model;
+        
 
-
-        public void Initialize(GameObject player)
+        public void Construct(GameObject player)
         {
             var localProvider = player.GetComponent<LocalProvider>();
-
-            if (!localProvider)
-            {
-                throw new Exception($"{GetType()} Player not found");
-            }
-            
-            _provider = localProvider;
-            
-            Init();
+            _provider = localProvider ?? throw new Exception($"{GetType()} Player not found");
         }
 
-        private void Init()
+        public void ConstructModelViewPresenter()
         {
             _model = CreatePlayerModel();
             _presenter = CreatePlayerStatePresenter();

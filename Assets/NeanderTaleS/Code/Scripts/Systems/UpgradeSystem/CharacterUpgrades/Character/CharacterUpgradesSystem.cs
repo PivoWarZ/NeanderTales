@@ -1,28 +1,33 @@
 using System;
 
+
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgradeSystemSystem: ICharacterUpgradeSystem
+    public class CharacterUpgradeSystem: ICharacterUpgradeSystem
     {
         public event Action OnLevelUpEvent;
 
-        private readonly CharacterUpgrade _upgrade;
+        private readonly CharacterUpgrade _characterUpgrade;
         private IDisposable _disposable;
 
-        public CharacterUpgradeSystemSystem(CharacterUpgrade upgrade)
+        public CharacterUpgradeSystem(CharacterUpgrade upgrade)
         {
-            _upgrade = upgrade;
+            _characterUpgrade = upgrade;
         }
 
         int ICharacterUpgradeSystem.GetRequiredExperienceToNextLevel()
         {
-            return _upgrade.NextPrice;
+            return _characterUpgrade.NextPrice;
         }
 
         void ICharacterUpgradeSystem.CanLevelUp()
         {
-            _upgrade.LevelUp();
-            OnLevelUpEvent?.Invoke();
+            bool isLevelUp = _characterUpgrade.TryLevelUp();
+
+            if (isLevelUp)
+            {
+                OnLevelUpEvent?.Invoke();
+            }
         }
     }
 }

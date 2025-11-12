@@ -1,6 +1,7 @@
-using NeanderTaleS.Code.Scripts.Systems.ExperienceSystem;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
@@ -95,7 +96,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
             
             for (int i = 0; i < level - 1; i++)
             {
-                upgrade.LevelUp();
+                upgrade.TryLevelUp();
             }
         }
     }

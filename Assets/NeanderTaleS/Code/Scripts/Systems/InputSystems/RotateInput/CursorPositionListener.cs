@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 {
     public class CursorPositionListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
-        public event Action<Vector3> OnRotatePoinrChanged;
+        public event Action<Vector3> OnRotatePointChanged;
         
         private Vector3 _mousePosition;
         private Ray _mouseRay;
@@ -35,7 +35,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
                 return;
             }
 
-            OnRotatePoinrChanged?.Invoke(_hit.point);
+            OnRotatePointChanged?.Invoke(_hit.point);
             _currentHitPoint = hit.point;
         }
         

@@ -1,5 +1,4 @@
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
-using NeanderTaleS.Code.Scripts.Systems.ExperienceSystem;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
 {

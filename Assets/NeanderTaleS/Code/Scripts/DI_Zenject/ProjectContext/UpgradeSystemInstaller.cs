@@ -1,10 +1,13 @@
-using NeanderTaleS.Code.Scripts.Systems.ExperienceSystem;
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades;
+using NeanderTaleS.Code.Scripts.UI.Bus;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
@@ -21,11 +24,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         
         public override void InstallBindings()
         {
-            BindExperienceStorage();
-
             BindCharacterUpgrade();
-
-            BindPlayerStatsInstaller();
             
             BindHealthUpgrade();
 
@@ -34,21 +33,58 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindPowerUpgrade();
 
             BindStatsUpgradeInstaller();
-
-            BindStarsCountAdapter();
             
-            Debug.Log($"Binding {GetType().Name}");
-        }
+            //UI
+            
+            BindPlayerStatsInstaller();
+            
+            Container.BindInterfacesTo<InstantiatePlayerObserver_ConstructPlayerStatsInstaller_UI>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_ConstructModelViewPresenter_UI>()
+                .AsCached()
+                .NonLazy();
+            
+            //Bus
+            
+            Container.BindInterfacesAndSelfTo<InstantiatePlayerObserver_InitializeStatsUpgradeInstaller>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<SpendCoinsRequestHandler>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<UpdateCoinsListener_UpgradeButtonVisibility>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesTo<SystemLevelUpEventListener_RiseLevelUpEvent>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesTo<LevelUpRequestObserver_CanLevelUp>()
+                .AsCached()
+                .NonLazy();
 
-        private void BindStarsCountAdapter()
-        {
-            Container.BindInterfacesAndSelfTo<StarsCountAdapter>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CharacterUpgradeConstructListener_RiseLevelUpEvent>()
+                .AsCached();
+
+            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_RiseExperiencePriceChanged>()
+                .AsCached();
+            
+            Container.BindInterfacesAndSelfTo<UpgradeBoxCreator>()
+                .AsCached();
+            
+            DebugLogger.PrintBinding(this);
         }
+        
         private void BindStatsUpgradeInstaller()
         {
             Container.BindInterfacesAndSelfTo<StatsUpgradesInstaller>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradeManager>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<StatsUpgradePopupInstaller>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StatsUpgradePopupsInstaller>().AsSingle().NonLazy();
         }
 
         private void BindPowerUpgrade()
@@ -81,25 +117,14 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         {
             Container.BindInstance(_characterConfig);
             
-            Container.Bind<CharacterUpgrade>()
-                .AsSingle()
-                .NonLazy();
-            
-            Container.BindInterfacesAndSelfTo<CharacterUpgradeSystemSystem>()
-                .AsSingle()
-                .NonLazy();
-        }
+            CharacterUpgrade characterUpgrade = new CharacterUpgrade(_characterConfig);
+            Container.Bind<Upgrade>().FromInstance(characterUpgrade).AsCached();
+            Container.BindInstance(characterUpgrade).AsSingle();
 
-        private void BindExperienceStorage()
-        {
-            Container.BindInterfacesAndSelfTo<ExperienceStorage>()
-                .AsSingle()
-                .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<ExperienceManager>()
+            Container.BindInterfacesAndSelfTo<CharacterUpgradeSystem>()
                 .AsSingle()
                 .NonLazy();
         }
-        
     }
 }

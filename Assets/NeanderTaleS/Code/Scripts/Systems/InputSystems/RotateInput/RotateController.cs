@@ -19,17 +19,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 
         void IInitializable.Initialize()
         {
-            _listener.OnRotatePoinrChanged += Rotate;
+            _listener.OnRotatePointChanged += Rotate;
         }
 
         private void Rotate(Vector3 hitPoint)
         {
-            _cursorFollower.SetRotateDirection(hitPoint);
+            if (_cursorFollower is not null)
+                _cursorFollower.SetRotateDirection(hitPoint);
         }
 
         void IDisposable.Dispose()
         {
-            _listener.OnRotatePoinrChanged -= Rotate;
+            _listener.OnRotatePointChanged -= Rotate;
         }
 
         public void Construct(GameObject player)

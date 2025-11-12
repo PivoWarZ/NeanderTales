@@ -1,5 +1,5 @@
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.GameCycle;
-using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -15,7 +15,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsSingle()
                 .NonLazy();
             
-            Debug.Log($"Binding {GetType().Name}");
+            DebugLogger.PrintBinding(this);
         }
     }
 }

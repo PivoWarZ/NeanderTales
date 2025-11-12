@@ -7,8 +7,8 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
     public class UpgradeStatView: MonoBehaviour
     {
-        public event Action<string> OnUpgradeRequest;
-        public event Action<UpgradeStatView> OnAllUpgradeComplete;
+        public event Action<string> OnClickUpgradeButton;
+        public event Action<UpgradeStatView> OnAllUpgradesComplete;
         
         [SerializeField] private Image _background;
         [SerializeField] private Image _logo;
@@ -26,6 +26,12 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
             
             Init(viewModel);
         }
+        
+        private void OnDestroy()
+        {
+            _upgradeButton.onClick.RemoveListener(UpgradeRequest);
+            _viewModel.Dispose();
+        }
 
         private void Refresh()
         {
@@ -42,7 +48,7 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
             if (_viewModel.IsMaxLevel)
             {
                 Debug.Log("Max level upgrade");
-                OnAllUpgradeComplete?.Invoke(this);
+                OnAllUpgradesComplete?.Invoke(this);
                 _upgradeButton.gameObject.SetActive(false);
                 Destroy(gameObject, 0.5f);
             }
@@ -50,13 +56,7 @@ namespace NeanderTaleS.Code.Scripts.UI.Upgrades
         
         private void UpgradeRequest()
         {
-            OnUpgradeRequest?.Invoke(_title.text);
-        }
-
-        private void OnDestroy()
-        {
-            _upgradeButton.onClick.RemoveListener(UpgradeRequest);
-            _viewModel.Dispose();
+            OnClickUpgradeButton?.Invoke(_title.text);
         }
     }
 }

@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 392402856676945663}
   - component: {fileID: 647574282656535907}
   - component: {fileID: -3350427377129069560}
+  - component: {fileID: 7340553870144743878}
+  - component: {fileID: -470241010806138836}
+  - component: {fileID: -104757544850101848}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -57,6 +60,9 @@ MonoBehaviour:
   - {fileID: 647574282656535907}
   - {fileID: 5784899662609443820}
   - {fileID: -3350427377129069560}
+  - {fileID: 7340553870144743878}
+  - {fileID: -470241010806138836}
+  - {fileID: -104757544850101848}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -95,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcfdf80357041da882bb11f51fcd9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2346672185299292474, guid: b4a9c533c3b2e7940a23761bbbacf6b1, type: 3}
   _hudUI: {fileID: 6982549279447214039, guid: 93d4f723a84192744a28bec14982a296, type: 3}
   _container: {fileID: 5545680650347881889}
   _camera: {fileID: 725477580719864866, guid: 0ae1d694c82751e4684fea4204a657bd, type: 3}
@@ -143,6 +148,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0f3d60ab7c400d8ba6ef0357e8c58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7340553870144743878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000151477880697256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7221415f709e4a8aa627d8da5c511867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext.UpgradeCoinsSystemInstaller
+--- !u!114 &-470241010806138836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000151477880697256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a355e375315c46b2b59a228acc4f38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext.ExperienceSystemInstaller
+--- !u!114 &-104757544850101848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000151477880697256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e352ef943d844f8585e34a1603299d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext.EventBusInstaller
 --- !u!1 &2869052420373200839
 GameObject:
   m_ObjectHideFlags: 0

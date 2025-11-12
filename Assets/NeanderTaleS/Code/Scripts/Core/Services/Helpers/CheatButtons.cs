@@ -1,5 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -9,18 +9,18 @@ namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
     public class CheatButtons: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
-        private IExperienceStorage _experienceStorage;
+        private ExperienceManager _experienceManager;
         
         [Inject]
-        public void Construct(IExperienceStorage experienceStorage)
+        public void Construct(ExperienceManager experienceManager)
         {
-            _experienceStorage = experienceStorage;
+            _experienceManager = experienceManager;
         }
 
         [Button]
         private void AddExperience()
         {
-            _experienceStorage.AddExperience(500f);
+            _experienceManager.AddExpFromCheatButton(100);
         }
     }
 }

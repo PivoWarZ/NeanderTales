@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
+using Debug = UnityEngine.Debug;
 
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus
 {
@@ -32,6 +34,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.EventBus
 
         public void RiseEvent<T>(T @event)
         {
+            PrintCallsDebug(@event);
             var type = @event.GetType();
 
             if (_handlers.ContainsKey(type))
@@ -44,6 +47,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.EventBus
                     var action = handler as Action<T>;
                     action?.Invoke(@event);
                 }
+            }
+        }
+
+        private static void PrintCallsDebug<T>(T @event)
+        {
+            if (@event is IEventBusEvent busEvent)
+            {
+                Debug.Log($"<color=yellow> [EVENTBUS]: </color><color=white>{busEvent.Calling}</color><color=yellow> ==> </color><color=white>{@event.GetType().Name}");
+            }
+            else
+            {
+                Debug.Log($"<color=red>{@event.GetType()} is NOT EVENT BUS EVENT</color>");
             }
         }
     }

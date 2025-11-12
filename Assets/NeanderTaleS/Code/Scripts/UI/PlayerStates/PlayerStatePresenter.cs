@@ -77,7 +77,11 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates
 
         private void SetExperienceBar(float _)
         {
-            var newValue = _model.CurrentExperience.CurrentValue / _model.RequiredExperience.CurrentValue;
+            var currentExperience = _model.CurrentExperience.CurrentValue;
+            var requiredExperience = _model.RequiredExperience.CurrentValue;
+            float newValue;
+            
+            newValue = requiredExperience > 0 ? currentExperience / requiredExperience : 0f; 
             _view.SetExperience(newValue);
         }
         

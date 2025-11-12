@@ -1,4 +1,5 @@
 using System;
+using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 using UnityEngine;
@@ -13,11 +14,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
         private IEventBus _eventBus;
         private readonly GameObject _playerPrefab;
         private readonly string _prefabPath = "Prefabs/Player";
+        private PlayerService _playerService;
 
 
-        public PlayerInstaller(DiContainer context)
+        public PlayerInstaller(DiContainer context, PlayerService playerService, IEventBus eventBus)
         {
             _context = context;
+            _playerService = playerService;
+            _eventBus = eventBus;
             _playerPrefab = Resources.Load<GameObject>(_prefabPath);
             
             if (!_playerPrefab)
@@ -30,7 +34,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
         {
             var player  = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
             _context.InjectGameObject(player);
-            _eventBus.RiseEvent(new InstantiatePlayerEvent(player));
+            _playerService.Construct(player);
+            _eventBus.RiseEvent(new InstantiatePlayerEvent(player, this.GetType().Name));
         }
     }
 }

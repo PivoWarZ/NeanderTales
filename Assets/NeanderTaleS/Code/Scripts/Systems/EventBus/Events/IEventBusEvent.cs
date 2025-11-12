@@ -1,7 +1,7 @@
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus.Events
 {
-    public class IEventBusEvent
+    public interface IEventBusEvent
     {
-        
+        string Calling { get; }
     }
 }

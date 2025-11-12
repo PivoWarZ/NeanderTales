@@ -1,6 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Interfaces.Systems;
+using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 using R3;
 using UnityEngine;
 

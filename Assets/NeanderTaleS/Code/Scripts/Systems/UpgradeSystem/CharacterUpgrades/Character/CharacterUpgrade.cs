@@ -6,8 +6,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
 {
     public class CharacterUpgrade: Upgrade, IUpgradeSystemConstruct
     {
+        public event Action OnCharacterUpgradeConstructed;
         private readonly CharacterUpgradesConfig _config;
-        private IUpgradePlayer _upgradePlayer;
+        private IUpgradePlayer _player;
 
         public CharacterUpgrade(CharacterUpgradesConfig config) : base(config)
         {
@@ -17,15 +18,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
         public void Construct(GameObject player)
         {
             player.TryGetComponent<IUpgradePlayer>(out IUpgradePlayer upgradePlayer);
-            
-            if (upgradePlayer == null)
-            {
-                throw new InvalidOperationException($"Component IUpgradePlayer missing: {player.name}.");
-            }
-            
-            _upgradePlayer = upgradePlayer;
 
+            _player = upgradePlayer ?? throw new InvalidOperationException($"Component IUpgradePlayer missing: {player.name}.");
+            
             OnUpgrade();
+            
+            OnCharacterUpgradeConstructed?.Invoke();
         }
 
         protected override void OnUpgrade()
@@ -35,12 +33,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
             
-            _upgradePlayer.Upgrade(level, health, stamina, power);
+            _player.Upgrade(level, health, stamina, power);
         }
-    }
-
-    public interface IUpgradeSystemConstruct
-    {
-        void Construct(GameObject player);
     }
 }
