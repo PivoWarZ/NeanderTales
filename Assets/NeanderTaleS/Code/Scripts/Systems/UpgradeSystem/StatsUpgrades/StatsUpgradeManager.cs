@@ -20,8 +20,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
         private List<UpgradeStatView> _views = new ();
         private Button _showPopupButton;
         private Button _hidePopupButton;
-        private UniTaskCompletionSource<bool> _task;
-        private CancellationTokenSource _cancell = new();
+        private UniTaskCompletionSource<bool> _task = new ();
+        private CancellationTokenSource _cancell = new ();
 
         public StatsUpgradeManager(StatsUpgradePopupsInstaller popupsInstaller, HudUI hud)
         {

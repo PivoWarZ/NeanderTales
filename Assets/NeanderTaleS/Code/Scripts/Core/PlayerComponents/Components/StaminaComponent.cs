@@ -41,7 +41,12 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             var newValue = Stamina.CurrentValue + stamina;
             _stamina.Value = Mathf.Min(newValue, MaxStamina.CurrentValue);
         }
-        
+
+        public void AddMaxStamina(float stamina)
+        {
+            _maxStamina.Value = stamina > 0 ? _maxStamina.Value + stamina : _maxStamina.Value;
+        }
+
         private bool CanStaminaPrice()
         {
             return Stamina.CurrentValue >= _user.CurrentStaminaPrice;

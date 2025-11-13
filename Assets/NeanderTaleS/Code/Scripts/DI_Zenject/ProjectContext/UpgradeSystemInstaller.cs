@@ -75,7 +75,12 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached();
             
             Container.BindInterfacesAndSelfTo<UpgradeBoxCreator>()
-                .AsCached();
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<InstantiateCharacterEventObserver_ConstructCharacterUpgrade>()
+                .AsCached()
+                .NonLazy();
             
             DebugLogger.PrintBinding(this);
         }

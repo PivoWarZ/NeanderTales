@@ -21,7 +21,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus
         private void SetExperienceValues(ExperiencePriceChangedEvent @event)
         {
             var requiredExperience = @event.RequiredExperience;
-            _experienceSetter.SetExperience(0, requiredExperience);
+            _experienceSetter.SetRequiredExperience(requiredExperience);
         }
 
         void IDisposable.Dispose()

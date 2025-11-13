@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgrade: Upgrade, IUpgradeSystemConstruct
+    public class CharacterUpgrade: Upgrade
     {
         public event Action OnCharacterUpgradeConstructed;
         private readonly CharacterUpgradesConfig _config;
@@ -28,12 +28,21 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
 
         protected override void OnUpgrade()
         {
+      
             int level = Level.CurrentValue;
             var health = _config.GetHealth(level);
             var stamina = _config.GetStamina(level);
             var power = _config.GetPower(level);
             
-            _player.Upgrade(level, health, stamina, power);
+            Stats stats = new()
+            {
+                Level = level,
+                Health = health,
+                Stamina = stamina,
+                Power = power,
+            };
+            
+            _player.Upgrade(stats);
         }
     }
 }
