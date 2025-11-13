@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power
 {
     [CreateAssetMenu(fileName = "PowerUpgrade", menuName = "NeanderTaleS/UpgradeManager/Character/ New Power Upgrade")]
     public class PowerUpgradeConfig: UpgradeConfig

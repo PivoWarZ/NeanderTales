@@ -5,6 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -116,11 +117,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
 
         private async UniTask<bool> TrySpendCoinsAsync(int price, CancellationTokenSource token)
         {
-            OnSpendCoinsRequest?.Invoke(price);
             _task = new UniTaskCompletionSource<bool>();
+            OnSpendCoinsRequest?.Invoke(price);
             
             var canSpendCoins = await _task.Task;
- 
             return canSpendCoins;
         }
 

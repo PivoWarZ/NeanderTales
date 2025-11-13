@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Health
 {
     public class HealthUpgrade: Upgrade, IUpgradeSystemConstruct
     {

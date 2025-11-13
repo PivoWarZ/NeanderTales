@@ -1,6 +1,6 @@
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Health;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Health;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character

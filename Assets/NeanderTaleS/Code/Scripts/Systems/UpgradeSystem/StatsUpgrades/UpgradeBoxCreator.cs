@@ -31,7 +31,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
         {
             var view = Object.Instantiate(_prefab);
             _manager.CreateStatsViewModel(view, model);
-            Debug.Log("Create View Prefab");
         }
     }
 }

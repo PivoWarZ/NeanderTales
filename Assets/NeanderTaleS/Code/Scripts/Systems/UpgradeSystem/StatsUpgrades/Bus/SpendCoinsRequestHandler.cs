@@ -1,9 +1,9 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades;
+using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
 {
     public class SpendCoinsRequestHandler: IInitializable, IDisposable
     {
@@ -29,12 +29,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
         private void SetSpendCoinsResult(int price)
         {
             bool canSpend = _storage.HasCoins(price);
-            _manager.SetSpendUpgradeCoinsResult(canSpend);
 
             if (canSpend)
             {
                 _storage.RemoveCoins(price);
             }
+            
+            _manager.SetSpendUpgradeCoinsResult(canSpend);
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Stamina
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina
 {
     [Serializable]
     public class StaminaUpgradeTable

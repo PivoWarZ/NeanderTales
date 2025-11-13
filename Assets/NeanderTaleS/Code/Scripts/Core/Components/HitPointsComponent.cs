@@ -47,7 +47,6 @@ namespace NeanderTaleS.Code.Scripts.Core.Components
 
         void IHitPointsComponent.AddHitPoints(float currentHitPoints, float maxHitPoints)
         {
-            Debug.Log($"Adding hitpoints: {currentHitPoints} / {maxHitPoints}");
             _maxHitPoints.Value = Math.Max(0, _maxHitPoints.Value + maxHitPoints);
             _currentHitPoints.Value = Mathf.Clamp(_currentHitPoints.Value += currentHitPoints, 0, MaxHitPoints.CurrentValue);
         }

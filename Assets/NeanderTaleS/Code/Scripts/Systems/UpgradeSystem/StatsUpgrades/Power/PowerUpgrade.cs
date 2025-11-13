@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power
 {
     public class PowerUpgrade: Upgrade, IUpgradeSystemConstruct
     {

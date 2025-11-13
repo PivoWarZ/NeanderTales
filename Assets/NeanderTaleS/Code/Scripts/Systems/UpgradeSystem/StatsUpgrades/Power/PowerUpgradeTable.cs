@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Power
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power
 {
     [Serializable]
     public class PowerUpgradeTable

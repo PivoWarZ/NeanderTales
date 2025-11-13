@@ -28,8 +28,6 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
 
         void IUpgradePlayer.Upgrade(Stats stats)
         {
-            Debug.Log($"Level : {stats.Level}, Health: {stats.Health}, Stamina: {stats.Stamina}, Power: {stats.Power}");
-
             if (stats.Level == FIRST_LEVEL)
             {
                 SetStats(stats);
@@ -61,8 +59,6 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
                 Stamina = stats.Stamina - _currentStats.Stamina,
                 Power = stats.Power
             };
-            
-            Debug.Log($"NEW STATS: Level {statsDifference.Level}, Health {statsDifference.Health}, Stamina {statsDifference.Stamina}, Power {statsDifference.Power}");
 
             return statsDifference;
         }
