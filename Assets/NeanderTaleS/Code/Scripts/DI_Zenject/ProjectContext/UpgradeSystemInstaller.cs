@@ -26,12 +26,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         public override void InstallBindings()
         {
             BindCharacterUpgrade();
-            
-            BindHealthUpgrade();
-
-            BindStaminaUpgrade();
-
-            BindPowerUpgrade();
 
             BindStatsUpgradeInstaller();
             
@@ -88,30 +82,9 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         
         private void BindStatsUpgradeInstaller()
         {
-            Container.BindInterfacesAndSelfTo<StatsUpgradesInstaller>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StatsUpgradesSystemInitializer>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradeManager>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StatsUpgradePopupsInstaller>().AsSingle().NonLazy();
-        }
-
-        private void BindPowerUpgrade()
-        {
-            PowerUpgrade powerUpgrade = new PowerUpgrade(_powerConfig);
-            Container.Bind<Upgrade>().FromInstance(powerUpgrade).AsCached();
-            Container.BindInstance(powerUpgrade).AsSingle();
-        }
-
-        private void BindStaminaUpgrade()
-        {
-            StaminaUpgrade staminaUpgrade = new StaminaUpgrade(_staminaConfig);
-            Container.Bind<Upgrade>().FromInstance(staminaUpgrade).AsCached();
-            Container.BindInstance(staminaUpgrade).AsSingle();
-        }
-
-        private void BindHealthUpgrade()
-        {
-            HealthUpgrade healthUpgrade = new HealthUpgrade(_healthConfig);
-            Container.Bind<Upgrade>().FromInstance(healthUpgrade).AsCached();
-            Container.BindInstance(healthUpgrade).AsSingle();
         }
 
         private void BindPlayerStatsInstaller()

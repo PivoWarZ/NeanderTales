@@ -8,12 +8,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
     public class InstantiatePlayerObserver_InitializeStatsUpgradeInstaller: IDisposable
     {
         private readonly IEventBus _eventBus;
-        private readonly StatsUpgradesInstaller _installer;
+        private readonly StatsUpgradesSystemInitializer _initializer;
 
-        public InstantiatePlayerObserver_InitializeStatsUpgradeInstaller(IEventBus eventBus, StatsUpgradesInstaller installer)
+        public InstantiatePlayerObserver_InitializeStatsUpgradeInstaller(IEventBus eventBus, StatsUpgradesSystemInitializer initializer)
         {
             _eventBus = eventBus;
-            _installer = installer;
+            _initializer = initializer;
             
             _eventBus.Subscribe<InstantiatePlayerEvent>(InitStatsUpgradeInstaller);
         }
@@ -25,7 +25,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
 
         private void InitStatsUpgradeInstaller(InstantiatePlayerEvent @event)
         {
-            _installer.Initialize(@event.Player);
+            _initializer.Initialize(@event.Player);
         }
     }
 }

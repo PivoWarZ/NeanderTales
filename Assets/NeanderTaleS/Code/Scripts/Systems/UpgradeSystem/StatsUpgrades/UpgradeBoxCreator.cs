@@ -9,22 +9,22 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
 {
     public class UpgradeBoxCreator: IDisposable
     {
-        private StatsUpgradesInstaller _installer;
+        private StatsUpgradesSystemInitializer _initializer;
         private StatsUpgradeManager _manager;
         private UpgradeStatView _prefab;
 
-        public UpgradeBoxCreator(StatsUpgradesInstaller installer, StatsUpgradeManager manager)
+        public UpgradeBoxCreator(StatsUpgradesSystemInitializer initializer, StatsUpgradeManager manager)
         {
-            _installer = installer;
+            _initializer = initializer;
             _manager = manager;
             
             _prefab = Resources.Load<UpgradeStatView>("UpgradeBox");
-            _installer.OnUpgradeConstructed += CreateViewModel;
+            _initializer.OnUpgradeConstructed += CreateViewModel;
         }
         
         void IDisposable.Dispose()
         {
-            _installer.OnUpgradeConstructed -= CreateViewModel;
+            _initializer.OnUpgradeConstructed -= CreateViewModel;
         }
 
         private void CreateViewModel(Upgrade model)
