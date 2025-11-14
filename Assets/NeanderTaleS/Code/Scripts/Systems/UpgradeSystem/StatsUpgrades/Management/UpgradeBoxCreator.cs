@@ -1,11 +1,10 @@
 using System;
-using NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
-using Zenject;
 using Object = UnityEngine.Object;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management
 {
     public class UpgradeBoxCreator: IDisposable
     {

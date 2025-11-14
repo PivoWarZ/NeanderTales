@@ -1,9 +1,8 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins;
-using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus
 {
     public class SpendCoinsRequestHandler: IInitializable, IDisposable
     {

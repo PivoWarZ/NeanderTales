@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Installer;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint
 {
     public sealed class StatsUpgradesSystemInitializer: IDisposable
     {
@@ -20,12 +21,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
             for (var index = 0; index < upgrades.Count; index++)
             {
                 var upgrade = upgrades[index];
-                
-                if (upgrade is IUpgradeSystemConstruct construct)
-                {
-                    construct.Construct(player);
-                    OnUpgradeConstructed?.Invoke(upgrade);
-                }
+                upgrade.Construct(player);
+                OnUpgradeConstructed?.Invoke(upgrade);
             }
         }
 

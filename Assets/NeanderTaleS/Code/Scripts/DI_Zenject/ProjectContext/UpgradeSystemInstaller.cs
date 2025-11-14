@@ -3,11 +3,12 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Health;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus;
 using NeanderTaleS.Code.Scripts.UI.Bus;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
@@ -37,7 +38,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_ConstructModelViewPresenter_UI>()
+            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_CreatetModelViewPresenter_UI>()
                 .AsCached()
                 .NonLazy();
             

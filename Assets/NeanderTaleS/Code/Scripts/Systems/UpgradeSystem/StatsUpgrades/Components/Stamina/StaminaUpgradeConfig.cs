@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina
 {
     [CreateAssetMenu(fileName = "StaminaUpgrade", menuName = "NeanderTaleS/UpgradeManager/Character/ New Stamina Upgrade")]
     public class StaminaUpgradeConfig: UpgradeConfig

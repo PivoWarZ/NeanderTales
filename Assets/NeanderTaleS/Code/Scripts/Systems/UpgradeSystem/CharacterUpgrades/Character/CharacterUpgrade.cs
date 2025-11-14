@@ -15,7 +15,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Char
             _config = config;
         }
         
-        public void Construct(GameObject player)
+        public override void Construct(GameObject player)
         {
             player.TryGetComponent<IUpgradePlayer>(out IUpgradePlayer upgradePlayer);
 

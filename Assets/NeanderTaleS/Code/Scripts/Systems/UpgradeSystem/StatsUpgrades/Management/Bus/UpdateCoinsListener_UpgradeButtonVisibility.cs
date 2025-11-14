@@ -1,10 +1,9 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades;
 using R3;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus
 {
     public class UpdateCoinsListener_UpgradeButtonVisibility: IInitializable, IDisposable
     {

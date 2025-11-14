@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Health;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Installer
 {
     public class StatsUpgradeSystemInstaller: IDisposable
     {

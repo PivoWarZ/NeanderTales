@@ -5,11 +5,10 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
-using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management
 {
     public class StatsUpgradeManager: IInitializable, IDisposable
     {

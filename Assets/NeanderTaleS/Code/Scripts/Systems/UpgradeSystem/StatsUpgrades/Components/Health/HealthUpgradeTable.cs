@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health
 {
     [Serializable]
-    public class StaminaUpgradeTable
+    public class HealthUpgradeTable
     {
         [SerializeField] private int _startValue;
         [SerializeField] private int _endValue;
@@ -56,7 +56,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Stamina
             _table = table;
         }
         
-        public int GetStamina(int level)
+        public int GetHealth(int level)
         {
             return _table[level-1];
         }

@@ -43,5 +43,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
         }
 
         protected abstract void OnUpgrade();
+        public abstract void Construct(GameObject player);
     }
 }

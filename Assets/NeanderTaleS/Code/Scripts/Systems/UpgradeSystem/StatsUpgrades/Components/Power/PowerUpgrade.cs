@@ -1,9 +1,9 @@
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power
 {
-    public class PowerUpgrade: Upgrade, IUpgradeSystemConstruct
+    public class PowerUpgrade: Upgrade
     {
         private readonly PowerUpgradeConfig _config;
         private IAdditionalDamage _damage;
@@ -13,7 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Power
             _config = config;
         }
 
-        void IUpgradeSystemConstruct.Construct(GameObject player)
+        public override void Construct(GameObject player)
         {
             _damage = player.GetComponent<IAdditionalDamage>();
             OnUpgrade();

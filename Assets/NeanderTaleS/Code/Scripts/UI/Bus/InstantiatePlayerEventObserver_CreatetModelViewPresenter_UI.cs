@@ -5,25 +5,25 @@ using NeanderTaleS.Code.Scripts.UI.PlayerStates;
 
 namespace NeanderTaleS.Code.Scripts.UI.Bus
 {
-    public class LevelUpEventObserver_ConstructModelViewPresenter_UI: IDisposable
+    public class InstantiatePlayerEventObserver_CreatetModelViewPresenter_UI: IDisposable
     {
         private IEventBus _eventBus;
         private PlayerStatsInstaller _playerStatsInstaller;
 
-        public LevelUpEventObserver_ConstructModelViewPresenter_UI(IEventBus eventBus, PlayerStatsInstaller playerStatsInstaller)
+        public InstantiatePlayerEventObserver_CreatetModelViewPresenter_UI(IEventBus eventBus, PlayerStatsInstaller playerStatsInstaller)
         {
             _eventBus = eventBus;
             _playerStatsInstaller = playerStatsInstaller;
             
-            _eventBus.Subscribe<LevelUpEvent>(InitializePlayerStatsInstaller);
+            _eventBus.Subscribe<InstantiatePlayerEvent>(ConstructModelViewPresenter);
         }
 
         void IDisposable.Dispose()
         {
-            _eventBus.Unsubscribe<LevelUpEvent>(InitializePlayerStatsInstaller);
+            _eventBus.Unsubscribe<InstantiatePlayerEvent>(ConstructModelViewPresenter);
         }
 
-        private void InitializePlayerStatsInstaller(LevelUpEvent @event)
+        private void ConstructModelViewPresenter(InstantiatePlayerEvent @event)
         {
             _playerStatsInstaller.ConstructModelViewPresenter();
         }
