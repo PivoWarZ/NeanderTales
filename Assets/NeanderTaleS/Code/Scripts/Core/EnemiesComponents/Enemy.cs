@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class Enemy: MonoBehaviour
+    public sealed class Enemy: MonoBehaviour
     {
         [SerializeField] private EntityBootsTrap _bootsTrap;
         [SerializeField] private LocalProvider _provider;

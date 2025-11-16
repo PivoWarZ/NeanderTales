@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput
 {
-    public class JumpInputListener: IInitializable, ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class JumpInputListener: IInitializable, ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action OnJump;
         private KeyCode _jumpKey;

@@ -7,7 +7,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
 {
-    public class SaveArea: MonoBehaviour
+    public sealed class SaveArea: MonoBehaviour
     {
         [SerializeField] private TMP_Text _infoPopup;
         private SaveLoadManager _saveLoadManager;

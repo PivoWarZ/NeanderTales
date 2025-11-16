@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services
 {
-    public class PlayerService
+    public sealed class PlayerService
     {
         private GameObject _player;
 

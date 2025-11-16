@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Spawner
 {
-    public class Spawner
+    public sealed class Spawner
     {
         public event Action<GameObject> OnSpawned;
         

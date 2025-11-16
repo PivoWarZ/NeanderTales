@@ -3,7 +3,7 @@ using UnityEngine;
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power
 {
     [CreateAssetMenu(fileName = "PowerUpgrade", menuName = "NeanderTaleS/UpgradeManager/Character/ New Power Upgrade")]
-    public class PowerUpgradeConfig: UpgradeConfig
+    public sealed class PowerUpgradeConfig: UpgradeConfig
     {
         public PowerUpgradeTable PowerTable;
         public override Upgrade Create()

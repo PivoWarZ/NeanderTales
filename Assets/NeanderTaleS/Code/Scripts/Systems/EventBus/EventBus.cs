@@ -5,7 +5,7 @@ using Debug = UnityEngine.Debug;
 
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus
 {
-    public class EventBus: IEventBus
+    public sealed class EventBus: IEventBus
 
     {
         private readonly Dictionary<Type, List<Delegate>> _handlers = new();

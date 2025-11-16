@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyAttackManager: MonoBehaviour
+    public sealed class EnemyAttackManager: MonoBehaviour
     {
         [SerializeField] private EnemyTargetComponent _target;
         [SerializeField] private AttackOnTimerComponent _timer;

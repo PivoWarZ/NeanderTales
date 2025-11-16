@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health
 {
     [Serializable]
-    public class HealthUpgradeTable
+    public sealed class HealthUpgradeTable
     {
         [SerializeField] private int _startValue;
         [SerializeField] private int _endValue;

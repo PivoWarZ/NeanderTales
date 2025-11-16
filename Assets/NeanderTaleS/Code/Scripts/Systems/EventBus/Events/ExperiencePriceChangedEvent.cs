@@ -1,6 +1,6 @@
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus.Events
 {
-    public class ExperiencePriceChangedEvent: IEventBusEvent
+    public sealed class ExperiencePriceChangedEvent: IEventBusEvent
     {
         public ExperiencePriceChangedEvent(float requiredExperience, string calling)
         {

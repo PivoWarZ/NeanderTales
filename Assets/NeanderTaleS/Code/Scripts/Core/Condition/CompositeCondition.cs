@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Condition
 {
-    public class CompositeCondition
+    public sealed class CompositeCondition
     {
         public List<Func<bool>> _compositeConditions = new();
 

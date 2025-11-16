@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.Interfaces.Animations;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation
 {
-    public class AnimationControllersInstaller
+    public sealed class AnimationControllersInstaller
     {
         public void Init(LocalProvider localProvider)
         {

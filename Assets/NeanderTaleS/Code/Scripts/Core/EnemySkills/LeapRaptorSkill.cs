@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapRaptorSkill: MonoBehaviour
+    public sealed class LeapRaptorSkill: MonoBehaviour
     {
         public event Action OnLeapAttack;
         

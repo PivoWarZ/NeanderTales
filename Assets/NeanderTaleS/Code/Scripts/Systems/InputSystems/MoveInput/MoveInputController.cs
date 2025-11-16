@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput
 {
-    public class MoveInputController: IInitializable, IDisposable, IPlayerInput
+    public sealed class MoveInputController: IInitializable, IDisposable, IPlayerInput
     {
         private readonly MoveInputListener _input;
         private IMovable _movable;

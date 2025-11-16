@@ -243,9 +243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11ed09776574a46958833968bd85716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStateView: {fileID: 7198750014136267954}
+  _playerStatsView: {fileID: 7198750014136267954}
   _enemyStates: {fileID: 7441619726070122899}
   _upgradesPopup: {fileID: 8949067063955675828}
+  _levelUpView: {fileID: 4668607791409736293}
+  _experienceView: {fileID: 3449189547334400150}
+  _logoView: {fileID: 4609032034025571244}
 --- !u!1 &814027633026728687
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +349,7 @@ GameObject:
   - component: {fileID: 1200121407166477353}
   - component: {fileID: 6815298263247598146}
   - component: {fileID: 9097086405597674161}
+  - component: {fileID: 4609032034025571244}
   m_Layer: 5
   m_Name: Portrait
   m_TagString: Untagged
@@ -410,6 +414,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4609032034025571244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854710882669674609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606663c400884e8193e95938e606c545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.UI.PlayerStates.Logo.LogoView
+  Logo: {fileID: 9097086405597674161}
 --- !u!1 &1061566373557285224
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +769,7 @@ GameObject:
   - component: {fileID: 3030421506076554398}
   - component: {fileID: 1005590675765056141}
   - component: {fileID: 1295989811347046456}
+  - component: {fileID: 4668607791409736293}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -877,6 +895,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4668607791409736293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444372373560553567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f04fd6f067b436aa85c73a267a4ece2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.UI.PlayerStates.LevelCounter.LevelUPView
+  _level: {fileID: 1295989811347046456}
 --- !u!1 &2962583169335833230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,13 +1503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70343c26bfa4437b13d3a4be2a60129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 9097086405597674161}
-  Name: {fileID: 7332740148120406420}
-  Level: {fileID: 1295989811347046456}
-  Health: {fileID: 5579142038395855474}
-  Stamina: {fileID: 2563420359812090331}
-  Experience: {fileID: 2310303429099427735}
-  LevelUpMarker: {fileID: 5025974262788999595}
+  _health: {fileID: 5579142038395855474}
+  _stamina: {fileID: 2563420359812090331}
 --- !u!1 &5201165575580503149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,6 +2012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557968330425824220}
   - component: {fileID: 2310303429099427735}
+  - component: {fileID: 3449189547334400150}
   m_Layer: 5
   m_Name: Experience
   m_TagString: Untagged
@@ -2065,6 +2092,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3449189547334400150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384700009714048240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302d9d0d04504d4bb7741c77ca5f8bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.UI.PlayerStates.Experience.ExperienceView
+  _experienceSlider: {fileID: 2310303429099427735}
 --- !u!1 &6393260388678916075
 GameObject:
   m_ObjectHideFlags: 0

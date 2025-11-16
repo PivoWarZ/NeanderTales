@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class StaminaComponent: MonoBehaviour, IStaminaComponent
+    public sealed class StaminaComponent: MonoBehaviour, IStaminaComponent
     {
         [SerializeField] private StaminaUser _user;
         [SerializeField] private ConditionInstaller _conditionInstaller;
@@ -27,6 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 
         void IStaminaComponent.SetStamina(float stamina, float maxStamina)
         {
+            
             _maxStamina.Value = Mathf.Max(0, _maxStamina.Value + maxStamina);
             _stamina.Value = Mathf.Clamp(_stamina.Value += stamina, 0, MaxStamina.CurrentValue);
         }

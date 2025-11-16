@@ -7,7 +7,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
 {
-    public class MainMenu: MonoBehaviour
+    public sealed class MainMenu: MonoBehaviour
     {
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _loadGameButton;

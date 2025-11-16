@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class ExperienceRewardComponent: MonoBehaviour, IExperienceDealer
+    public sealed class ExperienceRewardComponent: MonoBehaviour, IExperienceDealer
     {
         public event Action<float> OnDealExperience;
        

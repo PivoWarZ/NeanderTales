@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent
+    public sealed class EnemyMoveComponent: MonoBehaviour, ITargetInitComponent, IMovable, IConditionComponent
     {
         public bool CanMove;
         

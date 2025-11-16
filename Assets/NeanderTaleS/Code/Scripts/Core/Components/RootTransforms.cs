@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class RootTransforms: MonoBehaviour
+    public sealed class RootTransforms: MonoBehaviour
     {
         [SerializeField] private Transform _head;
         [SerializeField] private Transform _leftHand;

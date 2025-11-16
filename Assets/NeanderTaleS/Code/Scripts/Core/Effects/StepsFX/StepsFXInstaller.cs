@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Effects.StepsFX
 {
-    public class StepsFXInstaller: MonoBehaviour
+    public sealed class StepsFXInstaller: MonoBehaviour
     {
         [SerializeField] private StepsListener _listener;
         [SerializeField] private RootTransforms _root;

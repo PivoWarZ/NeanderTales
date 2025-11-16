@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation
 {
-    public class AnimationEventDispatcher: MonoBehaviour
+    public sealed class AnimationEventDispatcher: MonoBehaviour
     {
         public event Action<string> OnReceiveEvent;
 

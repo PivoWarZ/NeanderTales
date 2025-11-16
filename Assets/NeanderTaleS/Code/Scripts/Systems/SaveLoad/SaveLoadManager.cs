@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad
 {
-    public class SaveLoadManager
+    public sealed class SaveLoadManager
     {
         private readonly ISaveLoader[] _saveLoaders;
         private readonly IGameRepository _gameRepository;

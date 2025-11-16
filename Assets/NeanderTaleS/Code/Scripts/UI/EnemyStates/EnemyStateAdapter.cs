@@ -8,7 +8,7 @@ using Timer = NeanderTaleS.Code.Scripts.Core.Services.Timer;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
-    public class EnemyStateAdapter: IDisposable, IInitializable
+    public sealed class EnemyStateAdapter: IDisposable, IInitializable
     {
         private readonly EnemyStateView _view;
         private readonly Timer _timer = new ();
@@ -16,9 +16,9 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
         private const float LIFE_TIME = 3f;
         private readonly CancellationTokenSource _cancell = new ();
 
-        public EnemyStateAdapter(EnemyStateView view)
+        public EnemyStateAdapter(HudUI ui)
         {
-            _view = view;
+            _view = ui.EnemyStatesView;
         }
 
 

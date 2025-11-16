@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushing: MonoBehaviour, IPushing
+    public sealed class LeapPushing: MonoBehaviour, IPushing
     {
         public event Action<GameObject> OnPushing;
         

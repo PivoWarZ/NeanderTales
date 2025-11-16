@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgrade: Upgrade
+    public sealed class CharacterUpgrade: Upgrade
     {
         public event Action OnCharacterUpgradeConstructed;
         private readonly CharacterUpgradesConfig _config;

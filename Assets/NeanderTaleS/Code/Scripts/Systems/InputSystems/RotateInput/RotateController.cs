@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 {
-    public class RotateController: IInitializable, IDisposable, IPlayerInput
+    public sealed class RotateController: IInitializable, IDisposable, IPlayerInput
     {
         private readonly CursorPositionListener _listener;
         private ICursorFollower _cursorFollower;

@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class BootsTrap: MonoBehaviour
+    public sealed class BootsTrap: MonoBehaviour
     {
         [SerializeField] private List<MonoInstaller> _installers;
         

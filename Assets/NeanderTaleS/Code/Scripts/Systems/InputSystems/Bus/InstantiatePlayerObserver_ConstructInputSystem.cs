@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.Bus
 {
-    public class InstantiatePlayerObserver_ConstructInputSystem: IDisposable
+    public sealed class InstantiatePlayerObserver_ConstructInputSystem: IDisposable
     {
         private IEventBus _eventBus;
         private InputSystemInitializer _initializer;

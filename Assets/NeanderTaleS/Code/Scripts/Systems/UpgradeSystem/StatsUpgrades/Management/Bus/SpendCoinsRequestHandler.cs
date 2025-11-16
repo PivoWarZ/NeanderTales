@@ -4,7 +4,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus
 {
-    public class SpendCoinsRequestHandler: IInitializable, IDisposable
+    public sealed class SpendCoinsRequestHandler: IInitializable, IDisposable
     {
         private readonly IUpgradeCoinsStorage _storage;
         private readonly StatsUpgradeManager _manager;

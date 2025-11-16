@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class ConditionInstaller: MonoBehaviour
+    public sealed class ConditionInstaller: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
         [SerializeField] private bool _isHitPointsEmpty;

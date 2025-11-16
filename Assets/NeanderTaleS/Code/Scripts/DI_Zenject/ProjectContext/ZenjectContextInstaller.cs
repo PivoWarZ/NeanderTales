@@ -12,9 +12,8 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class ZenjectContextInstaller: MonoInstaller
+    public sealed class ZenjectContextInstaller: MonoInstaller
     {
-        [SerializeField] private HudUI _hudUI;
         [SerializeField] private Transform _container;
         [SerializeField] private Camera _camera;
         [SerializeField] private CinemachineCamera _sinematicCamera;
@@ -30,8 +29,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             InstantiateEventSystem();
             
-            BindHudUI();
-            
             BindSpawner();
             
             BindEnemyStateAdapter();
@@ -40,7 +37,12 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             BindPlayerService();
             
+            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_InitializeCamerasProvider>()
+                .AsSingle()
+                .NonLazy();
+            
             DebugLogger.PrintBinding(this);
+            
         }
 
         private void BindPlayerInstaller()
@@ -52,7 +54,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void BindEnemyTakeDamageObserver_ShowPopup()
         {
-            Container.BindInterfacesAndSelfTo<EnemyTakeDamageObserver_ShowPopup>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyTakeDamageHandler_ShowPopup>().AsSingle().NonLazy();
         }
 
         private void BindEnemyStateAdapter()
@@ -82,19 +84,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsSingle()
                 .WithArguments(mainCamera, cinemashine)
                 .NonLazy();
-        }
-
-        private void BindHudUI()
-        {
-            var hud = Instantiate(_hudUI, _container);
-            HudUI hudUI = hud.GetComponent<HudUI>();
-            
-            Container.BindInstance(hudUI)
-                .AsSingle()
-                .NonLazy();
-
-            EnemyStateView enemyview = hud.EnemyStatesView;
-            Container.BindInstance(enemyview);
         }
 
         private void BindPlayerService()

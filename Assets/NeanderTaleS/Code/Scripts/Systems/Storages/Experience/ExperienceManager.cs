@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience
 {
-    public class ExperienceManager: IExperienceManager, ILevelUpRequest, IDisposable
+    public sealed class ExperienceManager: IExperienceManager, ILevelUpRequest, IDisposable
     {
         public event Action OnLevelUpRequest;
         private readonly IExperienceSetter _experienceSetter;

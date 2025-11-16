@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class PointHitDamageListener: MonoBehaviour
+    public sealed class PointHitDamageListener: MonoBehaviour
     {
         public event Action<Vector3> OnHitPoint;
         

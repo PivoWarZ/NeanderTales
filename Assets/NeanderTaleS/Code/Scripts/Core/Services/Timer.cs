@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services
 {
-    public class Timer
+    public sealed class Timer
     {
         public enum State
         {

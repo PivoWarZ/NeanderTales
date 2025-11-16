@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
 {
-    public class DyingAnimationController: MonoBehaviour, IAnimationController, IDyingAnimation
+    public sealed class DyingAnimationController: MonoBehaviour, IAnimationController, IDyingAnimation
     {
         public event Action<Vector3> OnDyingAnimationComplete;
         

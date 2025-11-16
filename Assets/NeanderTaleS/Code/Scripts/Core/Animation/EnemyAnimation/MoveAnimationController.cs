@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
 {
-    public class MoveAnimationController: MonoBehaviour, IAnimationController
+    public sealed class MoveAnimationController: MonoBehaviour, IAnimationController
     {
         private EnemyMoveComponent _moveComponent;
         private Animator _animator;

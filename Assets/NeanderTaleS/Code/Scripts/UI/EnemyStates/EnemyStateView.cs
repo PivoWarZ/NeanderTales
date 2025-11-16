@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
-    public class EnemyStateView: MonoBehaviour
+    public sealed class EnemyStateView: MonoBehaviour
     {
         public Image Portrait;
         [SerializeField] private Slider _health;

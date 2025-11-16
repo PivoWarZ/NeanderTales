@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class OnCollisionComponent: MonoBehaviour
+    public sealed class OnCollisionComponent: MonoBehaviour
     {
         public event Action<Collision> OnEnterCollision;
         public event Action<Collider> OnEnterTrigger;

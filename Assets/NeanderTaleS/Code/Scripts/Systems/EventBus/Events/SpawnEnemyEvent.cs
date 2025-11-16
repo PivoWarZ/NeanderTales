@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.EventBus.Events
 {
-    public class SpawnEnemyEvent: IEventBusEvent
+    public sealed class SpawnEnemyEvent: IEventBusEvent
     {
         public SpawnEnemyEvent(GameObject enemy, string calling)
         {

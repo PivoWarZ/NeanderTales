@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class AttackDistanceComponent: MonoBehaviour, IAttackDistance
+    public sealed class AttackDistanceComponent: MonoBehaviour, IAttackDistance
     {
         
         [SerializeField] private float _attackDistance;

@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput
 {
-    public class AttackInputListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class AttackInputListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action OnAttackInput;
         private const int LEFT_BUTTON = 0;

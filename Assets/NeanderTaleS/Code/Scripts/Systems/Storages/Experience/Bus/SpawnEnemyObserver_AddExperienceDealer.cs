@@ -5,7 +5,7 @@ using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus
 {
-    public class SpawnEnemyObserver_AddExperienceDealer: IDisposable
+    public sealed class SpawnEnemyObserver_AddExperienceDealer: IDisposable
     {
         private IExperienceManager _experienceManager;
         private IEventBus _eventBus;

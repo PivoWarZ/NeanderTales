@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Effects.HitFX
 {
-    public class OnHitFX: MonoBehaviour
+    public sealed class OnHitFX: MonoBehaviour
     {
         [SerializeField] private ParticleSystem _particle;
         [SerializeField] private float _scale;

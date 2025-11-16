@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class DebuffsComponent: MonoBehaviour
+    public sealed class DebuffsComponent: MonoBehaviour
     {
         [SerializeField] public SerializableReactiveProperty<bool> Pushing = new(false);
         [SerializeField] private ConditionInstaller _conditionInstaller;

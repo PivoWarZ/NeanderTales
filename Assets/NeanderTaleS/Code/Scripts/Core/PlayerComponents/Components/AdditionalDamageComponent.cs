@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class AdditionalDamageComponent: MonoBehaviour, IAdditionalDamage
+    public sealed class AdditionalDamageComponent: MonoBehaviour, IAdditionalDamage
     {
         public float AdditionalPercentDamage { get; set; }
 

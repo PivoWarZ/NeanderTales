@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina
 {
     [Serializable]
-    public class StaminaUpgradeTable
+    public sealed class StaminaUpgradeTable
     {
         [SerializeField] private int _startValue;
         [SerializeField] private int _endValue;

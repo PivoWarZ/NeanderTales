@@ -10,7 +10,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management
 {
-    public class StatsUpgradeManager: IInitializable, IDisposable
+    public sealed class StatsUpgradeManager: IInitializable, IDisposable
     {
         public event Action<int> OnSpendCoinsRequest;
         

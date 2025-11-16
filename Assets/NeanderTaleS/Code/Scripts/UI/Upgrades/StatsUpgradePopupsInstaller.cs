@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
-    public class StatsUpgradePopupsInstaller: IInitializable, IDisposable
+    public sealed class StatsUpgradePopupsInstaller: IInitializable, IDisposable
     {
         public event Action <UpgradeStatView, Upgrade> OnUpgradeBoxCreated;
         private readonly List<Upgrade> _upgrades = new ();

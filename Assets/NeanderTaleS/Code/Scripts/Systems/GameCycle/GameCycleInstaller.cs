@@ -4,7 +4,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
 {
-    public class GameCycleInstaller: IInitializable
+    public sealed class GameCycleInstaller: IInitializable
     {
         private readonly List<IGameCycle> _cycles;
         private readonly GameCycleManager _manager;

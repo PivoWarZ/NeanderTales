@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class EntityBootsTrap: MonoBehaviour
+    public sealed class EntityBootsTrap: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
 

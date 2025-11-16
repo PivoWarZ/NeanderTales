@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus
 {
-    public class UpdateCoinsListener_UpgradeButtonVisibility: IInitializable, IDisposable
+    public sealed class UpdateCoinsListener_UpgradeButtonVisibility: IInitializable, IDisposable
     {
         private readonly IUpgradeCoinsStorage _storage;
         private readonly StatsUpgradeManager _manager;

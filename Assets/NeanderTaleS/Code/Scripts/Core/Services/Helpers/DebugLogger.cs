@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
 {
-    public class DebugLogger
+    public sealed class DebugLogger
     {
         private static readonly DebugLogger _instance = new DebugLogger();
         

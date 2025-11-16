@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class DealDamageComponent: MonoBehaviour, IDealDamageEvents, IDealDamage
+    public sealed class DealDamageComponent: MonoBehaviour, IDealDamageEvents, IDealDamage
     {
         public event DealDamageRequestHandler OnDealDamageRequest;
         public event Action<float> OnDealDamageAction;

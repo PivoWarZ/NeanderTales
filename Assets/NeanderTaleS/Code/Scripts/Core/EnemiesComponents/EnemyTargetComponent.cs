@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyTargetComponent: MonoBehaviour
+    public sealed class EnemyTargetComponent: MonoBehaviour
     {
         public event Action<GameObject> OnTargetChanged;
         

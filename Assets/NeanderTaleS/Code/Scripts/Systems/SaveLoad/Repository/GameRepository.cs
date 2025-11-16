@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository
 {
-    public class GameRepository: IGameRepository, IInitializable
+    public sealed class GameRepository: IGameRepository, IInitializable
     {
         private  Dictionary<string, string> _gameData;
         private readonly IGameStateSaver _gameStateSaver;

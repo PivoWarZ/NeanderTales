@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class StepsListener: MonoBehaviour
+    public sealed class StepsListener: MonoBehaviour
     {
         public event Action<Transform> OnStep;
         

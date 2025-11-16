@@ -10,14 +10,14 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus;
 using NeanderTaleS.Code.Scripts.UI.Bus;
-using NeanderTaleS.Code.Scripts.UI.PlayerStates;
+using NeanderTaleS.Code.Scripts.UI.PlayerStates.Stats;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class UpgradeSystemInstaller: MonoInstaller
+    public sealed class UpgradeSystemInstaller: MonoInstaller
     {
         [SerializeField] private CharacterUpgradesConfig _characterConfig;
         [SerializeField] private HealthUpgradeConfig _healthConfig;
@@ -34,11 +34,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             BindPlayerStatsInstaller();
             
-            Container.BindInterfacesTo<InstantiatePlayerObserver_ConstructPlayerStatsInstaller_UI>()
-                .AsCached()
-                .NonLazy();
-            
-            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_CreatetModelViewPresenter_UI>()
+            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_CreateModelViewPresenter_UI>()
                 .AsCached()
                 .NonLazy();
             

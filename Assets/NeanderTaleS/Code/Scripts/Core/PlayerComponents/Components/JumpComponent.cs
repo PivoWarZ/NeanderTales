@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class JumpComponent: MonoBehaviour, IJumping, IConditionComponent
+    public sealed class JumpComponent: MonoBehaviour, IJumping, IConditionComponent
     {
         public event Action OnJumpRequest;
         public event Action OnJumpAction;

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad
 {
-    public class GameLoader
+    public sealed class GameLoader
     {
         private readonly SaveLoadManager _saveLoadManager;
 

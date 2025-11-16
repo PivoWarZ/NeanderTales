@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents
 {
-    public class Player: MonoBehaviour, IUpgradePlayer
+    public sealed class Player: MonoBehaviour, IUpgradePlayer
     {
         [SerializeField] private SerializableReactiveProperty<int> _level = new ();
         [SerializeField] private EntityBootsTrap _entityBootsTrap;

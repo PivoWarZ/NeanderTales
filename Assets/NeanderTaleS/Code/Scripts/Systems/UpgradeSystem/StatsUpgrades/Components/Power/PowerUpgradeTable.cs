@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power
 {
     [Serializable]
-    public class PowerUpgradeTable
+    public sealed class PowerUpgradeTable
     {
         [SerializeField] private int _startValue;
         [SerializeField] private int _endValue;

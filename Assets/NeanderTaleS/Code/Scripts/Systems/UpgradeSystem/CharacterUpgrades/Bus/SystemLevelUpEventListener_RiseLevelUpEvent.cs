@@ -5,7 +5,7 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Characte
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus
 {
-    public class SystemLevelUpEventListener_RiseLevelUpEvent: IDisposable
+    public sealed class SystemLevelUpEventListener_RiseLevelUpEvent: IDisposable
     {
         private IEventBus _eventBus;
         private ICharacterUpgradeSystem _characterUpgradeSystem;

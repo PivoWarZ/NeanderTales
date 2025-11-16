@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class StaminaUser: MonoBehaviour
+    public sealed class StaminaUser: MonoBehaviour
     {
         public event Action<float> OnSpend;
         

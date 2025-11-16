@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health
 {
-    public class HealthUpgrade: Upgrade
+    public sealed class HealthUpgrade: Upgrade
     {
         private readonly HealthUpgradeConfig _config;
         private IHitPointsComponent _hitPoints;

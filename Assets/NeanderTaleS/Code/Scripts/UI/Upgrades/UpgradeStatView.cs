@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
-    public class UpgradeStatView: MonoBehaviour
+    public sealed class UpgradeStatView: MonoBehaviour
     {
         public event Action<string> OnClickUpgradeButton;
         public event Action<UpgradeStatView> OnAllUpgradesComplete;

@@ -5,7 +5,7 @@ using R3;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience
 {
-    public class ExperienceStorage: IExperienceStorage, IDisposable
+    public sealed class ExperienceStorage: IExperienceStorage, IDisposable
     {
         private ReactiveProperty<float> _currentExperience = new(0);
         private ReactiveProperty<float> _requiredExperience = new ();

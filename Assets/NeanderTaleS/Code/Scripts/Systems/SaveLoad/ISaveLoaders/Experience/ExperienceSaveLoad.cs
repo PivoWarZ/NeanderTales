@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
 {
-    public class ExperienceSaveLoad: ISaveLoader
+    public sealed class ExperienceSaveLoad: ISaveLoader
     {
         void ISaveLoader.LoadGame(IContext context, IGameRepository gameRepository)
         {

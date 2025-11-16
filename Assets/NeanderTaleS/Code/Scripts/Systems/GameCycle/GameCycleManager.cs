@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
 {
-    public class GameCycleManager
+    public sealed class GameCycleManager
     {
         private readonly List<IStartGameListener> _startGameListeners = new ();
         private readonly List<IFinishGameListener> _finishGameListeners = new ();

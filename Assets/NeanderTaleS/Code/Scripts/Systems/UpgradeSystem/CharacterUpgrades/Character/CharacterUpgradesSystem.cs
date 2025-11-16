@@ -3,7 +3,7 @@ using System;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character
 {
-    public class CharacterUpgradeSystem: ICharacterUpgradeSystem
+    public sealed class CharacterUpgradeSystem: ICharacterUpgradeSystem
     {
         public event Action OnLevelUpEvent;
 

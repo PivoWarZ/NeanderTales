@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemySkills
 {
-    public class LeapPushStunned: MonoBehaviour, IStunChance
+    public sealed class LeapPushStunned: MonoBehaviour, IStunChance
     {
         [SerializeField] private LeapPushing _leapPushing;
         [SerializeField] private float _chance;

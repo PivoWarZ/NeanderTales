@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput
 {
-    public class MoveInputListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class MoveInputListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action<Vector3> OnDirectionChanged;
         private Vector3 _direction = Vector3.zero;

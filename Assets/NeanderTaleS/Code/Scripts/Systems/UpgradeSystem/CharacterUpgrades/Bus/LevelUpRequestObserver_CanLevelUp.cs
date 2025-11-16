@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus
 {
-    public class LevelUpRequestObserver_CanLevelUp: IInitializable, IDisposable
+    public sealed class LevelUpRequestObserver_CanLevelUp: IInitializable, IDisposable
     {
         private IEventBus _eventBus;
         private ICharacterUpgradeSystem _characterUpgradeSystem;

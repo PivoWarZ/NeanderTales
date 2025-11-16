@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IConditionComponent, IRotateAsync
+    public sealed class RotateComponent_LookAtCursor: MonoBehaviour, ICursorFollower, IConditionComponent, IRotateAsync
     {
         public event Action<bool> OnRotate;
         public event Action OnRotateComplete;

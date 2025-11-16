@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power
 {
-    public class PowerUpgrade: Upgrade
+    public sealed class PowerUpgrade: Upgrade
     {
         private readonly PowerUpgradeConfig _config;
         private IAdditionalDamage _damage;

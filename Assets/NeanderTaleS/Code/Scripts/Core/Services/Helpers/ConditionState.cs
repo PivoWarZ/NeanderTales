@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
 {
-    public class ConditionState: MonoBehaviour
+    public sealed class ConditionState: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
 

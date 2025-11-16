@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
 {
-    public class AttackDistanceHelper: MonoBehaviour
+    public sealed class AttackDistanceHelper: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
         private Weapon _weapon;

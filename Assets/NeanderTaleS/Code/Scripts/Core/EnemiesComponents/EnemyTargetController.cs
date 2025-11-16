@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyTargetController: MonoBehaviour, IEnemyActivator
+    public sealed class EnemyTargetController: MonoBehaviour, IEnemyActivator
     {
         [SerializeField] private EnemyTargetComponent _targetComponent;
         [SerializeField] private DistanceToTargetComponent _distance;

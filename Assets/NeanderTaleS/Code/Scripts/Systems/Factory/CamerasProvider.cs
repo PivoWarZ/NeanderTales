@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Factory
 {
-    public class CamerasProvider
+    public sealed class CamerasProvider
     {
         private readonly Camera _camera;
         private readonly CinemachineCamera _cinemashine;

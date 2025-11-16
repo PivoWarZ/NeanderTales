@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 {
-    public class CursorPositionListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class CursorPositionListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action<Vector3> OnRotatePointChanged;
         

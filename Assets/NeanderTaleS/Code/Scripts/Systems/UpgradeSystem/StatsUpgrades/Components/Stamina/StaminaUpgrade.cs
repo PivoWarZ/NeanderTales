@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina
 {
-    public class StaminaUpgrade: Upgrade
+    public sealed class StaminaUpgrade: Upgrade
     {
         private readonly StaminaUpgradeConfig _config;
         private IStaminaComponent _staminaComponent;

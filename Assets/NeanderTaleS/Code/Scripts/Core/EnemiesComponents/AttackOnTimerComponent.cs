@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class AttackOnTimerComponent: MonoBehaviour
+    public sealed class AttackOnTimerComponent: MonoBehaviour
     {
         [SerializeField] private float _attackColdown = 2f;
         private Timer _attackTimer;

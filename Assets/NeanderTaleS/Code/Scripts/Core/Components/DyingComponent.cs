@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class DyingComponent: MonoBehaviour
+    public sealed class DyingComponent: MonoBehaviour
     {
         [SerializeField] private HitPointsComponent _hitPoints;
         [SerializeField] private Collider _collider;

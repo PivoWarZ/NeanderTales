@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation
 {
-    public class TakeDamageAnimationController: MonoBehaviour, IAnimationController
+    public sealed class TakeDamageAnimationController: MonoBehaviour, IAnimationController
     {
         private IHitPointsComponent _hitPoints;
         private ITakeDamageEvents _damageEvents;

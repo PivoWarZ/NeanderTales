@@ -8,7 +8,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class SaveLoadSystemInstaller: MonoInstaller
+    public sealed class SaveLoadSystemInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {

@@ -1,11 +1,12 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
 using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus;
+using NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter.Bus;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class ExperienceStorageInstaller: MonoInstaller
+    public sealed class ExperienceStorageInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {
@@ -17,13 +18,17 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached()
                 .NonLazy();
             
-            //Bus
-            
-            Container.BindInterfacesAndSelfTo<LevelUpListener>()
+            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_IncrementLevelUpCounter>()
                 .AsCached()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<ExperiencePriceChangedObserver_SetExperience>()
+            //Bus
+            
+            Container.BindInterfacesAndSelfTo<ExperienceStorageLevelUpListener_RiseLevelUpRequest>()
+                .AsCached()
+                .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<ExperiencePriceChangedObserver_SetRequiredExperience>()
                 .AsCached()
                 .NonLazy();
             

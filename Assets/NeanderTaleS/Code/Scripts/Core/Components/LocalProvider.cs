@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class LocalProvider: MonoBehaviour
+    public sealed class LocalProvider: MonoBehaviour
     {
         private List<MonoBehaviour> _components;
         private Animator _animator;

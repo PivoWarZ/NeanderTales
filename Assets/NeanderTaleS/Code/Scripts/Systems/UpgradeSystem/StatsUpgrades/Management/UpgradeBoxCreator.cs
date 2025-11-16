@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management
 {
-    public class UpgradeBoxCreator: IDisposable
+    public sealed class UpgradeBoxCreator: IDisposable
     {
         private StatsUpgradesSystemInitializer _initializer;
         private StatsUpgradeManager _manager;

@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class UpgradeCoinsStorageInstaller: MonoInstaller
+    public sealed class UpgradeCoinsStorageInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {

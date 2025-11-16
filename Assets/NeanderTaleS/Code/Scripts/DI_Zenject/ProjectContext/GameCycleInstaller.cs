@@ -4,7 +4,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class GameCycleInstaller: MonoInstaller
+    public sealed class GameCycleInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {

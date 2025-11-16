@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
-    public class UpgradesPopup: MonoBehaviour
+    public sealed class UpgradesPopup: MonoBehaviour
     {
         [SerializeField] Transform _content;
         [SerializeField] Button _showPopupButton;

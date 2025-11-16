@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class AttackComponent: MonoBehaviour, IAttackEvents, IAttackComponent, IConditionComponent
+    public sealed class AttackComponent: MonoBehaviour, IAttackEvents, IAttackComponent, IConditionComponent
     {
         public event Action OnAttackRequest;
         public event Action OnAttackAction;

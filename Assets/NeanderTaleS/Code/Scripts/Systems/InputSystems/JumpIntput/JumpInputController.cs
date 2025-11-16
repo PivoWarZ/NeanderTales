@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.JumpIntput
 {
-    public class JumpInputController: IInitializable, IDisposable, IPlayerInput
+    public sealed class JumpInputController: IInitializable, IDisposable, IPlayerInput
     {
         private readonly JumpInputListener _listener;
         private IJumping _jumping;

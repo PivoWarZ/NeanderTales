@@ -1,12 +1,11 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
 {
-    public class InstantiatePlayerObserver_InitializeStatsUpgradeInstaller: IDisposable
+    public sealed class InstantiatePlayerObserver_InitializeStatsUpgradeInstaller: IDisposable
     {
         private readonly IEventBus _eventBus;
         private readonly StatsUpgradesSystemInitializer _initializer;

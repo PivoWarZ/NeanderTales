@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 {
-    public class StaminaRecovering: MonoBehaviour
+    public sealed class StaminaRecovering: MonoBehaviour
     {
         public int RecoveringSpeed;
         

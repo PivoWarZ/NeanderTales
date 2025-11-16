@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.WeaponComponents
 {
-    public class Weapon: MonoBehaviour, IWeapon
+    public sealed class Weapon: MonoBehaviour, IWeapon
     {
         [SerializeField] private float _damage;
         [SerializeField] Collider _collider;

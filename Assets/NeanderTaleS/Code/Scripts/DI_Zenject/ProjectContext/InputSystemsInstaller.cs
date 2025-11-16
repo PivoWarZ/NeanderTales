@@ -9,7 +9,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
-    public class InputSystemsInstaller: MonoInstaller
+    public sealed class InputSystemsInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {

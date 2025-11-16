@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation.Debuffs
 {
-    public class PushingAnimationController: MonoBehaviour, IAnimationController
+    public sealed class PushingAnimationController: MonoBehaviour, IAnimationController
     {
         private DebuffsComponent _debuff;
         private AnimationEventDispatcher _eventDispatcher;

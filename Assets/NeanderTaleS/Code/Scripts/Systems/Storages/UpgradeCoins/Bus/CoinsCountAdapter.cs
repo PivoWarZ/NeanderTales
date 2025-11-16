@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins.Bus
 {
-    public class CoinsCountAdapter: IInitializable, IDisposable
+    public sealed class CoinsCountAdapter: IInitializable, IDisposable
     {
         private readonly IUpgradeCoinsStorage _storage;
         private readonly UpgradesPopup _popup;

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Installer
 {
-    public class StatsUpgradeSystemInstaller: IDisposable
+    public sealed class StatsUpgradeSystemInstaller: IDisposable
     {
         private readonly List<Upgrade> _upgrades = new ();
 
@@ -26,8 +26,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Installe
             StaminaUpgradeConfig staminaConfig = Resources.Load<StaminaUpgradeConfig>("Upgrades/StaminaUpgrade");
             StaminaUpgrade staminaUpgrade = new StaminaUpgrade(staminaConfig);
             _upgrades.Add(staminaUpgrade);
-            
-            Debug.Log($"Upgrades installed: {healthConfig}, {powerConfig}, {staminaConfig}");
         }
 
         public void Dispose()

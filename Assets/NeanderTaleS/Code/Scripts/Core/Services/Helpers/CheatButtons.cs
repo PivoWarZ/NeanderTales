@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Core.Services.Helpers
 {
-    public class CheatButtons: MonoBehaviour
+    public sealed class CheatButtons: MonoBehaviour
     {
         [SerializeField] private LocalProvider _localProvider;
         private ExperienceManager _experienceManager;

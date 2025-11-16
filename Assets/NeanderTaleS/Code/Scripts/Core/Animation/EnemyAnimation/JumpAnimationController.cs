@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Animation.EnemyAnimation
 {
-    public class JumpAnimationController: MonoBehaviour, IAnimationController
+    public sealed class JumpAnimationController: MonoBehaviour, IAnimationController
     {
         private Animator _animator;
         private JumpComponent _jumpComponent;

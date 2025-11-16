@@ -9,7 +9,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
 {
-    public class SceneInitializer: MonoBehaviour
+    public sealed class SceneInitializer: MonoBehaviour
     {
         [SerializeField] private SpawnerSettings _spawnSettings;
         [SerializeField] private Transform _playerStartTransform;

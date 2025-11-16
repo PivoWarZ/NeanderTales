@@ -2,7 +2,7 @@ using R3;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins
 {
-    public class UpgradeCoinsStorage: IUpgradeCoinsStorage
+    public sealed class UpgradeCoinsStorage: IUpgradeCoinsStorage
     {
         private ReactiveProperty<int> _coins = new();
         

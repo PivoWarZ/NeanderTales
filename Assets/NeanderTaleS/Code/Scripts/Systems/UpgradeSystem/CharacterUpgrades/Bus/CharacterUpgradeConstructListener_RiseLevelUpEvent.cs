@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus
 {
-    public class CharacterUpgradeConstructListener_RiseLevelUpEvent: IDisposable
+    public sealed class CharacterUpgradeConstructListener_RiseLevelUpEvent: IDisposable
     {
         private CharacterUpgrade _characterUpgrade;
         private IEventBus _eventBus;

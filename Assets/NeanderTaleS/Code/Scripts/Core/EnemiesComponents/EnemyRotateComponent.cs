@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.EnemiesComponents
 {
-    public class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IConditionComponent, IRotatable
+    public sealed class EnemyRotateComponent: MonoBehaviour, ITargetInitComponent, IConditionComponent, IRotatable
     {
         [SerializeField] Transform _rotateTransform;
         [SerializeField] float _rotateSpeed;

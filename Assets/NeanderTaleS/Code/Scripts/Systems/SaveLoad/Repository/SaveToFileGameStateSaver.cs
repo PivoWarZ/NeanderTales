@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository
 {
-    public class SaveToFileGameStateSaver: IGameStateSaver
+    public sealed class SaveToFileGameStateSaver: IGameStateSaver
     {
         private const string SAVE_KEY = "SAVE_TO_FILE";
 

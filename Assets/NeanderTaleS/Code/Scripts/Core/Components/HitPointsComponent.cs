@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Core.Components
 {
-    public class HitPointsComponent: MonoBehaviour, ITakeDamageEvents, IHitPointsComponent, IDamageable
+    public sealed class HitPointsComponent: MonoBehaviour, ITakeDamageEvents, IHitPointsComponent, IDamageable
     {
         public event TakeDamageRequestHandler OnTakeDamageRequest;
         public event Action<float, IHitPointsComponent> OnTakeDamageAction;

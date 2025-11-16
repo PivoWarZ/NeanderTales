@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.AttackInput
 {
-    public class AttackInputController: IInitializable, IDisposable, IPlayerInput
+    public sealed class AttackInputController: IInitializable, IDisposable, IPlayerInput
     {
         private readonly AttackInputListener _listener;
         private IAttackComponent _attackComponent;

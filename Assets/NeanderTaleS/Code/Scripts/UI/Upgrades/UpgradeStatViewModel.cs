@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.Upgrades
 {
-    public class UpgradeStatViewModel: IDisposable
+    public sealed class UpgradeStatViewModel: IDisposable
     {
         public event Action OnDataChanged;
         

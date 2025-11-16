@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins.Bus
 {
-    public class LevelUpEventListener_AddRewardCoins: IInitializable, IDisposable
+    public sealed class LevelUpEventListener_AddRewardCoins: IInitializable, IDisposable
     {
         private IUpgradeCoinsStorage _storage;
         private IEventBus _eventBus;

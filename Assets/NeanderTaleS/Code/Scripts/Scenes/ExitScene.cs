@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace NeanderTaleS.Code.Scripts.Scenes
 {
-    public class ExitScene: MonoBehaviour
+    public sealed class ExitScene: MonoBehaviour
     {
         [SerializeField] private TMP_Text _infoPopup;
         [SerializeField] string  _nextScene;

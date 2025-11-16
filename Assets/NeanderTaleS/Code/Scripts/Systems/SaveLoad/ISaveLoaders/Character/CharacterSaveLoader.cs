@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
 {
-    public class CharacterSaveLoader: ISaveLoader
+    public sealed class CharacterSaveLoader: ISaveLoader
     {
         void ISaveLoader.LoadGame(IContext context, IGameRepository gameRepository)
         {
