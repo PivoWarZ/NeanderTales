@@ -24,7 +24,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates.Experience
         {
             _currentExperience = _viewModel.CurrentExperience;
             _requiredExperience = _viewModel.RequiredExperience;
-            _sliderValue = _currentExperience / _requiredExperience;
+            _sliderValue = _requiredExperience > 0 ? _currentExperience / _requiredExperience : 0;
             
             DOTween.To(() => _experienceSlider.value, exp => _experienceSlider.value = exp, _sliderValue, 0.5f);
         }

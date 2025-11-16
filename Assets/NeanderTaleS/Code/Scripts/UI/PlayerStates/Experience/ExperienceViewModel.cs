@@ -20,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates.Experience
 
         public float RequiredExperience => _requiredExperience;
 
-        public void Initialize()
+        public void Subscribe()
         {
             _disposable = _model.CurrentExperience.Merge(_model.MaxExperience).Subscribe(OnDataChange);
         }
