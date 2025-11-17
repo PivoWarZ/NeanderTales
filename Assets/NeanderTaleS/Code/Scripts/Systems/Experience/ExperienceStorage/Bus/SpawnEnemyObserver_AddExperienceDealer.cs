@@ -1,9 +1,9 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Interfaces;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Bus
 {
     public sealed class SpawnEnemyObserver_AddExperienceDealer: IDisposable
     {

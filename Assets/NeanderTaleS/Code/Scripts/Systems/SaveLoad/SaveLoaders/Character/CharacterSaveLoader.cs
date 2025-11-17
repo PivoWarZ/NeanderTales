@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
+namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Character
 {
     public sealed class CharacterSaveLoader: ISaveLoader
     {

@@ -5,7 +5,7 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.S
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
 {
     public class UpgradeConstructedHandler_BindUpgrade: IDisposable
     {

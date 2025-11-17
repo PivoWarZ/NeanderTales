@@ -1,7 +1,7 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus;
-using NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter.Bus;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Bus;
+using NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter.Bus;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -28,7 +28,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<ExperiencePriceChangedObserver_SetRequiredExperience>()
+            Container.BindInterfacesAndSelfTo<CharacterLevelHandler_SetRequiredExperience>()
                 .AsCached()
                 .NonLazy();
             

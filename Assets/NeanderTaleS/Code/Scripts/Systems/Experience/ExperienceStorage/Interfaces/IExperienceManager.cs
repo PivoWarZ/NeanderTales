@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Interfaces
 {
     public interface IExperienceManager
     {

@@ -3,7 +3,7 @@ using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 
-namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
 {
     public sealed class InstantiatePlayerObserver_InitializeStatsUpgradeInstaller: IDisposable
     {

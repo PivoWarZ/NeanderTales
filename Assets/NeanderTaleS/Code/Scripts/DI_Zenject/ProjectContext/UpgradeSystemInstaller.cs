@@ -1,8 +1,8 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
-using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
+using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Power;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina;

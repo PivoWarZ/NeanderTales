@@ -1,5 +1,5 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins;
+using NeanderTaleS.Code.Scripts.Systems.Experience.UpgradeCoinsStorage;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus

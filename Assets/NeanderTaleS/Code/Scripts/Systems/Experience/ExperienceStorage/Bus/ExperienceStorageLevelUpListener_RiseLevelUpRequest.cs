@@ -1,10 +1,10 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.EventBus;
 using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Bus
 {
     public sealed class ExperienceStorageLevelUpListener_RiseLevelUpRequest: IInitializable, IDisposable
     {

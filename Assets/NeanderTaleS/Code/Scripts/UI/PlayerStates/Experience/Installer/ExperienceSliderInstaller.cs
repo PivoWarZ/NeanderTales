@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates.Experience.Installer

@@ -1,9 +1,8 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter.Bus
 {
     public class CharacterLevelHandler_SetLevelUpCounter: IDisposable
     {

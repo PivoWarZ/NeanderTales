@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using R3;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.UpgradeCoinsStorage.Bus
 {
     public sealed class CoinsCountAdapter: IInitializable, IDisposable
     {

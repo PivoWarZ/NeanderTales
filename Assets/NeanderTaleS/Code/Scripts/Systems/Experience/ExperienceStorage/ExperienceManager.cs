@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage
 {
     public sealed class ExperienceManager: IExperienceManager, ILevelUpRequest, IDisposable
     {

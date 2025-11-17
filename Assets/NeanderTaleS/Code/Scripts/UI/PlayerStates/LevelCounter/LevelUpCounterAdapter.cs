@@ -1,6 +1,6 @@
 using System;
+using NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter;
 using R3;
-using NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter;
 
 namespace NeanderTaleS.Code.Scripts.UI.PlayerStates.LevelCounter
 {

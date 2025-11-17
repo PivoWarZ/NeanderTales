@@ -1,4 +1,4 @@
-namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
+namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience
 {
     public sealed class ExperienceDataStorage
     {

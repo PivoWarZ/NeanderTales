@@ -1,6 +1,6 @@
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.UpgradeCoinsStorage
 {
     public interface IUpgradeCoinsStorage
     {

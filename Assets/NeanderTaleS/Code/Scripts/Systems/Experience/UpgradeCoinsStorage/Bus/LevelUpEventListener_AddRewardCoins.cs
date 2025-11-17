@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.UpgradeCoins.Bus
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.UpgradeCoinsStorage.Bus
 {
     public sealed class LevelUpEventListener_AddRewardCoins: IInitializable, IDisposable
     {

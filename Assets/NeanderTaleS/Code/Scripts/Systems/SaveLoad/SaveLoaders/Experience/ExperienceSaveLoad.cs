@@ -1,8 +1,8 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Health;
@@ -10,7 +10,7 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.P
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.Stamina;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
+namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience
 {
     public sealed class ExperienceSaveLoad: ISaveLoader
     {

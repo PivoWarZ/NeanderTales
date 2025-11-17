@@ -1,9 +1,9 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.Experience
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage
 {
     public sealed class ExperienceStorage: IExperienceStorage, IDisposable
     {

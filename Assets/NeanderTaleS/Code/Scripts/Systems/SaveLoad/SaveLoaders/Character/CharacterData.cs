@@ -1,4 +1,4 @@
-namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character
+namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Character
 {
     public struct CharacterData
     {

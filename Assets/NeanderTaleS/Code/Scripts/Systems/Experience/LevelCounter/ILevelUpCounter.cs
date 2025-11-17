@@ -1,6 +1,6 @@
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter
 {
     public interface ILevelUpCounter
     {

@@ -1,9 +1,9 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Character;
-using NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Character;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext

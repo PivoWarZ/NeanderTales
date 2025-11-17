@@ -1,5 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Components;
-using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
+using NeanderTaleS.Code.Scripts.Systems.Experience.ExperienceStorage;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

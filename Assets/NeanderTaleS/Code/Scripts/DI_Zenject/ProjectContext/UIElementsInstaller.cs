@@ -1,5 +1,5 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
-using NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter;
+using NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter;
 using NeanderTaleS.Code.Scripts.UI;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates.Experience.Installer;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates.LevelCounter;

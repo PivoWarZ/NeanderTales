@@ -1,7 +1,7 @@
 using System;
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter
+namespace NeanderTaleS.Code.Scripts.Systems.Experience.LevelCounter
 {
     public sealed class LevelUpCounter: ILevelUpCounter, IDisposable
     {
