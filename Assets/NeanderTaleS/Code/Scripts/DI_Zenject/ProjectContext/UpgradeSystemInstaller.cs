@@ -40,6 +40,10 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             //Bus
             
+            Container.BindInterfacesAndSelfTo<UpgradeConstructedHandler_BindUpgrade>()
+                .AsCached()
+                .NonLazy();
+            
             Container.BindInterfacesAndSelfTo<InstantiatePlayerObserver_InitializeStatsUpgradeInstaller>()
                 .AsCached()
                 .NonLazy();
