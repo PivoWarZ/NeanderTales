@@ -1,3 +1,4 @@
+using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using NeanderTaleS.Code.Scripts.Systems.Storages.Experience;
@@ -45,12 +46,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
             Upgrade(powerUpgrade, data.StaminaUpgradeLevel);
             storage.AddExperience(data.Experience);
             
-            Debug.Log($"<color=yellow>Experience Data Loaded:</color>");
-            Debug.Log($"<color=yellow>Character Level: {data.CharacterLevel}</color>");
-            Debug.Log($"<color=yellow>Health Level: {data.HealthUpgradeLevel}</color>");
-            Debug.Log($"<color=yellow>Stamina Level: {data.StaminaUpgradeLevel}</color>");
-            Debug.Log($"<color=yellow>PowerUpgrade Level: {data.PowerUpgradeLevel}</color>");
-            Debug.Log($"<color=yellow>Experience : {data.Experience}</color>");
+            DebugLogger.PrintExperienseData(data, "Loaded", "yellow");
         }
 
         void ISaveLoader.SaveGame(IContext context, IGameRepository gameRepository)
@@ -82,12 +78,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.SaveLoad.ISaveLoaders.Experience
             ExperienceDataStorage saveData = new ExperienceDataStorage(data);
             
             gameRepository.SaveData(saveData);
-            Debug.Log($"<color=green>Experience Data Saved:</color>");
-            Debug.Log($"<color=green>Character Level: {characterLevel}</color>");
-            Debug.Log($"<color=green>Experience: {experience}</color>");
-            Debug.Log($"<color=green>Health Level: {healthLevel}</color>");
-            Debug.Log($"<color=green>Stamina Level: {staminaLevel}</color>");
-            Debug.Log($"<color=green>Power Level: {powerLevel}</color>");
+            
+            DebugLogger.PrintExperienseData(data, "Saved", "green");
         }
 
         private void Upgrade(Upgrade upgrade, int level)
