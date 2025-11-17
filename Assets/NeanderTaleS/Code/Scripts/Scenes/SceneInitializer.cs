@@ -17,23 +17,27 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         [SerializeField] private Transform _worldTransform;
         [SerializeField] private bool _isHome;
         private Spawner _spawner;
+        private GameObject _player;
         private int _combatCounter;
-        private readonly CompositeDisposable _combatDisposable = new ();
+        private readonly CompositeDisposable _combatDisposables = new ();
 
         [Inject]
         public void Construct(Spawner spawner, IPlayerCreator creator, PlayerService playerService, GameCycleManager gameCycle)
         {
             _spawner = spawner;
-            _spawner.Initialize(_spawnSettings);
             
             creator.CreatePlayer(_playerStartTransform.position);
-            playerService.GetPlayer().transform.SetParent(_worldTransform);
+            _player = playerService.GetPlayer();
+            _player.transform.SetParent(_worldTransform);
+            
+            _spawner.Initialize(_spawnSettings);
+            
             gameCycle.StartGame();
         }
 
         private void Awake()
         {
-//            _spawner.OnSpawned += Subscribe;
+            _spawner.OnSpawned += Subscribe;
             _exit.SetActive(_isHome);
         }
         
@@ -56,7 +60,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
            var dispose = enemy.GetComponent<IHitPointsComponent>().CurrentHitPoints
                 .Where(hp => hp <= 0)
                 .Subscribe(OnEnemyDie);
-           _combatDisposable.Add(dispose);
+           _combatDisposables.Add(dispose);
         }
 
         private void OnEnemyDie(float _)
@@ -72,7 +76,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         private void OnDestroy()
         {
             _spawner.OnSpawned -= Subscribe;
-            _combatDisposable.Dispose();
+            _combatDisposables.Dispose();
         }
     }
 }

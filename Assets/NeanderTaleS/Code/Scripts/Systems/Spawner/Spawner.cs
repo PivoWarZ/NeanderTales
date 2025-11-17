@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
+using NeanderTaleS.Code.Scripts.Core.Services;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,12 +22,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [ Range(0, 10)] private int _level = 1;
         [Range(0.5f, 2f)] private float _minSizeValue = 0.5f;
         [Range(0.5f, 2f)] private float _maxSizeValue = 1f;
+        private PlayerService _playerService;
         private GameObject _player;
 
-        public Spawner(VelociraptorConfig config, GameObject prefab)
+        public Spawner(VelociraptorConfig config, GameObject prefab, PlayerService playerService)
         {
             _config = config;
             _prefab = prefab;
+            _playerService = playerService;
         }
 
         public void Initialize(SpawnerSettings settings)
@@ -36,6 +39,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             _level = settings.Level;
             _minSizeValue = settings.MinSize;
             _maxSizeValue = settings.MaxSize;
+            _player = _playerService.GetPlayer();
         }
 
         public void Spawn()
@@ -60,19 +64,25 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         
         public void Spawn(Transform spawnPoint)
         {
-            /*var dino = GameObject.Instantiate(_prefab, spawnPoint.position, Quaternion.identity);
+            var dino = GameObject.Instantiate(_prefab, spawnPoint.position, Quaternion.identity);
             dino.transform.SetParent(_worldTransform);
             dino.gameObject.SetActive(false);
-            
-            dino.GetComponent<EnemyTargetComponent>().SetTarget(_player);
-            
+
+            dino.TryGetComponent<EnemyTargetComponent>(out EnemyTargetComponent targetComponent);
+
+            if (targetComponent)
+            {
+                Debug.Log($"Target Component: {targetComponent} Player: {_player}");
+                targetComponent.SetTarget(_player);
+            }
+
             var size = Random.Range(_minSizeValue, _maxSizeValue);
             _config.SetSize(size);
             
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
             
-            OnSpawned?.Invoke(dino);*/
+            OnSpawned?.Invoke(dino);
         }
     }
 }
