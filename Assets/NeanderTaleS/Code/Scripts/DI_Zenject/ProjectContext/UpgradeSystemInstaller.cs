@@ -66,9 +66,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             Container.BindInterfacesAndSelfTo<CharacterUpgradeConstructListener_RiseLevelUpEvent>()
                 .AsCached();
-
-            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_RiseExperiencePriceChanged>()
-                .AsCached();
             
             Container.BindInterfacesAndSelfTo<UpgradeBoxCreator>()
                 .AsCached()

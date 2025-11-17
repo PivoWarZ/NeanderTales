@@ -5,7 +5,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Factory
 {
-    public sealed class InstantiatePlayerEventObserver_InitializeCamerasProvider: IInitializable, IDisposable
+    public sealed class InstantiatePlayerEventObserver_InitializeCamerasProvider: IDisposable
     {
         private IEventBus _eventBus;
         private CamerasProvider _camerasProvider;
@@ -14,10 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
         {
             _eventBus = eventBus;
             _camerasProvider = camerasProvider;
-        }
-
-        void IInitializable.Initialize()
-        {
+            
            _eventBus.Subscribe<InstantiatePlayerEvent>(InitializeCamerasProvider);
         }
         

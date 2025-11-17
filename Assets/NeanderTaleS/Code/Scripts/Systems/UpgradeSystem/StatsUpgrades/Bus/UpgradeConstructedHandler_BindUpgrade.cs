@@ -18,6 +18,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
             _upgradesSystemInitializer = upgradesSystemInitializer;
 
             _upgradesSystemInitializer.OnUpgradeConstructed += BindUpgrade;
+            _upgradesSystemInitializer.OnAllUpgradesConstructed += Unsubscribes;
+        }
+
+        private void Unsubscribes()
+        {
+            _upgradesSystemInitializer.OnUpgradeConstructed -= BindUpgrade;
+            _upgradesSystemInitializer.OnAllUpgradesConstructed -= Unsubscribes;
         }
 
         private void BindUpgrade(Upgrade upgrade)
@@ -40,7 +47,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Bus
 
         void IDisposable.Dispose()
         {
-            _upgradesSystemInitializer.OnUpgradeConstructed -= BindUpgrade;
+            Unsubscribes();
         }
     }
 }

@@ -14,8 +14,8 @@ namespace NeanderTaleS.Code.Scripts.Scenes
         [SerializeField] private SpawnerSettings _spawnSettings;
         [SerializeField] private Transform _playerStartTransform;
         [SerializeField] private GameObject _exit;
+        [SerializeField] private Transform _worldTransform;
         [SerializeField] private bool _isHome;
-        private GameObject _player;
         private Spawner _spawner;
         private int _combatCounter;
         private readonly CompositeDisposable _combatDisposable = new ();
@@ -27,9 +27,7 @@ namespace NeanderTaleS.Code.Scripts.Scenes
             _spawner.Initialize(_spawnSettings);
             
             creator.CreatePlayer(_playerStartTransform.position);
-            _player = playerService.GetPlayer();
-            _player.gameObject.SetActive(true);
-            
+            playerService.GetPlayer().transform.SetParent(_worldTransform);
             gameCycle.StartGame();
         }
 

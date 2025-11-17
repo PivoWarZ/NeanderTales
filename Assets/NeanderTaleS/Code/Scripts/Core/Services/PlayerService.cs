@@ -8,6 +8,11 @@ namespace NeanderTaleS.Code.Scripts.Core.Services
 
         public GameObject GetPlayer()
         {
+            if (!_player)
+            {
+                return null;
+            }
+
             return _player.gameObject;
         }
 

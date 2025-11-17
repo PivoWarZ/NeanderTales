@@ -60,7 +60,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         
         public void Spawn(Transform spawnPoint)
         {
-            var dino = GameObject.Instantiate(_prefab, spawnPoint.position, Quaternion.identity);
+            /*var dino = GameObject.Instantiate(_prefab, spawnPoint.position, Quaternion.identity);
             dino.transform.SetParent(_worldTransform);
             dino.gameObject.SetActive(false);
             
@@ -72,7 +72,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             dino.GetComponent<Enemy>().InitEnemy(_config);
             dino.gameObject.SetActive(true);
             
-            OnSpawned?.Invoke(dino);
+            OnSpawned?.Invoke(dino);*/
         }
     }
 }

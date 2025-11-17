@@ -9,6 +9,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoi
     public sealed class StatsUpgradesSystemInitializer: IDisposable
     {
         public event Action<Upgrade> OnUpgradeConstructed;
+        public event Action OnAllUpgradesConstructed;
+        
         private PlayerService _servise;
         private StatsUpgradeSystemInstaller _installer = new ();
         
@@ -24,6 +26,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoi
                 upgrade.Construct(player);
                 OnUpgradeConstructed?.Invoke(upgrade);
             }
+            
+            OnAllUpgradesConstructed?.Invoke();
         }
 
         public void Dispose()

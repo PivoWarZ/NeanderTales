@@ -32,9 +32,20 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
 
         void IPlayerCreator.CreatePlayer(Vector3 position)
         {
-            var player  = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
-            _context.InjectGameObject(player);
-            _playerService.Construct(player);
+            GameObject player;
+            
+            if (!_playerService.GetPlayer())
+            {
+                 player  = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
+                _context.InjectGameObject(player);
+                _playerService.Construct(player);
+            }
+            else
+            {
+                player = _playerService.GetPlayer();
+                player.transform.position = position;
+            }
+            
             _eventBus.RiseEvent(new InstantiatePlayerEvent(player, this.GetType().Name));
         }
     }
