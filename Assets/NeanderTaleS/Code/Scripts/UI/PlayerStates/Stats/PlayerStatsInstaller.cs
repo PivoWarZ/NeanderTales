@@ -39,7 +39,7 @@ namespace NeanderTaleS.Code.Scripts.UI.PlayerStates.Stats
 
         void IDisposable.Dispose()
         {
-            _presenter.Dispose();
+            _presenter?.Dispose();
         }
     }
 }

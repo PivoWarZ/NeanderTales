@@ -12,7 +12,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void Awake()
         {
-            SceneManager.LoadScene("MainMenu");
+           SceneManager.LoadScene("MainMenu");
         }
     }
 }

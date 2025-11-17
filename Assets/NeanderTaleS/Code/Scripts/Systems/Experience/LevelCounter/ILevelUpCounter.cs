@@ -5,7 +5,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter
     public interface ILevelUpCounter
     {
         ReadOnlyReactiveProperty<int> Level { get; }
-        void LevelUp();
+        void SetLevel(int level);
         void Dispose();
     }
 }

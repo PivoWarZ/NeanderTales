@@ -39,7 +39,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem
 
         public void Reset()
         {
-            _level.Value = 0;
+            _level.Value = 1;
         }
 
         protected abstract void OnUpgrade();

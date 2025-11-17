@@ -11,7 +11,8 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 {
     public sealed class UIElementsInstaller: MonoInstaller
     {
-        [SerializeField] HudUI _hudUI;
+        [SerializeField] private HudUI _hudUI;
+        [SerializeField] private Transform _container;
         public override void InstallBindings()
         {
             BindHudUI(_hudUI);
@@ -38,7 +39,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         
         private void BindHudUI(HudUI ui)
         {
-            var hud = Instantiate(ui);
+            var hud = Instantiate(ui, _container);
             HudUI hudUI = hud.GetComponent<HudUI>();
             
             Container.BindInstance(hudUI)

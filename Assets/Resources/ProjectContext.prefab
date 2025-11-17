@@ -66,7 +66,7 @@ MonoBehaviour:
   - {fileID: -104757544850101848}
   - {fileID: -6305309421991219082}
   _installerPrefabs: []
-  _parentNewObjectsUnderContext: 1
+  _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
   _settings:
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext.UIElementsInstaller
   _hudUI: {fileID: 6982549279447214039, guid: 93d4f723a84192744a28bec14982a296, type: 3}
+  _container: {fileID: 9131433662103139057}
 --- !u!1 &2869052420373200839
 GameObject:
   m_ObjectHideFlags: 0

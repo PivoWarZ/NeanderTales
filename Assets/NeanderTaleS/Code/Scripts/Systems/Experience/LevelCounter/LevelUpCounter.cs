@@ -8,9 +8,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.Storages.LevelCounter
         private ReactiveProperty<int> _level = new(0);
         public ReadOnlyReactiveProperty<int> Level => _level;
 
-        void ILevelUpCounter.LevelUp()
+        void ILevelUpCounter.SetLevel(int level)
         {
-            _level.Value++;
+            _level.Value = level;
         }
 
         public int GetLevel()

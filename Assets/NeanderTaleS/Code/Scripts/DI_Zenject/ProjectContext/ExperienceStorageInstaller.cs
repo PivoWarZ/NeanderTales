@@ -18,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<LevelUpEventObserver_IncrementLevelUpCounter>()
+            Container.BindInterfacesAndSelfTo<CharacterLevelHandler_SetLevelUpCounter>()
                 .AsCached()
                 .NonLazy();
             
