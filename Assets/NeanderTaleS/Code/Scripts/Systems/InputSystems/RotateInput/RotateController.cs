@@ -25,7 +25,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
         private void Rotate(Vector3 hitPoint)
         {
             if (_cursorFollower is not null)
-                _cursorFollower.SetRotateDirection(hitPoint);
+                _cursorFollower.SetTargetRotation(hitPoint);
         }
 
         void IDisposable.Dispose()

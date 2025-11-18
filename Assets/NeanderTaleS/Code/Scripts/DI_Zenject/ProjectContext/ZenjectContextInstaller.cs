@@ -3,7 +3,6 @@ using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
 using NeanderTaleS.Code.Scripts.Systems.Factory.Spawner;
-using NeanderTaleS.Code.Scripts.UI.EnemyStates;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -38,7 +37,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private void BindPlayerInstaller()
         {
             Container.BindInterfacesAndSelfTo<PlayerInstaller>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
         }
 
@@ -61,7 +60,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             var cinemachine = Instantiate(_sinematicCamera, _container);
             
             Container.BindInterfacesAndSelfTo<CamerasProvider>()
-                .AsSingle()
+                .AsCached()
                 .WithArguments(mainCamera, cinemachine)
                 .NonLazy();
         }

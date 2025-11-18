@@ -18,6 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         private readonly CompositeCondition _condition = new ();
         private Quaternion _targetRotation;
         private const int OFFSET_ROTATION_ANGLE = 3;
+        private const float REQUIRED_ANGLE_TO_ROTATE = 5f;
 
         public float RotateSpeed => rotateSpeed;
         
@@ -46,11 +47,18 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             
         }
 
-        public void SetRotateDirection(Vector3 hitPoint)
+        public void SetTargetRotation(Vector3 hitPoint)
         {
             var direction = hitPoint - _rotateTransform.position;
             
             direction.y = 0;
+            
+            var directionAngle = Quaternion.LookRotation(direction);
+
+            if (!IsRotateAngle(directionAngle))
+            {
+                return;
+            }
             
             _targetRotation = Quaternion.LookRotation(direction, Vector3.up);
 
@@ -64,9 +72,14 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
                 return;
             }
             
-            bool isRightRotate = direction.x > 0;
+            var isRightRotate = direction.x > 0;
             
             OnRotate?.Invoke(isRightRotate);
+        }
+
+        private bool IsRotateAngle(Quaternion directionAngle)
+        {
+            return Quaternion.Angle(_rotateTransform.rotation, directionAngle) > REQUIRED_ANGLE_TO_ROTATE;
         }
 
         private Quaternion TargetRotation(Vector3 direction)
@@ -76,16 +89,16 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 
         public void Rotate(Vector3 direction)
         {
-            Quaternion targetRotation = TargetRotation(direction);
+            var targetRotation = TargetRotation(direction);
             _rotateTransform.rotation = Quaternion.Slerp(_rotateTransform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         }
 
         public async UniTask<UniTask> RotateAsync(Vector3 direction, CancellationTokenSource cancell)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            bool isRightRotate = direction.x > 0;
-            int cycleCount = 0;
-            int looping = 50;
+            var targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            var isRightRotate = direction.x > 0;
+            var cycleCount = 0;
+            var looping = 50;
             
             OnRotate?.Invoke(isRightRotate);
 
