@@ -380,10 +380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deed0f6671d046239842338003bcc5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityBootsTrap: {fileID: 4713431902921475130}
-  _localProvider: {fileID: 2668145536497192509}
   _level:
     value: 0
+  _entityBootsTrap: {fileID: 4713431902921475130}
+  _localProvider: {fileID: 2668145536497192509}
 --- !u!114 &5178345274205057928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _isJump: 1
+  _isJump: 0
 --- !u!114 &6016746398369903631
 MonoBehaviour:
   m_ObjectHideFlags: 0
