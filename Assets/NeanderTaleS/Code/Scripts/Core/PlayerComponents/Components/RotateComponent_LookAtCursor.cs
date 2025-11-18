@@ -50,7 +50,6 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
         public void SetTargetRotation(Vector3 hitPoint)
         {
             var direction = hitPoint - _rotateTransform.position;
-            
             direction.y = 0;
             
             var directionAngle = Quaternion.LookRotation(direction);
@@ -61,7 +60,7 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
             }
             
             _targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-
+            
             if (_rotateTransform.rotation == _targetRotation)
             {
                 return;
