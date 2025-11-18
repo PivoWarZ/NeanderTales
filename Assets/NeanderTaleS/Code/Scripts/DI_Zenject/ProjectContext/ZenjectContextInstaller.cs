@@ -36,10 +36,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             BindPlayerService();
             
-            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_InitializeCamerasProvider>()
-                .AsSingle()
-                .NonLazy();
-            
             DebugLogger.PrintBinding(this);
         }
 

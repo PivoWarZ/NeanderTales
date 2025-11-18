@@ -34,17 +34,9 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             BindPlayerStatsInstaller();
             
-            Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_CreateModelViewPresenter_UI>()
-                .AsCached()
-                .NonLazy();
-            
             //Bus
             
             Container.BindInterfacesAndSelfTo<UpgradeConstructedHandler_BindUpgrade>()
-                .AsCached()
-                .NonLazy();
-            
-            Container.BindInterfacesAndSelfTo<InstantiatePlayerObserver_InitializeStatsUpgradeInstaller>()
                 .AsCached()
                 .NonLazy();
             
@@ -59,10 +51,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesTo<SystemLevelUpEventListener_RiseLevelUpEvent>()
                 .AsCached()
                 .NonLazy();
-            
-            Container.BindInterfacesTo<LevelUpRequestObserver_CanLevelUp>()
-                .AsCached()
-                .NonLazy();
 
             Container.BindInterfacesAndSelfTo<CharacterUpgradeConstructListener_RiseLevelUpEvent>()
                 .AsCached();
@@ -70,11 +58,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<UpgradeBoxCreator>()
                 .AsCached()
                 .NonLazy();
-            
-            Container.BindInterfacesAndSelfTo<InstantiateCharacterEventObserver_ConstructCharacterUpgrade>()
-                .AsCached()
-                .NonLazy();
-            
+     
             DebugLogger.PrintBinding(this);
         }
         

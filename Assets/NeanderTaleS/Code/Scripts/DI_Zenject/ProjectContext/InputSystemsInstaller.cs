@@ -19,12 +19,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindMoveInput();
             BindInputInitializer();
             
-            //Bus
-            
-            Container.BindInterfacesAndSelfTo<InstantiatePlayerObserver_ConstructInputSystem>()
-                .AsCached()
-                .NonLazy();
-            
             DebugLogger.PrintBinding(this);
         }
         

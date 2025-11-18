@@ -32,10 +32,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .AsCached()
                 .NonLazy();
             
-            Container.BindInterfacesAndSelfTo<SpawnEnemyObserver_AddExperienceDealer>()
-                .AsCached()
-                .NonLazy();
-            
             DebugLogger.PrintBinding(this);
         }
     }

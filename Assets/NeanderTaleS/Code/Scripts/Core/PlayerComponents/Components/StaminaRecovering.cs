@@ -34,10 +34,19 @@ namespace NeanderTaleS.Code.Scripts.Core.PlayerComponents.Components
 
         private async UniTaskVoid Run(CancellationTokenSource cancell)
         {
+            int cycles = 0;
+            
             while (!cancell.IsCancellationRequested)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
                 _staminaComponent.AddStamina(RecoveringSpeed);
+                cycles++;
+
+                if (cycles >= 100)
+                {
+                    cancell.Cancel();
+                    throw new InvalidOperationException($"Обнаружено зацикливание {GetType()}");
+                }
             }
         }
 
