@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Spawner
+namespace NeanderTaleS.Code.Scripts.Systems.Factory.Spawner
 {
     [Serializable]
     public struct SpawnerSettings

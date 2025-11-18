@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
 {
@@ -36,7 +37,6 @@ namespace NeanderTaleS.Code.Scripts.UI.EnemyStates
                     takeDamageable.OnTakeDamageAction -= ShowPopup;
                 }
             }
-            
             _enemies.Clear();
             _enemies = null;
         }

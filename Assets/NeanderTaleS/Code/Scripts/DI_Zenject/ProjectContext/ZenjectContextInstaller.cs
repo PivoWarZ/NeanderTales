@@ -2,8 +2,9 @@ using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
-using NeanderTaleS.Code.Scripts.Systems.Spawner;
+using NeanderTaleS.Code.Scripts.Systems.Factory.Spawner;
 using NeanderTaleS.Code.Scripts.UI;
+using NeanderTaleS.Code.Scripts.UI.Bus;
 using NeanderTaleS.Code.Scripts.UI.EnemyStates;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -42,7 +43,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
                 .NonLazy();
             
             DebugLogger.PrintBinding(this);
-            
         }
 
         private void BindPlayerInstaller()
@@ -54,7 +54,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void BindEnemyTakeDamageObserver_ShowPopup()
         {
-            Container.BindInterfacesAndSelfTo<EnemyTakeDamageHandler_ShowPopup>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyTakeDamageHandler_ShowPopup>().AsCached().NonLazy();
         }
 
         private void BindEnemyStateAdapter()

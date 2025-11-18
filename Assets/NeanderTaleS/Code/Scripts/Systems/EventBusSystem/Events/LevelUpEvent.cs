@@ -1,4 +1,4 @@
-namespace NeanderTaleS.Code.Scripts.Systems.EventBus.Events
+namespace NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events
 {
     public sealed class LevelUpEvent: IEventBusEvent
     {

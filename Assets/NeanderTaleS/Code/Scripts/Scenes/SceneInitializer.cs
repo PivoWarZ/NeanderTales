@@ -1,8 +1,8 @@
 using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
+using NeanderTaleS.Code.Scripts.Systems.Factory.Spawner;
 using NeanderTaleS.Code.Scripts.Systems.GameCycle;
-using NeanderTaleS.Code.Scripts.Systems.Spawner;
 using R3;
 using UnityEngine;
 using Zenject;

@@ -1,7 +1,7 @@
 using System;
 using NeanderTaleS.Code.Scripts.Core.Services;
-using NeanderTaleS.Code.Scripts.Systems.EventBus;
-using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;

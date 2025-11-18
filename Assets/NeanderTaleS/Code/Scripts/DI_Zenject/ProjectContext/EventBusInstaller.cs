@@ -1,5 +1,6 @@
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
-using NeanderTaleS.Code.Scripts.Systems.EventBus;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
+using NeanderTaleS.Code.Scripts.UI.Bus;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -9,6 +10,9 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         public override void InstallBindings()
         {
             Container.Bind<IEventBus>().To<EventBus>().AsSingle().NonLazy();
+
+            Container.BindInterfacesAndSelfTo<EnemySpawnedEventObserver_AddDamageable>()
+                .AsCached();
             
             DebugLogger.PrintBinding(this);
         }

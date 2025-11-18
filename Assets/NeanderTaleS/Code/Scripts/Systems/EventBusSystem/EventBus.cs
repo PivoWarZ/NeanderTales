@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 using Debug = UnityEngine.Debug;
 
-namespace NeanderTaleS.Code.Scripts.Systems.EventBus
+namespace NeanderTaleS.Code.Scripts.Systems.EventBusSystem
 {
     public sealed class EventBus: IEventBus
 

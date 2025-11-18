@@ -1,6 +1,6 @@
 using System;
 
-namespace NeanderTaleS.Code.Scripts.Systems.EventBus
+namespace NeanderTaleS.Code.Scripts.Systems.EventBusSystem
 {
     public interface IEventBus
     {

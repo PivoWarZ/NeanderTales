@@ -20,7 +20,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
 
         public void Initialize(GameObject player)
         {
-            Debug.Log("Initializing CamerasProvider");
             _cinemashine.GetComponent<CinemachineCamera>().Follow = player.transform;
         }
     }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using NeanderTaleS.Code.Configs.Scripts.VelociraptorEnemy;
 using NeanderTaleS.Code.Scripts.Core.EnemiesComponents;
 using NeanderTaleS.Code.Scripts.Core.Services;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Spawner
+namespace NeanderTaleS.Code.Scripts.Systems.Factory.Spawner
 {
     public sealed class Spawner
     {
@@ -24,12 +26,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
         [Range(0.5f, 2f)] private float _maxSizeValue = 1f;
         private PlayerService _playerService;
         private GameObject _player;
+        private IEventBus _eventBus;
 
-        public Spawner(VelociraptorConfig config, GameObject prefab, PlayerService playerService)
+        public Spawner(VelociraptorConfig config, GameObject prefab, PlayerService playerService, IEventBus eventBus)
         {
             _config = config;
             _prefab = prefab;
             _playerService = playerService;
+            _eventBus = eventBus;
         }
 
         public void Initialize(SpawnerSettings settings)
@@ -72,7 +76,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
 
             if (targetComponent)
             {
-                Debug.Log($"Target Component: {targetComponent} Player: {_player}");
                 targetComponent.SetTarget(_player);
             }
 
@@ -83,6 +86,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Spawner
             dino.gameObject.SetActive(true);
             
             OnSpawned?.Invoke(dino);
+            _eventBus.RiseEvent(new EnemySpawnedEvent(dino, GetType().Name));
         }
     }
 }

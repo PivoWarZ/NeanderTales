@@ -1,6 +1,6 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.EventBus;
-using NeanderTaleS.Code.Scripts.Systems.EventBus.Events;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
+using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.Bus
 {
