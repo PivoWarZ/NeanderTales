@@ -1,11 +1,10 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.GameCycle;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 {
-    public sealed class CursorPositionListener: ITickable, IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class CursorPositionListener: IGameCycleTick
     {
         public event Action<Vector3> OnRotatePointChanged;
         
@@ -13,13 +12,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
         private Ray _mouseRay;
         private RaycastHit _hit;
         private Vector3 _currentHitPoint = Vector3.zero;
-        private bool _canRotate = false;
-        public void Tick()
+        
+        void IGameCycleTick.Tick(float deltatime)
         {
-            if (!_canRotate)
-            {
-                return;
-            }
 
             _mousePosition = Input.mousePosition;
             _mousePosition.z = Camera.main.nearClipPlane;
@@ -37,26 +32,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.RotateInput
 
             OnRotatePointChanged?.Invoke(_hit.point);
             _currentHitPoint = hit.point;
-        }
-        
-        void IStartGameListener.OnStartGame()
-        {
-            _canRotate = true;
-        }
-
-        void IFinishGameListener.OnFinishGame()
-        {
-            _canRotate = false;
-        }
-
-        void IPauseGameListener.OnPauseGame()
-        {
-            _canRotate = false;
-        }
-
-        void IResumeGameListener.OnResumeGame()
-        {
-            _canRotate = true;
         }
     }
 }
