@@ -39,6 +39,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
                  player  = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
                 _context.InjectGameObject(player);
                 _playerService.Construct(player);
+                _eventBus.RiseEvent(new InstantiatePlayerEvent(player, this.GetType().Name));
             }
             else
             {
@@ -46,7 +47,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.Factory
                 player.transform.position = position;
             }
             
-            _eventBus.RiseEvent(new InstantiatePlayerEvent(player, this.GetType().Name));
         }
     }
 }

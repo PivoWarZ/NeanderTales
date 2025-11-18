@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             // Bus
             
-            Container.BindInterfacesAndSelfTo<LevelUpEventListener_AddRewardCoins>()
+            Container.BindInterfacesAndSelfTo<CharacterLevelListener_AddRewardCoins>()
                 .AsSingle()
                 .NonLazy();
             

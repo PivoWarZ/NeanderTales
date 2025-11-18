@@ -74,9 +74,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Manageme
             view.OnAllUpgradesComplete += Unsubscribe;
         }
 
-        private void OnUpgradeRequest(string ID)
+        private void OnUpgradeRequest(string id)
         {
-            var issUpgradeFinded = TryFindUpgrade(ID, out Upgrade model);
+            var issUpgradeFinded = TryFindUpgrade(id, out Upgrade model);
 
             if (!issUpgradeFinded)
             {

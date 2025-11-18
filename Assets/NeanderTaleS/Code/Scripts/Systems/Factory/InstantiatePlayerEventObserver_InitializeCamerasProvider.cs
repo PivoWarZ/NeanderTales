@@ -1,7 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Factory
 {

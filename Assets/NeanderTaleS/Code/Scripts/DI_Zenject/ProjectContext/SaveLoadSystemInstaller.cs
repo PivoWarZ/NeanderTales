@@ -4,6 +4,7 @@ using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Context;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.Repository;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Character;
 using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.Experience;
+using NeanderTaleS.Code.Scripts.Systems.SaveLoad.SaveLoaders.UpgradeCoins;
 using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
@@ -41,6 +42,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         {
             Container.BindInterfacesAndSelfTo<CharacterSaveLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<ExperienceSaveLoad>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CoinsSaveLoad>().AsSingle();
         }
 
         private void BindContext()

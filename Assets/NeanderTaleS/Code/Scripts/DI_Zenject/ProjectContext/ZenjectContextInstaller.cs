@@ -3,8 +3,6 @@ using NeanderTaleS.Code.Scripts.Core.Services;
 using NeanderTaleS.Code.Scripts.Core.Services.Helpers;
 using NeanderTaleS.Code.Scripts.Systems.Factory;
 using NeanderTaleS.Code.Scripts.Systems.Factory.Spawner;
-using NeanderTaleS.Code.Scripts.UI;
-using NeanderTaleS.Code.Scripts.UI.Bus;
 using NeanderTaleS.Code.Scripts.UI.EnemyStates;
 using Unity.Cinemachine;
 using UnityEngine;

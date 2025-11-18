@@ -3,7 +3,6 @@ using NeanderTaleS.Code.Scripts.Interfaces.Components;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 using NeanderTaleS.Code.Scripts.UI.EnemyStates;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.UI.Bus
 {

@@ -2,7 +2,6 @@ using System;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem;
 using NeanderTaleS.Code.Scripts.Systems.EventBusSystem.Events;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Character;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus
 {
@@ -22,7 +21,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.CharacterUpgrades.Bus
         private void OnLevelUpEvent()
         {
             _eventBus.RiseEvent(new LevelUpEvent(this.GetType().Name));
-            float elapsedTime = Time.realtimeSinceStartup;
         }
 
         void IDisposable.Dispose()

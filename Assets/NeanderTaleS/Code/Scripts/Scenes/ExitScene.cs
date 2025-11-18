@@ -1,4 +1,3 @@
-using System;
 using NeanderTaleS.Code.Scripts.Core.PlayerComponents;
 using TMPro;
 using UnityEngine;
