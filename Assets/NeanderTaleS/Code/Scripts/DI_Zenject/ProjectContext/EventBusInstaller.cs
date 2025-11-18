@@ -58,7 +58,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private void BindCamerasObserver()
         {
             Container.BindInterfacesAndSelfTo<InstantiatePlayerEventObserver_InitializeCamerasProvider>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
         }
 

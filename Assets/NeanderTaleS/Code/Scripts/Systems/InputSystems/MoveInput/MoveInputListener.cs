@@ -1,7 +1,6 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.GameCycle;
 using UnityEngine;
-using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InputSystems.MoveInput
 {

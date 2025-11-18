@@ -18,9 +18,16 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             BindGameRepository();
             BindIGameStateSaver();
             BindSaveLoadManager();
-            Container.Bind<GameLoader>().AsSingle().NonLazy();
+            BindGameLoader();
             
             DebugLogger.PrintBinding(this);
+        }
+
+        private void BindGameLoader()
+        {
+            Container.Bind<GameLoader>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindIGameStateSaver()
@@ -35,14 +42,14 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
         private void BindGameRepository()
         {
-            Container.BindInterfacesAndSelfTo<GameRepository>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameRepository>().AsCached();
         }
 
         private void BindSaveLoaders()
         {
-            Container.BindInterfacesAndSelfTo<CharacterSaveLoader>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ExperienceSaveLoad>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CoinsSaveLoad>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CharacterSaveLoader>().AsCached();
+            Container.BindInterfacesAndSelfTo<ExperienceSaveLoad>().AsCached();
+            Container.BindInterfacesAndSelfTo<CoinsSaveLoad>().AsCached();
         }
 
         private void BindContext()

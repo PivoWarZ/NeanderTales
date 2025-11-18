@@ -7,10 +7,10 @@ namespace NeanderTaleS.Code.Scripts.UI.Bus
 {
     public sealed class InstantiatePlayerEventObserver_CreateModelViewPresenter_UI: IDisposable
     {
-        private IEventBus _eventBus;
-        private PlayerStatsInstaller _playerStatsInstaller;
+        private readonly IEventBus _eventBus;
+        private readonly PlayerStatsModelViewPresenterInstaller _playerStatsInstaller;
 
-        public InstantiatePlayerEventObserver_CreateModelViewPresenter_UI(IEventBus eventBus, PlayerStatsInstaller playerStatsInstaller)
+        public InstantiatePlayerEventObserver_CreateModelViewPresenter_UI(IEventBus eventBus, PlayerStatsModelViewPresenterInstaller playerStatsInstaller)
         {
             _eventBus = eventBus;
             _playerStatsInstaller = playerStatsInstaller;

@@ -9,7 +9,6 @@ using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Components.S
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.EntryPoint;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management;
 using NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Management.Bus;
-using NeanderTaleS.Code.Scripts.UI.Bus;
 using NeanderTaleS.Code.Scripts.UI.PlayerStates.Stats;
 using NeanderTaleS.Code.Scripts.UI.Upgrades;
 using UnityEngine;
@@ -32,18 +31,32 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             
             //UI
             
-            BindPlayerStatsInstaller();
+            BindPlayerStatsModelViewPresenterInstaller();
             
             //Bus
             
+            BindUpgradeBoxCreator();
+            
+            BindHandlers();
+
+            BindListeners();
+            
+            DebugLogger.PrintBinding(this);
+        }
+
+        private void BindHandlers()
+        {
             Container.BindInterfacesAndSelfTo<UpgradeConstructedHandler_BindUpgrade>()
                 .AsCached()
                 .NonLazy();
-            
+
             Container.BindInterfacesAndSelfTo<SpendCoinsRequestHandler>()
                 .AsCached()
                 .NonLazy();
-            
+        }
+
+        private void BindListeners()
+        {
             Container.BindInterfacesAndSelfTo<UpdateCoinsListener_UpgradeButtonVisibility>()
                 .AsCached()
                 .NonLazy();
@@ -54,14 +67,15 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
 
             Container.BindInterfacesAndSelfTo<CharacterUpgradeConstructListener_RiseLevelUpEvent>()
                 .AsCached();
-            
+        }
+
+        private void BindUpgradeBoxCreator()
+        {
             Container.BindInterfacesAndSelfTo<UpgradeBoxCreator>()
                 .AsCached()
                 .NonLazy();
-     
-            DebugLogger.PrintBinding(this);
         }
-        
+
         private void BindStatsUpgradeInstaller()
         {
             Container.BindInterfacesAndSelfTo<StatsUpgradesSystemInitializer>().AsSingle().NonLazy();
@@ -69,9 +83,11 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<StatsUpgradePopupsInstaller>().AsSingle().NonLazy();
         }
 
-        private void BindPlayerStatsInstaller()
+        private void BindPlayerStatsModelViewPresenterInstaller()
         {
-            Container.BindInterfacesAndSelfTo<PlayerStatsInstaller>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<PlayerStatsModelViewPresenterInstaller>()
+                .AsCached()
+                .NonLazy();
         }
 
         private void BindCharacterUpgrade()

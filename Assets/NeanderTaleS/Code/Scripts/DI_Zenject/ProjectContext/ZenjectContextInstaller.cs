@@ -29,10 +29,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             InstantiateEventSystem();
             
             BindSpawner();
-            
-            BindEnemyStateAdapter();
-            
-            BindEnemyTakeDamageObserver_ShowPopup();
 
             BindPlayerService();
             
@@ -44,16 +40,6 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
             Container.BindInterfacesAndSelfTo<PlayerInstaller>()
                 .AsSingle()
                 .NonLazy();
-        }
-
-        private void BindEnemyTakeDamageObserver_ShowPopup()
-        {
-            Container.BindInterfacesAndSelfTo<EnemyTakeDamageHandler_ShowPopup>().AsCached().NonLazy();
-        }
-
-        private void BindEnemyStateAdapter()
-        {
-            Container.BindInterfacesAndSelfTo<EnemyStateAdapter>().AsSingle().NonLazy();
         }
 
         private void BindSpawner()
@@ -72,11 +58,11 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         private void InstantiateCamera()
         {
             var mainCamera = Instantiate(_camera, _container);
-            var cinemashine = Instantiate(_sinematicCamera, _container);
+            var cinemachine = Instantiate(_sinematicCamera, _container);
             
             Container.BindInterfacesAndSelfTo<CamerasProvider>()
                 .AsSingle()
-                .WithArguments(mainCamera, cinemashine)
+                .WithArguments(mainCamera, cinemachine)
                 .NonLazy();
         }
 

@@ -9,22 +9,32 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
     {
         public override void InstallBindings()
         {
-            Container.Bind<IUpgradeCoinsStorage>()
-                .To<UpgradeCoinsStorage>()
-                .AsSingle()
-                .NonLazy(); 
+            BindUpgradeCoinsStorage(); 
             
             // Bus
             
-            Container.BindInterfacesAndSelfTo<CharacterLevelListener_AddRewardCoins>()
-                .AsSingle()
-                .NonLazy();
+            BindCharacterLevelListener();
             
             BindStarsCountAdapter();
             
             DebugLogger.PrintBinding(this);
         }
-        
+
+        private void BindCharacterLevelListener()
+        {
+            Container.BindInterfacesAndSelfTo<CharacterLevelListener_AddRewardCoins>()
+                .AsCached()
+                .NonLazy();
+        }
+
+        private void BindUpgradeCoinsStorage()
+        {
+            Container.Bind<IUpgradeCoinsStorage>()
+                .To<UpgradeCoinsStorage>()
+                .AsSingle()
+                .NonLazy();
+        }
+
         private void BindStarsCountAdapter()
         {
             Container.BindInterfacesAndSelfTo<CoinsCountAdapter>().AsSingle().NonLazy();

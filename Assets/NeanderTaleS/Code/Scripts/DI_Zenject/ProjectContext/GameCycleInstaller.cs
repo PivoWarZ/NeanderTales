@@ -9,10 +9,11 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameCycleManager>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
+            
             Container.BindInterfacesAndSelfTo<Systems.GameCycle.GameCycleInstaller>()
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
             
             DebugLogger.PrintBinding(this);
