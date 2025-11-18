@@ -13,6 +13,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Manageme
     public sealed class StatsUpgradeManager: IInitializable, IDisposable
     {
         public event Action<int> OnSpendCoinsRequest;
+        public event Action<bool> OnUpgradePopupActive;
         
         private readonly StatsUpgradePopupsInstaller _popupsInstaller;
         private readonly UpgradesPopup _upgradesPopup;
@@ -53,11 +54,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.UpgradeSystem.StatsUpgrades.Manageme
         private void HidePopup()
         {
             _upgradesPopup.gameObject.SetActive(false);
+            OnUpgradePopupActive?.Invoke(false);
         }
 
         private void ShowPopup()
         {
             _upgradesPopup.gameObject.SetActive(true);
+            OnUpgradePopupActive?.Invoke(true);
         }
 
         public void CreateStatsViewModel(UpgradeStatView view, Upgrade model)

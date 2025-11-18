@@ -39,6 +39,16 @@ namespace NeanderTaleS.Code.Scripts.Systems.GameCycle
                 {
                     _manager.AddResumeGameListener(resumeGameListener);
                 }
+
+                if (gameCycle is IGameCycleTick tickable)
+                {
+                    _manager.AddTickable(tickable);
+                }
+
+                if (gameCycle is IGameCycleFixedTick fixedTickable)
+                {
+                    _manager.AddFixedTicks(fixedTickable);
+                }
             }
         }
     }

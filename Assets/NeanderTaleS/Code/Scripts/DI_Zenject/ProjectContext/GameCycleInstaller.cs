@@ -8,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext
     {
         public override void InstallBindings()
         {
-            Container.Bind<GameCycleManager>()
+            Container.BindInterfacesAndSelfTo<GameCycleManager>()
                 .AsSingle()
                 .NonLazy();
             Container.BindInterfacesAndSelfTo<Systems.GameCycle.GameCycleInstaller>()
