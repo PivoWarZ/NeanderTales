@@ -1,6 +1,6 @@
-using Inventory.Scripts.InventoryData.InventoryBase;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
 
-namespace Inventory.Scripts.InventoryData.EquipPopup
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup
 {
     public sealed class EquipItemAdapter
     {

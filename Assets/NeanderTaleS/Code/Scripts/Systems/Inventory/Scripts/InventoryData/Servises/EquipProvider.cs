@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Inventory.Scripts.InventoryData.Servises
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises
 {
     [Serializable]
     public sealed class EquipProvider

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Inventory.Scripts.Interfaces;
-using Inventory.Scripts.InventoryData.EquipPopup;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Inventory.Scripts.DI
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.DI
 {
     public sealed class InventorySystemInitializer
     {

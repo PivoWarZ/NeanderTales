@@ -1,7 +1,7 @@
-using Inventory.Scripts.InventoryData.InventoryBase;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
 using UnityEngine;
 
-namespace Inventory.Scripts.Helpers.Shop
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Helpers.Shop
 {
     public sealed class SellItemObserver: MonoBehaviour
     {

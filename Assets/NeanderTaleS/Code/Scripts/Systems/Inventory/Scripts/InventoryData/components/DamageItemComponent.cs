@@ -1,6 +1,6 @@
-using Inventory.Scripts.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
 
-namespace Inventory.Scripts.InventoryData.components
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components
 {
     public sealed class DamageItemComponent: IItemComponent
     {

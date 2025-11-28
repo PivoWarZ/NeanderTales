@@ -1,10 +1,10 @@
-using UnityEngine;
 using System;
-using Inventory.Scripts.Interfaces;
-using Inventory.Scripts.InventoryData.EquipPopup;
-using Inventory.Scripts.InventoryData.Manager;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
+using UnityEngine;
 
-namespace Inventory.Scripts
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts
 {
     public sealed class Hero: MonoBehaviour, IInventoryComponent
     {

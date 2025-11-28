@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Inventory.Scripts.Helpers.Shop
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Helpers.Shop
 {
     public sealed class SellItem: MonoBehaviour
     {

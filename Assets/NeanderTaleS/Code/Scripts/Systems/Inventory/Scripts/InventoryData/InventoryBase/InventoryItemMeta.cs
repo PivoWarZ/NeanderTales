@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Inventory.Scripts.InventoryData.InventoryBase
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase
 {
     [Serializable]
     public sealed class InventoryItemMeta

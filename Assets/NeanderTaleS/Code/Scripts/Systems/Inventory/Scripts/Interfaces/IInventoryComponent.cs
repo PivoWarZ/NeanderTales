@@ -1,7 +1,6 @@
-﻿using Inventory.Scripts.DI;
-using Inventory.Scripts.InventoryData.Manager;
+﻿using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
 
-namespace Inventory.Scripts.Interfaces
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces
 {
     public interface IInventoryComponent: IInventory, ICharacterStatsSetter, ICharacterStatsStructure
     {

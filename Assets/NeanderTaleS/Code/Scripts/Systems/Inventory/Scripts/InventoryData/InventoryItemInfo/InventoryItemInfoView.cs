@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Inventory.Scripts.InventoryData.InventoryItemInfo
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo
 {
     public sealed class InventoryItemInfoView: MonoBehaviour
     {

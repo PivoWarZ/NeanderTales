@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Inventory.Scripts.InventoryData.Grid;
-using Inventory.Scripts.InventoryData.InventoryItemInfo;
-using Inventory.Scripts.InventoryData.Servises;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
 
-namespace Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers
 {
     public sealed class EquipClickObserver
     {

@@ -1,4 +1,4 @@
-namespace Inventory.Scripts.InventoryData.EquipPopup
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup
 {
     public struct StatsStruct
     {

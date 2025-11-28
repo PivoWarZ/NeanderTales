@@ -1,4 +1,4 @@
-namespace Inventory.Scripts.Interfaces
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces
 {
     public interface IItemComponent
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Inventory.Scripts.InventoryData.InventoryBase
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase
 {
     [Flags]
     public enum InventoryItemFlags

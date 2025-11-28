@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Inventory.Scripts.InventoryData.InventoryBase
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase
 {
     [CreateAssetMenu(fileName = "InventoryItemConfig", menuName = "Inventory/InventoryItem/New InventoryItemConfig")]
     public sealed class InventoryItemConfig: ScriptableObject

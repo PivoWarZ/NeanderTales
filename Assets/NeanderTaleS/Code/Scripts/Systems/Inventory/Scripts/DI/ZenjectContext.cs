@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Inventory.Scripts.DI
+namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.DI
 {
     public class ZenjectContext: IContext
     {
