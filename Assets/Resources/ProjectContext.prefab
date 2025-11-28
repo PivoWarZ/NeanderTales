@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -470241010806138836}
   - component: {fileID: -104757544850101848}
   - component: {fileID: -6305309421991219082}
+  - component: {fileID: -8632657626535242180}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: -470241010806138836}
   - {fileID: -104757544850101848}
   - {fileID: -6305309421991219082}
+  - {fileID: -8632657626535242180}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
@@ -199,6 +201,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: NeanderTaleS::NeanderTaleS.Code.Scripts.DI_Zenject.ProjectContext.UIElementsInstaller
   _hudUI: {fileID: 6982549279447214039, guid: 93d4f723a84192744a28bec14982a296, type: 3}
   _container: {fileID: 9131433662103139057}
+--- !u!114 &-8632657626535242180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000151477880697256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a139f29c1984ef58a0a3757853ef9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Inventory::Inventory.Scripts.DI.InventorySystemInstaller
+  _gridItemPrefab: {fileID: 1439581822452662395, guid: 4d189897152449248bf58f811f0d0d01, type: 3}
+  _popupProvider: {fileID: 6105216531494465028, guid: 51c2cf2cd17cebf4e82f605723af5ff8, type: 3}
 --- !u!1 &2869052420373200839
 GameObject:
   m_ObjectHideFlags: 0
