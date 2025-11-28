@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo
+namespace Inventory.Scripts.InventoryData.InventoryItemInfo
 {
     public struct InfoStruct
     {

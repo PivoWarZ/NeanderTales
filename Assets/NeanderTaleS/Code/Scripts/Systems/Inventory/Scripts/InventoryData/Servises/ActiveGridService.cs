@@ -1,6 +1,6 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.Grid;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises
+namespace Inventory.Scripts.InventoryData.Servises
 {
     public sealed class ActiveGridService
     {

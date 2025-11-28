@@ -1,6 +1,6 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.InventoryBase;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces
+namespace Inventory.Scripts.Interfaces
 {
     public interface IInventoryEffectObserver
     {

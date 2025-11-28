@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
+using Inventory.Scripts.InventoryData.components;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase
+namespace Inventory.Scripts.InventoryData.InventoryBase
 {
     [Serializable]
     public sealed class Inventory

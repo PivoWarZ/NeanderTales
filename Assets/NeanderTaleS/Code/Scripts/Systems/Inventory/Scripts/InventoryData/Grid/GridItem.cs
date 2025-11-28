@@ -1,14 +1,14 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.InventoryBase;
 using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid
+namespace Inventory.Scripts.InventoryData.Grid
 {
     public sealed class GridItem: MonoBehaviour, IPointerClickHandler
     {

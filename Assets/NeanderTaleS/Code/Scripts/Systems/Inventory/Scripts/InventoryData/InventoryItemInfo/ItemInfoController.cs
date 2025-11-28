@@ -1,10 +1,11 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
+using Inventory.Scripts.DI;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.Manager;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo
+namespace Inventory.Scripts.InventoryData.InventoryItemInfo
 {
     public sealed class ItemInfoController: IInitializable, IInventoryInitializable
     {

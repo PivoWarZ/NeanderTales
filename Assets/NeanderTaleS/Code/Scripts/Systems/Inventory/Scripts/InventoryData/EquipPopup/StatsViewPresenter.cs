@@ -1,7 +1,7 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+using Inventory.Scripts.Interfaces;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup
+namespace Inventory.Scripts.InventoryData.EquipPopup
 {
     public sealed class StatsViewPresenter: IDisposable, IInventoryInitializable
     {

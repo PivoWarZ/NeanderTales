@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.components;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.Servises;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Installers
+namespace Inventory.Scripts.InventoryData.Installers
 {
     public sealed class InventoryGridInstaller: IInitializable, IDisposable, IInventoryInitializable
     {

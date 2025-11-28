@@ -1,8 +1,8 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.components;
+using Inventory.Scripts.InventoryData.InventoryBase;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo
+namespace Inventory.Scripts.InventoryData.InventoryItemInfo
 {
     public sealed class ItemInfoPopupAdapter: IDisposable
     {

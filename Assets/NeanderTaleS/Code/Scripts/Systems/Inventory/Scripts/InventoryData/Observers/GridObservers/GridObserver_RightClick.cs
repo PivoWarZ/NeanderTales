@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Installers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
+using Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.Installers;
+using Inventory.Scripts.InventoryData.InventoryItemInfo;
+using Inventory.Scripts.InventoryData.Servises;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers
+namespace Inventory.Scripts.InventoryData.Observers.GridObservers
 {
     public sealed class GridObserver_RightClick: IInitializable, IDisposable
     {

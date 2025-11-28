@@ -1,15 +1,15 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Installers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Listeners;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.Installers;
+using Inventory.Scripts.InventoryData.InventoryItemInfo;
+using Inventory.Scripts.InventoryData.Listeners;
+using Inventory.Scripts.InventoryData.Manager;
+using Inventory.Scripts.InventoryData.Observers;
+using Inventory.Scripts.InventoryData.Observers.GridObservers;
+using Inventory.Scripts.InventoryData.Servises;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.DI
+namespace Inventory.Scripts.DI
 {
     public class InventorySystemInstaller: MonoInstaller
     {

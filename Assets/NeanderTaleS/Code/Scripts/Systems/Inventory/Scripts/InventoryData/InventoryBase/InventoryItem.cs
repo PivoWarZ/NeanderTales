@@ -1,8 +1,8 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+using Inventory.Scripts.Interfaces;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase
+namespace Inventory.Scripts.InventoryData.InventoryBase
 {
     [Serializable]
     public sealed class InventoryItem

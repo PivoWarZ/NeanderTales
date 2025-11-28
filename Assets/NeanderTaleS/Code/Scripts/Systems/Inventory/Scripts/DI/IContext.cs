@@ -1,4 +1,4 @@
-﻿namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.DI
+﻿namespace Inventory.Scripts.DI
 {
     public interface IContext
     {

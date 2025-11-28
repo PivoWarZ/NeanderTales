@@ -1,9 +1,10 @@
-﻿using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.DI;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+﻿using System;
+using Inventory.Scripts.DI;
+using Inventory.Scripts.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Helpers
+namespace Inventory.Scripts.Helpers
 {
     public class InitializerView: MonoBehaviour
     {

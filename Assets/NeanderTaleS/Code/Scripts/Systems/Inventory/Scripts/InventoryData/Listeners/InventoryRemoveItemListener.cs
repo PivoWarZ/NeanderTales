@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Installers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.Installers;
+using Inventory.Scripts.InventoryData.InventoryBase;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Listeners
+namespace Inventory.Scripts.InventoryData.Listeners
 {
     public sealed class InventoryRemoveItemListener: IDisposable, IInitializable, IInventoryInitializable
     {

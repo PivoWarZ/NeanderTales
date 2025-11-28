@@ -1,7 +1,7 @@
 ﻿using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.EquipPopup;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts
+namespace Inventory.Scripts
 {
     public interface ICharacterStatsStructure
     {

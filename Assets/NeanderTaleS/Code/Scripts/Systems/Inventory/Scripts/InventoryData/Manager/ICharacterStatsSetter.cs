@@ -1,4 +1,4 @@
-﻿namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager
+﻿namespace Inventory.Scripts.InventoryData.Manager
 {
     public interface ICharacterStatsSetter
     {

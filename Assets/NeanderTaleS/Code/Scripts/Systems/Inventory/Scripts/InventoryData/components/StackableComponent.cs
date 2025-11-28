@@ -1,8 +1,8 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+using Inventory.Scripts.Interfaces;
 using R3;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components
+namespace Inventory.Scripts.InventoryData.components
 {
     [Serializable]
     public sealed class StackableComponent: IItemComponent

@@ -1,10 +1,11 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.components;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.Manager;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers
+namespace Inventory.Scripts.InventoryData.Observers
 {
     public sealed class InventoryEffectObserver: IInventoryEffectObserver, IDisposable, IInventoryInitializable
     {

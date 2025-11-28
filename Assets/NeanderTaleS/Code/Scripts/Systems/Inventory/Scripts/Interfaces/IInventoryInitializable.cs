@@ -1,4 +1,6 @@
-﻿namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces
+﻿using Inventory.Scripts.Interfaces;
+
+namespace Inventory.Scripts.InventoryData.EquipPopup
 {
     public interface IInventoryInitializable
     {

@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.EquipPopup;
+using Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.InventoryItemInfo;
+using Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers;
+using Inventory.Scripts.InventoryData.Servises;
 using Zenject;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager
+namespace Inventory.Scripts.InventoryData.Manager
 {
     public sealed class EquippedItemManager: IInitializable, IDisposable, IInventoryInitializable
     {

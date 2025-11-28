@@ -1,4 +1,4 @@
-﻿namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces
+﻿namespace Inventory.Scripts.DI
 {
     public interface IInventory
     {

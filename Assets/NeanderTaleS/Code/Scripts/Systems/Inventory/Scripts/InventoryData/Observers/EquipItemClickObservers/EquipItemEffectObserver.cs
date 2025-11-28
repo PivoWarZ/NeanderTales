@@ -1,9 +1,9 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Manager;
+using Inventory.Scripts.Interfaces;
+using Inventory.Scripts.InventoryData.components;
+using Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.Manager;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers
+namespace Inventory.Scripts.InventoryData.Observers.EquipItemClickObservers
 {
     public sealed class EquipItemEffectObserver: IInventoryEffectObserver
     {

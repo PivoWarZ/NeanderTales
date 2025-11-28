@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises
+namespace Inventory.Scripts.InventoryData.Servises
 {
     public sealed class InventoryPopupProvider: MonoBehaviour
     {

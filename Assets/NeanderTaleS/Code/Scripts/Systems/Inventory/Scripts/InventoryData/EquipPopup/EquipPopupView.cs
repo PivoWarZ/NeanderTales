@@ -1,9 +1,9 @@
 using System;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryBase;
+using Inventory.Scripts.InventoryData.Grid;
+using Inventory.Scripts.InventoryData.InventoryBase;
 using UnityEngine;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.EquipPopup
+namespace Inventory.Scripts.InventoryData.EquipPopup
 {
     public sealed class EquipPopupView: MonoBehaviour
     {

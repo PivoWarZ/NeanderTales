@@ -1,6 +1,6 @@
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
+using Inventory.Scripts.Interfaces;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components
+namespace Inventory.Scripts.InventoryData.components
 {
     public sealed class HealItemComponent: IItemComponent
     {
