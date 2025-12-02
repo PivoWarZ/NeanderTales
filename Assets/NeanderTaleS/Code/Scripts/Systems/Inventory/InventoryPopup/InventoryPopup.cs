@@ -73,6 +73,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.InventoryPopup
         private void CreateInventoryGrid()
         {
             float offsetY = _minPadding;
+            var bagsWidth = _bags.GetComponent<RectTransform>().rect.width;
+            var bagsHeight = _bags.GetComponent<RectTransform>().rect.height;
+            Debug.Log($"{bagsWidth}x{bagsHeight}");
+            Debug.Log($"{_minSize/bagsWidth}x{_minSize/bagsHeight}");
             
             for (int i = 0; i < _config.HeightCount; i++)
             {
@@ -82,25 +86,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.InventoryPopup
                 {
                     var grid = Instantiate(_config.Grid, _bags.transform);
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
-                    
-                    var currentWidth = gridRectTransform.rect.width;
-                    var currentHeight = gridRectTransform.rect.height;
-                    var startAnchorMax = gridRectTransform.anchorMax;
-                    var startAnchorMin = gridRectTransform.anchorMin;
-                    
-                    var widthDeltaPercent = _minSize / currentWidth;
-                    var hightDeltaPercent = _minSize / currentHeight;
-                    
-                    //gridRectTransform.anchorMin = new Vector2(0, 1);
-                    //gridRectTransform.anchorMax = new Vector2(0, 1);
+
                     gridRectTransform.sizeDelta = new Vector2(_minSize, _minSize);
                     gridRectTransform.anchoredPosition = new Vector2(offsetX, - offsetY);
                     
-                   //gridRectTransform.anchorMin = new Vector2(startAnchorMin.x, startAnchorMin.y);
-                    //gridRectTransform.anchorMax = new Vector2(startAnchorMax.x, startAnchorMax.y);
+                    //gridRectTransform.anchorMin = new Vector2(0, 100 - _minSize / bagsHeight);
+                    //gridRectTransform.anchorMax = new Vector2(_minSize / bagsWidth, 100 - _minSize / bagsHeight);
                     
-                    //gridRectTransform.anchorMin = new Vector2(gridRectTransform.anchorMin.x * widthDeltaPercent, gridRectTransform.anchorMin.y * hightDeltaPercent);
-                    //gridRectTransform.anchorMax = new Vector2(gridRectTransform.anchorMax.x * widthDeltaPercent, gridRectTransform.anchorMax.y * hightDeltaPercent);
+                    Debug.Log($"AnchorMin: {gridRectTransform.anchorMin} AnchorMax: {gridRectTransform.anchorMax}");
                     
                     offsetX += gridRectTransform.sizeDelta.x;
                     

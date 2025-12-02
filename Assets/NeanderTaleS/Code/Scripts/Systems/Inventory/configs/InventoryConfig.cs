@@ -9,8 +9,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.configs
     public class InventoryConfig: ScriptableObject
     {
         [Header("------Inventory size------")]
-        [SerializeField, Range (0, 10)] private int _widthCount;
-        [SerializeField, Range (0, 10)] private int _heightCount;
+        [SerializeField, Range (1, 10)] private int _widthCount;
+        [SerializeField, Range (1, 10)] private int _heightCount;
         [ShowInInspector] private int _capacity;
 
         [Header("------Grid settings------")] 
