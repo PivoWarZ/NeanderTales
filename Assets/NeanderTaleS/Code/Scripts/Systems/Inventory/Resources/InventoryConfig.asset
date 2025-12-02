@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebb02df94254c3e9d0aa2b6b65cc241, type: 3}
   m_Name: InventoryConfig
   m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.Inventory.configs.InventoryConfig
-  _widthCount: 4
-  _heightCount: 3
+  _widthCount: 5
+  _heightCount: 4
   _grid: {fileID: 8963831533962842178, guid: 4d189897152449248bf58f811f0d0d01, type: 3}
-  _bagsContentPadding: 15
+  _bagsContentPadding: 0
