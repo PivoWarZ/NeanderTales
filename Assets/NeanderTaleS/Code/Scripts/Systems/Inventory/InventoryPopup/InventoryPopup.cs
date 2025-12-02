@@ -59,11 +59,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.InventoryPopup
             }
             
             var bagsRectTransform = _bags.GetComponent<RectTransform>();
+            var currentWidth = bagsRectTransform.rect.width;
             var newWidth = minPadding * 2 + minSize * _config.WidthCount;
-            var bagsSize = bagsRectTransform.sizeDelta;
-            bagsSize.x = newWidth;
-            bagsRectTransform.sizeDelta = bagsSize;
-            
+            var sizeDelta = newWidth - currentWidth;
+            var newOffsetMax = bagsRectTransform.offsetMax.x + sizeDelta;
+            bagsRectTransform.offsetMax = new Vector2(newOffsetMax, bagsRectTransform.offsetMax.y);
         }
     }
 }
