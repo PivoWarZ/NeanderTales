@@ -17,6 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid
         public event Action<GridItem> OnGridActivated;
         public event Action<GridItem> OnDoubleClick;
         public event Action<GridItem> OnGridDestroyed;
+        
         [SerializeField] private Image _icon;
         [SerializeField] private Button _button;
         [SerializeField] private float _doubleClickTime;
@@ -77,13 +78,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid
             _isAction = false;
         }
 
-        public void ActivateGrid()
+        public void Activate()
         {
             _activeFrame.gameObject.SetActive(true);
             OnGridActivated?.Invoke(this);
         }
 
-        public void DeactivateGrid()
+        public void Deactivate()
         {
             _activeFrame.gameObject.SetActive(false);
         }

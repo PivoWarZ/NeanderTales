@@ -11,13 +11,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Serv
             if (_activeGrid == null)
             {
                 _activeGrid = gridItem;
-                _activeGrid.ActivateGrid();
+                _activeGrid.Activate();
                 return;
             }
             
-            _activeGrid.DeactivateGrid();
+            _activeGrid.Deactivate();
             _activeGrid = gridItem;
-            _activeGrid.ActivateGrid();
+            _activeGrid.Activate();
         }
 
         public GridItem GetActiveGrid()

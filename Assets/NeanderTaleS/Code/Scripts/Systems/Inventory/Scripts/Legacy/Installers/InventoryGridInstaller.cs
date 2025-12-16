@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.components;
@@ -65,4 +65,4 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Inst
             _inventory.OnItemAdded -= OnItemAdded;
         }
     }
-}
+}*/

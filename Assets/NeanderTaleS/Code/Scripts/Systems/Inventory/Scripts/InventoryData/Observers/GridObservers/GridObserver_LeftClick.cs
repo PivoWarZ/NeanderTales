@@ -1,66 +1,63 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Installers;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.InventoryItemInfo;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Servises;
-using Zenject;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers
 {
-    public sealed class GridObserver_LeftClick: IInitializable, IDisposable
+    public sealed class GridObserver_LeftClick: IDisposable
     {
-        private readonly InventoryGridInstaller _gridInstaller;
-        private readonly ActiveGridService _activeGridService;
-        private readonly ItemInfoPopupAdapter _infoPopupAdapter;
-        private readonly List<GridItem> _gridItems = new ();
+        private GridsStorage _storage;
+        private readonly List<GridItem> _grids;
 
-        public GridObserver_LeftClick(InventoryGridInstaller gridInstaller, ItemInfoPopupAdapter infoPopupAdapter, ActiveGridService activeGridService)
+        public GridObserver_LeftClick(GridsStorage storage)
         {
-            _gridInstaller = gridInstaller;
-            _infoPopupAdapter = infoPopupAdapter;
-            _activeGridService = activeGridService;
+            _grids = storage.Items;
+            _storage = storage;
+
+            _storage.OnGridAdded += AddItem;
+            Subscribe();
         }
-
-        public void Initialize()
+        
+        private void Subscribe()
         {
-            _gridInstaller.OnGridItemAdded += Subscribe;
-        }
-
-        private void Subscribe(GridItem grid)
-        {
-            grid.OnGridLeftClicked += LeftClicked;
-            grid.OnGridDestroyed += Unsubscribes;
-            _gridItems.Add(grid);
-        }
-
-        private void Unsubscribes(GridItem grid)
-        {
-            grid.OnGridLeftClicked -= LeftClicked;
-            grid.OnGridDestroyed -= Unsubscribes;
-            _gridItems.Remove(grid);
-        }
-
-        private void LeftClicked(GridItem grid)
-        {
-            var isActiveGrid = _activeGridService.GetActiveGrid() == grid;
-
-            if (!isActiveGrid)
+            foreach (var gridItem in _grids)
             {
-                _infoPopupAdapter.HideInfoPopup();
+                gridItem.OnGridLeftClicked += ActivateGrid;
             }
-
-            _activeGridService.ActivateGrid(grid);
         }
-
+        
         public void Dispose()
         {
-            for (var index = 0; index < _gridItems.Count; index++)
+            _storage.OnGridAdded -= AddItem;
+            Unsubscribe();
+        }
+        
+        private void Unsubscribe()
+        {
+            foreach (var gridItem in _grids)
             {
-                var gridItem = _gridItems[index];
-                gridItem.OnGridLeftClicked -= LeftClicked;
-                gridItem.OnGridDestroyed -= Unsubscribes;
+                gridItem.OnGridLeftClicked -= ActivateGrid;
             }
+        }
+
+        private void AddItem(GridItem gridItem)
+        {
+           _grids.Add(gridItem);
+        }
+
+        private void DeactivateGrids()
+        {
+            foreach (var gridItem in _grids)
+            {
+                gridItem.Deactivate();
+            }
+        }
+
+        private void ActivateGrid(GridItem grid)
+        {
+            DeactivateGrids();
+            grid.Activate();
         }
     }
 }

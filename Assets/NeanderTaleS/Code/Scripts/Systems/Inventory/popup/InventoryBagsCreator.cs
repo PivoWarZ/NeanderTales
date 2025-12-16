@@ -11,9 +11,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
     [Serializable]
     public class InventoryBagsCreator
     {
-        public event Action<RectTransform> OnGridCreated;
+        public event Action<GridItem> OnGridCreated;
         
         [SerializeField] private BagsProvider _bags;
+        
         private List<GridItem> _items = new ();
         private InventoryConfig _config;
         private float _minSize;
@@ -39,7 +40,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
             
             CreateInventoryBags();
             CreateInventoryGrid();
-            SetAnchorsToTopLeftPosition();
+            SetAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
         }
 
@@ -88,13 +89,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
                         offsetY += gridRectTransform.sizeDelta.y;
                     }
                     
-                    OnGridCreated?.Invoke(gridRectTransform);
+                    OnGridCreated?.Invoke(grid);
                 }
             }
         }
         
         [Button]
-        private void SetAnchorsToTopLeftPosition()
+        private void SetAnchorsTopLeftPosition()
         {
             foreach (var gridItem in _items)
             {
