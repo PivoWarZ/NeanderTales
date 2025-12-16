@@ -1,21 +1,42 @@
+using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.Inventory.configs;
 using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Grid;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
 {
-    public class InventoryBagsCreator: MonoBehaviour
+    [Serializable]
+    public class InventoryBagsCreator
     {
+        public event Action<RectTransform> OnGridCreated;
+        
         [SerializeField] private BagsProvider _bags;
         private List<GridItem> _items = new ();
         private InventoryConfig _config;
         private float _minSize;
         private float _minPadding;
+        private bool _isInitializing = false;
 
-        public void Initialize()
+        public void Initialize(InventoryConfig config)
         {
+            _config = config;
+            _isInitializing = true;
+            
+            UpdateInventoryBags();
+        }
+
+        public void UpdateInventoryBags()
+        {
+            if (!_isInitializing)
+            {
+                return;
+            }
+            
+            Clear();
+            
             CreateInventoryBags();
             CreateInventoryGrid();
             SetAnchorsToTopLeftPosition();
@@ -24,8 +45,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
 
         private void CreateInventoryBags()
         {
-            _config = Resources.Load<InventoryConfig>("InventoryConfig");
-
             var padding = _config.BagsContentPadding;
             
             var bagsWidth = _bags.GetComponent<RectTransform>().rect.width;
@@ -52,7 +71,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
 
                 for (int j = 0; j < _config.WidthCount; j++)
                 {
-                    var grid = Instantiate(_config.Grid, _bags.transform);
+                    var grid = Object.Instantiate(_config.Grid, _bags.transform);
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
 
                     gridRectTransform.sizeDelta = new Vector2(_minSize, _minSize);
@@ -68,6 +87,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
                     {
                         offsetY += gridRectTransform.sizeDelta.y;
                     }
+                    
+                    OnGridCreated?.Invoke(gridRectTransform);
                 }
             }
         }
@@ -96,7 +117,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.popup
         {
             foreach (var gridItem in _items)
             {
-                Destroy(gridItem.gameObject);
+                Object.Destroy(gridItem.gameObject);
             }
             
             _items.Clear();

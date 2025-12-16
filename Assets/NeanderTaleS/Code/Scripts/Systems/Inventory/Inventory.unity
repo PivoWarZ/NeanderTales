@@ -870,7 +870,6 @@ GameObject:
   - component: {fileID: 789037430}
   - component: {fileID: 789037429}
   - component: {fileID: 789037432}
-  - component: {fileID: 789037433}
   m_Layer: 5
   m_Name: InventoryPopup
   m_TagString: Untagged
@@ -973,26 +972,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 789037427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d266576b164babbf8c8488ab2a4712, type: 3}
+  m_Script: {fileID: 11500000, guid: a98accd9eaf94f36ae8b518f1327cd03, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.Inventory.InventoryPopup.InventoryPopup
-  _bags: {fileID: 765215061}
---- !u!114 &789037433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789037427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bbfe4f3666a475fb92bd818bfc21b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.Inventory.InventoryPopup.Scaler
-  _scaleObjects:
-  - {fileID: 756237629}
-  - {fileID: 396352292}
-  - {fileID: 1303764239}
+  m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.Inventory.popup.InventoryPopup
+  _bagsCreator:
+    _bags: {fileID: 765215061}
+  _scaler:
+    _scaleObjects: []
 --- !u!1 &1029624421
 GameObject:
   m_ObjectHideFlags: 0
