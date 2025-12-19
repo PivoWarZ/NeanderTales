@@ -39,16 +39,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             var config = Resources.Load<InventoryConfig>("InventoryConfig");
             
             _bagsCreator.Initialize(config, _inventory);
+            
+            var infoPopupAdapter = new ItemInfoPopupAdapter(_itemInfoView);
 
-            CreateGridObservers();
+            CreateGridObservers(infoPopupAdapter);
         }
 
-        private void CreateGridObservers()
+        private void CreateGridObservers(ItemInfoPopupAdapter infoPopupAdapter)
         {
             var left_click = new GridClickObserver_LeftClick();
             _dispose.Add(left_click);
             
-            var right_click = new GridObserver_RightClick(_itemInfoView);
+            var right_click = new GridObserver_RightClick(infoPopupAdapter);
             _dispose.Add(right_click);
         }
 

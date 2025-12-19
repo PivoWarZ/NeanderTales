@@ -6,13 +6,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 {
     public sealed class GridObserver_RightClick: IDisposable
     {
-        private InventoryItemInfoView _infoView;
         private ItemInfoPopupAdapter _infoAdapter;
 
-        public GridObserver_RightClick(InventoryItemInfoView infoView)
+        public GridObserver_RightClick(ItemInfoPopupAdapter infoAdapter)
         {
-            _infoView = infoView;
-            _infoAdapter = new ItemInfoPopupAdapter(_infoView);
+            _infoAdapter = infoAdapter;
             Subscribe();
         }
 
