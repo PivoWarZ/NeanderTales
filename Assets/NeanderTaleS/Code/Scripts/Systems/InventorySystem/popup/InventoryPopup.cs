@@ -59,6 +59,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             _inventory.OnItemAdded -= Refresh;
             _dispose.Dispose();
             Bag.Grids.Clear();
+            _bagsCreator.Dispose();
         }
     }
 }

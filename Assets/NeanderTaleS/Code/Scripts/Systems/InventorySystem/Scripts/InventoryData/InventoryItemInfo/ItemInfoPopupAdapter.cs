@@ -18,6 +18,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _view.CloseButton.onClick.AddListener(HideInfoPopup);
             _view.EquipButton.onClick.AddListener(EquipButtonClick);
             _view.TrowAwayButton.onClick.AddListener(TrowInButtonClick);
+
+            Bag.OnGridActivated += RefreshItemInfoPopup;
+        }
+
+        public void RefreshItemInfoPopup(GridItem grid)
+        {
+            if(grid.IsGridInitializing)
+                InitView(grid.InventoryItem);
         }
 
         private void EquipButtonClick()
@@ -30,17 +38,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             EquippedItems.Remove(_item);
         }
 
-        public void HideInfoPopup()
+        private void HideInfoPopup()
         {
             _view.gameObject.SetActive(false);
         }
 
         public void ShowInfoPopup()
         {
-            _view.gameObject.SetActive(true);
+            if(Bag.ActiveGrid.IsGridInitializing)
+                _view.gameObject.SetActive(true);
         }
 
-        public void InitView(InventoryItem item)
+        private void InitView(InventoryItem item)
         {
             _item = item;
 

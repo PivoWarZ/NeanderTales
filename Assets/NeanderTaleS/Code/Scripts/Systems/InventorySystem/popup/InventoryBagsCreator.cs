@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 {
     [Serializable]
-    public class InventoryBagsCreator
+    public class InventoryBagsCreator: IDisposable
     {
         [SerializeField] private GameObject _bags;
         [SerializeField] private Image _bagsBackground;
@@ -37,13 +37,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 return;
             }
             
-            //Clear();
-            
             DetermineDimensionsAndIndentsBag();
             CreateInventoryGrid();
             SetGridAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
             InitializeInventoryGrid(inventory);
+            HideSpritesFromNonActiveGrid();
         }
 
         private void DetermineDimensionsAndIndentsBag()
@@ -135,19 +134,20 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             }
         }
 
-        private void Clear()
+        private void HideSpritesFromNonActiveGrid()
         {
             foreach (var gridItem in _items)
             {
-                Object.Destroy(gridItem.gameObject);
+                if(gridItem.IsGridInitializing)
+                    continue;
+                
+                gridItem.Icon.enabled = false;
             }
-            
-            _items.Clear();
         }
 
-        private void OnDestroy()
+        public void Dispose()
         {
-            Clear();
+            _items.Clear();
         }
     }
 }

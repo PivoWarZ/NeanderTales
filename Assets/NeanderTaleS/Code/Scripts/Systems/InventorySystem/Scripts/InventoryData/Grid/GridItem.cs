@@ -31,6 +31,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public Button Button => _button;
 
         public InventoryItem InventoryItem => _item;
+        public bool IsGridInitializing => _item != null;
+
+        public Image Icon => _icon;
 
         private void Awake()
         {
@@ -40,6 +43,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public void Initialize(InventoryItem item)
         {
             _item = item;
+            _icon.enabled = true;
             _icon.sprite = _item.Meta.Icon;
             gameObject.name = _item.Meta.Name;
         }

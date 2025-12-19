@@ -39,7 +39,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         private void InitializeItemInfoPupup(GridItem item)
         {
             _infoAdapter.ShowInfoPopup();
-            _infoAdapter.InitView(item.InventoryItem);
+            _infoAdapter.RefreshItemInfoPopup(item);
         }
 
         public void Dispose()
