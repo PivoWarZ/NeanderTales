@@ -4,6 +4,7 @@ using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 
@@ -12,7 +13,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
     [Serializable]
     public class InventoryBagsCreator
     {
-        [SerializeField] private BagsProvider _bags;
+        [SerializeField] private GameObject _bags;
+        [SerializeField] private Image _bagsBackground;
         
         private List<GridItem> _items = new ();
         private InventoryConfig _config;
@@ -39,7 +41,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             
             CreateInventoryBags();
             CreateInventoryGrid();
-            SetAnchorsTopLeftPosition();
+            SetGridAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
             InitializeInventoryGrid(inventory);
         }
@@ -72,7 +74,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
                 for (int j = 0; j < _config.WidthCount; j++)
                 {
-                    var grid = Object.Instantiate(_config.Grid, _bags.transform);
+                    var grid = Object.Instantiate(_config.Grid, _bagsBackground.transform);
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
 
                     gridRectTransform.sizeDelta = new Vector2(_minSize, _minSize);
@@ -95,21 +97,27 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         }
         
         [Button]
-        private void SetAnchorsTopLeftPosition()
+        private void SetGridAnchorsTopLeftPosition()
         {
             foreach (var gridItem in _items)
             {
                 var rect = gridItem.GetComponent<RectTransform>();
-                rect.anchorMin = new Vector2(0, 1);
-                rect.anchorMax = new Vector2(0, 1);
+                SetAnchorsTopLeftPosition(rect);
             }
+        }
+
+        private void SetAnchorsTopLeftPosition(RectTransform rect)
+        {
+            rect.anchorMin = new Vector2(0, 1);
+            rect.anchorMax = new Vector2(0, 1);
         }
 
         private void SetBagsBackgroundSize()
         {
-            var image = _bags.Background;
-            var rect = image.GetComponent<RectTransform>();
+            var rect = _bagsBackground.GetComponent<RectTransform>();
             var padding = _config.BagsContentPadding * 2;
+            
+            SetAnchorsTopLeftPosition(rect);
             
             rect.sizeDelta = new Vector2(_minSize * _config.WidthCount + padding, _minSize * _config.HeightCount + padding);
         }
