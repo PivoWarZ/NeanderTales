@@ -37,7 +37,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 return;
             }
             
-            Clear();
+            //Clear();
             
             DetermineDimensionsAndIndentsBag();
             CreateInventoryGrid();
@@ -68,6 +68,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         private void CreateInventoryGrid()
         {
             float offsetY = _minPadding;
+            Queue<GridItem> gridsQueue = new Queue<GridItem>(Bag.Grids);
             
             for (int i = 0; i < _config.HeightCount; i++)
             {
@@ -75,7 +76,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
                 for (int j = 0; j < _config.WidthCount; j++)
                 {
-                    var grid = Object.Instantiate(_config.Grid, _bagsBackground.transform);
+                    gridsQueue.TryDequeue(out var item);
+                    
+                    var grid = !item ? Object.Instantiate(_config.Grid, _bagsBackground.transform) : item;
                     
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
 
@@ -93,7 +96,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                         offsetY += gridRectTransform.sizeDelta.y;
                     }
                     
-                    Bag.Grids.Add(grid);
+                    if(!item)
+                        Bag.Grids.Add(grid);
                 }
             }
         }
