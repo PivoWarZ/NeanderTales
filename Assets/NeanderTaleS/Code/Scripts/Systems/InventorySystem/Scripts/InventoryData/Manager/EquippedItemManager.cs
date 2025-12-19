@@ -4,7 +4,6 @@ using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.EquipPopup;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
-using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.EquipItemClickObservers;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Servises;
 using Zenject;
@@ -15,15 +14,15 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     {
         private EquipPopupView _view;
         private ActiveGridService _activeGridService;
-        private ItemInfoPopupAdapter _infoPopupAdapter;
+        //private ItemInfoPopupAdapter _infoPopupAdapter;
         private EquipItemEffectObserver _equipItemEffectObserver;
         private InventoryBase.Inventory _inventory;
         private EquipClickObserver _clickObserver;
         private Dictionary<InventoryItem, GridItem> _equippedItems = new ();
 
-        public EquippedItemManager(ItemInfoPopupAdapter infoPopupAdapter, EquipPopupView view, ActiveGridService activeGridService)
+        public EquippedItemManager(EquipPopupView view, ActiveGridService activeGridService)
         {
-            _infoPopupAdapter = infoPopupAdapter;
+           // _infoPopupAdapter = infoPopupAdapter;
             _view = view;
             _activeGridService = activeGridService;
         }
@@ -38,7 +37,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         void IInitializable.Initialize()
         {
             _clickObserver = new EquipClickObserver();
-            _clickObserver.Init(_infoPopupAdapter, _activeGridService);
+          // _clickObserver.Init(_infoPopupAdapter, _activeGridService);
             _clickObserver.OnUnequipItem += UnequipItem;
             
             _view.OnItemEquipped += EquipItem;
@@ -51,7 +50,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _inventory.RemoveItem(item);
             _clickObserver.AddEquipItem(grid);
             _equipItemEffectObserver.OnItemAdded(item);
-            _infoPopupAdapter.InitView(item, true);
+          //  _infoPopupAdapter.InitView(item, true);
             _equippedItems.Add(item, grid);
         }
 
@@ -62,7 +61,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             grid.gameObject.SetActive(false);
             _equippedItems.Remove(item);
             _equipItemEffectObserver.OnItemRemoved(item);
-            _infoPopupAdapter.HideInfoPopup();
+          //  _infoPopupAdapter.HideInfoPopup();
             _inventory.AddItem(item.Clone());
         }
 
@@ -71,7 +70,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _equippedItems[item].gameObject.SetActive(false);
             _equippedItems.Remove(item);
             _equipItemEffectObserver.OnItemRemoved(item);
-            _infoPopupAdapter.HideInfoPopup();
+          //  _infoPopupAdapter.HideInfoPopup();
         }
 
         public void Unequip(InventoryItem inventoryItem)

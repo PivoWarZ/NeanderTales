@@ -1,66 +1,44 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 {
-    [Serializable]
-    public class Scaler: IDisposable
+    public class Scaler: MonoBehaviour
     {
-        [SerializeField] List<RectTransform> _scaleObjects;
-        private Dictionary<RectTransform, Vector2> _scaleSize = new Dictionary<RectTransform, Vector2>();
-        private RectTransform _rect;
-        private RectTransform _popupRect;
-        private Vector2 _size;
+        private List<ScaleObject> _objects = new List<ScaleObject>();
+        private RectTransform _rectTransform;
+        private Vector2 _scale;
 
-        public void Initialize(List<Image> objs, RectTransform inventiryPopupRect)
+        private void Awake()
         {
-            _rect = inventiryPopupRect;
-            _size = _rect.sizeDelta;
-            
-            AddScaleObjects(objs);
-
-            foreach (var gridItem in _scaleObjects)
-            {
-                _scaleSize[gridItem] = gridItem.sizeDelta;
-            }
+            _rectTransform = GetComponent<RectTransform>();
+            _objects = GetComponentsInChildren<ScaleObject>().ToList();
+            _scale = _rectTransform.sizeDelta;
+            Debug.Log(_scale);
         }
 
-        public void OnRectTransformDimensionsChange()
+        void OnRectTransformDimensionsChange()
         {
-            if (!_rect || _size == Vector2.zero)
+            if (!_rectTransform)
             {
                 return;
             }
 
-            var deltaX = _rect.sizeDelta.x / _size.x;
-            var deltaY = _rect.sizeDelta.y / _size.y;
+            Vector2 size = _rectTransform.sizeDelta;
             
-            foreach (var gridItem in _scaleObjects)
+            //Vector2 baseSize = new Vector2(100, 100);
+            
+            var scale = new Vector2(size.x / _scale.x, size.y / _scale.y);
+            Debug.Log(scale);
+            
+
+            foreach (var scaleObject in _objects)
             {
-                var scale = _scaleSize[gridItem];
-                gridItem.sizeDelta = new Vector2(scale.x * deltaX, scale.y * deltaY);
+                scaleObject.SetNewRecttransformSize(scale.x, scale.y);
             }
-        }
-
-        public void AddScaleObject(RectTransform obj)
-        {
-            _scaleObjects.Add(obj);
-        }
-
-        public void AddScaleObjects(List<Image> objs)
-        {
-            foreach (var image in objs)
-            {
-                var imageRectTransform = image.GetComponent<RectTransform>();
-                _scaleObjects.Add(imageRectTransform);
-            }
-        }
-
-        public void Dispose()
-        {
-            _scaleObjects.Clear();
+            
+           // _scale = new Vector2(size.x, size.y);
         }
     }
 }

@@ -1,7 +1,5 @@
-using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Interfaces;
-using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup

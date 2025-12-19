@@ -12,17 +12,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
     public class InventoryPopup:MonoBehaviour
     {
         [SerializeField] private InventoryBagsCreator _bagsCreator;
-        [SerializeField] private Scaler _scaler;
-        private Inventory _inventory;
-        private readonly GridsStorage _gridsStorage = new ();
+        private Scripts.InventoryData.InventoryBase.Inventory _inventory;
         private CompositeDisposable _dispose = new ();
 
-        private void Awake()
-        {
-            _bagsCreator.OnGridCreated += _gridsStorage.AddItem;
-        }
-
-        public void SetInventory(Inventory inventory)
+        public void SetInventory(Scripts.InventoryData.InventoryBase.Inventory inventory)
         {
             _inventory = inventory;
             _inventory.OnItemAdded += Refresh;
@@ -31,7 +24,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         void OnRectTransformDimensionsChange()
         {
-            _scaler.OnRectTransformDimensionsChange();
             _bagsCreator.UpdateInventoryBags(_inventory);
         }
 
@@ -42,30 +34,24 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         private void BootsTrap()
         {
-            var rect = GetComponent<RectTransform>();
             var config = Resources.Load<InventoryConfig>("InventoryConfig");
-            var scalers = GetComponentsInChildren<Image>().ToList();
             
             _bagsCreator.Initialize(config, _inventory);
-            _scaler.Initialize(scalers, rect);
 
-            CreateGridObservers(_gridsStorage);
-            
-            _dispose.Add(_gridsStorage);
-            _dispose.Add(_scaler);
+            CreateGridObservers();
         }
 
-        private void CreateGridObservers(GridsStorage storage)
+        private void CreateGridObservers()
         {
-            var left_click = new GridClickObserver_LeftClick(storage);
+            var left_click = new GridClickObserver_LeftClick();
             _dispose.Add(left_click);
         }
 
         private void OnDestroy()
         {
-            _bagsCreator.OnGridCreated -= _gridsStorage.AddItem;
             _inventory.OnItemAdded -= Refresh;
             _dispose.Dispose();
+            Bag.Grids.Clear();
         }
     }
 }

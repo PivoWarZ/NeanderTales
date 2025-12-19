@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Servises;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.EquipItemClickObservers
@@ -10,12 +9,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     {
         public event Action<GridItem> OnUnequipItem;
         private ActiveGridService _activeGridService;
-        private ItemInfoPopupAdapter _infoPopupAdapter;
+       //private ItemInfoPopupAdapter _infoPopupAdapter;
         private List<GridItem> _items = new ();
 
-        public void Init(ItemInfoPopupAdapter popupAdapter, ActiveGridService activeGridService)
+        public void Init(ActiveGridService activeGridService)
         {
-            _infoPopupAdapter = popupAdapter;
+           // _infoPopupAdapter = popupAdapter;
             _activeGridService = activeGridService;
         }
 
@@ -49,8 +48,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         {
             var item = grid.InventoryItem;
             
-            _infoPopupAdapter.InitView(item, true);
-            _infoPopupAdapter.ShowInfoPopup();
+         //   _infoPopupAdapter.InitView(item, true);
+           // _infoPopupAdapter.ShowInfoPopup();
             
             ActivateGrid(grid);
         }

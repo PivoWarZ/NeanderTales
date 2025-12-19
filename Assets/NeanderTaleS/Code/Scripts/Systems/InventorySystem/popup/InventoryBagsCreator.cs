@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
-using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -13,8 +12,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
     [Serializable]
     public class InventoryBagsCreator
     {
-        public event Action<GridItem> OnGridCreated;
-        
         [SerializeField] private BagsProvider _bags;
         
         private List<GridItem> _items = new ();
@@ -23,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         private float _minPadding;
         private bool _isInitializing = false;
 
-        public void Initialize(InventoryConfig config, Inventory inventory)
+        public void Initialize(InventoryConfig config, Scripts.InventoryData.InventoryBase.Inventory inventory)
         {
             _config = config;
             _isInitializing = true;
@@ -31,7 +28,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             UpdateInventoryBags(inventory);
         }
 
-        public void UpdateInventoryBags(Inventory inventory)
+        public void UpdateInventoryBags(Scripts.InventoryData.InventoryBase.Inventory inventory)
         {
             if (!_isInitializing)
             {
@@ -92,7 +89,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                         offsetY += gridRectTransform.sizeDelta.y;
                     }
                     
-                    OnGridCreated?.Invoke(grid);
+                    Bag.Grids.Add(grid);
                 }
             }
         }
@@ -117,7 +114,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             rect.sizeDelta = new Vector2(_minSize * _config.WidthCount + padding, _minSize * _config.HeightCount + padding);
         }
 
-        private void InitializeInventoryGrid(Inventory inventory)
+        private void InitializeInventoryGrid(Scripts.InventoryData.InventoryBase.Inventory inventory)
         {
             for (int i = 0; i < inventory.Items.Count; i++ )
             {

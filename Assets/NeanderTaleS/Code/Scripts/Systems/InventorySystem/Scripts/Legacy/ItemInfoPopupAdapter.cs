@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 
@@ -45,20 +45,20 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         {
             _item = item;
             _isEquipped = isEquip;
-            InfoStruct info = new InfoStruct();
+            ItemInfo itemInfo = new ItemInfo();
 
             if (item.Flags.HasFlag(InventoryItemFlags.Equipable))
             {
-                info.EquipButtonText = "Equip";
+                itemInfo.EquipButtonText = "Equip";
             }
             else
             {
-                info.EquipButtonText = "Use item";
+                itemInfo.EquipButtonText = "Use item";
             }
 
             if (isEquip)
             {
-                info.EquipButtonText = "Unequip";
+                itemInfo.EquipButtonText = "Unequip";
             }
 
             if (item.Flags.HasFlag(InventoryItemFlags.Effectable))
@@ -70,12 +70,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 _view.EquipButton.gameObject.SetActive(true);
             }
 
-            info.Name = item.Meta.Name;
-            info.Description = item.Meta.Description;
-            info.Icon = item.Meta.Icon;
-            info.StatsText = SetStatsText(item);
+            itemInfo.Name = item.Meta.Name;
+            itemInfo.Description = item.Meta.Description;
+            itemInfo.Icon = item.Meta.Icon;
+            itemInfo.StatsText = SetStatsText(item);
             
-            _view.Init(info);
+            _view.Init(itemInfo);
         }
         
 
@@ -133,4 +133,4 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _view.TrowAwayButton.onClick.RemoveListener(TrowInButtonClick);
         }
     }
-}
+}*/

@@ -5,7 +5,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     public sealed class EquipItemAdapter
     {
         private readonly EquipPopupView _view;
-        private string _bodyPart;
 
         public EquipItemAdapter(EquipPopupView view)
         {

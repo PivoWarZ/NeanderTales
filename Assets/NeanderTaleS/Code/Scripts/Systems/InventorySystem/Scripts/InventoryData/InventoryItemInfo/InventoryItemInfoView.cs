@@ -10,7 +10,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         [SerializeField] private TMP_Text _name;
         [SerializeField] private TMP_Text _description;
         [SerializeField] private TMP_Text _equipButtonText;
-        [SerializeField] private TMP_Text _staText;
+        [SerializeField] private TMP_Text _statsText;
         [SerializeField] private Button _equipButton;
         [SerializeField] private Button _trowAwayButton;
         [SerializeField] private Button _closeButton;
@@ -22,13 +22,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public Button CloseButton => _closeButton;
 
-        public void Init(InfoStruct info)
+        public void Init(ItemInfo itemInfo)
         {
-            _name.text = info.Name;
-            _description.text = info.Description;
-            _icon.sprite = info.Icon;
-            _equipButtonText.text = info.EquipButtonText;
-            _staText.text = info.StatsText;
+            _name.text = itemInfo.Name;
+            _description.text = itemInfo.Description;
+            _icon.sprite = itemInfo.Icon;
+            _equipButtonText.text = itemInfo.EquipButtonText;
+            _statsText.text = itemInfo.StatsText;
         }
     }
 }

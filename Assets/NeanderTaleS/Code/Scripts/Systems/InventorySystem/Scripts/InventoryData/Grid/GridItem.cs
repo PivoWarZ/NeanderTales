@@ -97,6 +97,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             }
         }
 
+        public bool IsActive()
+        {
+            return _activeFrame.gameObject.activeSelf;
+        }
+
         private void OnDestroy()
         {
             OnGridDestroyed?.Invoke(this);

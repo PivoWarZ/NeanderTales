@@ -1,4 +1,4 @@
-using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Interfaces;
+/*using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Interfaces;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.EquipPopup;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Manager;
@@ -6,7 +6,7 @@ using Zenject;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
-    public sealed class ItemInfoController: IInitializable, IInventoryInitializable
+    public sealed class ItemInfoController
     {
         private readonly ItemInfoPopupAdapter _infoPopupAdapter;
         private readonly EquipItemAdapter _equipAdapter;
@@ -62,4 +62,4 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             }
         }
     }
-}
+}*/
