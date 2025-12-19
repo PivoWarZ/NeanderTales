@@ -1,5 +1,4 @@
 using System.Linq;
-using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;

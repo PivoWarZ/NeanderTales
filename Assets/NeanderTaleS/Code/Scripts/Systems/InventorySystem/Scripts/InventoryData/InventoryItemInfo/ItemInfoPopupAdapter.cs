@@ -1,14 +1,13 @@
 using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
     public sealed class ItemInfoPopupAdapter: IDisposable
     {
-        public event Action<InventoryItem, bool> OnEquipButtonClick;
-        public event Action<InventoryItem, bool> OnTrowAwayButtonClick;
-        
         private InventoryItemInfoView _view;
         private InventoryItem _item;
         private bool _isEquipped;
@@ -23,12 +22,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         private void EquipButtonClick()
         {
-            OnEquipButtonClick?.Invoke(_item, _isEquipped);
+            EquippedItems.Add(_item);
         }
 
         private void TrowInButtonClick()
         {
-            OnTrowAwayButtonClick?.Invoke(_item, _isEquipped);
+            EquippedItems.Remove(_item);
         }
 
         public void HideInfoPopup()
@@ -41,10 +40,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _view.gameObject.SetActive(true);
         }
 
-        public void InitView(InventoryItem item, bool isEquip = false)
+        public void InitView(InventoryItem item)
         {
             _item = item;
-            _isEquipped = isEquip;
+
             ItemInfo itemInfo = new ItemInfo();
 
             if (item.Flags.HasFlag(InventoryItemFlags.Equipable))
@@ -56,7 +55,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 itemInfo.EquipButtonText = "Use item";
             }
 
-            if (isEquip)
+            if (EquippedItems.IsItemEquipped(_item))
             {
                 itemInfo.EquipButtonText = "Unequip";
             }

@@ -1,9 +1,8 @@
-
 using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo;
 
-namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers
+namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.GridObservers
 {
     public sealed class GridObserver_RightClick: IDisposable
     {
@@ -21,7 +20,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Obse
         {
             foreach (var gridItem in Bag.Grids)
             {
-                gridItem.OnGridRightClicked += InitializeItemInfoPupup;
+                gridItem.OnGridRightClicked += SwitchActiveGridAndInitializeInfoPopup;
             }
         }
 
@@ -29,8 +28,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Obse
         {
             foreach (var gridItem in Bag.Grids)
             {
-                gridItem.OnGridRightClicked -= InitializeItemInfoPupup;
+                gridItem.OnGridRightClicked -= SwitchActiveGridAndInitializeInfoPopup;
             }
+        }
+
+        private void SwitchActiveGridAndInitializeInfoPopup(GridItem item)
+        {
+            Bag.SwitchActiveGrid(item);
+            InitializeItemInfoPupup(item);
         }
 
         private void InitializeItemInfoPupup(GridItem item)
