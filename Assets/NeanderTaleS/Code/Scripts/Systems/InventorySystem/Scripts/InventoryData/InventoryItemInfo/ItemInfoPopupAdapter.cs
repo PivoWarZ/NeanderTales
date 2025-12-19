@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 
@@ -133,4 +133,4 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _view.TrowAwayButton.onClick.RemoveListener(TrowInButtonClick);
         }
     }
-}*/
+}

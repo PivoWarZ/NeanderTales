@@ -1,7 +1,9 @@
 using System.Linq;
+using NeanderTaleS.Code.Scripts.Systems.Inventory.Scripts.InventoryData.Observers.GridObservers;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.GridObservers;
 using R3;
 using UnityEngine;
@@ -12,6 +14,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
     public class InventoryPopup:MonoBehaviour
     {
         [SerializeField] private InventoryBagsCreator _bagsCreator;
+        [SerializeField] private InventoryItemInfoView _itemInfoView;
         private Scripts.InventoryData.InventoryBase.Inventory _inventory;
         private CompositeDisposable _dispose = new ();
 
@@ -45,6 +48,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         {
             var left_click = new GridClickObserver_LeftClick();
             _dispose.Add(left_click);
+            
+            var right_click = new GridObserver_RightClick(_itemInfoView);
+            _dispose.Add(right_click);
         }
 
         private void OnDestroy()

@@ -39,14 +39,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             
             Clear();
             
-            CreateInventoryBags();
+            DetermineDimensionsAndIndentsBag();
             CreateInventoryGrid();
             SetGridAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
             InitializeInventoryGrid(inventory);
         }
 
-        private void CreateInventoryBags()
+        private void DetermineDimensionsAndIndentsBag()
         {
             var padding = _config.BagsContentPadding;
             
@@ -63,7 +63,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             
             _minPadding = Mathf.Min(paddingX, paddingY);
         }
-
+        
+        [Button]
         private void CreateInventoryGrid()
         {
             float offsetY = _minPadding;
@@ -75,6 +76,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 for (int j = 0; j < _config.WidthCount; j++)
                 {
                     var grid = Object.Instantiate(_config.Grid, _bagsBackground.transform);
+                    
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
 
                     gridRectTransform.sizeDelta = new Vector2(_minSize, _minSize);
@@ -95,8 +97,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 }
             }
         }
-        
-        [Button]
+
         private void SetGridAnchorsTopLeftPosition()
         {
             foreach (var gridItem in _items)
