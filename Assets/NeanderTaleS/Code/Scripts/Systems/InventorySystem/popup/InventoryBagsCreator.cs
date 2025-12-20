@@ -40,15 +40,25 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 return;
             }
             
+            InstallGrids();
+            InitializeGrids();
+            
+            Debug.Log("UpdateInventoryBags");
+        }
+
+        private void InstallGrids()
+        {
             DetermineDimensionsAndIndentsBag();
             CreateInventoryGrid();
             SetGridAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
+        }
+
+        public void InitializeGrids()
+        {
             DeinitializeGrid();
             InitializeInventoryGrid(_inventory);
             HideSpritesFromNonActiveGrid();
-            
-            Debug.Log("UpdateInventoryBags");
         }
 
         private void DetermineDimensionsAndIndentsBag()

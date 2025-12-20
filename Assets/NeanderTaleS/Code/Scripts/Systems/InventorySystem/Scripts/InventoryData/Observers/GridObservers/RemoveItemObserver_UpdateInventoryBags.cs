@@ -28,7 +28,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         private void UpdateInventoryBags(InventoryItem _)
         {
-            _inventoryBagsCreator.UpdateInventoryBags();
+            _inventoryBagsCreator.InitializeGrids();
         }
 
         public void Dispose()
