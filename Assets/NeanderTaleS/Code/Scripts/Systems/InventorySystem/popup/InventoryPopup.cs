@@ -1,4 +1,3 @@
-using System.Linq;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
@@ -6,7 +5,6 @@ using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.In
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.GridObservers;
 using R3;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 {
@@ -14,10 +12,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
     {
         [SerializeField] private InventoryBagsCreator _bagsCreator;
         [SerializeField] private InventoryItemInfoView _itemInfoView;
-        private Scripts.InventoryData.InventoryBase.Inventory _inventory;
+        private Inventory _inventory;
         private CompositeDisposable _dispose = new ();
 
-        public void SetInventory(Scripts.InventoryData.InventoryBase.Inventory inventory)
+        public void SetInventory(Inventory inventory)
         {
             _inventory = inventory;
             _inventory.OnItemAdded += Refresh;
@@ -26,12 +24,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         void OnRectTransformDimensionsChange()
         {
-            _bagsCreator.UpdateInventoryBags(_inventory);
+            _bagsCreator.UpdateInventoryBags();
         }
 
         private void Refresh(InventoryItem _)
         {
-            _bagsCreator.UpdateInventoryBags(_inventory);
+            _bagsCreator.UpdateInventoryBags();
         }
 
         private void BootsTrap()
@@ -41,17 +39,24 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             _bagsCreator.Initialize(config, _inventory);
             
             var infoPopupAdapter = new ItemInfoPopupAdapter(_itemInfoView);
+            _dispose.Add(infoPopupAdapter);
+            
+            var itemInfoButtonCliclListener = new ItemInfoButtonsClickListener(_itemInfoView, _inventory);
+            _dispose.Add(itemInfoButtonCliclListener);
 
-            CreateGridObservers(infoPopupAdapter);
+            CreateGridObservers(infoPopupAdapter, _bagsCreator, _inventory);
         }
 
-        private void CreateGridObservers(ItemInfoPopupAdapter infoPopupAdapter)
+        private void CreateGridObservers(ItemInfoPopupAdapter infoPopupAdapter, InventoryBagsCreator bagsCreator, Inventory inventory)
         {
             var left_click = new GridClickObserver_LeftClick();
             _dispose.Add(left_click);
             
             var right_click = new GridObserver_RightClick(infoPopupAdapter);
             _dispose.Add(right_click);
+
+            var gridReset = new RemoveItemObserver_UpdateInventoryBags(bagsCreator, inventory);
+            _dispose.Add(gridReset);
         }
 
         private void OnDestroy()

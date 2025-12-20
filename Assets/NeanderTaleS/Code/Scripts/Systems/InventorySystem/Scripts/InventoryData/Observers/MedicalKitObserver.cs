@@ -8,7 +8,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 {
     public sealed class MedicalKitObserver: IDisposable, IInventoryInitializable
     {
-        private InventoryBase.Inventory _inventory;
+        private Inventory _inventory;
         private ICharacterStatsSetter _setStats;
 
         void IInventoryInitializable.Initialize(IInventoryComponent inventoryComponent)

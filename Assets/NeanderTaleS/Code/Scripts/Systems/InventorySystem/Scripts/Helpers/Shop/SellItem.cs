@@ -17,7 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Helpers.Shop
 
         private void ItemSelected()
         {
-            OnItemSelected?.Invoke(this.gameObject);
+            OnItemSelected?.Invoke(gameObject);
         }
     }
 }

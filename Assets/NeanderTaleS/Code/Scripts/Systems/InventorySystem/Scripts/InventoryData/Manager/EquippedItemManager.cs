@@ -16,7 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         private ActiveGridService _activeGridService;
         //private ItemInfoPopupAdapter _infoPopupAdapter;
         private EquipItemEffectObserver _equipItemEffectObserver;
-        private InventoryBase.Inventory _inventory;
+        private Inventory _inventory;
         private EquipClickObserver _clickObserver;
         private Dictionary<InventoryItem, GridItem> _equippedItems = new ();
 

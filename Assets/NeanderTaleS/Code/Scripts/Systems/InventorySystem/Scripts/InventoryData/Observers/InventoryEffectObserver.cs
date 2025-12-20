@@ -9,7 +9,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     public sealed class InventoryEffectObserver: IInventoryEffectObserver, IDisposable, IInventoryInitializable
     {
         private ICharacterStatsSetter _setStats;
-        private InventoryBase.Inventory _inventory;
+        private Inventory _inventory;
         
         void IInventoryInitializable.Initialize(IInventoryComponent inventoryComponent)
         {

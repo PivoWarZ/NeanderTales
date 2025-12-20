@@ -29,7 +29,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Helpers.Shop
 
         private void SoldItem(GameObject item)
         {
-            Debug.Log($"{GetType().Name}: Sold {item}");
             var sellItem = _sellItems[item].Clone();
             OnItemSold?.Invoke(sellItem);
         }

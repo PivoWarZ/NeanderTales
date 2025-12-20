@@ -2,7 +2,6 @@ using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
-using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
@@ -15,58 +14,40 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public ItemInfoPopupAdapter(InventoryItemInfoView view)
         {
             _view = view;
-            _view.CloseButton.onClick.AddListener(HideInfoPopup);
-            _view.EquipButton.onClick.AddListener(EquipButtonClick);
-            _view.TrowAwayButton.onClick.AddListener(TrowInButtonClick);
 
             Bag.OnGridActivated += RefreshItemInfoPopup;
         }
 
         public void RefreshItemInfoPopup(GridItem grid)
         {
-            if(grid.IsGridInitializing)
+            if(grid.IsInitialising)
                 InitView(grid.InventoryItem);
-        }
-
-        private void EquipButtonClick()
-        {
-            EquippedItems.Add(_item);
-        }
-
-        private void TrowInButtonClick()
-        {
-            EquippedItems.Remove(_item);
-        }
-
-        private void HideInfoPopup()
-        {
-            _view.gameObject.SetActive(false);
         }
 
         public void ShowInfoPopup()
         {
-            if(Bag.ActiveGrid.IsGridInitializing)
-                _view.gameObject.SetActive(true);
+            _view.gameObject.SetActive(true);
         }
 
         private void InitView(InventoryItem item)
         {
             _item = item;
 
-            ItemInfo itemInfo = new ItemInfo();
+            ItemViewInfo itemViewInfo = new ItemViewInfo();
+            itemViewInfo.Item = item;
 
             if (item.Flags.HasFlag(InventoryItemFlags.Equipable))
             {
-                itemInfo.EquipButtonText = "Equip";
+                itemViewInfo.EquipButtonText = "Equip";
             }
             else
             {
-                itemInfo.EquipButtonText = "Use item";
+                itemViewInfo.EquipButtonText = "Use item";
             }
 
             if (EquippedItems.IsItemEquipped(_item))
             {
-                itemInfo.EquipButtonText = "Unequip";
+                itemViewInfo.EquipButtonText = "Unequip";
             }
 
             if (item.Flags.HasFlag(InventoryItemFlags.Effectable))
@@ -77,16 +58,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             {
                 _view.EquipButton.gameObject.SetActive(true);
             }
-
-            itemInfo.Name = item.Meta.Name;
-            itemInfo.Description = item.Meta.Description;
-            itemInfo.Icon = item.Meta.Icon;
-            itemInfo.StatsText = SetStatsText(item);
             
-            _view.Init(itemInfo);
+            itemViewInfo.StatsText = SetStatsText(item);
+            
+            _view.Init(itemViewInfo);
         }
         
-
         private string SetStatsText(InventoryItem item)
         {
             string stats = string.Empty;
@@ -136,9 +113,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public void Dispose()
         {
-            _view.CloseButton.onClick.RemoveListener(HideInfoPopup);
-            _view.EquipButton.onClick.RemoveListener(EquipButtonClick);
-            _view.TrowAwayButton.onClick.RemoveListener(TrowInButtonClick);
+            Bag.OnGridActivated -= RefreshItemInfoPopup;
         }
     }
 }

@@ -16,7 +16,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.Helpers.Shop
         private void AddInventoryItem(InventoryItem item)
         {
             _hero.Inventory.AddItem(item.Clone());
-            Debug.Log($"{GetType().Name}: Added to inventory {item.Id}");
         }
 
         private void OnDestroy()

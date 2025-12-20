@@ -1,3 +1,4 @@
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         [SerializeField] private Button _trowAwayButton;
         [SerializeField] private Button _closeButton;
         [SerializeField] private Image _icon;
+        private InventoryItem _item;
 
         public Button EquipButton => _equipButton;
 
@@ -22,13 +24,16 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public Button CloseButton => _closeButton;
 
-        public void Init(ItemInfo itemInfo)
+        public InventoryItem Item => _item;
+
+        public void Init(ItemViewInfo itemViewInfo)
         {
-            _name.text = itemInfo.Name;
-            _description.text = itemInfo.Description;
-            _icon.sprite = itemInfo.Icon;
-            _equipButtonText.text = itemInfo.EquipButtonText;
-            _statsText.text = itemInfo.StatsText;
+            _item = itemViewInfo.Item;
+            _name.text = itemViewInfo.Item.Meta.Name;
+            _description.text = itemViewInfo.Item.Meta.Description;
+            _icon.sprite = itemViewInfo.Item.Meta.Icon;
+            _equipButtonText.text = itemViewInfo.EquipButtonText;
+            _statsText.text = itemViewInfo.StatsText;
         }
     }
 }

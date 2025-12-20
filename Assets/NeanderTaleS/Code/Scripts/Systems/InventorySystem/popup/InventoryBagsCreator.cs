@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,19 +19,21 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         
         private List<GridItem> _items = new ();
         private InventoryConfig _config;
+        private Inventory _inventory;
         private float _minSize;
         private float _minPadding;
         private bool _isInitializing = false;
 
-        public void Initialize(InventoryConfig config, Scripts.InventoryData.InventoryBase.Inventory inventory)
+        public void Initialize(InventoryConfig config, Inventory inventory)
         {
             _config = config;
             _isInitializing = true;
+            _inventory = inventory;
             
-            UpdateInventoryBags(inventory);
+            UpdateInventoryBags();
         }
 
-        public void UpdateInventoryBags(Scripts.InventoryData.InventoryBase.Inventory inventory)
+        public void UpdateInventoryBags()
         {
             if (!_isInitializing)
             {
@@ -41,8 +44,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             CreateInventoryGrid();
             SetGridAnchorsTopLeftPosition();
             SetBagsBackgroundSize();
-            InitializeInventoryGrid(inventory);
+            DeinitializeGrid();
+            InitializeInventoryGrid(_inventory);
             HideSpritesFromNonActiveGrid();
+            
+            Debug.Log("UpdateInventoryBags");
         }
 
         private void DetermineDimensionsAndIndentsBag()
@@ -138,10 +144,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         {
             foreach (var gridItem in _items)
             {
-                if(gridItem.IsGridInitializing)
+                if(gridItem.IsInitialising)
                     continue;
                 
                 gridItem.Icon.enabled = false;
+            }
+        }
+
+        private void DeinitializeGrid()
+        {
+            foreach (var gridItem in _items)
+            {
+                gridItem.Reset();
             }
         }
 

@@ -32,6 +32,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         private void SwitchActiveGridAndInitializeInfoPopup(GridItem item)
         {
+            
             Bag.SwitchActiveGrid(item);
             InitializeItemInfoPupup(item);
         }

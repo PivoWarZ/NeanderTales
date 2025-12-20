@@ -1,12 +1,11 @@
-using UnityEngine;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
+
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
-    public struct ItemInfo
+    public struct ItemViewInfo
     {
-        public string Name;
-        public string Description;
-        public Sprite Icon;
+        public InventoryItem Item;
         public string EquipButtonText;
         public string StatsText;
     }

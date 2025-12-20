@@ -17,6 +17,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public event Action<GridItem> OnGridActivated;
         public event Action<GridItem> OnDoubleClick;
         public event Action<GridItem> OnGridDestroyed;
+        public event Action<GridItem> OnGridReset;
         
         [SerializeField] private Image _icon;
         [SerializeField] private Button _button;
@@ -24,6 +25,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         [SerializeField] private TMP_Text _countText;
         [SerializeField] private Image _activeFrame;
         private InventoryItem _item;
+        private bool _isInitialising;
         private bool _isAction = false;
         private CancellationTokenSource _cancell = new ();
         private IDisposable _disposable;
@@ -31,9 +33,10 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public Button Button => _button;
 
         public InventoryItem InventoryItem => _item;
-        public bool IsGridInitializing => _item != null;
 
         public Image Icon => _icon;
+
+        public bool IsInitialising => _isInitialising;
 
         private void Awake()
         {
@@ -42,6 +45,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public void Initialize(InventoryItem item)
         {
+            _isInitialising = true;
             _item = item;
             _icon.enabled = true;
             _icon.sprite = _item.Meta.Icon;
@@ -58,7 +62,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         {
             OnGridLeftClicked?.Invoke(this);
 
-            if (_isAction)
+            if (_isAction && _isInitialising)
             {
                 OnDoubleClick?.Invoke(this);
                 _isAction = false;
@@ -93,9 +97,15 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             _activeFrame.gameObject.SetActive(false);
         }
 
+        public void Reset()
+        {
+            _isInitialising = false;
+            OnGridReset?.Invoke(this);
+        }
+
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (eventData.button == PointerEventData.InputButton.Right && _isInitialising)
             {
                 OnGridRightClicked?.Invoke(this);
             }
