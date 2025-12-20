@@ -27,10 +27,22 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             OnItemAdded?.Invoke(item);
         }
 
-        public void RemoveItem(InventoryItem prototype)
+        public void Reset(InventoryItem prototype)
         {
-              Items.Remove(prototype);
-              OnItemRemoved?.Invoke(prototype);
+            var index = Items.IndexOf(prototype);
+            Items[index] = null;
+            OnItemRemoved?.Invoke(prototype);
+        }
+
+        public void Remove(InventoryItem prototype)
+        {
+            Items.Remove(prototype);
+            OnItemRemoved?.Invoke(prototype);
+        }
+
+        private int GetIndexOfItem(InventoryItem item)
+        {
+            return Items.IndexOf(item);
         }
 
         private bool TryAddStackableItem(InventoryItem item)
@@ -111,12 +123,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 
                 if (stack.Count.Value <= 0)
                 {
-                   RemoveItem(item);
+                   Reset(item);
                 }
             }
             else
             {
-                RemoveItem(item);
+                Reset(item);
             }
 
             ItemConsumed(item);

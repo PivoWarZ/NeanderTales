@@ -47,7 +47,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         {
             var item = grid.InventoryItem;
             
-            _inventory.RemoveItem(item);
+            _inventory.Reset(item);
             _clickObserver.AddEquipItem(grid);
             _equipItemEffectObserver.OnItemAdded(item);
           //  _infoPopupAdapter.InitView(item, true);

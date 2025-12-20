@@ -42,8 +42,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             
             InstallGrids();
             InitializeGrids();
-            
-            Debug.Log("UpdateInventoryBags");
         }
 
         private void InstallGrids()
@@ -142,10 +140,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             rect.sizeDelta = new Vector2(_minSize * _config.WidthCount + padding, _minSize * _config.HeightCount + padding);
         }
 
-        private void InitializeInventoryGrid(Scripts.InventoryData.InventoryBase.Inventory inventory)
+        private void InitializeInventoryGrid(Inventory inventory)
         {
             for (int i = 0; i < inventory.Items.Count; i++ )
             {
+                if (inventory.Items[i] == null)
+                    continue;
+                
                 _items[i].Initialize(inventory.Items[i]);
             }
         }

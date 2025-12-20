@@ -18,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         public void SetInventory(Inventory inventory)
         {
             _inventory = inventory;
-            _inventory.OnItemAdded += Refresh;
+            _inventory.OnItemAdded += InitializeGrids;
             BootsTrap();
         }
 
@@ -27,9 +27,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             _bagsCreator.UpdateInventoryBags();
         }
 
-        private void Refresh(InventoryItem _)
+        private void InitializeGrids(InventoryItem _)
         {
-            _bagsCreator.UpdateInventoryBags();
+            _bagsCreator.InitializeGrids();
         }
 
         private void BootsTrap()
@@ -61,7 +61,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         private void OnDestroy()
         {
-            _inventory.OnItemAdded -= Refresh;
+            _inventory.OnItemAdded -= InitializeGrids;
             _dispose.Dispose();
             Bag.Grids.Clear();
             _bagsCreator.Dispose();

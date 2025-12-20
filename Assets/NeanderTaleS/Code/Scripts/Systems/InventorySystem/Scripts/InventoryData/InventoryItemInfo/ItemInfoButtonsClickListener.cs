@@ -45,7 +45,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         private void DeleteItemFromInventory()
         {
-           _inventory.RemoveItem(_view.Item);
+           _inventory.Reset(_view.Item);
         }
 
         private void HideInfoPopup()
