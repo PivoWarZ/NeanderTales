@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using Sirenix.OdinInspector;
@@ -57,6 +58,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             DeinitializeGrid();
             InitializeInventoryGrid(_inventory);
             HideSpritesFromNonActiveGrid();
+            ActivateStackableCounter();
         }
 
         private void DetermineDimensionsAndIndentsBag()
@@ -75,6 +77,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             var paddingY = (bagsHeight - _minSize * _config.HeightCount) / 2;
             
             _minPadding = Mathf.Min(paddingX, paddingY);
+            
+            Bag.GridSize = _minSize;
         }
         
         [Button]
@@ -148,6 +152,25 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                     continue;
                 
                 _items[i].Initialize(inventory.Items[i]);
+            }
+        }
+
+        private void ActivateStackableCounter()
+        {
+            foreach (var gridItem in Bag.Grids)
+            {
+                if (!gridItem.IsInitialising)
+                {
+                    continue;
+                }
+
+                var item = gridItem.InventoryItem;
+                var stackable = item.TryGetComponent<StackableComponent>(out var stackableComponent);
+
+                if (stackable)
+                {
+                    gridItem.InitCountText(stackableComponent.Count);
+                }
             }
         }
 

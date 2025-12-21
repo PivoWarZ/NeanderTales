@@ -33,14 +33,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         private void EquipButtonClick()
         {
             var activeGrid = Bag.ActiveGrid;
-            EquippedItems.Add(activeGrid.InventoryItem);
+            Equipment.Add(activeGrid.InventoryItem);
         }
 
         private void TrowAwayButtonClick()
         {
             DeleteItemFromInventory();
             HideInfoPopup();
-           // EquippedItems.Remove(Bag.ActiveGrid.InventoryItem);
         }
 
         private void DeleteItemFromInventory()

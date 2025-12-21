@@ -4,7 +4,7 @@ using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.In
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid
 {
-    public static class EquippedItems
+    public static class Equipment
     {
         public static event Action<InventoryItem> OnItemEquipped;
         public static event Action<InventoryItem> OnItemUnequipped;

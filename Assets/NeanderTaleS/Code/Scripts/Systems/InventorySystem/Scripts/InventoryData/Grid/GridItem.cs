@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid
 {
-    public sealed class GridItem: MonoBehaviour, IPointerClickHandler
+    public sealed class GridItem: MonoBehaviour, IPointerClickHandler, IDisposable
     {
         public event Action<GridItem> OnGridLeftClicked;
         public event Action<GridItem> OnGridRightClicked;
@@ -117,8 +117,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         }
 
         private void OnDestroy()
-        {
+        { 
             OnGridDestroyed?.Invoke(this);
+            Dispose();
+        }
+        
+        public void Dispose()
+        {
             _cancell.Cancel();
             _disposable?.Dispose();
         }

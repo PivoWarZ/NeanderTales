@@ -45,7 +45,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 itemViewInfo.EquipButtonText = "Use item";
             }
 
-            if (EquippedItems.IsItemEquipped(_item))
+            if (Equipment.IsItemEquipped(_item))
             {
                 itemViewInfo.EquipButtonText = "Unequip";
             }

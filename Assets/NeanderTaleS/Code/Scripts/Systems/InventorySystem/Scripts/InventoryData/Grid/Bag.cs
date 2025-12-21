@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid
 {
@@ -11,6 +12,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public static List<GridItem> Grids = new ();
 
         public static GridItem ActiveGrid => Grids.FirstOrDefault(grid => grid.IsActive());
+        public static float GridSize;
         
         public static void SwitchActiveGrid(GridItem gridItem)
         {
