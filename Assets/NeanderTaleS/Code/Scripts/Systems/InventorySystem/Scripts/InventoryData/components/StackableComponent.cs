@@ -7,26 +7,26 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     [Serializable]
     public sealed class StackableComponent: IItemComponent
     {
-        public SerializableReactiveProperty<int> Count = new (1);
+        public int Count = 1;
         public int MaxCount;
         
         public IItemComponent Clone()
         {
             return new StackableComponent()
             {
-                Count = new SerializableReactiveProperty<int>(Count.Value),
+                Count = Count,
                 MaxCount = MaxCount,
             };
         }
 
         public void IncrementCount()
         {
-            Count.Value++;
+            Count++;
         }
 
         public void DecrementCount()
         {
-            Count.Value--;
+            Count--;
         }
     }
 }

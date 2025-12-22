@@ -15,11 +15,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public void AddItem(InventoryItem item)
         {
-            if (!TryAddStackableItem(item))
+            if (!TryAddStackableItem(item) && !TryReplaceStubItem(item))
             {
                 Items.Add(item);
-                ItemAdded(item);
             }
+            
+            ItemAdded(item);
         }
 
         private void ItemAdded(InventoryItem item)
@@ -30,7 +31,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public void Reset(InventoryItem prototype)
         {
             var index = Items.IndexOf(prototype);
-            Items[index] = null;
+            Items[index] = new InventoryItem();
             OnItemRemoved?.Invoke(prototype);
         }
 
@@ -61,12 +62,33 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             return false;
         }
 
+        private bool TryReplaceStubItem(InventoryItem item)
+        {
+            var isStubItem = TryGetStubItem(out var stub);
+
+            if (isStubItem)
+            {
+                Items[GetIndexOfItem(stub)] = item;
+                return true;
+            }
+            
+            return false;
+        }
+
+        private bool TryGetStubItem(out InventoryItem stub)
+        {
+            var stubItem = Items.FirstOrDefault(stub => stub.IsStub());
+            stub = stubItem;
+            
+            return stubItem != null;
+        }
+
         private bool TryFindNotCompleteStack(List<InventoryItem> items, out StackableComponent stackNotComplete)
         {
             foreach (var inventoryItem in items)
             {
                 inventoryItem.TryGetComponent<StackableComponent>(out var stack);
-                bool isMaxStack = stack.Count.Value >= stack.MaxCount;
+                bool isMaxStack = stack.Count >= stack.MaxCount;
 
                 if (!isMaxStack)
                 {
@@ -121,7 +143,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             {
                 stack.DecrementCount();
                 
-                if (stack.Count.Value <= 0)
+                if (stack.Count <= 0)
                 {
                    Reset(item);
                 }

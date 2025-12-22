@@ -148,7 +148,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         {
             for (int i = 0; i < inventory.Items.Count; i++ )
             {
-                if (inventory.Items[i] == null)
+                if (inventory.Items[i].Id == String.Empty)
                     continue;
                 
                 _items[i].Initialize(inventory.Items[i]);
@@ -165,9 +165,15 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 }
 
                 var item = gridItem.InventoryItem;
-                var stackable = item.TryGetComponent<StackableComponent>(out var stackableComponent);
 
-                if (stackable)
+                if (item.Id == String.Empty)
+                {
+                    continue;
+                }
+
+                var isStackable = item.TryGetComponent<StackableComponent>(out var stackableComponent);
+
+                if (isStackable)
                 {
                     gridItem.InitCountText(stackableComponent.Count);
                 }

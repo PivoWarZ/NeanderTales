@@ -45,6 +45,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public void Initialize(InventoryItem item)
         {
+            if (item.Id == String.Empty)
+            {
+                return;
+            }
+
             _isInitialising = true;
             _item = item;
             _icon.enabled = true;
@@ -52,10 +57,20 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
             gameObject.name = _item.Meta.Name;
         }
 
-        public void InitCountText(ReactiveProperty<int> count)
+        public void InitCountText(int count)
         {
-            _disposable = count.Subscribe(onNext => _countText.text = count.CurrentValue.ToString());
+            EnableCountText();
+            SetCountText(count);
+        }
+
+        private void EnableCountText()
+        {
             _countText.gameObject.SetActive(true);
+        }
+
+        private void SetCountText(int count)
+        {
+            _countText.text = count.ToString();
         }
 
         private void Clicked()
@@ -100,6 +115,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public void Reset()
         {
             _isInitialising = false;
+            _countText.gameObject.SetActive(false);
             OnGridReset?.Invoke(this);
         }
 

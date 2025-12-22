@@ -7,7 +7,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     [Serializable]
     public sealed class InventoryItem
     {
-        public string Id;
+        public string Id = String.Empty;
         public InventoryItemMeta Meta;
         public InventoryItemFlags Flags;
         
@@ -57,6 +57,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 Flags = Flags,
                 Components = copiesComponent
             };
+        }
+        
+        public bool IsStub()
+        {
+            return Id == String.Empty;
         }
     }
 }
