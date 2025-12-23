@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3334995379493625930}
   - component: {fileID: 8963831533962842178}
   - component: {fileID: 5212968712210436314}
+  - component: {fileID: 2117523680989510261}
   m_Layer: 5
   m_Name: GridItem
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2117523680989510261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439581822452662395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe457b093747d393a105b9eaaf41c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid.DropHandler
+  _gridItem: {fileID: 8963831533962842178}
 --- !u!1 &1834785155356514578
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +286,8 @@ GameObject:
   - component: {fileID: 2843313560638764713}
   - component: {fileID: 1812675073378982352}
   - component: {fileID: 2150663412383351830}
+  - component: {fileID: 3240783077296477435}
+  - component: {fileID: 2611571841341720259}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -336,6 +352,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3240783077296477435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967753918502099518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d15675ee3d84c008b5da6b816e60d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Inventory::NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid.DragHandler
+--- !u!225 &2611571841341720259
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967753918502099518}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8639851671310587370
 GameObject:
   m_ObjectHideFlags: 0

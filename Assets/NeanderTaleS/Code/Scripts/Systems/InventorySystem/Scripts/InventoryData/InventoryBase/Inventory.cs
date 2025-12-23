@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase
 {
@@ -11,7 +12,14 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         public event Action<InventoryItem> OnItemAdded;
         public event Action<InventoryItem> OnItemRemoved;
         public event Action<InventoryItem> OnItemConsumed;
+        public event Action OnInventoryUpdated;
+        
         public List<InventoryItem> Items = new ();
+
+        public void AddStub()
+        {
+            Items.Add(new InventoryItem());
+        }
 
         public void AddItem(InventoryItem item)
         {
@@ -20,12 +28,19 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
                 Items.Add(item);
             }
             
-            ItemAdded(item);
+            OnItemAdded?.Invoke(item);
         }
 
-        private void ItemAdded(InventoryItem item)
+        public void ReplaceItems(int index1, int index2)
         {
-            OnItemAdded?.Invoke(item);
+            if (index1 == index2 || index1 < 0 || index2 < 0)
+            {
+                return;
+            }
+
+            (Items[index1], Items[index2]) = (Items[index2], Items[index1]);
+            
+            OnInventoryUpdated?.Invoke();
         }
 
         public void Reset(InventoryItem prototype)

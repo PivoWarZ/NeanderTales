@@ -16,6 +16,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs
         [SerializeField] private GridItem _grid;
         [SerializeField] private float _bagsContentPadding;
 
+        [Header("------Icon settings------")] 
+        [SerializeField] private float _padding;
         public int Capacity => _capacity;
 
         public int WidthCount => _widthCount;

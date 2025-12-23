@@ -18,7 +18,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         [SerializeField] private GameObject _bags;
         [SerializeField] private Image _bagsBackground;
         
-        private List<GridItem> _items = new ();
+        private List<GridItem> _grids = new ();
         private InventoryConfig _config;
         private Inventory _inventory;
         private float _minSize;
@@ -55,8 +55,8 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         public void InitializeGrids()
         {
-            DeinitializeGrid();
-            InitializeInventoryGrid(_inventory);
+            InitializeGridsInventoryItems(_inventory);
+            HideCountText();
             HideSpritesFromNonActiveGrid();
             ActivateStackableCounter();
         }
@@ -77,8 +77,6 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             var paddingY = (bagsHeight - _minSize * _config.HeightCount) / 2;
             
             _minPadding = Mathf.Min(paddingX, paddingY);
-            
-            Bag.GridSize = _minSize;
         }
         
         [Button]
@@ -95,8 +93,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                 {
                     gridsQueue.TryDequeue(out var item);
                     
-                    var grid = !item ? Object.Instantiate(_config.Grid, _bagsBackground.transform) : item;
+                    var grid = item ? item : Object.Instantiate(_config.Grid, _bags.transform);
                     
+                    if(!item)
+                        _inventory.AddStub();
+
                     RectTransform gridRectTransform = grid.gameObject.GetComponent<RectTransform>();
 
                     gridRectTransform.sizeDelta = new Vector2(_minSize, _minSize);
@@ -104,7 +105,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
                   
                     offsetX += gridRectTransform.sizeDelta.x;
                     
-                    _items.Add(grid);
+                    _grids.Add(grid);
                     
                     bool isEndOfHorizontalRow = j + 1 >= _config.WidthCount;
                     
@@ -121,7 +122,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         private void SetGridAnchorsTopLeftPosition()
         {
-            foreach (var gridItem in _items)
+            foreach (var gridItem in _grids)
             {
                 var rect = gridItem.GetComponent<RectTransform>();
                 SetAnchorsTopLeftPosition(rect);
@@ -144,14 +145,11 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
             rect.sizeDelta = new Vector2(_minSize * _config.WidthCount + padding, _minSize * _config.HeightCount + padding);
         }
 
-        private void InitializeInventoryGrid(Inventory inventory)
+        private void InitializeGridsInventoryItems(Inventory inventory)
         {
             for (int i = 0; i < inventory.Items.Count; i++ )
             {
-                if (inventory.Items[i].Id == String.Empty)
-                    continue;
-                
-                _items[i].Initialize(inventory.Items[i]);
+                _grids[i].Initialize(inventory.Items[i]);
             }
         }
 
@@ -182,26 +180,24 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         private void HideSpritesFromNonActiveGrid()
         {
-            foreach (var gridItem in _items)
+            foreach (var gridItem in _grids)
             {
-                if(gridItem.IsInitialising)
-                    continue;
-                
-                gridItem.Icon.enabled = false;
+                if(!gridItem.IsInitialising)
+                    gridItem.Icon.enabled = false;
             }
         }
 
-        private void DeinitializeGrid()
+        private void HideCountText()
         {
-            foreach (var gridItem in _items)
+            foreach (var gridItem in _grids)
             {
-                gridItem.Reset();
+                gridItem.HideCountText();
             }
         }
 
         public void Dispose()
         {
-            _items.Clear();
+            _grids.Clear();
         }
     }
 }

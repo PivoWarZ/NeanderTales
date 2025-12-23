@@ -9,10 +9,9 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
     {
         public static Action<GridItem> OnGridActivated;
         
-        public static List<GridItem> Grids = new ();
+        public static readonly List<GridItem> Grids = new ();
 
         public static GridItem ActiveGrid => Grids.FirstOrDefault(grid => grid.IsActive());
-        public static float GridSize;
         
         public static void SwitchActiveGrid(GridItem gridItem)
         {

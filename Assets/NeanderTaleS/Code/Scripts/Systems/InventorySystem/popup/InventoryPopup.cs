@@ -2,6 +2,7 @@ using NeanderTaleS.Code.Scripts.Systems.InventorySystem.configs;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo;
+using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Listeners;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Observers.GridObservers;
 using R3;
 using UnityEngine;
@@ -15,10 +16,12 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         private Inventory _inventory;
         private CompositeDisposable _dispose = new ();
 
+        public Inventory Inventory => _inventory;
+
         public void SetInventory(Inventory inventory)
         {
             _inventory = inventory;
-            _inventory.OnItemAdded += InitializeGrids;
+            Inventory.OnItemAdded += InitializeGrids;
             BootsTrap();
         }
 
@@ -36,15 +39,18 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
         {
             var config = Resources.Load<InventoryConfig>("InventoryConfig");
             
-            _bagsCreator.Initialize(config, _inventory);
+            _bagsCreator.Initialize(config, Inventory);
             
             var infoPopupAdapter = new ItemInfoPopupAdapter(_itemInfoView);
             _dispose.Add(infoPopupAdapter);
             
-            var itemInfoButtonCliclListener = new ItemInfoButtonsClickListener(_itemInfoView, _inventory);
+            var itemInfoButtonCliclListener = new ItemInfoButtonsClickListener(_itemInfoView, Inventory);
             _dispose.Add(itemInfoButtonCliclListener);
+            
+            var inventoryUpdateListener = new InventoryUpdateListener_InitializeGrid(_inventory, _bagsCreator);
+            _dispose.Add(inventoryUpdateListener);
 
-            CreateGridObservers(infoPopupAdapter, _bagsCreator, _inventory);
+            CreateGridObservers(infoPopupAdapter, _bagsCreator, Inventory);
         }
 
         private void CreateGridObservers(ItemInfoPopupAdapter infoPopupAdapter, InventoryBagsCreator bagsCreator, Inventory inventory)
@@ -61,7 +67,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.popup
 
         private void OnDestroy()
         {
-            _inventory.OnItemAdded -= InitializeGrids;
+            Inventory.OnItemAdded -= InitializeGrids;
             _dispose.Dispose();
             Bag.Grids.Clear();
             _bagsCreator.Dispose();
