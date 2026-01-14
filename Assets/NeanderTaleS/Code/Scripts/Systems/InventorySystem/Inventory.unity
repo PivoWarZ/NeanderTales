@@ -390,13 +390,14 @@ GameObject:
   - component: {fileID: 173230681}
   - component: {fileID: 173230685}
   - component: {fileID: 173230684}
+  - component: {fileID: 173230686}
   m_Layer: 5
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &173230680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -508,6 +509,18 @@ MonoBehaviour:
   _trowAwayButton: {fileID: 2133974922}
   _closeButton: {fileID: 1013207258}
   _icon: {fileID: 421930596}
+--- !u!225 &173230686
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173230679}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &256796475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,14 +1595,14 @@ RectTransform:
   m_GameObject: {fileID: 1013207256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.61482924, y: 0.61482924, z: 0.61482924}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1107149188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237, y: 447}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2, y: -0.6}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013207258

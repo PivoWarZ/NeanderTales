@@ -2,6 +2,8 @@ using System;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.components;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
+using UnityEngine;
+using DG.Tweening;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
@@ -26,7 +28,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         public void ShowInfoPopup()
         {
-            _view.gameObject.SetActive(true);
+            FadeIn(_view.gameObject);
+        }
+        
+        public void FadeIn(GameObject view)
+        {
+            var canvasGroup = view.GetComponent<CanvasGroup>();
+            DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, 0.3f);
         }
 
         private void InitView(InventoryItem item)

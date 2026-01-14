@@ -23,6 +23,7 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
             var grid = _draggable.GetComponentInParent<GridItem>();
+            grid.HideCountText();
             _index = Bag.Grids.IndexOf(grid);
             _draggableStartPosition = _draggable.position;
             _canvasGroup.blocksRaycasts = false;

@@ -1,6 +1,8 @@
 using System;
+using DG.Tweening;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.Grid;
 using NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryBase;
+using UnityEngine;
 
 namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryData.InventoryItemInfo
 {
@@ -49,7 +51,13 @@ namespace NeanderTaleS.Code.Scripts.Systems.InventorySystem.Scripts.InventoryDat
 
         private void HideInfoPopup()
         {
-            _view.gameObject.SetActive(false);
+            FadeOut(_view.gameObject);
+        }
+        
+        public void FadeOut(GameObject view)
+        {
+            var canvasGroup = view.GetComponent<CanvasGroup>();
+            DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, 0.3f);
         }
 
         public void Dispose()
